@@ -5,6 +5,7 @@ import Sidebar from './Sidebar';
 import Topbar from './Topbar';
 import PagePlaceholder from './PagePlaceholder';
 import AccessDeniedScreen from './AccessDeniedScreen';
+import Dashboard from './Dashboard';
 
 const pageLabels: Record<string, string> = {
   dashboard: 'Dashboard',
@@ -28,6 +29,7 @@ export default function AppShell() {
   const { isAdmin } = useAuth();
 
   const renderPage = () => {
+    if (currentPage === 'dashboard') return <Dashboard />;
     if (currentPage === 'financeiro' && !isAdmin()) {
       return <AccessDeniedScreen />;
     }
