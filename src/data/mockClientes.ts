@@ -1,0 +1,147 @@
+import { Cliente } from '@/types/cliente';
+
+export const MOCK_CLIENTES: Cliente[] = [
+  {
+    id: 'cli-001',
+    type: 'PF',
+    practice_area: 'trabalhista',
+    responsible_id: 'user-002',
+    status: 'ativo',
+    is_vip: false,
+    created_at: '2025-08-10',
+    notes: 'Cliente encaminhado pelo sindicato',
+    nome: 'João Silva Santos',
+    cpf: '321.654.987-00',
+    rg: '12.345.678-9',
+    nascimento: '1985-03-22',
+    estado_civil: 'casado',
+    email: 'joao.santos@email.com',
+    phone: '(11) 98765-4321',
+    address: 'Rua das Flores, 123 — São Paulo/SP',
+    polo: 'reclamante',
+    ctps: '123456 / 001-SP',
+    cargo: 'Auxiliar Administrativo',
+    salario: 2800,
+    data_admissao: '2019-05-10',
+    data_demissao: '2026-01-15',
+    tipo_demissao: 'sem_justa_causa',
+    empresa_reclamada: 'Grupo Comercial Paulista Ltda',
+    sindicato: 'SEAC-SP',
+  },
+  {
+    id: 'cli-002',
+    type: 'PJ',
+    practice_area: 'trabalhista',
+    responsible_id: 'user-002',
+    status: 'ativo',
+    is_vip: true,
+    created_at: '2024-11-03',
+    notes: 'Empresa com histórico de reclamações trabalhistas',
+    polo: 'reclamada',
+    razao_social: 'Construtora Betel S.A.',
+    cnpj: '98.765.432/0001-10',
+    representante_legal: 'Rodrigo Betel',
+    cpf_representante: '111.222.333-44',
+    email: 'juridico@construtorabeltel.com.br',
+    phone: '(11) 3344-5566',
+    address: 'Av. Paulista, 1000 — São Paulo/SP',
+    ramo_atividade: 'Construção Civil',
+    numero_funcionarios: 120,
+    sindicato_patronal: 'SINDUSCON-SP',
+  },
+  {
+    id: 'cli-003',
+    type: 'PJ',
+    practice_area: 'civil',
+    responsible_id: 'user-003',
+    status: 'ativo',
+    is_vip: true,
+    created_at: '2024-06-18',
+    notes: 'Disputa societária em andamento',
+    polo: 'autor',
+    razao_social: 'Martins & Associados Ltda',
+    cnpj: '12.345.678/0001-90',
+    representante_legal: 'Paulo Martins',
+    cpf_representante: '222.333.444-55',
+    email: 'paulo@martinsassociados.com.br',
+    phone: '(11) 97654-3210',
+    address: 'Rua Augusta, 500 — São Paulo/SP',
+    tipo_societario: 'ltda',
+    ramo_atividade: 'Consultoria Empresarial',
+    subtipo: 'direito_societario',
+  },
+  {
+    id: 'cli-004',
+    type: 'PF',
+    practice_area: 'criminal',
+    responsible_id: 'user-004',
+    status: 'ativo',
+    is_vip: false,
+    created_at: '2025-10-05',
+    notes: 'Preso em flagrante, solto com liberdade provisória',
+    nome: 'Pedro Henrique Gomes',
+    cpf: '456.789.123-00',
+    rg: '34.567.890-1',
+    nascimento: '1992-07-14',
+    estado_civil: 'solteiro',
+    email: 'pedro.gomes@email.com',
+    phone: '(11) 91234-5678',
+    address: 'Rua Voluntários da Pátria, 77 — São Paulo/SP',
+    polo: 'reu',
+    situacao_prisional: 'liberdade_provisoria',
+    antecedentes_criminais: false,
+    boletim_ocorrencia: 'BO 2025/098765',
+    delegacia: '3ª DP — Barra Funda',
+    crime_imputado: 'Furto qualificado — Art. 155 §4º CP',
+    fase_processual: 'instrucao',
+    data_fato: '2025-10-01',
+    preso_em: '',
+  },
+  {
+    id: 'cli-005',
+    type: 'PF',
+    practice_area: 'previdenciario',
+    responsible_id: 'user-005',
+    status: 'ativo',
+    is_vip: false,
+    created_at: '2025-08-20',
+    notes: 'CNIS disponível. Perícia agendada para março/2026',
+    nome: 'Maria de Fátima Oliveira',
+    cpf: '789.123.456-00',
+    rg: '56.789.012-3',
+    nascimento: '1968-11-30',
+    estado_civil: 'viuva',
+    email: 'mariafatima@email.com',
+    phone: '(11) 94567-8901',
+    address: 'Rua Dom Pedro II, 45 — São Bernardo do Campo/SP',
+    nit_pis: '123.45678.91-0',
+    numero_beneficio: '189.234.567-8',
+    especie_beneficio: 'auxilio_doenca',
+    der: '2025-08-10',
+    dib: '',
+    dcb: '',
+    cnis_disponivel: true,
+    pericia_medica: true,
+    cid: 'M54.5',
+    tempo_contribuicao: '22 anos e 4 meses',
+  },
+];
+
+const WHP_CLIENTES_KEY = 'whp_clientes';
+
+export function loadClientes(): Cliente[] {
+  const stored = localStorage.getItem(WHP_CLIENTES_KEY);
+  if (stored) {
+    try {
+      return JSON.parse(stored);
+    } catch {
+      // fall through
+    }
+  }
+  localStorage.setItem(WHP_CLIENTES_KEY, JSON.stringify(MOCK_CLIENTES));
+  return [...MOCK_CLIENTES];
+}
+
+export function saveClientes(clientes: Cliente[]): void {
+  localStorage.setItem(WHP_CLIENTES_KEY, JSON.stringify(clientes));
+}

@@ -6,6 +6,7 @@ import Topbar from './Topbar';
 import PagePlaceholder from './PagePlaceholder';
 import AccessDeniedScreen from './AccessDeniedScreen';
 import Dashboard from './Dashboard';
+import ClientesPage from './ClientesPage';
 
 const pageLabels: Record<string, string> = {
   dashboard: 'Dashboard',
@@ -26,10 +27,17 @@ const pageLabels: Record<string, string> = {
 
 export default function AppShell() {
   const [currentPage, setCurrentPage] = useState<Page>('dashboard');
+  const [selectedClientId, setSelectedClientId] = useState<string | null>(null);
   const { isAdmin } = useAuth();
 
   const renderPage = () => {
     if (currentPage === 'dashboard') return <Dashboard />;
+    if (currentPage === 'clientes') return (
+      <ClientesPage onNavigateDetail={(id) => {
+        setSelectedClientId(id);
+        setCurrentPage('cliente-detalhe');
+      }} />
+    );
     if (currentPage === 'financeiro' && !isAdmin()) {
       return <AccessDeniedScreen />;
     }
