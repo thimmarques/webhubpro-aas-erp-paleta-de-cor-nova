@@ -1,0 +1,46 @@
+import React, { useState } from 'react';
+import { Page } from '@/types';
+import { useAuth } from '@/contexts/AuthContext';
+import Sidebar from './Sidebar';
+import Topbar from './Topbar';
+import PagePlaceholder from './PagePlaceholder';
+import AccessDeniedScreen from './AccessDeniedScreen';
+
+const pageLabels: Record<string, string> = {
+  dashboard: 'Dashboard',
+  clientes: 'Clientes',
+  processos: 'Processos',
+  financeiro: 'Financeiro',
+  agenda: 'Agenda',
+  audiencias: 'Audiências',
+  relatorios: 'Relatórios',
+  equipe: 'Equipe',
+  'meu-perfil': 'Meu Perfil',
+  escritorio: 'Escritório',
+  integracoes: 'Integrações',
+  logs: 'Logs e Auditoria',
+  seguranca: 'Segurança',
+  sistema: 'Sistema',
+};
+
+export default function AppShell() {
+  const [currentPage, setCurrentPage] = useState<Page>('dashboard');
+  const { isAdmin } = useAuth();
+
+  const renderPage = () => {
+    if (currentPage === 'financeiro' && !isAdmin()) {
+      return <AccessDeniedScreen />;
+    }
+    return <PagePlaceholder pageName={pageLabels[currentPage] || currentPage} />;
+  };
+
+  return (
+    <div className="min-h-screen bg-background">
+      <Sidebar currentPage={currentPage} onNavigate={setCurrentPage} />
+      <div className="ml-56 min-h-screen flex flex-col">
+        <Topbar currentPage={currentPage} />
+        <main className="flex-1 p-6">{renderPage()}</main>
+      </div>
+    </div>
+  );
+}
