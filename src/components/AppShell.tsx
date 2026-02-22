@@ -7,6 +7,8 @@ import PagePlaceholder from './PagePlaceholder';
 import AccessDeniedScreen from './AccessDeniedScreen';
 import Dashboard from './Dashboard';
 import ClientesPage from './ClientesPage';
+import ProcessosPage from './ProcessosPage';
+import ProcessoDetail from './ProcessoDetail';
 
 const pageLabels: Record<string, string> = {
   dashboard: 'Dashboard',
@@ -28,6 +30,7 @@ const pageLabels: Record<string, string> = {
 export default function AppShell() {
   const [currentPage, setCurrentPage] = useState<Page>('dashboard');
   const [selectedClientId, setSelectedClientId] = useState<string | null>(null);
+  const [selectedProcessoId, setSelectedProcessoId] = useState<string | null>(null);
   const { isAdmin } = useAuth();
 
   const renderPage = () => {
@@ -37,6 +40,18 @@ export default function AppShell() {
         setSelectedClientId(id);
         setCurrentPage('cliente-detalhe');
       }} />
+    );
+    if (currentPage === 'processos') return (
+      <ProcessosPage onNavigateDetail={(id) => {
+        setSelectedProcessoId(id);
+        setCurrentPage('processo-detalhe');
+      }} />
+    );
+    if (currentPage === 'processo-detalhe' && selectedProcessoId) return (
+      <ProcessoDetail
+        processoId={selectedProcessoId}
+        onBack={() => setCurrentPage('processos')}
+      />
     );
     if (currentPage === 'financeiro' && !isAdmin()) {
       return <AccessDeniedScreen />;
