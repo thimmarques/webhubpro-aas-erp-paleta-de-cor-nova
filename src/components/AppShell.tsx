@@ -9,6 +9,7 @@ import Dashboard from './Dashboard';
 import ClientesPage from './ClientesPage';
 import ProcessosPage from './ProcessosPage';
 import ProcessoDetail from './ProcessoDetail';
+import ClienteDetailPage from './ClienteDetailPage';
 
 const pageLabels: Record<string, string> = {
   dashboard: 'Dashboard',
@@ -51,6 +52,16 @@ export default function AppShell() {
       <ProcessoDetail
         processoId={selectedProcessoId}
         onBack={() => setCurrentPage('processos')}
+      />
+    );
+    if (currentPage === 'cliente-detalhe' && selectedClientId) return (
+      <ClienteDetailPage
+        clientId={selectedClientId}
+        onBack={() => setCurrentPage('clientes')}
+        onNavigateProcessoDetail={(id) => {
+          setSelectedProcessoId(id);
+          setCurrentPage('processo-detalhe');
+        }}
       />
     );
     if (currentPage === 'financeiro' && !isAdmin()) {
