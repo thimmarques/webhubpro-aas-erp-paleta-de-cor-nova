@@ -10,6 +10,7 @@ import ClientesPage from './ClientesPage';
 import ProcessosPage from './ProcessosPage';
 import ProcessoDetail from './ProcessoDetail';
 import ClienteDetailPage from './ClienteDetailPage';
+import FinanceiroPage from './FinanceiroPage';
 
 const pageLabels: Record<string, string> = {
   dashboard: 'Dashboard',
@@ -64,9 +65,7 @@ export default function AppShell() {
         }}
       />
     );
-    if (currentPage === 'financeiro' && !isAdmin()) {
-      return <AccessDeniedScreen />;
-    }
+    if (currentPage === 'financeiro') return <FinanceiroPage />;
     return <PagePlaceholder pageName={pageLabels[currentPage] || currentPage} />;
   };
 
