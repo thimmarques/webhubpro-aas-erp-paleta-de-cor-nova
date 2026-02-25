@@ -11,6 +11,8 @@ import ProcessosPage from './ProcessosPage';
 import ProcessoDetail from './ProcessoDetail';
 import ClienteDetailPage from './ClienteDetailPage';
 import FinanceiroPage from './FinanceiroPage';
+import AgendaPage from './AgendaPage';
+import AudienciasPage from './AudienciasPage';
 
 const pageLabels: Record<string, string> = {
   dashboard: 'Dashboard',
@@ -66,6 +68,15 @@ export default function AppShell() {
       />
     );
     if (currentPage === 'financeiro') return <FinanceiroPage />;
+    if (currentPage === 'agenda') return <AgendaPage />;
+    if (currentPage === 'audiencias') return (
+      <AudienciasPage
+        onNavigateProcessoDetail={(id) => {
+          setSelectedProcessoId(id);
+          setCurrentPage('processo-detalhe');
+        }}
+      />
+    );
     return <PagePlaceholder pageName={pageLabels[currentPage] || currentPage} />;
   };
 
