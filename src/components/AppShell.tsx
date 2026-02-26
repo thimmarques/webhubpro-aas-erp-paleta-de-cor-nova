@@ -13,6 +13,8 @@ import ClienteDetailPage from './ClienteDetailPage';
 import FinanceiroPage from './FinanceiroPage';
 import AgendaPage from './AgendaPage';
 import AudienciasPage from './AudienciasPage';
+import RelatoriosPage from './RelatoriosPage';
+import EquipePage from './EquipePage';
 
 const pageLabels: Record<string, string> = {
   dashboard: 'Dashboard',
@@ -77,6 +79,8 @@ export default function AppShell() {
         }}
       />
     );
+    if (currentPage === 'relatorios') return <RelatoriosPage />;
+    if (currentPage === 'equipe') return <EquipePage />;
     return <PagePlaceholder pageName={pageLabels[currentPage] || currentPage} />;
   };
 
