@@ -82,6 +82,14 @@ export default function AppShell() {
     );
     if (currentPage === 'relatorios') return <RelatoriosPage />;
     if (currentPage === 'equipe') return <EquipePage />;
+    const configPages = new Set(['meu-perfil', 'escritorio', 'integracoes', 'logs', 'seguranca', 'sistema', 'configuracoes']);
+    if (configPages.has(currentPage)) {
+      const submenuMap: Record<string, 'meu-perfil' | 'escritorio' | 'integracoes' | 'logs' | 'seguranca' | 'sistema'> = {
+        'meu-perfil': 'meu-perfil', escritorio: 'escritorio', integracoes: 'integracoes',
+        logs: 'logs', seguranca: 'seguranca', sistema: 'sistema', configuracoes: 'meu-perfil',
+      };
+      return <ConfiguracoesPage initialSubmenu={submenuMap[currentPage] || 'meu-perfil'} />;
+    }
     return <PagePlaceholder pageName={pageLabels[currentPage] || currentPage} />;
   };
 
