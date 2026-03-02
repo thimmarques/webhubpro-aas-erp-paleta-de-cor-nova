@@ -15,6 +15,7 @@ import AgendaPage from './AgendaPage';
 import AudienciasPage from './AudienciasPage';
 import RelatoriosPage from './RelatoriosPage';
 import EquipePage from './EquipePage';
+import ConfiguracoesPage from './ConfiguracoesPage';
 
 const pageLabels: Record<string, string> = {
   dashboard: 'Dashboard',
