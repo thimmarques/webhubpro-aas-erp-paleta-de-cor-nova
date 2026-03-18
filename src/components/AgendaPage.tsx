@@ -370,12 +370,12 @@ export default function AgendaPage(_props: AgendaPageProps) {
                     <div
                       key={evt.id}
                       onClick={() => setShowDetailModal(evt)}
-                      className={`bg-white rounded-lg border border-slate-200 overflow-hidden hover:border-slate-300 transition-colors cursor-pointer border-l-4 ${tipoBorderColors[evt.tipo]}`}
+                      className={`bg-card rounded-lg border border-border overflow-hidden hover:border-accent/40 transition-colors cursor-pointer border-l-4 ${tipoBorderColors[evt.tipo]}`}
                     >
                       <div className="px-4 py-3">
                         <div className="flex items-start justify-between">
                           <div>
-                            <div className="text-sm font-semibold text-slate-900 leading-snug">{evt.title}</div>
+                            <div className="text-sm font-semibold text-foreground leading-snug">{evt.title}</div>
                             {evt.tipo === 'prazo' && evt.notes.includes('PRAZO FATAL') && (
                               <span className="bg-red-100 text-red-700 text-xs font-bold px-1.5 py-0.5 rounded mt-0.5 inline-flex items-center">
                                 <Flame className="w-3 h-3 mr-1" />PRAZO FATAL
