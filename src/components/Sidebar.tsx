@@ -81,7 +81,7 @@ export default function Sidebar({ currentPage, onNavigate }: SidebarProps) {
           <div className="bg-accent rounded-md p-1.5 w-8 h-8 flex items-center justify-center">
             <Scale className="w-4 h-4 text-accent-foreground" />
           </div>
-          <span className="text-sm font-bold text-white">WebHubPro ERP</span>
+          <span className="text-sm font-bold text-sidebar-foreground">WebHubPro ERP</span>
         </div>
       </div>
 
