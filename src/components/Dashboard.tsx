@@ -132,12 +132,12 @@ export default function Dashboard() {
         {/* Left — Activity */}
         <div className="col-span-2 bg-card border border-border rounded-lg p-6">
           <h2 className="text-base font-semibold text-foreground mb-5">Atividade Recente</h2>
-          <div className="relative ml-3 border-l-2 border-slate-200 space-y-5 pl-5">
+          <div className="relative ml-3 border-l-2 border-border space-y-5 pl-5">
             {activities.map((a) => (
               <div key={a.id} className="relative">
                 <span
                   className={`absolute -left-[25px] top-1.5 w-2 h-2 rounded-full ${
-                    a.active ? 'bg-blue-600' : 'bg-slate-300'
+                    a.active ? 'bg-primary' : 'bg-muted-foreground/40'
                   }`}
                 />
                 <p className="text-sm text-foreground">{a.text}</p>
