@@ -101,7 +101,7 @@ export default function Sidebar({ currentPage, onNavigate }: SidebarProps) {
           </div>
         ))}
 
-        <div className="mx-4 my-3 border-t border-slate-700" />
+        <div className="mx-4 my-3 border-t border-sidebar-muted" />
 
         {/* Configurações */}
         <div
