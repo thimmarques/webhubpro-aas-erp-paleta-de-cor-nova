@@ -275,11 +275,11 @@ export default function ClientesPage({ onNavigateDetail }: ClientesPageProps) {
                           {initials}
                         </div>
                         <div className="min-w-0">
-                          <p className="text-sm font-medium text-slate-900 truncate flex items-center gap-1.5">
+                          <p className="text-sm font-medium text-foreground truncate flex items-center gap-1.5">
                             {name}
                             {c.is_vip && <Star className="w-3 h-3 text-amber-400 fill-amber-400 shrink-0" />}
                           </p>
-                          <p className="text-xs text-slate-400">{maskedDoc}</p>
+                          <p className="text-xs text-muted-foreground">{maskedDoc}</p>
                         </div>
                       </div>
                     </td>
