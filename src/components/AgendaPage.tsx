@@ -247,29 +247,29 @@ export default function AgendaPage(_props: AgendaPageProps) {
       <div className="grid grid-cols-12 gap-6">
         {/* CALENDAR */}
         <div className="col-span-8">
-          <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
+          <div className="bg-card rounded-lg border border-border shadow-sm overflow-hidden">
             {/* Calendar header */}
-            <div className="px-5 py-4 border-b border-slate-200 flex items-center justify-between">
+            <div className="px-5 py-4 border-b border-border flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <button onClick={() => setMonthOffset((o) => o - 1)} className="w-8 h-8 rounded-md border border-slate-200 hover:bg-slate-50 flex items-center justify-center text-slate-500 cursor-pointer">
+                <button onClick={() => setMonthOffset((o) => o - 1)} className="w-8 h-8 rounded-md border border-border hover:bg-muted/50 flex items-center justify-center text-muted-foreground cursor-pointer">
                   <ChevronLeft className="w-4 h-4" />
                 </button>
-                <span className="text-lg font-semibold text-slate-900">{MONTH_NAMES[viewMonth]} {viewYear}</span>
-                <button onClick={() => setMonthOffset((o) => o + 1)} className="w-8 h-8 rounded-md border border-slate-200 hover:bg-slate-50 flex items-center justify-center text-slate-500 cursor-pointer">
+                <span className="text-lg font-semibold text-foreground">{MONTH_NAMES[viewMonth]} {viewYear}</span>
+                <button onClick={() => setMonthOffset((o) => o + 1)} className="w-8 h-8 rounded-md border border-border hover:bg-muted/50 flex items-center justify-center text-muted-foreground cursor-pointer">
                   <ChevronRight className="w-4 h-4" />
                 </button>
               </div>
               <div className="flex items-center gap-2">
-                <button onClick={() => { setMonthOffset(0); setSelectedDate(new Date()); }} className="border border-slate-200 rounded-md px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50">
+                <button onClick={() => { setMonthOffset(0); setSelectedDate(new Date()); }} className="border border-border rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-muted/50">
                   Hoje
                 </button>
               </div>
             </div>
 
             {/* Day headers */}
-            <div className="grid grid-cols-7 bg-slate-50 border-b border-slate-200">
+            <div className="grid grid-cols-7 bg-muted/50 border-b border-border">
               {DAY_NAMES.map((d) => (
-                <div key={d} className="text-xs font-semibold text-slate-400 uppercase tracking-wide text-center py-2.5">{d}</div>
+                <div key={d} className="text-xs font-semibold text-muted-foreground uppercase tracking-wide text-center py-2.5">{d}</div>
               ))}
             </div>
 
