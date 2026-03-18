@@ -331,7 +331,7 @@ export default function ClientesPage({ onNavigateDetail }: ClientesPageProps) {
                       <div className="relative inline-block" ref={openDropdown === c.id ? dropdownRef : undefined}>
                         <button
                           onClick={() => setOpenDropdown(openDropdown === c.id ? null : c.id)}
-                          className="text-slate-400 hover:text-slate-600 transition-colors p-1"
+                          className="text-muted-foreground hover:text-foreground transition-colors p-1"
                         >
                           <MoreHorizontal className="w-4 h-4" />
                         </button>
