@@ -189,36 +189,36 @@ export default function FinanceiroPage() {
 
       {/* KPI CARDS */}
       <div className="grid grid-cols-4 gap-4 mb-6">
-        <div className="bg-white border border-slate-200 shadow-sm rounded-lg p-5 flex items-center gap-4">
+        <div className="bg-card border border-border shadow-sm rounded-lg p-5 flex items-center gap-4">
           <div className="w-11 h-11 rounded-lg flex items-center justify-center bg-amber-50 text-amber-600 flex-shrink-0"><Wallet className="w-5 h-5" /></div>
           <div>
-            <div className="text-2xl font-bold text-slate-900">{formatBRL(metrics.totalAReceber)}</div>
-            <div className="text-xs text-slate-400 uppercase tracking-wide mt-0.5">Total a Receber</div>
-            <div className="text-xs text-slate-400">{metrics.pendenteCount} lançamentos em aberto</div>
+            <div className="text-2xl font-bold text-foreground">{formatBRL(metrics.totalAReceber)}</div>
+            <div className="text-xs text-muted-foreground uppercase tracking-wide mt-0.5">Total a Receber</div>
+            <div className="text-xs text-muted-foreground">{metrics.pendenteCount} lançamentos em aberto</div>
           </div>
         </div>
-        <div className="bg-white border border-slate-200 shadow-sm rounded-lg p-5 flex items-center gap-4">
+        <div className="bg-card border border-border shadow-sm rounded-lg p-5 flex items-center gap-4">
           <div className="w-11 h-11 rounded-lg flex items-center justify-center bg-green-50 text-green-600 flex-shrink-0"><TrendingUp className="w-5 h-5" /></div>
           <div>
-            <div className="text-2xl font-bold text-slate-900">{formatBRL(metrics.totalRecebidoMes)}</div>
-            <div className="text-xs text-slate-400 uppercase tracking-wide mt-0.5">Recebido este Mês</div>
-            <div className="text-xs text-slate-400">{metrics.pagoThisMonthCount} pagamentos</div>
+            <div className="text-2xl font-bold text-foreground">{formatBRL(metrics.totalRecebidoMes)}</div>
+            <div className="text-xs text-muted-foreground uppercase tracking-wide mt-0.5">Recebido este Mês</div>
+            <div className="text-xs text-muted-foreground">{metrics.pagoThisMonthCount} pagamentos</div>
           </div>
         </div>
-        <div className="bg-white border border-slate-200 shadow-sm rounded-lg p-5 flex items-center gap-4">
+        <div className="bg-card border border-border shadow-sm rounded-lg p-5 flex items-center gap-4">
           <div className={`w-11 h-11 rounded-lg flex items-center justify-center bg-red-50 text-red-600 flex-shrink-0 ${metrics.totalVencido > 0 ? 'ring-2 ring-red-200 ring-offset-1' : ''}`}><AlertTriangle className="w-5 h-5" /></div>
           <div>
             <div className="text-2xl font-bold text-red-600">{formatBRL(metrics.totalVencido)}</div>
-            <div className="text-xs text-slate-400 uppercase tracking-wide mt-0.5">Em Atraso</div>
-            <div className="text-xs text-slate-400">{metrics.vencidoCount} vencidos</div>
+            <div className="text-xs text-muted-foreground uppercase tracking-wide mt-0.5">Em Atraso</div>
+            <div className="text-xs text-muted-foreground">{metrics.vencidoCount} vencidos</div>
           </div>
         </div>
-        <div className="bg-white border border-slate-200 shadow-sm rounded-lg p-5 flex items-center gap-4">
+        <div className="bg-card border border-border shadow-sm rounded-lg p-5 flex items-center gap-4">
           <div className="w-11 h-11 rounded-lg flex items-center justify-center bg-orange-50 text-orange-600 flex-shrink-0"><Percent className="w-5 h-5" /></div>
           <div>
             <div className={`text-2xl font-bold ${metrics.taxaInadimplencia >= 15 ? 'text-red-600' : metrics.taxaInadimplencia >= 8 ? 'text-amber-600' : 'text-green-600'}`}>{metrics.taxaInadimplencia.toFixed(1)}%</div>
-            <div className="text-xs text-slate-400 uppercase tracking-wide mt-0.5">Inadimplência</div>
-            <div className="h-1.5 rounded-full bg-slate-100 w-full mt-1"><div className="h-full rounded-full bg-red-400" style={{ width: `${Math.min(metrics.taxaInadimplencia, 100)}%` }} /></div>
+            <div className="text-xs text-muted-foreground uppercase tracking-wide mt-0.5">Inadimplência</div>
+            <div className="h-1.5 rounded-full bg-muted w-full mt-1"><div className="h-full rounded-full bg-red-400" style={{ width: `${Math.min(metrics.taxaInadimplencia, 100)}%` }} /></div>
           </div>
         </div>
       </div>
