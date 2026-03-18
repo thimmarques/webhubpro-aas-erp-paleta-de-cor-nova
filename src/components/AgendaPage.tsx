@@ -284,14 +284,14 @@ export default function AgendaPage(_props: AgendaPageProps) {
                   <div
                     key={idx}
                     onClick={() => setSelectedDate(new Date(date))}
-                    className={`min-h-28 border-b border-r border-slate-100 p-1.5 relative cursor-pointer hover:bg-slate-50 transition-colors duration-100 ${
-                      isSel ? 'ring-2 ring-blue-300 bg-blue-50' : ''
+                    className={`min-h-28 border-b border-r border-border/50 p-1.5 relative cursor-pointer hover:bg-muted/50 transition-colors duration-100 ${
+                      isSel ? 'ring-2 ring-accent/40 bg-accent/5' : ''
                     }`}
                   >
                     <div className={`w-7 h-7 flex items-center justify-center text-sm font-medium rounded-full ${
-                      isT ? 'bg-blue-600 text-white font-bold' :
-                      isSel ? 'text-blue-700' :
-                      current ? 'text-slate-700' : 'text-slate-300'
+                      isT ? 'bg-primary text-primary-foreground font-bold' :
+                      isSel ? 'text-accent' :
+                      current ? 'text-foreground' : 'text-muted-foreground/60'
                     }`}>
                       {date.getDate()}
                     </div>
