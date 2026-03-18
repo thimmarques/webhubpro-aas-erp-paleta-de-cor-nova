@@ -265,7 +265,7 @@ export default function ClientesPage({ onNavigateDetail }: ClientesPageProps) {
                 const processCount = processCountMap[c.id] || Math.floor(Math.random() * 4) + 1;
 
                 return (
-                  <tr key={c.id} className="hover:bg-slate-50 transition-colors border-b border-slate-100 last:border-0">
+                  <tr key={c.id} className="hover:bg-muted/50 transition-colors border-b border-border/50 last:border-0">
                     {/* CLIENTE */}
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-3">
