@@ -69,8 +69,8 @@ export default function Sidebar({ currentPage, onNavigate }: SidebarProps) {
   const itemClass = (active: boolean) =>
     `flex items-center gap-3 mx-2 px-3 py-2 rounded-md text-sm font-medium cursor-pointer transition-colors duration-150 ${
       active
-        ? 'bg-slate-800 text-white'
-        : 'text-slate-400 hover:bg-slate-800 hover:text-white'
+        ? 'bg-sidebar-muted text-sidebar-foreground'
+        : 'text-sidebar-foreground/60 hover:bg-sidebar-muted hover:text-sidebar-foreground'
     }`;
 
   return (
