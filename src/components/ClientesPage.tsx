@@ -296,7 +296,7 @@ export default function ClientesPage({ onNavigateDetail }: ClientesPageProps) {
                       <StatusBadge variant={c.practice_area} />
                     </td>
                     {/* POLO */}
-                    <td className="px-4 py-3 text-sm text-slate-600">
+                    <td className="px-4 py-3 text-sm text-muted-foreground">
                       {getPoloLabel((c as any).polo || '')}
                     </td>
                     {/* PROCESSOS */}
