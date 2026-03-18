@@ -243,15 +243,15 @@ export default function ProcessosPage({ onNavigateDetail }: ProcessosPageProps) 
 
   /* ─── audience cell ─── */
   const renderAudiencia = (aud: string) => {
-    if (!aud) return <span className="text-slate-300">—</span>;
+    if (!aud) return <span className="text-muted-foreground/60">—</span>;
     const diff = daysDiff(aud);
     const isUrgent = diff >= 0 && diff <= 3;
     return (
       <div className={`flex items-center gap-1 ${isUrgent ? '' : ''}`}>
         {isUrgent && <AlertCircle className="w-3 h-3 text-amber-500" />}
         <div>
-          <div className="text-sm text-slate-700">{formatDateBR(aud)}</div>
-          <div className="text-xs text-slate-400">{formatTimeBR(aud)}</div>
+          <div className="text-sm text-foreground">{formatDateBR(aud)}</div>
+          <div className="text-xs text-muted-foreground">{formatTimeBR(aud)}</div>
         </div>
       </div>
     );
