@@ -435,7 +435,7 @@ export default function ProcessosPage({ onNavigateDetail }: ProcessosPageProps) 
                         <div className="relative">
                           <button
                             onClick={() => setOpenDropdown(openDropdown === proc.id ? null : proc.id)}
-                            className="text-slate-400 hover:text-slate-600 p-1 rounded"
+                            className="text-muted-foreground hover:text-foreground p-1 rounded"
                           >
                             <MoreHorizontal className="w-4 h-4" />
                           </button>
