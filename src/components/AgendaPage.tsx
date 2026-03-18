@@ -216,7 +216,7 @@ export default function AgendaPage(_props: AgendaPageProps) {
             <button
               onClick={clearFilters}
               className={`text-xs font-medium px-3 py-1.5 rounded-full cursor-pointer transition-colors duration-150 ${
-                typeFilters.size === 0 ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                typeFilters.size === 0 ? 'bg-foreground text-primary-foreground' : 'bg-muted text-muted-foreground hover:bg-muted/80'
               }`}
             >
               Todos
