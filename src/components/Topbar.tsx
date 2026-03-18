@@ -43,14 +43,14 @@ export default function Topbar({ currentPage }: TopbarProps) {
   const crumbs = breadcrumbs[currentPage];
 
   return (
-    <header className="sticky top-0 z-10 h-14 bg-white border-b border-slate-200 flex items-center px-6 gap-4">
+    <header className="sticky top-0 z-10 h-14 bg-card border-b border-border flex items-center px-6 gap-4">
       {/* Left */}
       <div className="flex-1 min-w-0">
-        <h1 className="text-base font-semibold text-slate-900 leading-tight">
+        <h1 className="text-base font-semibold text-foreground leading-tight">
           {pageNames[currentPage] || currentPage}
         </h1>
         {crumbs && (
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-muted-foreground">
             {crumbs.join(' / ')}
           </p>
         )}
@@ -58,21 +58,21 @@ export default function Topbar({ currentPage }: TopbarProps) {
 
       {/* Search */}
       <div className="relative w-72">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
         <input
           type="text"
           placeholder="Buscar..."
-          className="w-full bg-slate-50 border border-slate-200 rounded-lg text-sm pl-9 pr-3 py-2 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors"
+          className="w-full bg-muted/50 border border-border rounded-lg text-sm pl-9 pr-3 py-2 placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring/20 focus:border-accent transition-colors"
         />
       </div>
 
       {/* Right */}
       <div className="flex items-center gap-3">
-        <button className="relative text-slate-400 hover:text-slate-600 transition-colors">
+        <button className="relative text-muted-foreground hover:text-foreground transition-colors">
           <Bell className="w-5 h-5" />
-          <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-red-500 rounded-full" />
+          <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-destructive rounded-full" />
         </button>
-        <button className="text-slate-400 hover:text-slate-600 transition-colors">
+        <button className="text-muted-foreground hover:text-foreground transition-colors">
           <HelpCircle className="w-5 h-5" />
         </button>
         {currentUser && (

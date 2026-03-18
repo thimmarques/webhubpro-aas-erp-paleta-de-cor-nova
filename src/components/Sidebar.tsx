@@ -69,19 +69,19 @@ export default function Sidebar({ currentPage, onNavigate }: SidebarProps) {
   const itemClass = (active: boolean) =>
     `flex items-center gap-3 mx-2 px-3 py-2 rounded-md text-sm font-medium cursor-pointer transition-colors duration-150 ${
       active
-        ? 'bg-slate-800 text-white'
-        : 'text-slate-400 hover:bg-slate-800 hover:text-white'
+        ? 'bg-sidebar-muted text-sidebar-foreground'
+        : 'text-sidebar-foreground/60 hover:bg-sidebar-muted hover:text-sidebar-foreground'
     }`;
 
   return (
-    <aside className="fixed left-0 top-0 bottom-0 w-56 bg-slate-900 flex flex-col z-20">
+    <aside className="fixed left-0 top-0 bottom-0 w-56 bg-sidebar flex flex-col z-20">
       {/* Logo */}
-      <div className="px-4 py-5 border-b border-slate-700">
+      <div className="px-4 py-5 border-b border-sidebar-muted">
         <div className="flex items-center gap-2">
-          <div className="bg-blue-600 rounded-md p-1.5 w-8 h-8 flex items-center justify-center">
-            <Scale className="w-4 h-4 text-white" />
+          <div className="bg-accent rounded-md p-1.5 w-8 h-8 flex items-center justify-center">
+            <Scale className="w-4 h-4 text-accent-foreground" />
           </div>
-          <span className="text-sm font-bold text-white">WebHubPro ERP</span>
+          <span className="text-sm font-bold text-sidebar-foreground">WebHubPro ERP</span>
         </div>
       </div>
 
@@ -96,12 +96,12 @@ export default function Sidebar({ currentPage, onNavigate }: SidebarProps) {
             <item.icon className="w-4 h-4 shrink-0" />
             <span className="flex-1">{item.label}</span>
             {item.lockIfNotAdmin && !isAdmin() && (
-              <Lock className="w-3 h-3 ml-auto text-slate-500" />
+              <Lock className="w-3 h-3 ml-auto text-sidebar-foreground/40" />
             )}
           </div>
         ))}
 
-        <div className="mx-4 my-3 border-t border-slate-700" />
+        <div className="mx-4 my-3 border-t border-sidebar-muted" />
 
         {/* Configurações */}
         <div
@@ -114,9 +114,9 @@ export default function Sidebar({ currentPage, onNavigate }: SidebarProps) {
           <Settings className="w-4 h-4 shrink-0" />
           <span className="flex-1">Configurações</span>
           {configOpen ? (
-            <ChevronDown className="w-3.5 h-3.5 text-slate-500" />
+            <ChevronDown className="w-3.5 h-3.5 text-sidebar-foreground/40" />
           ) : (
-            <ChevronRight className="w-3.5 h-3.5 text-slate-500" />
+            <ChevronRight className="w-3.5 h-3.5 text-sidebar-foreground/40" />
           )}
         </div>
 
@@ -129,8 +129,8 @@ export default function Sidebar({ currentPage, onNavigate }: SidebarProps) {
                   key={item.id}
                   className={`flex items-center gap-3 mx-2 pl-8 pr-3 py-2 rounded-md text-xs font-medium cursor-pointer transition-colors duration-150 ${
                     isActive(item.id)
-                      ? 'text-white'
-                      : 'text-slate-400 hover:text-white'
+                      ? 'text-sidebar-foreground'
+                      : 'text-sidebar-foreground/60 hover:text-sidebar-foreground'
                   }`}
                   onClick={() => onNavigate(item.id)}
                 >
@@ -144,17 +144,17 @@ export default function Sidebar({ currentPage, onNavigate }: SidebarProps) {
 
       {/* User info */}
       {currentUser && (
-        <div className="border-t border-slate-700 px-4 py-4 space-y-3">
+        <div className="border-t border-sidebar-muted px-4 py-4 space-y-3">
           <div className="flex items-center gap-2.5">
             <UserAvatar name={currentUser.name} color={currentUser.avatar_color} size="sm" />
             <div className="min-w-0">
-              <p className="text-sm text-white truncate">{currentUser.name}</p>
-              <p className="text-xs text-slate-400 capitalize">{currentUser.role}</p>
+              <p className="text-sm text-sidebar-foreground truncate">{currentUser.name}</p>
+              <p className="text-xs text-sidebar-foreground/60 capitalize">{currentUser.role}</p>
             </div>
           </div>
           <button
             onClick={logout}
-            className="flex items-center gap-2 text-xs text-slate-400 hover:text-white transition-colors"
+            className="flex items-center gap-2 text-xs text-sidebar-foreground/60 hover:text-sidebar-foreground transition-colors"
           >
             <LogOut className="w-3.5 h-3.5" />
             <span>Sair</span>

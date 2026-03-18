@@ -24,39 +24,39 @@ export default function Login() {
         <div className="bg-white rounded-xl shadow-lg p-8">
           {/* Logo */}
           <div className="flex flex-col items-center mb-8">
-            <div className="bg-blue-600 rounded-md p-2 mb-3">
-              <Scale className="w-6 h-6 text-white" />
+           <div className="bg-primary rounded-md p-2 mb-3">
+              <Scale className="w-6 h-6 text-primary-foreground" />
             </div>
-            <h1 className="text-2xl font-bold text-slate-900">WebHubPro ERP</h1>
-            <p className="text-sm text-slate-500 mt-1">Gestão Jurídica Inteligente</p>
+            <h1 className="text-2xl font-bold text-foreground">WebHubPro ERP</h1>
+            <p className="text-sm text-muted-foreground mt-1">Gestão Jurídica Inteligente</p>
           </div>
 
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">E-mail</label>
+              <label className="block text-sm font-medium text-foreground mb-1">E-mail</label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full border border-slate-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors"
+                className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring/20 focus:border-accent transition-colors"
                 placeholder="seu@email.com"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Senha</label>
+              <label className="block text-sm font-medium text-foreground mb-1">Senha</label>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full border border-slate-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors"
+                className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring/20 focus:border-accent transition-colors"
                 placeholder="••••••••"
               />
             </div>
             {error && <p className="text-sm text-red-500">{error}</p>}
             <button
               type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm py-2.5 rounded-md transition-colors"
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium text-sm py-2.5 rounded-md transition-colors"
             >
               Entrar
             </button>
@@ -65,7 +65,7 @@ export default function Login() {
 
         {/* Quick access */}
         <div className="mt-6">
-          <p className="text-xs text-slate-400 uppercase tracking-wide font-medium mb-3 text-center">
+          <p className="text-xs text-muted-foreground uppercase tracking-wide font-medium mb-3 text-center">
             Acesso rápido — demo
           </p>
           <div className="space-y-2">
@@ -73,11 +73,11 @@ export default function Login() {
               <button
                 key={user.id}
                 onClick={() => loginAs(user.id)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-left hover:border-slate-300 hover:bg-white transition-colors flex items-center gap-3"
+                className="w-full bg-muted/50 border border-border rounded-lg p-3 text-left hover:border-accent hover:bg-card transition-colors flex items-center gap-3"
               >
                 <UserAvatar name={user.name} color={user.avatar_color} size="sm" />
                 <div className="min-w-0 flex-1">
-                  <p className="text-xs font-medium text-slate-900 truncate">{user.name}</p>
+                  <p className="text-xs font-medium text-foreground truncate">{user.name}</p>
                 </div>
                 <StatusBadge variant={user.role} />
               </button>
