@@ -324,16 +324,16 @@ export default function AgendaPage(_props: AgendaPageProps) {
 
         {/* EVENTOS DO DIA PANEL */}
         <div className="col-span-4">
-          <div className="bg-white border border-slate-200 rounded-lg shadow-sm h-fit sticky top-20">
+          <div className="bg-card border border-border rounded-lg shadow-sm h-fit sticky top-20">
             {/* Panel header */}
-            <div className="px-5 py-4 border-b border-slate-200 flex items-center justify-between">
+            <div className="px-5 py-4 border-b border-border flex items-center justify-between">
               <div>
-                <div className="text-base font-semibold text-slate-900">
+                <div className="text-base font-semibold text-foreground">
                   {todayStr === selectedDateStr
                     ? 'Hoje'
                     : `${DAY_NAMES[selectedDate.getDay()]}, ${selectedDate.getDate()} ${MONTH_SHORT[selectedDate.getMonth()]}`}
                 </div>
-                <div className="text-xs text-slate-400">
+                <div className="text-xs text-muted-foreground">
                   {selectedDate.getDate()} de {MONTH_NAMES[selectedDate.getMonth()]} de {selectedDate.getFullYear()}
                 </div>
               </div>
@@ -343,7 +343,7 @@ export default function AgendaPage(_props: AgendaPageProps) {
                 </span>
                 <button
                   onClick={() => openNewModal(selectedDateStr)}
-                  className="w-7 h-7 rounded-md bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 cursor-pointer"
+                  className="w-7 h-7 rounded-md bg-primary text-primary-foreground flex items-center justify-center hover:bg-primary/90 cursor-pointer"
                 >
                   <Plus className="w-4 h-4" />
                 </button>
