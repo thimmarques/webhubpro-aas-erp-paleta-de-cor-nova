@@ -217,7 +217,7 @@ export default function ClientesPage({ onNavigateDetail }: ClientesPageProps) {
 
       {/* Table or empty */}
       {filtered.length === 0 ? (
-        <div className="bg-white border border-slate-200 rounded-lg">
+        <div className="bg-card border border-border rounded-lg">
           <EmptyState
             icon={Users}
             title="Nenhum cliente encontrado"
@@ -227,11 +227,11 @@ export default function ClientesPage({ onNavigateDetail }: ClientesPageProps) {
           />
         </div>
       ) : (
-        <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
+        <div className="bg-card border border-border rounded-lg shadow-sm overflow-hidden">
           <table className="w-full">
             <thead>
-              <tr className="bg-slate-50 border-b border-slate-200">
-                <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('name')}>
+              <tr className="bg-muted/50 border-b border-border">
+                <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('name')}>
                   Cliente <SortIcon field="name" />
                 </th>
                 <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Tipo</th>
