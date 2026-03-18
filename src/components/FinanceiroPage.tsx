@@ -174,14 +174,14 @@ export default function FinanceiroPage() {
       {/* PAGE HEADER */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Financeiro</h1>
-          <p className="text-xs text-slate-400 mt-0.5">WebHubPro ERP / Financeiro</p>
+          <h1 className="text-2xl font-bold text-foreground">Financeiro</h1>
+          <p className="text-xs text-muted-foreground mt-0.5">WebHubPro ERP / Financeiro</p>
         </div>
         <div className="flex items-center gap-3">
-          <button onClick={() => showToast('Exportação iniciada', 'info')} className="border border-slate-200 text-slate-600 hover:bg-slate-50 rounded-md px-3 py-2 text-sm flex items-center">
+          <button onClick={() => showToast('Exportação iniciada', 'info')} className="border border-border text-muted-foreground hover:bg-muted/50 rounded-md px-3 py-2 text-sm flex items-center">
             <Download className="w-4 h-4 mr-1.5" />Exportar
           </button>
-          <button onClick={() => setShowModal(true)} className="bg-blue-600 text-white text-sm font-medium rounded-md px-4 py-2 hover:bg-blue-700 flex items-center">
+          <button onClick={() => setShowModal(true)} className="bg-primary text-primary-foreground text-sm font-medium rounded-md px-4 py-2 hover:bg-primary/90 flex items-center">
             <Plus className="w-4 h-4 mr-1.5" />+ Novo Lançamento
           </button>
         </div>
