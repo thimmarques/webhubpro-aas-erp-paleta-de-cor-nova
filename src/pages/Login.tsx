@@ -77,7 +77,7 @@ export default function Login() {
               >
                 <UserAvatar name={user.name} color={user.avatar_color} size="sm" />
                 <div className="min-w-0 flex-1">
-                  <p className="text-xs font-medium text-slate-900 truncate">{user.name}</p>
+                  <p className="text-xs font-medium text-foreground truncate">{user.name}</p>
                 </div>
                 <StatusBadge variant={user.role} />
               </button>

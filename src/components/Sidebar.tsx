@@ -144,17 +144,17 @@ export default function Sidebar({ currentPage, onNavigate }: SidebarProps) {
 
       {/* User info */}
       {currentUser && (
-        <div className="border-t border-slate-700 px-4 py-4 space-y-3">
+        <div className="border-t border-sidebar-muted px-4 py-4 space-y-3">
           <div className="flex items-center gap-2.5">
             <UserAvatar name={currentUser.name} color={currentUser.avatar_color} size="sm" />
             <div className="min-w-0">
-              <p className="text-sm text-white truncate">{currentUser.name}</p>
-              <p className="text-xs text-slate-400 capitalize">{currentUser.role}</p>
+              <p className="text-sm text-sidebar-foreground truncate">{currentUser.name}</p>
+              <p className="text-xs text-sidebar-foreground/60 capitalize">{currentUser.role}</p>
             </div>
           </div>
           <button
             onClick={logout}
-            className="flex items-center gap-2 text-xs text-slate-400 hover:text-white transition-colors"
+            className="flex items-center gap-2 text-xs text-sidebar-foreground/60 hover:text-sidebar-foreground transition-colors"
           >
             <LogOut className="w-3.5 h-3.5" />
             <span>Sair</span>
