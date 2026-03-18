@@ -235,7 +235,7 @@ export default function AgendaPage(_props: AgendaPageProps) {
           </div>
           <button
             onClick={() => openNewModal()}
-            className="flex items-center bg-blue-600 text-white text-sm font-medium rounded-md px-4 py-2 hover:bg-blue-700 transition-colors"
+            className="flex items-center bg-primary text-primary-foreground text-sm font-medium rounded-md px-4 py-2 hover:bg-primary/90 transition-colors"
           >
             <Plus className="w-4 h-4 mr-1.5" />
             Novo Evento
