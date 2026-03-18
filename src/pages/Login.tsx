@@ -24,11 +24,11 @@ export default function Login() {
         <div className="bg-white rounded-xl shadow-lg p-8">
           {/* Logo */}
           <div className="flex flex-col items-center mb-8">
-            <div className="bg-blue-600 rounded-md p-2 mb-3">
-              <Scale className="w-6 h-6 text-white" />
+           <div className="bg-primary rounded-md p-2 mb-3">
+              <Scale className="w-6 h-6 text-primary-foreground" />
             </div>
-            <h1 className="text-2xl font-bold text-slate-900">WebHubPro ERP</h1>
-            <p className="text-sm text-slate-500 mt-1">Gestão Jurídica Inteligente</p>
+            <h1 className="text-2xl font-bold text-foreground">WebHubPro ERP</h1>
+            <p className="text-sm text-muted-foreground mt-1">Gestão Jurídica Inteligente</p>
           </div>
 
           {/* Form */}
