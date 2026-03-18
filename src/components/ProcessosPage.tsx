@@ -523,15 +523,15 @@ function DropdownMenu({ onClose, onView, onEdit, onAudiencia, onEnclose, onDelet
     return () => document.removeEventListener('mousedown', handler);
   }, [onClose]);
 
-  const item = 'flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 cursor-pointer w-full';
+  const item = 'flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-muted/50 cursor-pointer w-full';
   return (
-    <div ref={ref} className="absolute right-0 top-8 bg-white border border-slate-200 shadow-lg rounded-lg py-1 z-10 w-44">
+    <div ref={ref} className="absolute right-0 top-8 bg-card border border-border shadow-lg rounded-lg py-1 z-10 w-44">
       <button className={item} onClick={onView}><Eye className="w-4 h-4" /> Ver Detalhes</button>
       <button className={item} onClick={onEdit}><Edit className="w-4 h-4" /> Editar</button>
       <button className={item} onClick={onAudiencia}><Scale className="w-4 h-4" /> Nova Audiência</button>
-      <div className="my-1 border-t border-slate-100" />
+      <div className="my-1 border-t border-border/50" />
       <button className={item} onClick={onEnclose}><CheckCircle className="w-4 h-4" /> Encerrar</button>
-      <div className="my-1 border-t border-slate-100" />
+      <div className="my-1 border-t border-border/50" />
       <button className={`${item} !text-red-600 hover:!bg-red-50`} onClick={onDelete}><Trash className="w-4 h-4" /> Excluir</button>
     </div>
   );
