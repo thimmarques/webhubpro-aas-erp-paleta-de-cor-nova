@@ -18,10 +18,10 @@ export default function ToastContainer() {
       {toasts.map((toast) => (
         <div
           key={toast.id}
-          className={`bg-slate-900 text-white rounded-lg shadow-lg px-4 py-3 border-l-4 ${borderColors[toast.type]} flex items-center gap-3 min-w-[280px] animate-in slide-in-from-right-5`}
+          className={`bg-sidebar text-sidebar-foreground rounded-lg shadow-lg px-4 py-3 border-l-4 ${borderColors[toast.type]} flex items-center gap-3 min-w-[280px] animate-in slide-in-from-right-5`}
         >
           <span className="text-sm flex-1">{toast.message}</span>
-          <button onClick={() => removeToast(toast.id)} className="text-slate-400 hover:text-white">
+          <button onClick={() => removeToast(toast.id)} className="text-sidebar-foreground/60 hover:text-sidebar-foreground">
             <X className="w-3.5 h-3.5" />
           </button>
         </div>
