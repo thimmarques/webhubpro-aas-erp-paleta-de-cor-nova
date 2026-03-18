@@ -351,38 +351,38 @@ export default function ProcessosPage({ onNavigateDetail }: ProcessosPageProps) 
           onCta={() => setModalOpen(true)}
         />
       ) : (
-        <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
+        <div className="bg-card border border-border rounded-lg shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="bg-slate-50 border-b border-slate-200">
-                  <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3 cursor-pointer select-none min-w-[13rem]" onClick={() => toggleSort('numero_cnj')}>
+                <tr className="bg-muted/50 border-b border-border">
+                  <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 cursor-pointer select-none min-w-[13rem]" onClick={() => toggleSort('numero_cnj')}>
                     Processo <SortIcon field="numero_cnj" />
                   </th>
-                  <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('polo_ativo_nome')}>
+                  <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('polo_ativo_nome')}>
                     Cliente <SortIcon field="polo_ativo_nome" />
                   </th>
-                  <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('practice_area')}>
+                  <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('practice_area')}>
                     Área <SortIcon field="practice_area" />
                   </th>
-                  <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('tribunal')}>
+                  <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('tribunal')}>
                     Tribunal <SortIcon field="tribunal" />
                   </th>
-                  <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('status')}>
+                  <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('status')}>
                     Status <SortIcon field="status" />
                   </th>
-                  <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('proxima_audiencia')}>
+                  <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('proxima_audiencia')}>
                     Próx. Audiência <SortIcon field="proxima_audiencia" />
                   </th>
-                  <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('prazo_fatal')}>
+                  <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('prazo_fatal')}>
                     Prazo Fatal <SortIcon field="prazo_fatal" />
                   </th>
                   {admin && (
-                    <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('responsible_id')}>
+                    <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('responsible_id')}>
                       Responsável <SortIcon field="responsible_id" />
                     </th>
                   )}
-                  <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Ações</th>
+                  <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Ações</th>
                 </tr>
               </thead>
               <tbody>
