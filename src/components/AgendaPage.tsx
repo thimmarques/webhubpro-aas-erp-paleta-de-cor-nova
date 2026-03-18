@@ -310,7 +310,7 @@ export default function AgendaPage(_props: AgendaPageProps) {
                         );
                       })}
                       {dayEvents.length > 3 && (
-                        <div className="text-xs text-slate-400 pl-1.5 mt-0.5 cursor-pointer" onClick={(e) => { e.stopPropagation(); setSelectedDate(new Date(date)); }}>
+                        <div className="text-xs text-muted-foreground pl-1.5 mt-0.5 cursor-pointer" onClick={(e) => { e.stopPropagation(); setSelectedDate(new Date(date)); }}>
                           +{dayEvents.length - 3} mais
                         </div>
                       )}
