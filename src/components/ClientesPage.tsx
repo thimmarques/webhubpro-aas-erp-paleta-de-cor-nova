@@ -234,19 +234,19 @@ export default function ClientesPage({ onNavigateDetail }: ClientesPageProps) {
                 <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('name')}>
                   Cliente <SortIcon field="name" />
                 </th>
-                <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Tipo</th>
-                <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('area')}>
+                <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Tipo</th>
+                <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('area')}>
                   Área <SortIcon field="area" />
                 </th>
-                <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Polo</th>
-                <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Processos</th>
-                <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('status')}>
+                <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Polo</th>
+                <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Processos</th>
+                <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('status')}>
                   Status <SortIcon field="status" />
                 </th>
                 {admin && (
-                  <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Responsável</th>
+                  <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Responsável</th>
                 )}
-                <th className="text-right text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Ações</th>
+                <th className="text-right text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Ações</th>
               </tr>
             </thead>
             <tbody>
