@@ -389,19 +389,19 @@ export default function ProcessosPage({ onNavigateDetail }: ProcessosPageProps) 
                 {pageItems.map((proc) => {
                   const resp = getUserById(proc.responsible_id);
                   return (
-                    <tr key={proc.id} className="hover:bg-slate-50 transition-colors border-b border-slate-100 last:border-0">
+                    <tr key={proc.id} className="hover:bg-muted/50 transition-colors border-b border-border/50 last:border-0">
                       <td className="px-4 py-3.5 min-w-[13rem]">
-                        <div className="font-mono text-xs font-semibold text-slate-900 tracking-tight">{proc.numero_cnj || '—'}</div>
-                        <div className="text-xs text-slate-400 mt-0.5 truncate max-w-xs">{proc.acao}</div>
+                        <div className="font-mono text-xs font-semibold text-foreground tracking-tight">{proc.numero_cnj || '—'}</div>
+                        <div className="text-xs text-muted-foreground mt-0.5 truncate max-w-xs">{proc.acao}</div>
                       </td>
                       <td className="px-4 py-3.5">
                         <div className="flex items-center gap-2">
-                          <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-medium shrink-0 ${resp?.avatar_color || 'bg-slate-200'} text-white`}>
+                          <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-medium shrink-0 ${resp?.avatar_color || 'bg-muted'} text-white`}>
                             {proc.polo_ativo_nome.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()}
                           </div>
                           <div className="min-w-0">
-                            <div className="text-sm text-slate-900 truncate">{proc.polo_ativo_nome}</div>
-                            <div className="text-xs text-slate-400 truncate max-w-[9rem]">{proc.polo_passivo_nome}</div>
+                            <div className="text-sm text-foreground truncate">{proc.polo_ativo_nome}</div>
+                            <div className="text-xs text-muted-foreground truncate max-w-[9rem]">{proc.polo_passivo_nome}</div>
                           </div>
                         </div>
                       </td>
