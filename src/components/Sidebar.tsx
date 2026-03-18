@@ -129,8 +129,8 @@ export default function Sidebar({ currentPage, onNavigate }: SidebarProps) {
                   key={item.id}
                   className={`flex items-center gap-3 mx-2 pl-8 pr-3 py-2 rounded-md text-xs font-medium cursor-pointer transition-colors duration-150 ${
                     isActive(item.id)
-                      ? 'text-white'
-                      : 'text-slate-400 hover:text-white'
+                      ? 'text-sidebar-foreground'
+                      : 'text-sidebar-foreground/60 hover:text-sidebar-foreground'
                   }`}
                   onClick={() => onNavigate(item.id)}
                 >
