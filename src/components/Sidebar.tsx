@@ -114,9 +114,9 @@ export default function Sidebar({ currentPage, onNavigate }: SidebarProps) {
           <Settings className="w-4 h-4 shrink-0" />
           <span className="flex-1">Configurações</span>
           {configOpen ? (
-            <ChevronDown className="w-3.5 h-3.5 text-slate-500" />
+            <ChevronDown className="w-3.5 h-3.5 text-sidebar-foreground/40" />
           ) : (
-            <ChevronRight className="w-3.5 h-3.5 text-slate-500" />
+            <ChevronRight className="w-3.5 h-3.5 text-sidebar-foreground/40" />
           )}
         </div>
 
