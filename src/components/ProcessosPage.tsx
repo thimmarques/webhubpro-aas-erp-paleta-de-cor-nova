@@ -487,11 +487,11 @@ export default function ProcessosPage({ onNavigateDetail }: ProcessosPageProps) 
       {deleteConfirm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div className="fixed inset-0 bg-black/20 backdrop-blur-sm" onClick={() => setDeleteConfirm(null)} />
-          <div className="bg-white rounded-xl shadow-xl p-6 w-full max-w-sm mx-4 relative z-10">
-            <h3 className="text-lg font-semibold text-slate-900 mb-2">Excluir processo?</h3>
-            <p className="text-sm text-slate-500 mb-6">Esta ação não pode ser desfeita.</p>
+          <div className="bg-card rounded-xl shadow-xl p-6 w-full max-w-sm mx-4 relative z-10">
+            <h3 className="text-lg font-semibold text-foreground mb-2">Excluir processo?</h3>
+            <p className="text-sm text-muted-foreground mb-6">Esta ação não pode ser desfeita.</p>
             <div className="flex justify-end gap-3">
-              <button onClick={() => setDeleteConfirm(null)} className="text-sm text-slate-600 px-4 py-2 hover:text-slate-900">Cancelar</button>
+              <button onClick={() => setDeleteConfirm(null)} className="text-sm text-muted-foreground px-4 py-2 hover:text-foreground">Cancelar</button>
               <button onClick={() => handleDelete(deleteConfirm)} className="bg-red-600 text-white text-sm font-medium rounded-md px-4 py-2 hover:bg-red-700">Excluir</button>
             </div>
           </div>
