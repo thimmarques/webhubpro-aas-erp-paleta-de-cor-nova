@@ -370,22 +370,22 @@ export default function ClientesPage({ onNavigateDetail }: ClientesPageProps) {
           </table>
 
           {/* Pagination */}
-          <div className="border-t border-slate-200 px-4 py-3 flex items-center justify-between">
-            <span className="text-sm text-slate-500">
+          <div className="border-t border-border px-4 py-3 flex items-center justify-between">
+            <span className="text-sm text-muted-foreground">
               Mostrando {(page - 1) * ITEMS_PER_PAGE + 1}–{Math.min(page * ITEMS_PER_PAGE, filtered.length)} de {filtered.length} clientes
             </span>
             <div className="flex gap-2">
               <button
                 disabled={page <= 1}
                 onClick={() => setPage((p) => p - 1)}
-                className="bg-white border border-slate-200 rounded-md px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-40 transition-colors"
+                className="bg-card border border-border rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-muted/50 disabled:opacity-40 transition-colors"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
               <button
                 disabled={page >= totalPages}
                 onClick={() => setPage((p) => p + 1)}
-                className="bg-white border border-slate-200 rounded-md px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-40 transition-colors"
+                className="bg-card border border-border rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-muted/50 disabled:opacity-40 transition-colors"
               >
                 <ChevronRight className="w-4 h-4" />
               </button>
