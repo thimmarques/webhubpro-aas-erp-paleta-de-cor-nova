@@ -336,22 +336,22 @@ export default function ClientesPage({ onNavigateDetail }: ClientesPageProps) {
                           <MoreHorizontal className="w-4 h-4" />
                         </button>
                         {openDropdown === c.id && (
-                          <div className="absolute right-0 top-full mt-1 bg-white border border-slate-200 shadow-lg rounded-lg py-1 z-10 w-40">
+                          <div className="absolute right-0 top-full mt-1 bg-card border border-border shadow-lg rounded-lg py-1 z-10 w-40">
                             <button
                               onClick={() => { onNavigateDetail?.(c.id); setOpenDropdown(null); }}
-                              className="w-full flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
+                              className="w-full flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-muted/50 transition-colors"
                             >
                               <Eye className="w-4 h-4" />
                               Ver Detalhes
                             </button>
                             <button
                               onClick={() => openEdit(c)}
-                              className="w-full flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
+                              className="w-full flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-muted/50 transition-colors"
                             >
                               <Edit className="w-4 h-4" />
                               Editar
                             </button>
-                            <div className="border-t border-slate-100 my-1" />
+                            <div className="border-t border-border/50 my-1" />
                             <button
                               onClick={() => { setDeleteId(c.id); setOpenDropdown(null); }}
                               className="w-full flex items-center gap-2 px-3 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
