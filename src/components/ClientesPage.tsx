@@ -321,7 +321,7 @@ export default function ClientesPage({ onNavigateDetail }: ClientesPageProps) {
                         {responsible && (
                           <div className="flex items-center gap-2">
                             <UserAvatar name={responsible.name} color={responsible.avatar_color} size="sm" />
-                            <span className="text-sm text-slate-600 truncate">{responsible.name}</span>
+                            <span className="text-sm text-muted-foreground truncate">{responsible.name}</span>
                           </div>
                         )}
                       </td>
