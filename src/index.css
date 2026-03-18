@@ -4,44 +4,44 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 215 28% 17%;
+    --background: 0 0% 95%;
+    --foreground: 203 44% 4%;
 
     --card: 0 0% 100%;
-    --card-foreground: 215 28% 17%;
+    --card-foreground: 203 44% 4%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 28% 17%;
+    --popover-foreground: 203 44% 4%;
 
-    --primary: 221 83% 53%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 200 24% 20%;
+    --primary-foreground: 0 0% 95%;
 
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 215 28% 17%;
+    --secondary: 195 16% 85%;
+    --secondary-foreground: 203 44% 4%;
 
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 195 16% 90%;
+    --muted-foreground: 197 20% 46%;
 
-    --accent: 210 40% 96%;
-    --accent-foreground: 215 28% 17%;
+    --accent: 197 20% 46%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 221 83% 53%;
+    --border: 195 16% 82%;
+    --input: 195 16% 82%;
+    --ring: 200 24% 20%;
 
     --radius: 0.5rem;
 
-    --sidebar: 215 28% 17%;
-    --sidebar-foreground: 0 0% 100%;
-    --sidebar-muted: 215 14% 34%;
-    --sidebar-active: 215 25% 27%;
+    --sidebar: 203 44% 4%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-muted: 200 24% 20%;
+    --sidebar-active: 197 20% 46%;
 
     /* Badge practice areas */
-    --badge-trabalhista: 213 94% 95%;
-    --badge-trabalhista-fg: 213 74% 33%;
+    --badge-trabalhista: 200 30% 92%;
+    --badge-trabalhista-fg: 200 24% 20%;
     --badge-civil: 270 91% 95%;
     --badge-civil-fg: 270 67% 33%;
     --badge-criminal: 0 93% 95%;
@@ -52,12 +52,12 @@
     /* Badge statuses */
     --badge-ativo: 142 76% 95%;
     --badge-ativo-fg: 142 64% 36%;
-    --badge-audiencia: 213 94% 95%;
-    --badge-audiencia-fg: 213 74% 40%;
+    --badge-audiencia: 200 30% 92%;
+    --badge-audiencia-fg: 200 24% 20%;
     --badge-pendente: 45 93% 94%;
     --badge-pendente-fg: 45 74% 36%;
-    --badge-encerrado: 210 40% 96%;
-    --badge-encerrado-fg: 215 14% 34%;
+    --badge-encerrado: 195 16% 90%;
+    --badge-encerrado-fg: 197 20% 46%;
     --badge-recurso: 25 95% 95%;
     --badge-recurso-fg: 25 74% 36%;
   }
