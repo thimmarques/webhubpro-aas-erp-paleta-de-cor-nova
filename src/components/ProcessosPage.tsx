@@ -411,8 +411,8 @@ export default function ProcessosPage({ onNavigateDetail }: ProcessosPageProps) 
                         </span>
                       </td>
                       <td className="px-4 py-3.5">
-                        <span className="bg-slate-100 text-slate-600 text-xs font-medium px-2 py-0.5 rounded-md">{proc.tribunal}</span>
-                        <div className="text-xs text-slate-400 truncate max-w-[9rem] mt-0.5">{proc.vara}</div>
+                        <span className="bg-muted text-muted-foreground text-xs font-medium px-2 py-0.5 rounded-md">{proc.tribunal}</span>
+                        <div className="text-xs text-muted-foreground truncate max-w-[9rem] mt-0.5">{proc.vara}</div>
                       </td>
                       <td className="px-4 py-3.5">
                         <span className={`${statusColors[proc.status]} text-xs font-medium px-2 py-0.5 rounded-full`}>
