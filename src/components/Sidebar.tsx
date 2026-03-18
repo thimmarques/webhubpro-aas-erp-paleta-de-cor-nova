@@ -96,7 +96,7 @@ export default function Sidebar({ currentPage, onNavigate }: SidebarProps) {
             <item.icon className="w-4 h-4 shrink-0" />
             <span className="flex-1">{item.label}</span>
             {item.lockIfNotAdmin && !isAdmin() && (
-              <Lock className="w-3 h-3 ml-auto text-slate-500" />
+              <Lock className="w-3 h-3 ml-auto text-sidebar-foreground/40" />
             )}
           </div>
         ))}
