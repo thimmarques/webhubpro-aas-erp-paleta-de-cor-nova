@@ -224,37 +224,37 @@ export default function FinanceiroPage() {
       </div>
 
       {/* FILTER BAR */}
-      <div className="bg-white border border-slate-200 rounded-lg p-3 mb-4 flex items-center gap-3 flex-wrap">
+      <div className="bg-card border border-border rounded-lg p-3 mb-4 flex items-center gap-3 flex-wrap">
         <div className="flex-1 min-w-[12rem] relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-          <input value={search} onChange={e => { setSearch(e.target.value); setPage(1); }} placeholder="Buscar por cliente ou processo..." className="w-full pl-9 pr-3 py-2 border border-slate-200 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+          <input value={search} onChange={e => { setSearch(e.target.value); setPage(1); }} placeholder="Buscar por cliente ou processo..." className="w-full pl-9 pr-3 py-2 border border-border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
         </div>
-        <select value={filterAdvogado} onChange={e => { setFilterAdvogado(e.target.value); setPage(1); }} className="bg-white border border-slate-200 rounded-md px-3 py-2 text-sm text-slate-600">
+        <select value={filterAdvogado} onChange={e => { setFilterAdvogado(e.target.value); setPage(1); }} className="bg-card border border-border rounded-md px-3 py-2 text-sm text-muted-foreground">
           <option value="">Todos Advogados</option>
           {MOCK_USERS.map(u => <option key={u.id} value={u.id}>{u.name}</option>)}
         </select>
-        <select value={filterTipo} onChange={e => { setFilterTipo(e.target.value); setPage(1); }} className="bg-white border border-slate-200 rounded-md px-3 py-2 text-sm text-slate-600">
+        <select value={filterTipo} onChange={e => { setFilterTipo(e.target.value); setPage(1); }} className="bg-card border border-border rounded-md px-3 py-2 text-sm text-muted-foreground">
           <option value="">Todos Tipos</option>
           <option value="honorario">Honorário</option>
           <option value="despesa">Despesa</option>
           <option value="repasse">Repasse</option>
           <option value="custas">Custas</option>
         </select>
-        <select value={filterStatus} onChange={e => { setFilterStatus(e.target.value); setPage(1); }} className="bg-white border border-slate-200 rounded-md px-3 py-2 text-sm text-slate-600">
+        <select value={filterStatus} onChange={e => { setFilterStatus(e.target.value); setPage(1); }} className="bg-card border border-border rounded-md px-3 py-2 text-sm text-muted-foreground">
           <option value="">Todos Status</option>
           <option value="pendente">Pendente</option>
           <option value="pago">Pago</option>
           <option value="vencido">Vencido</option>
           <option value="parcelado">Parcelado</option>
         </select>
-        <select value={filterArea} onChange={e => { setFilterArea(e.target.value); setPage(1); }} className="bg-white border border-slate-200 rounded-md px-3 py-2 text-sm text-slate-600">
+        <select value={filterArea} onChange={e => { setFilterArea(e.target.value); setPage(1); }} className="bg-card border border-border rounded-md px-3 py-2 text-sm text-muted-foreground">
           <option value="">Todas Áreas</option>
           <option value="trabalhista">Trabalhista</option>
           <option value="civil">Civil</option>
           <option value="criminal">Criminal</option>
           <option value="previdenciario">Previdenciário</option>
         </select>
-        <select value={filterPeriodo} onChange={e => { setFilterPeriodo(e.target.value); setPage(1); }} className="bg-white border border-slate-200 rounded-md px-3 py-2 text-sm text-slate-600">
+        <select value={filterPeriodo} onChange={e => { setFilterPeriodo(e.target.value); setPage(1); }} className="bg-card border border-border rounded-md px-3 py-2 text-sm text-muted-foreground">
           <option value="">Todos Períodos</option>
           <option value="este_mes">Este mês</option>
           <option value="mes_anterior">Mês anterior</option>
@@ -262,7 +262,7 @@ export default function FinanceiroPage() {
           <option value="ano">Este ano</option>
         </select>
         {hasActiveFilters && (
-          <button onClick={clearFilters} className="text-xs text-slate-500 hover:text-slate-700 ml-auto flex items-center gap-1"><X className="w-3 h-3" />Limpar</button>
+          <button onClick={clearFilters} className="text-xs text-muted-foreground hover:text-foreground ml-auto flex items-center gap-1"><X className="w-3 h-3" />Limpar</button>
         )}
       </div>
 
