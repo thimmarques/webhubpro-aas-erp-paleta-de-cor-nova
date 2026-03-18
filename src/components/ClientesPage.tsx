@@ -286,7 +286,7 @@ export default function ClientesPage({ onNavigateDetail }: ClientesPageProps) {
                     {/* TIPO */}
                     <td className="px-4 py-3">
                       <span className={`inline-flex items-center text-xs font-medium px-2 py-0.5 rounded-full ${
-                        c.type === 'PF' ? 'bg-slate-100 text-slate-600' : 'bg-blue-100 text-blue-700'
+                        c.type === 'PF' ? 'bg-muted text-muted-foreground' : 'bg-blue-100 text-blue-700'
                       }`}>
                         {c.type}
                       </span>
