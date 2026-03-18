@@ -322,21 +322,21 @@ export default function ProcessosPage({ onNavigateDetail }: ProcessosPageProps) 
 
       {/* Stats */}
       <div className="flex gap-4 mb-4 flex-wrap">
-        <div className="bg-white border border-slate-200 rounded-lg px-4 py-2 flex items-center gap-2">
-          <span className="bg-slate-100 text-slate-700 text-xs font-semibold px-2 py-0.5 rounded-md">{statsTotal}</span>
-          <span className="text-xs text-slate-500">processos</span>
+        <div className="bg-card border border-border rounded-lg px-4 py-2 flex items-center gap-2">
+          <span className="bg-muted text-foreground text-xs font-semibold px-2 py-0.5 rounded-md">{statsTotal}</span>
+          <span className="text-xs text-muted-foreground">processos</span>
         </div>
-        <div className="bg-white border border-slate-200 rounded-lg px-4 py-2 flex items-center gap-2">
+        <div className="bg-card border border-border rounded-lg px-4 py-2 flex items-center gap-2">
           <span className="bg-blue-100 text-blue-700 text-xs font-semibold px-2 py-0.5 rounded-md">{statsAudiencias}</span>
-          <span className="text-xs text-slate-500">com audiência</span>
+          <span className="text-xs text-muted-foreground">com audiência</span>
         </div>
-        <div className="bg-white border border-slate-200 rounded-lg px-4 py-2 flex items-center gap-2">
+        <div className="bg-card border border-border rounded-lg px-4 py-2 flex items-center gap-2">
           <span className="bg-red-100 text-red-700 text-xs font-semibold px-2 py-0.5 rounded-md">{statsPrazos}</span>
-          <span className="text-xs text-slate-500">prazos esta semana</span>
+          <span className="text-xs text-muted-foreground">prazos esta semana</span>
         </div>
         {admin && (
-          <div className="bg-white border border-slate-200 rounded-lg px-4 py-2 flex items-center gap-2">
-            <span className="text-sm font-semibold text-slate-900">{formatBRL(statsValor)}</span>
+          <div className="bg-card border border-border rounded-lg px-4 py-2 flex items-center gap-2">
+            <span className="text-sm font-semibold text-foreground">{formatBRL(statsValor)}</span>
           </div>
         )}
       </div>
