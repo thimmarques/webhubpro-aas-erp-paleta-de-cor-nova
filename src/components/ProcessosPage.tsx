@@ -257,7 +257,7 @@ export default function ProcessosPage({ onNavigateDetail }: ProcessosPageProps) 
     );
   };
 
-  const selectClass = 'bg-white border border-slate-200 rounded-md px-3 py-2 text-sm text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500';
+  const selectClass = 'bg-card border border-border rounded-md px-3 py-2 text-sm text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring';
 
   return (
     <div>
