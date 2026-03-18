@@ -180,7 +180,7 @@ export default function Dashboard() {
                 <StatusBadge variant={s.area} />
                 <span className="text-sm font-semibold text-foreground">{s.count}</span>
               </div>
-              <div className="bg-slate-100 rounded-full h-2 overflow-hidden">
+              <div className="bg-muted rounded-full h-2 overflow-hidden">
                 <div
                   className={`${s.barColor} h-2 rounded-full transition-all`}
                   style={{ width: `${(s.count / s.total) * 100}%` }}

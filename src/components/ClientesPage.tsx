@@ -407,13 +407,13 @@ export default function ClientesPage({ onNavigateDetail }: ClientesPageProps) {
         <>
           <div className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40" onClick={() => setDeleteId(null)} />
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            <div className="bg-white rounded-xl shadow-xl p-6 w-full max-w-sm">
-              <h3 className="text-lg font-semibold text-slate-900 mb-2">Confirmar exclusão</h3>
-              <p className="text-sm text-slate-600 mb-6">
+            <div className="bg-card rounded-xl shadow-xl p-6 w-full max-w-sm">
+              <h3 className="text-lg font-semibold text-foreground mb-2">Confirmar exclusão</h3>
+              <p className="text-sm text-muted-foreground mb-6">
                 Tem certeza que deseja excluir este cliente? Esta ação não pode ser desfeita.
               </p>
               <div className="flex justify-end gap-3">
-                <button onClick={() => setDeleteId(null)} className="text-sm text-slate-600 hover:text-slate-900 transition-colors">
+                <button onClick={() => setDeleteId(null)} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                   Cancelar
                 </button>
                 <button
