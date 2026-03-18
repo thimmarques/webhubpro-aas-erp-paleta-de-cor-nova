@@ -221,7 +221,7 @@ export default function ProcessosPage({ onNavigateDetail }: ProcessosPageProps) 
 
   /* ─── prazo cell ─── */
   const renderPrazo = (prazo: string) => {
-    if (!prazo) return <span className="text-slate-300">—</span>;
+    if (!prazo) return <span className="text-muted-foreground/60">—</span>;
     const diff = daysDiff(prazo);
     if (diff <= 0) return (
       <span className="bg-red-100 text-red-700 rounded-md px-2 py-0.5 text-xs font-semibold inline-flex items-center gap-1">
@@ -238,52 +238,52 @@ export default function ProcessosPage({ onNavigateDetail }: ProcessosPageProps) 
         {diff} dias
       </span>
     );
-    return <span className="text-sm text-slate-500">{formatDateBR(prazo)}</span>;
+    return <span className="text-sm text-muted-foreground">{formatDateBR(prazo)}</span>;
   };
 
   /* ─── audience cell ─── */
   const renderAudiencia = (aud: string) => {
-    if (!aud) return <span className="text-slate-300">—</span>;
+    if (!aud) return <span className="text-muted-foreground/60">—</span>;
     const diff = daysDiff(aud);
     const isUrgent = diff >= 0 && diff <= 3;
     return (
       <div className={`flex items-center gap-1 ${isUrgent ? '' : ''}`}>
         {isUrgent && <AlertCircle className="w-3 h-3 text-amber-500" />}
         <div>
-          <div className="text-sm text-slate-700">{formatDateBR(aud)}</div>
-          <div className="text-xs text-slate-400">{formatTimeBR(aud)}</div>
+          <div className="text-sm text-foreground">{formatDateBR(aud)}</div>
+          <div className="text-xs text-muted-foreground">{formatTimeBR(aud)}</div>
         </div>
       </div>
     );
   };
 
-  const selectClass = 'bg-white border border-slate-200 rounded-md px-3 py-2 text-sm text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500';
+  const selectClass = 'bg-card border border-border rounded-md px-3 py-2 text-sm text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring';
 
   return (
     <div>
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Processos</h1>
-          <p className="text-xs text-slate-400 mt-0.5">WebHubPro ERP / Processos</p>
+          <h1 className="text-2xl font-bold text-foreground">Processos</h1>
+          <p className="text-xs text-muted-foreground mt-0.5">WebHubPro ERP / Processos</p>
         </div>
         <button
           onClick={() => setModalOpen(true)}
-          className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-md px-4 py-2 transition-colors"
+          className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground text-sm font-medium rounded-md px-4 py-2 transition-colors"
         >
           <Plus className="w-4 h-4" /> Novo Processo
         </button>
       </div>
 
       {/* Filters */}
-      <div className="bg-white border border-slate-200 rounded-lg p-3 mb-4 flex items-center gap-3 flex-wrap">
+      <div className="bg-card border border-border rounded-lg p-3 mb-4 flex items-center gap-3 flex-wrap">
         <div className="flex-1 min-w-[12rem] relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Buscar por número CNJ ou cliente..."
-            className="w-full pl-9 pr-3 py-2 bg-white border border-slate-200 rounded-md text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full pl-9 pr-3 py-2 bg-card border border-border rounded-md text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
           />
         </div>
         <select value={filterArea} onChange={(e) => setFilterArea(e.target.value)} className={selectClass}>
@@ -322,21 +322,21 @@ export default function ProcessosPage({ onNavigateDetail }: ProcessosPageProps) 
 
       {/* Stats */}
       <div className="flex gap-4 mb-4 flex-wrap">
-        <div className="bg-white border border-slate-200 rounded-lg px-4 py-2 flex items-center gap-2">
-          <span className="bg-slate-100 text-slate-700 text-xs font-semibold px-2 py-0.5 rounded-md">{statsTotal}</span>
-          <span className="text-xs text-slate-500">processos</span>
+        <div className="bg-card border border-border rounded-lg px-4 py-2 flex items-center gap-2">
+          <span className="bg-muted text-foreground text-xs font-semibold px-2 py-0.5 rounded-md">{statsTotal}</span>
+          <span className="text-xs text-muted-foreground">processos</span>
         </div>
-        <div className="bg-white border border-slate-200 rounded-lg px-4 py-2 flex items-center gap-2">
+        <div className="bg-card border border-border rounded-lg px-4 py-2 flex items-center gap-2">
           <span className="bg-blue-100 text-blue-700 text-xs font-semibold px-2 py-0.5 rounded-md">{statsAudiencias}</span>
-          <span className="text-xs text-slate-500">com audiência</span>
+          <span className="text-xs text-muted-foreground">com audiência</span>
         </div>
-        <div className="bg-white border border-slate-200 rounded-lg px-4 py-2 flex items-center gap-2">
+        <div className="bg-card border border-border rounded-lg px-4 py-2 flex items-center gap-2">
           <span className="bg-red-100 text-red-700 text-xs font-semibold px-2 py-0.5 rounded-md">{statsPrazos}</span>
-          <span className="text-xs text-slate-500">prazos esta semana</span>
+          <span className="text-xs text-muted-foreground">prazos esta semana</span>
         </div>
         {admin && (
-          <div className="bg-white border border-slate-200 rounded-lg px-4 py-2 flex items-center gap-2">
-            <span className="text-sm font-semibold text-slate-900">{formatBRL(statsValor)}</span>
+          <div className="bg-card border border-border rounded-lg px-4 py-2 flex items-center gap-2">
+            <span className="text-sm font-semibold text-foreground">{formatBRL(statsValor)}</span>
           </div>
         )}
       </div>
@@ -351,57 +351,57 @@ export default function ProcessosPage({ onNavigateDetail }: ProcessosPageProps) 
           onCta={() => setModalOpen(true)}
         />
       ) : (
-        <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
+        <div className="bg-card border border-border rounded-lg shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="bg-slate-50 border-b border-slate-200">
-                  <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3 cursor-pointer select-none min-w-[13rem]" onClick={() => toggleSort('numero_cnj')}>
+                <tr className="bg-muted/50 border-b border-border">
+                  <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 cursor-pointer select-none min-w-[13rem]" onClick={() => toggleSort('numero_cnj')}>
                     Processo <SortIcon field="numero_cnj" />
                   </th>
-                  <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('polo_ativo_nome')}>
+                  <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('polo_ativo_nome')}>
                     Cliente <SortIcon field="polo_ativo_nome" />
                   </th>
-                  <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('practice_area')}>
+                  <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('practice_area')}>
                     Área <SortIcon field="practice_area" />
                   </th>
-                  <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('tribunal')}>
+                  <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('tribunal')}>
                     Tribunal <SortIcon field="tribunal" />
                   </th>
-                  <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('status')}>
+                  <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('status')}>
                     Status <SortIcon field="status" />
                   </th>
-                  <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('proxima_audiencia')}>
+                  <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('proxima_audiencia')}>
                     Próx. Audiência <SortIcon field="proxima_audiencia" />
                   </th>
-                  <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('prazo_fatal')}>
+                  <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('prazo_fatal')}>
                     Prazo Fatal <SortIcon field="prazo_fatal" />
                   </th>
                   {admin && (
-                    <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('responsible_id')}>
+                    <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('responsible_id')}>
                       Responsável <SortIcon field="responsible_id" />
                     </th>
                   )}
-                  <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Ações</th>
+                  <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Ações</th>
                 </tr>
               </thead>
               <tbody>
                 {pageItems.map((proc) => {
                   const resp = getUserById(proc.responsible_id);
                   return (
-                    <tr key={proc.id} className="hover:bg-slate-50 transition-colors border-b border-slate-100 last:border-0">
+                    <tr key={proc.id} className="hover:bg-muted/50 transition-colors border-b border-border/50 last:border-0">
                       <td className="px-4 py-3.5 min-w-[13rem]">
-                        <div className="font-mono text-xs font-semibold text-slate-900 tracking-tight">{proc.numero_cnj || '—'}</div>
-                        <div className="text-xs text-slate-400 mt-0.5 truncate max-w-xs">{proc.acao}</div>
+                        <div className="font-mono text-xs font-semibold text-foreground tracking-tight">{proc.numero_cnj || '—'}</div>
+                        <div className="text-xs text-muted-foreground mt-0.5 truncate max-w-xs">{proc.acao}</div>
                       </td>
                       <td className="px-4 py-3.5">
                         <div className="flex items-center gap-2">
-                          <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-medium shrink-0 ${resp?.avatar_color || 'bg-slate-200'} text-white`}>
+                          <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-medium shrink-0 ${resp?.avatar_color || 'bg-muted'} text-white`}>
                             {proc.polo_ativo_nome.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()}
                           </div>
                           <div className="min-w-0">
-                            <div className="text-sm text-slate-900 truncate">{proc.polo_ativo_nome}</div>
-                            <div className="text-xs text-slate-400 truncate max-w-[9rem]">{proc.polo_passivo_nome}</div>
+                            <div className="text-sm text-foreground truncate">{proc.polo_ativo_nome}</div>
+                            <div className="text-xs text-muted-foreground truncate max-w-[9rem]">{proc.polo_passivo_nome}</div>
                           </div>
                         </div>
                       </td>
@@ -411,8 +411,8 @@ export default function ProcessosPage({ onNavigateDetail }: ProcessosPageProps) 
                         </span>
                       </td>
                       <td className="px-4 py-3.5">
-                        <span className="bg-slate-100 text-slate-600 text-xs font-medium px-2 py-0.5 rounded-md">{proc.tribunal}</span>
-                        <div className="text-xs text-slate-400 truncate max-w-[9rem] mt-0.5">{proc.vara}</div>
+                        <span className="bg-muted text-muted-foreground text-xs font-medium px-2 py-0.5 rounded-md">{proc.tribunal}</span>
+                        <div className="text-xs text-muted-foreground truncate max-w-[9rem] mt-0.5">{proc.vara}</div>
                       </td>
                       <td className="px-4 py-3.5">
                         <span className={`${statusColors[proc.status]} text-xs font-medium px-2 py-0.5 rounded-full`}>
@@ -426,7 +426,7 @@ export default function ProcessosPage({ onNavigateDetail }: ProcessosPageProps) 
                           {resp && (
                             <div className="flex items-center gap-2">
                               <UserAvatar name={resp.name} color={resp.avatar_color} size="sm" />
-                              <span className="text-sm text-slate-600 truncate">{resp.name}</span>
+                              <span className="text-sm text-muted-foreground truncate">{resp.name}</span>
                             </div>
                           )}
                         </td>
@@ -435,7 +435,7 @@ export default function ProcessosPage({ onNavigateDetail }: ProcessosPageProps) 
                         <div className="relative">
                           <button
                             onClick={() => setOpenDropdown(openDropdown === proc.id ? null : proc.id)}
-                            className="text-slate-400 hover:text-slate-600 p-1 rounded"
+                            className="text-muted-foreground hover:text-foreground p-1 rounded"
                           >
                             <MoreHorizontal className="w-4 h-4" />
                           </button>
@@ -459,22 +459,22 @@ export default function ProcessosPage({ onNavigateDetail }: ProcessosPageProps) 
           </div>
 
           {/* Pagination */}
-          <div className="border-t border-slate-200 px-4 py-3 flex items-center justify-between">
-            <span className="text-sm text-slate-500">
+          <div className="border-t border-border px-4 py-3 flex items-center justify-between">
+            <span className="text-sm text-muted-foreground">
               Mostrando {Math.min((page - 1) * PER_PAGE + 1, filtered.length)}–{Math.min(page * PER_PAGE, filtered.length)} de {filtered.length} processos
             </span>
             <div className="flex gap-2">
               <button
                 disabled={page <= 1}
                 onClick={() => setPage(page - 1)}
-                className="bg-white border border-slate-200 rounded-md px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-40"
+                className="bg-card border border-border rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-muted/50 disabled:opacity-40"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
               <button
                 disabled={page >= totalPages}
                 onClick={() => setPage(page + 1)}
-                className="bg-white border border-slate-200 rounded-md px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-40"
+                className="bg-card border border-border rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-muted/50 disabled:opacity-40"
               >
                 <ChevronRight className="w-4 h-4" />
               </button>
@@ -487,11 +487,11 @@ export default function ProcessosPage({ onNavigateDetail }: ProcessosPageProps) 
       {deleteConfirm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div className="fixed inset-0 bg-black/20 backdrop-blur-sm" onClick={() => setDeleteConfirm(null)} />
-          <div className="bg-white rounded-xl shadow-xl p-6 w-full max-w-sm mx-4 relative z-10">
-            <h3 className="text-lg font-semibold text-slate-900 mb-2">Excluir processo?</h3>
-            <p className="text-sm text-slate-500 mb-6">Esta ação não pode ser desfeita.</p>
+          <div className="bg-card rounded-xl shadow-xl p-6 w-full max-w-sm mx-4 relative z-10">
+            <h3 className="text-lg font-semibold text-foreground mb-2">Excluir processo?</h3>
+            <p className="text-sm text-muted-foreground mb-6">Esta ação não pode ser desfeita.</p>
             <div className="flex justify-end gap-3">
-              <button onClick={() => setDeleteConfirm(null)} className="text-sm text-slate-600 px-4 py-2 hover:text-slate-900">Cancelar</button>
+              <button onClick={() => setDeleteConfirm(null)} className="text-sm text-muted-foreground px-4 py-2 hover:text-foreground">Cancelar</button>
               <button onClick={() => handleDelete(deleteConfirm)} className="bg-red-600 text-white text-sm font-medium rounded-md px-4 py-2 hover:bg-red-700">Excluir</button>
             </div>
           </div>
@@ -523,15 +523,15 @@ function DropdownMenu({ onClose, onView, onEdit, onAudiencia, onEnclose, onDelet
     return () => document.removeEventListener('mousedown', handler);
   }, [onClose]);
 
-  const item = 'flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 cursor-pointer w-full';
+  const item = 'flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-muted/50 cursor-pointer w-full';
   return (
-    <div ref={ref} className="absolute right-0 top-8 bg-white border border-slate-200 shadow-lg rounded-lg py-1 z-10 w-44">
+    <div ref={ref} className="absolute right-0 top-8 bg-card border border-border shadow-lg rounded-lg py-1 z-10 w-44">
       <button className={item} onClick={onView}><Eye className="w-4 h-4" /> Ver Detalhes</button>
       <button className={item} onClick={onEdit}><Edit className="w-4 h-4" /> Editar</button>
       <button className={item} onClick={onAudiencia}><Scale className="w-4 h-4" /> Nova Audiência</button>
-      <div className="my-1 border-t border-slate-100" />
+      <div className="my-1 border-t border-border/50" />
       <button className={item} onClick={onEnclose}><CheckCircle className="w-4 h-4" /> Encerrar</button>
-      <div className="my-1 border-t border-slate-100" />
+      <div className="my-1 border-t border-border/50" />
       <button className={`${item} !text-red-600 hover:!bg-red-50`} onClick={onDelete}><Trash className="w-4 h-4" /> Excluir</button>
     </div>
   );
@@ -643,23 +643,23 @@ function NovoProcessoModal({ onClose, onSave, admin, currentUserId }: {
   };
 
   const inputClass = (field?: string) =>
-    `w-full bg-white border ${field && errors[field] ? 'border-red-300' : 'border-slate-200'} rounded-md px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent`;
+    `w-full bg-card border ${field && errors[field] ? 'border-red-300' : 'border-border'} rounded-md px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent`;
 
-  const labelClass = 'text-sm font-medium text-slate-700 mb-1 block';
+  const labelClass = 'text-sm font-medium text-foreground mb-1 block';
 
   const prazoDiff = form.prazo_fatal ? daysDiff(form.prazo_fatal) : null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div className="fixed inset-0 bg-black/20 backdrop-blur-sm" onClick={onClose} />
-      <div className="bg-white rounded-xl shadow-xl w-full max-w-2xl max-h-[90vh] flex flex-col mx-4 relative z-10">
+      <div className="bg-card rounded-xl shadow-xl w-full max-w-2xl max-h-[90vh] flex flex-col mx-4 relative z-10">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 flex-shrink-0">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-border flex-shrink-0">
           <div className="flex items-center gap-2">
-            <Briefcase className="w-5 h-5 text-blue-600" />
-            <h2 className="text-lg font-semibold text-slate-900">Novo Processo</h2>
+            <Briefcase className="w-5 h-5 text-accent" />
+            <h2 className="text-lg font-semibold text-foreground">Novo Processo</h2>
           </div>
-          <button onClick={onClose} className="text-slate-400 hover:text-slate-600"><X className="w-5 h-5" /></button>
+          <button onClick={onClose} className="text-muted-foreground hover:text-foreground"><X className="w-5 h-5" /></button>
         </div>
 
         {/* Body */}

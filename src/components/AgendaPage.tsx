@@ -207,8 +207,8 @@ export default function AgendaPage(_props: AgendaPageProps) {
       {/* PAGE HEADER */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Agenda</h1>
-          <p className="text-xs text-slate-400 mt-0.5">WebHubPro ERP / Agenda</p>
+          <h1 className="text-2xl font-bold text-foreground">Agenda</h1>
+          <p className="text-xs text-muted-foreground mt-0.5">WebHubPro ERP / Agenda</p>
         </div>
         <div className="flex items-center gap-3">
           {/* Type filter pills */}
@@ -216,7 +216,7 @@ export default function AgendaPage(_props: AgendaPageProps) {
             <button
               onClick={clearFilters}
               className={`text-xs font-medium px-3 py-1.5 rounded-full cursor-pointer transition-colors duration-150 ${
-                typeFilters.size === 0 ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                typeFilters.size === 0 ? 'bg-foreground text-primary-foreground' : 'bg-muted text-muted-foreground hover:bg-muted/80'
               }`}
             >
               Todos
@@ -235,7 +235,7 @@ export default function AgendaPage(_props: AgendaPageProps) {
           </div>
           <button
             onClick={() => openNewModal()}
-            className="flex items-center bg-blue-600 text-white text-sm font-medium rounded-md px-4 py-2 hover:bg-blue-700 transition-colors"
+            className="flex items-center bg-primary text-primary-foreground text-sm font-medium rounded-md px-4 py-2 hover:bg-primary/90 transition-colors"
           >
             <Plus className="w-4 h-4 mr-1.5" />
             Novo Evento
@@ -247,29 +247,29 @@ export default function AgendaPage(_props: AgendaPageProps) {
       <div className="grid grid-cols-12 gap-6">
         {/* CALENDAR */}
         <div className="col-span-8">
-          <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
+          <div className="bg-card rounded-lg border border-border shadow-sm overflow-hidden">
             {/* Calendar header */}
-            <div className="px-5 py-4 border-b border-slate-200 flex items-center justify-between">
+            <div className="px-5 py-4 border-b border-border flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <button onClick={() => setMonthOffset((o) => o - 1)} className="w-8 h-8 rounded-md border border-slate-200 hover:bg-slate-50 flex items-center justify-center text-slate-500 cursor-pointer">
+                <button onClick={() => setMonthOffset((o) => o - 1)} className="w-8 h-8 rounded-md border border-border hover:bg-muted/50 flex items-center justify-center text-muted-foreground cursor-pointer">
                   <ChevronLeft className="w-4 h-4" />
                 </button>
-                <span className="text-lg font-semibold text-slate-900">{MONTH_NAMES[viewMonth]} {viewYear}</span>
-                <button onClick={() => setMonthOffset((o) => o + 1)} className="w-8 h-8 rounded-md border border-slate-200 hover:bg-slate-50 flex items-center justify-center text-slate-500 cursor-pointer">
+                <span className="text-lg font-semibold text-foreground">{MONTH_NAMES[viewMonth]} {viewYear}</span>
+                <button onClick={() => setMonthOffset((o) => o + 1)} className="w-8 h-8 rounded-md border border-border hover:bg-muted/50 flex items-center justify-center text-muted-foreground cursor-pointer">
                   <ChevronRight className="w-4 h-4" />
                 </button>
               </div>
               <div className="flex items-center gap-2">
-                <button onClick={() => { setMonthOffset(0); setSelectedDate(new Date()); }} className="border border-slate-200 rounded-md px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50">
+                <button onClick={() => { setMonthOffset(0); setSelectedDate(new Date()); }} className="border border-border rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-muted/50">
                   Hoje
                 </button>
               </div>
             </div>
 
             {/* Day headers */}
-            <div className="grid grid-cols-7 bg-slate-50 border-b border-slate-200">
+            <div className="grid grid-cols-7 bg-muted/50 border-b border-border">
               {DAY_NAMES.map((d) => (
-                <div key={d} className="text-xs font-semibold text-slate-400 uppercase tracking-wide text-center py-2.5">{d}</div>
+                <div key={d} className="text-xs font-semibold text-muted-foreground uppercase tracking-wide text-center py-2.5">{d}</div>
               ))}
             </div>
 
@@ -284,14 +284,14 @@ export default function AgendaPage(_props: AgendaPageProps) {
                   <div
                     key={idx}
                     onClick={() => setSelectedDate(new Date(date))}
-                    className={`min-h-28 border-b border-r border-slate-100 p-1.5 relative cursor-pointer hover:bg-slate-50 transition-colors duration-100 ${
-                      isSel ? 'ring-2 ring-blue-300 bg-blue-50' : ''
+                    className={`min-h-28 border-b border-r border-border/50 p-1.5 relative cursor-pointer hover:bg-muted/50 transition-colors duration-100 ${
+                      isSel ? 'ring-2 ring-accent/40 bg-accent/5' : ''
                     }`}
                   >
                     <div className={`w-7 h-7 flex items-center justify-center text-sm font-medium rounded-full ${
-                      isT ? 'bg-blue-600 text-white font-bold' :
-                      isSel ? 'text-blue-700' :
-                      current ? 'text-slate-700' : 'text-slate-300'
+                      isT ? 'bg-primary text-primary-foreground font-bold' :
+                      isSel ? 'text-accent' :
+                      current ? 'text-foreground' : 'text-muted-foreground/60'
                     }`}>
                       {date.getDate()}
                     </div>
@@ -310,7 +310,7 @@ export default function AgendaPage(_props: AgendaPageProps) {
                         );
                       })}
                       {dayEvents.length > 3 && (
-                        <div className="text-xs text-slate-400 pl-1.5 mt-0.5 cursor-pointer" onClick={(e) => { e.stopPropagation(); setSelectedDate(new Date(date)); }}>
+                        <div className="text-xs text-muted-foreground pl-1.5 mt-0.5 cursor-pointer" onClick={(e) => { e.stopPropagation(); setSelectedDate(new Date(date)); }}>
                           +{dayEvents.length - 3} mais
                         </div>
                       )}
@@ -324,16 +324,16 @@ export default function AgendaPage(_props: AgendaPageProps) {
 
         {/* EVENTOS DO DIA PANEL */}
         <div className="col-span-4">
-          <div className="bg-white border border-slate-200 rounded-lg shadow-sm h-fit sticky top-20">
+          <div className="bg-card border border-border rounded-lg shadow-sm h-fit sticky top-20">
             {/* Panel header */}
-            <div className="px-5 py-4 border-b border-slate-200 flex items-center justify-between">
+            <div className="px-5 py-4 border-b border-border flex items-center justify-between">
               <div>
-                <div className="text-base font-semibold text-slate-900">
+                <div className="text-base font-semibold text-foreground">
                   {todayStr === selectedDateStr
                     ? 'Hoje'
                     : `${DAY_NAMES[selectedDate.getDay()]}, ${selectedDate.getDate()} ${MONTH_SHORT[selectedDate.getMonth()]}`}
                 </div>
-                <div className="text-xs text-slate-400">
+                <div className="text-xs text-muted-foreground">
                   {selectedDate.getDate()} de {MONTH_NAMES[selectedDate.getMonth()]} de {selectedDate.getFullYear()}
                 </div>
               </div>
@@ -343,7 +343,7 @@ export default function AgendaPage(_props: AgendaPageProps) {
                 </span>
                 <button
                   onClick={() => openNewModal(selectedDateStr)}
-                  className="w-7 h-7 rounded-md bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 cursor-pointer"
+                  className="w-7 h-7 rounded-md bg-primary text-primary-foreground flex items-center justify-center hover:bg-primary/90 cursor-pointer"
                 >
                   <Plus className="w-4 h-4" />
                 </button>
@@ -354,11 +354,11 @@ export default function AgendaPage(_props: AgendaPageProps) {
             <div className="px-4 py-3 space-y-3 max-h-[calc(100vh-280px)] overflow-y-auto">
               {selectedDayEvents.length === 0 ? (
                 <div className="py-10 text-center">
-                  <CalendarX className="w-10 h-10 text-slate-200 mx-auto mb-2" />
-                  <p className="text-sm text-slate-400">Nenhum evento neste dia</p>
+                  <CalendarX className="w-10 h-10 text-muted-foreground/40 mx-auto mb-2" />
+                  <p className="text-sm text-muted-foreground">Nenhum evento neste dia</p>
                   <button
                     onClick={() => openNewModal(selectedDateStr)}
-                    className="mt-3 bg-blue-600 text-white text-xs px-3 py-1.5 rounded-md hover:bg-blue-700 inline-flex items-center gap-1"
+                    className="mt-3 bg-primary text-primary-foreground text-xs px-3 py-1.5 rounded-md hover:bg-primary/90 inline-flex items-center gap-1"
                   >
                     <Plus className="w-3 h-3" /> Novo Evento
                   </button>
@@ -370,12 +370,12 @@ export default function AgendaPage(_props: AgendaPageProps) {
                     <div
                       key={evt.id}
                       onClick={() => setShowDetailModal(evt)}
-                      className={`bg-white rounded-lg border border-slate-200 overflow-hidden hover:border-slate-300 transition-colors cursor-pointer border-l-4 ${tipoBorderColors[evt.tipo]}`}
+                      className={`bg-card rounded-lg border border-border overflow-hidden hover:border-accent/40 transition-colors cursor-pointer border-l-4 ${tipoBorderColors[evt.tipo]}`}
                     >
                       <div className="px-4 py-3">
                         <div className="flex items-start justify-between">
                           <div>
-                            <div className="text-sm font-semibold text-slate-900 leading-snug">{evt.title}</div>
+                            <div className="text-sm font-semibold text-foreground leading-snug">{evt.title}</div>
                             {evt.tipo === 'prazo' && evt.notes.includes('PRAZO FATAL') && (
                               <span className="bg-red-100 text-red-700 text-xs font-bold px-1.5 py-0.5 rounded mt-0.5 inline-flex items-center">
                                 <Flame className="w-3 h-3 mr-1" />PRAZO FATAL

@@ -132,12 +132,12 @@ export default function Dashboard() {
         {/* Left — Activity */}
         <div className="col-span-2 bg-card border border-border rounded-lg p-6">
           <h2 className="text-base font-semibold text-foreground mb-5">Atividade Recente</h2>
-          <div className="relative ml-3 border-l-2 border-slate-200 space-y-5 pl-5">
+          <div className="relative ml-3 border-l-2 border-border space-y-5 pl-5">
             {activities.map((a) => (
               <div key={a.id} className="relative">
                 <span
                   className={`absolute -left-[25px] top-1.5 w-2 h-2 rounded-full ${
-                    a.active ? 'bg-blue-600' : 'bg-slate-300'
+                    a.active ? 'bg-primary' : 'bg-muted-foreground/40'
                   }`}
                 />
                 <p className="text-sm text-foreground">{a.text}</p>
@@ -153,7 +153,7 @@ export default function Dashboard() {
           <div className="space-y-4">
             {hearings.map((h) => (
               <div key={h.id} className="flex items-start gap-3">
-                <div className="bg-slate-50 rounded-lg p-2 text-center min-w-[48px]">
+                <div className="bg-muted/50 rounded-lg p-2 text-center min-w-[48px]">
                   <p className="text-xl font-bold text-foreground leading-tight">{h.day}</p>
                   <p className="text-xs text-muted-foreground uppercase">{h.month}</p>
                 </div>
@@ -180,7 +180,7 @@ export default function Dashboard() {
                 <StatusBadge variant={s.area} />
                 <span className="text-sm font-semibold text-foreground">{s.count}</span>
               </div>
-              <div className="bg-slate-100 rounded-full h-2 overflow-hidden">
+              <div className="bg-muted rounded-full h-2 overflow-hidden">
                 <div
                   className={`${s.barColor} h-2 rounded-full transition-all`}
                   style={{ width: `${(s.count / s.total) * 100}%` }}

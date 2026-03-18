@@ -173,12 +173,12 @@ export default function ClientesPage({ onNavigateDetail }: ClientesPageProps) {
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Clientes</h1>
-          <p className="text-xs text-slate-400 mt-0.5">WebHubPro ERP / Clientes</p>
+          <h1 className="text-2xl font-bold text-foreground">Clientes</h1>
+          <p className="text-xs text-muted-foreground mt-0.5">WebHubPro ERP / Clientes</p>
         </div>
         <button
           onClick={openNew}
-          className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-md px-4 py-2 transition-colors"
+          className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground text-sm font-medium rounded-md px-4 py-2 transition-colors"
         >
           <Plus className="w-4 h-4" />
           Novo Cliente
@@ -186,29 +186,29 @@ export default function ClientesPage({ onNavigateDetail }: ClientesPageProps) {
       </div>
 
       {/* Filter bar */}
-      <div className="bg-white border border-slate-200 rounded-lg p-3 mb-4 flex items-center gap-3">
+      <div className="bg-card border border-border rounded-lg p-3 mb-4 flex items-center gap-3">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <input
-            className="w-full bg-white border border-slate-200 rounded-md pl-9 pr-3 py-2 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors"
+            className="w-full bg-card border border-border rounded-md pl-9 pr-3 py-2 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring/20 focus:border-accent transition-colors"
             placeholder="Buscar por nome, CPF ou CNPJ..."
             value={search}
             onChange={(e) => { setSearch(e.target.value); setPage(1); }}
           />
         </div>
-        <select className="bg-white border border-slate-200 rounded-md px-3 py-2 text-sm text-slate-600" value={filterType} onChange={(e) => { setFilterType(e.target.value as any); setPage(1); }}>
+        <select className="bg-card border border-border rounded-md px-3 py-2 text-sm text-muted-foreground" value={filterType} onChange={(e) => { setFilterType(e.target.value as any); setPage(1); }}>
           <option value="">Tipo: Todos</option>
           <option value="PF">PF</option>
           <option value="PJ">PJ</option>
         </select>
-        <select className="bg-white border border-slate-200 rounded-md px-3 py-2 text-sm text-slate-600" value={filterArea} onChange={(e) => { setFilterArea(e.target.value); setPage(1); }}>
+        <select className="bg-card border border-border rounded-md px-3 py-2 text-sm text-muted-foreground" value={filterArea} onChange={(e) => { setFilterArea(e.target.value); setPage(1); }}>
           <option value="">Área: Todas</option>
           <option value="trabalhista">Trabalhista</option>
           <option value="civil">Civil</option>
           <option value="criminal">Criminal</option>
           <option value="previdenciario">Previdenciário</option>
         </select>
-        <select className="bg-white border border-slate-200 rounded-md px-3 py-2 text-sm text-slate-600" value={filterStatus} onChange={(e) => { setFilterStatus(e.target.value); setPage(1); }}>
+        <select className="bg-card border border-border rounded-md px-3 py-2 text-sm text-muted-foreground" value={filterStatus} onChange={(e) => { setFilterStatus(e.target.value); setPage(1); }}>
           <option value="">Status: Todos</option>
           <option value="ativo">Ativo</option>
           <option value="inativo">Inativo</option>
@@ -217,7 +217,7 @@ export default function ClientesPage({ onNavigateDetail }: ClientesPageProps) {
 
       {/* Table or empty */}
       {filtered.length === 0 ? (
-        <div className="bg-white border border-slate-200 rounded-lg">
+        <div className="bg-card border border-border rounded-lg">
           <EmptyState
             icon={Users}
             title="Nenhum cliente encontrado"
@@ -227,26 +227,26 @@ export default function ClientesPage({ onNavigateDetail }: ClientesPageProps) {
           />
         </div>
       ) : (
-        <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
+        <div className="bg-card border border-border rounded-lg shadow-sm overflow-hidden">
           <table className="w-full">
             <thead>
-              <tr className="bg-slate-50 border-b border-slate-200">
-                <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('name')}>
+              <tr className="bg-muted/50 border-b border-border">
+                <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('name')}>
                   Cliente <SortIcon field="name" />
                 </th>
-                <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Tipo</th>
-                <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('area')}>
+                <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Tipo</th>
+                <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('area')}>
                   Área <SortIcon field="area" />
                 </th>
-                <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Polo</th>
-                <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Processos</th>
-                <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('status')}>
+                <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Polo</th>
+                <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Processos</th>
+                <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 cursor-pointer select-none" onClick={() => toggleSort('status')}>
                   Status <SortIcon field="status" />
                 </th>
                 {admin && (
-                  <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Responsável</th>
+                  <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Responsável</th>
                 )}
-                <th className="text-right text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Ações</th>
+                <th className="text-right text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Ações</th>
               </tr>
             </thead>
             <tbody>
@@ -265,28 +265,28 @@ export default function ClientesPage({ onNavigateDetail }: ClientesPageProps) {
                 const processCount = processCountMap[c.id] || Math.floor(Math.random() * 4) + 1;
 
                 return (
-                  <tr key={c.id} className="hover:bg-slate-50 transition-colors border-b border-slate-100 last:border-0">
+                  <tr key={c.id} className="hover:bg-muted/50 transition-colors border-b border-border/50 last:border-0">
                     {/* CLIENTE */}
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-3">
                         <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium shrink-0 ${
-                          c.type === 'PF' ? 'bg-slate-200 text-slate-600' : 'bg-blue-100 text-blue-700'
+                          c.type === 'PF' ? 'bg-muted text-muted-foreground' : 'bg-blue-100 text-blue-700'
                         }`}>
                           {initials}
                         </div>
                         <div className="min-w-0">
-                          <p className="text-sm font-medium text-slate-900 truncate flex items-center gap-1.5">
+                          <p className="text-sm font-medium text-foreground truncate flex items-center gap-1.5">
                             {name}
                             {c.is_vip && <Star className="w-3 h-3 text-amber-400 fill-amber-400 shrink-0" />}
                           </p>
-                          <p className="text-xs text-slate-400">{maskedDoc}</p>
+                          <p className="text-xs text-muted-foreground">{maskedDoc}</p>
                         </div>
                       </div>
                     </td>
                     {/* TIPO */}
                     <td className="px-4 py-3">
                       <span className={`inline-flex items-center text-xs font-medium px-2 py-0.5 rounded-full ${
-                        c.type === 'PF' ? 'bg-slate-100 text-slate-600' : 'bg-blue-100 text-blue-700'
+                        c.type === 'PF' ? 'bg-muted text-muted-foreground' : 'bg-blue-100 text-blue-700'
                       }`}>
                         {c.type}
                       </span>
@@ -296,7 +296,7 @@ export default function ClientesPage({ onNavigateDetail }: ClientesPageProps) {
                       <StatusBadge variant={c.practice_area} />
                     </td>
                     {/* POLO */}
-                    <td className="px-4 py-3 text-sm text-slate-600">
+                    <td className="px-4 py-3 text-sm text-muted-foreground">
                       {getPoloLabel((c as any).polo || '')}
                     </td>
                     {/* PROCESSOS */}
@@ -310,7 +310,7 @@ export default function ClientesPage({ onNavigateDetail }: ClientesPageProps) {
                       <span className={`inline-flex items-center text-xs font-medium px-2 py-0.5 rounded-full ${
                         c.status === 'ativo'
                           ? 'bg-green-100 text-green-700'
-                          : 'bg-slate-100 text-slate-500'
+                          : 'bg-muted text-muted-foreground'
                       }`}>
                         {c.status === 'ativo' ? 'Ativo' : 'Inativo'}
                       </span>
@@ -321,7 +321,7 @@ export default function ClientesPage({ onNavigateDetail }: ClientesPageProps) {
                         {responsible && (
                           <div className="flex items-center gap-2">
                             <UserAvatar name={responsible.name} color={responsible.avatar_color} size="sm" />
-                            <span className="text-sm text-slate-600 truncate">{responsible.name}</span>
+                            <span className="text-sm text-muted-foreground truncate">{responsible.name}</span>
                           </div>
                         )}
                       </td>
@@ -331,27 +331,27 @@ export default function ClientesPage({ onNavigateDetail }: ClientesPageProps) {
                       <div className="relative inline-block" ref={openDropdown === c.id ? dropdownRef : undefined}>
                         <button
                           onClick={() => setOpenDropdown(openDropdown === c.id ? null : c.id)}
-                          className="text-slate-400 hover:text-slate-600 transition-colors p-1"
+                          className="text-muted-foreground hover:text-foreground transition-colors p-1"
                         >
                           <MoreHorizontal className="w-4 h-4" />
                         </button>
                         {openDropdown === c.id && (
-                          <div className="absolute right-0 top-full mt-1 bg-white border border-slate-200 shadow-lg rounded-lg py-1 z-10 w-40">
+                          <div className="absolute right-0 top-full mt-1 bg-card border border-border shadow-lg rounded-lg py-1 z-10 w-40">
                             <button
                               onClick={() => { onNavigateDetail?.(c.id); setOpenDropdown(null); }}
-                              className="w-full flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
+                              className="w-full flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-muted/50 transition-colors"
                             >
                               <Eye className="w-4 h-4" />
                               Ver Detalhes
                             </button>
                             <button
                               onClick={() => openEdit(c)}
-                              className="w-full flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
+                              className="w-full flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-muted/50 transition-colors"
                             >
                               <Edit className="w-4 h-4" />
                               Editar
                             </button>
-                            <div className="border-t border-slate-100 my-1" />
+                            <div className="border-t border-border/50 my-1" />
                             <button
                               onClick={() => { setDeleteId(c.id); setOpenDropdown(null); }}
                               className="w-full flex items-center gap-2 px-3 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
@@ -370,22 +370,22 @@ export default function ClientesPage({ onNavigateDetail }: ClientesPageProps) {
           </table>
 
           {/* Pagination */}
-          <div className="border-t border-slate-200 px-4 py-3 flex items-center justify-between">
-            <span className="text-sm text-slate-500">
+          <div className="border-t border-border px-4 py-3 flex items-center justify-between">
+            <span className="text-sm text-muted-foreground">
               Mostrando {(page - 1) * ITEMS_PER_PAGE + 1}–{Math.min(page * ITEMS_PER_PAGE, filtered.length)} de {filtered.length} clientes
             </span>
             <div className="flex gap-2">
               <button
                 disabled={page <= 1}
                 onClick={() => setPage((p) => p - 1)}
-                className="bg-white border border-slate-200 rounded-md px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-40 transition-colors"
+                className="bg-card border border-border rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-muted/50 disabled:opacity-40 transition-colors"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
               <button
                 disabled={page >= totalPages}
                 onClick={() => setPage((p) => p + 1)}
-                className="bg-white border border-slate-200 rounded-md px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-40 transition-colors"
+                className="bg-card border border-border rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-muted/50 disabled:opacity-40 transition-colors"
               >
                 <ChevronRight className="w-4 h-4" />
               </button>
@@ -407,13 +407,13 @@ export default function ClientesPage({ onNavigateDetail }: ClientesPageProps) {
         <>
           <div className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40" onClick={() => setDeleteId(null)} />
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            <div className="bg-white rounded-xl shadow-xl p-6 w-full max-w-sm">
-              <h3 className="text-lg font-semibold text-slate-900 mb-2">Confirmar exclusão</h3>
-              <p className="text-sm text-slate-600 mb-6">
+            <div className="bg-card rounded-xl shadow-xl p-6 w-full max-w-sm">
+              <h3 className="text-lg font-semibold text-foreground mb-2">Confirmar exclusão</h3>
+              <p className="text-sm text-muted-foreground mb-6">
                 Tem certeza que deseja excluir este cliente? Esta ação não pode ser desfeita.
               </p>
               <div className="flex justify-end gap-3">
-                <button onClick={() => setDeleteId(null)} className="text-sm text-slate-600 hover:text-slate-900 transition-colors">
+                <button onClick={() => setDeleteId(null)} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                   Cancelar
                 </button>
                 <button
