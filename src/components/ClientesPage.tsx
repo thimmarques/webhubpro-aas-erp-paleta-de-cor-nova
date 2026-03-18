@@ -186,29 +186,29 @@ export default function ClientesPage({ onNavigateDetail }: ClientesPageProps) {
       </div>
 
       {/* Filter bar */}
-      <div className="bg-white border border-slate-200 rounded-lg p-3 mb-4 flex items-center gap-3">
+      <div className="bg-card border border-border rounded-lg p-3 mb-4 flex items-center gap-3">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <input
-            className="w-full bg-white border border-slate-200 rounded-md pl-9 pr-3 py-2 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors"
+            className="w-full bg-card border border-border rounded-md pl-9 pr-3 py-2 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring/20 focus:border-accent transition-colors"
             placeholder="Buscar por nome, CPF ou CNPJ..."
             value={search}
             onChange={(e) => { setSearch(e.target.value); setPage(1); }}
           />
         </div>
-        <select className="bg-white border border-slate-200 rounded-md px-3 py-2 text-sm text-slate-600" value={filterType} onChange={(e) => { setFilterType(e.target.value as any); setPage(1); }}>
+        <select className="bg-card border border-border rounded-md px-3 py-2 text-sm text-muted-foreground" value={filterType} onChange={(e) => { setFilterType(e.target.value as any); setPage(1); }}>
           <option value="">Tipo: Todos</option>
           <option value="PF">PF</option>
           <option value="PJ">PJ</option>
         </select>
-        <select className="bg-white border border-slate-200 rounded-md px-3 py-2 text-sm text-slate-600" value={filterArea} onChange={(e) => { setFilterArea(e.target.value); setPage(1); }}>
+        <select className="bg-card border border-border rounded-md px-3 py-2 text-sm text-muted-foreground" value={filterArea} onChange={(e) => { setFilterArea(e.target.value); setPage(1); }}>
           <option value="">Área: Todas</option>
           <option value="trabalhista">Trabalhista</option>
           <option value="civil">Civil</option>
           <option value="criminal">Criminal</option>
           <option value="previdenciario">Previdenciário</option>
         </select>
-        <select className="bg-white border border-slate-200 rounded-md px-3 py-2 text-sm text-slate-600" value={filterStatus} onChange={(e) => { setFilterStatus(e.target.value); setPage(1); }}>
+        <select className="bg-card border border-border rounded-md px-3 py-2 text-sm text-muted-foreground" value={filterStatus} onChange={(e) => { setFilterStatus(e.target.value); setPage(1); }}>
           <option value="">Status: Todos</option>
           <option value="ativo">Ativo</option>
           <option value="inativo">Inativo</option>
