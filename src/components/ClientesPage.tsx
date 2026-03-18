@@ -310,7 +310,7 @@ export default function ClientesPage({ onNavigateDetail }: ClientesPageProps) {
                       <span className={`inline-flex items-center text-xs font-medium px-2 py-0.5 rounded-full ${
                         c.status === 'ativo'
                           ? 'bg-green-100 text-green-700'
-                          : 'bg-slate-100 text-slate-500'
+                          : 'bg-muted text-muted-foreground'
                       }`}>
                         {c.status === 'ativo' ? 'Ativo' : 'Inativo'}
                       </span>
