@@ -207,8 +207,8 @@ export default function AgendaPage(_props: AgendaPageProps) {
       {/* PAGE HEADER */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Agenda</h1>
-          <p className="text-xs text-slate-400 mt-0.5">WebHubPro ERP / Agenda</p>
+          <h1 className="text-2xl font-bold text-foreground">Agenda</h1>
+          <p className="text-xs text-muted-foreground mt-0.5">WebHubPro ERP / Agenda</p>
         </div>
         <div className="flex items-center gap-3">
           {/* Type filter pills */}
