@@ -238,7 +238,7 @@ export default function ProcessosPage({ onNavigateDetail }: ProcessosPageProps) 
         {diff} dias
       </span>
     );
-    return <span className="text-sm text-slate-500">{formatDateBR(prazo)}</span>;
+    return <span className="text-sm text-muted-foreground">{formatDateBR(prazo)}</span>;
   };
 
   /* ─── audience cell ─── */
