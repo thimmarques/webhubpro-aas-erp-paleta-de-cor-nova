@@ -173,12 +173,12 @@ export default function ClientesPage({ onNavigateDetail }: ClientesPageProps) {
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Clientes</h1>
-          <p className="text-xs text-slate-400 mt-0.5">WebHubPro ERP / Clientes</p>
+          <h1 className="text-2xl font-bold text-foreground">Clientes</h1>
+          <p className="text-xs text-muted-foreground mt-0.5">WebHubPro ERP / Clientes</p>
         </div>
         <button
           onClick={openNew}
-          className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-md px-4 py-2 transition-colors"
+          className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground text-sm font-medium rounded-md px-4 py-2 transition-colors"
         >
           <Plus className="w-4 h-4" />
           Novo Cliente
