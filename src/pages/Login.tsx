@@ -65,7 +65,7 @@ export default function Login() {
 
         {/* Quick access */}
         <div className="mt-6">
-          <p className="text-xs text-slate-400 uppercase tracking-wide font-medium mb-3 text-center">
+          <p className="text-xs text-muted-foreground uppercase tracking-wide font-medium mb-3 text-center">
             Acesso rápido — demo
           </p>
           <div className="space-y-2">
