@@ -354,11 +354,11 @@ export default function AgendaPage(_props: AgendaPageProps) {
             <div className="px-4 py-3 space-y-3 max-h-[calc(100vh-280px)] overflow-y-auto">
               {selectedDayEvents.length === 0 ? (
                 <div className="py-10 text-center">
-                  <CalendarX className="w-10 h-10 text-slate-200 mx-auto mb-2" />
-                  <p className="text-sm text-slate-400">Nenhum evento neste dia</p>
+                  <CalendarX className="w-10 h-10 text-muted-foreground/40 mx-auto mb-2" />
+                  <p className="text-sm text-muted-foreground">Nenhum evento neste dia</p>
                   <button
                     onClick={() => openNewModal(selectedDateStr)}
-                    className="mt-3 bg-blue-600 text-white text-xs px-3 py-1.5 rounded-md hover:bg-blue-700 inline-flex items-center gap-1"
+                    className="mt-3 bg-primary text-primary-foreground text-xs px-3 py-1.5 rounded-md hover:bg-primary/90 inline-flex items-center gap-1"
                   >
                     <Plus className="w-3 h-3" /> Novo Evento
                   </button>
