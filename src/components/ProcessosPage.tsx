@@ -426,7 +426,7 @@ export default function ProcessosPage({ onNavigateDetail }: ProcessosPageProps) 
                           {resp && (
                             <div className="flex items-center gap-2">
                               <UserAvatar name={resp.name} color={resp.avatar_color} size="sm" />
-                              <span className="text-sm text-slate-600 truncate">{resp.name}</span>
+                              <span className="text-sm text-muted-foreground truncate">{resp.name}</span>
                             </div>
                           )}
                         </td>
