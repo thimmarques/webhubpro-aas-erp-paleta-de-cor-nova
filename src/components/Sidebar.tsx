@@ -74,12 +74,12 @@ export default function Sidebar({ currentPage, onNavigate }: SidebarProps) {
     }`;
 
   return (
-    <aside className="fixed left-0 top-0 bottom-0 w-56 bg-slate-900 flex flex-col z-20">
+    <aside className="fixed left-0 top-0 bottom-0 w-56 bg-sidebar flex flex-col z-20">
       {/* Logo */}
-      <div className="px-4 py-5 border-b border-slate-700">
+      <div className="px-4 py-5 border-b border-sidebar-muted">
         <div className="flex items-center gap-2">
-          <div className="bg-blue-600 rounded-md p-1.5 w-8 h-8 flex items-center justify-center">
-            <Scale className="w-4 h-4 text-white" />
+          <div className="bg-accent rounded-md p-1.5 w-8 h-8 flex items-center justify-center">
+            <Scale className="w-4 h-4 text-accent-foreground" />
           </div>
           <span className="text-sm font-bold text-white">WebHubPro ERP</span>
         </div>
