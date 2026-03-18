@@ -221,7 +221,7 @@ export default function ProcessosPage({ onNavigateDetail }: ProcessosPageProps) 
 
   /* ─── prazo cell ─── */
   const renderPrazo = (prazo: string) => {
-    if (!prazo) return <span className="text-slate-300">—</span>;
+    if (!prazo) return <span className="text-muted-foreground/60">—</span>;
     const diff = daysDiff(prazo);
     if (diff <= 0) return (
       <span className="bg-red-100 text-red-700 rounded-md px-2 py-0.5 text-xs font-semibold inline-flex items-center gap-1">
