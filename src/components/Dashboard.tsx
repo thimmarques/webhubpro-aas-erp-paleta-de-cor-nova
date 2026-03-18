@@ -153,7 +153,7 @@ export default function Dashboard() {
           <div className="space-y-4">
             {hearings.map((h) => (
               <div key={h.id} className="flex items-start gap-3">
-                <div className="bg-slate-50 rounded-lg p-2 text-center min-w-[48px]">
+                <div className="bg-muted/50 rounded-lg p-2 text-center min-w-[48px]">
                   <p className="text-xl font-bold text-foreground leading-tight">{h.day}</p>
                   <p className="text-xs text-muted-foreground uppercase">{h.month}</p>
                 </div>
