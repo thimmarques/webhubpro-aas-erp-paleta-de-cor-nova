@@ -73,7 +73,7 @@ export default function Login() {
               <button
                 key={user.id}
                 onClick={() => loginAs(user.id)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-left hover:border-slate-300 hover:bg-white transition-colors flex items-center gap-3"
+                className="w-full bg-muted/50 border border-border rounded-lg p-3 text-left hover:border-accent hover:bg-card transition-colors flex items-center gap-3"
               >
                 <UserAvatar name={user.name} color={user.avatar_color} size="sm" />
                 <div className="min-w-0 flex-1">
