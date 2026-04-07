@@ -75,9 +75,6 @@ export default function Topbar({ currentPage }: TopbarProps) {
         <button className="text-muted-foreground hover:text-foreground transition-colors">
           <Moon className="w-5 h-5" />
         </button>
-        {currentUser && (
-          <UserAvatar name={currentUser.name} color={currentUser.avatar_color} size="md" />
-        )}
       </div>
     </header>
   );
