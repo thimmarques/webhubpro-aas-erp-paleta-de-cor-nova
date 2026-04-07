@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, Bell, HelpCircle } from 'lucide-react';
+import { Search, Bell, Moon } from 'lucide-react';
 import { Page } from '@/types';
 import { useAuth } from '@/contexts/AuthContext';
 import UserAvatar from './UserAvatar';
