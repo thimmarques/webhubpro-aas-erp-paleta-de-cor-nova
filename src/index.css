@@ -4,44 +4,54 @@
 
 @layer base {
   :root {
-    --background: 0 0% 95%;
-    --foreground: 203 44% 4%;
+    --background: 210 17% 98%;
+    --foreground: 209 44% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 203 44% 4%;
+    --card-foreground: 209 44% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 203 44% 4%;
+    --popover-foreground: 209 44% 15%;
 
-    --primary: 200 24% 20%;
-    --primary-foreground: 0 0% 95%;
+    --primary: 48 100% 23%;
+    --primary-foreground: 210 17% 98%;
 
-    --secondary: 195 16% 85%;
-    --secondary-foreground: 203 44% 4%;
+    --secondary: 0 0% 100%;
+    --secondary-foreground: 209 44% 15%;
 
-    --muted: 195 16% 90%;
-    --muted-foreground: 197 20% 46%;
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 197 20% 46%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 0 0% 94%;
+    --accent-foreground: 209 44% 15%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 195 16% 82%;
-    --input: 195 16% 82%;
-    --ring: 200 24% 20%;
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 48 100% 23%;
 
     --radius: 0.5rem;
 
-    --sidebar: 203 44% 4%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-muted: 200 24% 20%;
-    --sidebar-active: 197 20% 46%;
+    --sidebar: 209 44% 15%;
+    --sidebar-foreground: 210 17% 98%;
+    --sidebar-muted: 209 44% 22%;
+    --sidebar-active: 48 100% 23%;
+
+    /* Status colors */
+    --success: 142 76% 36%;
+    --success-light: 141 84% 93%;
+    --warning: 21 90% 48%;
+    --warning-light: 32 98% 83%;
+    --error: 0 72% 51%;
+    --error-light: 0 93% 94%;
+    --info: 192 91% 36%;
+    --info-light: 185 96% 90%;
 
     /* Badge practice areas */
-    --badge-trabalhista: 200 30% 92%;
-    --badge-trabalhista-fg: 200 24% 20%;
+    --badge-trabalhista: 48 80% 92%;
+    --badge-trabalhista-fg: 48 100% 23%;
     --badge-civil: 270 91% 95%;
     --badge-civil-fg: 270 67% 33%;
     --badge-criminal: 0 93% 95%;
@@ -50,26 +60,118 @@
     --badge-previdenciario-fg: 142 64% 28%;
 
     /* Badge statuses */
-    --badge-ativo: 142 76% 95%;
-    --badge-ativo-fg: 142 64% 36%;
-    --badge-audiencia: 200 30% 92%;
-    --badge-audiencia-fg: 200 24% 20%;
-    --badge-pendente: 45 93% 94%;
-    --badge-pendente-fg: 45 74% 36%;
-    --badge-encerrado: 195 16% 90%;
-    --badge-encerrado-fg: 197 20% 46%;
-    --badge-recurso: 25 95% 95%;
-    --badge-recurso-fg: 25 74% 36%;
+    --badge-ativo: 141 84% 93%;
+    --badge-ativo-fg: 142 76% 36%;
+    --badge-audiencia: 48 80% 92%;
+    --badge-audiencia-fg: 48 100% 23%;
+    --badge-pendente: 32 98% 83%;
+    --badge-pendente-fg: 21 90% 48%;
+    --badge-encerrado: 0 0% 94%;
+    --badge-encerrado-fg: 0 0% 40%;
+    --badge-recurso: 185 96% 90%;
+    --badge-recurso-fg: 192 91% 36%;
+  }
+
+  .dark {
+    --background: 0 0% 7%;
+    --foreground: 210 17% 98%;
+
+    --card: 0 0% 12%;
+    --card-foreground: 210 17% 98%;
+
+    --popover: 0 0% 12%;
+    --popover-foreground: 210 17% 98%;
+
+    --primary: 46 65% 52%;
+    --primary-foreground: 0 0% 7%;
+
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 210 17% 98%;
+
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 69%;
+
+    --accent: 0 0% 12%;
+    --accent-foreground: 210 17% 98%;
+
+    --destructive: 0 91% 71%;
+    --destructive-foreground: 0 0% 7%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 46 65% 52%;
+
+    --sidebar: 0 0% 7%;
+    --sidebar-foreground: 210 17% 98%;
+    --sidebar-muted: 0 0% 12%;
+    --sidebar-active: 46 65% 52%;
+
+    /* Status colors dark */
+    --success: 142 69% 58%;
+    --success-light: 143 64% 24%;
+    --warning: 27 96% 61%;
+    --warning-light: 15 75% 28%;
+    --error: 0 91% 71%;
+    --error-light: 0 63% 31%;
+    --info: 188 86% 53%;
+    --info-light: 196 64% 24%;
+
+    /* Badge practice areas dark */
+    --badge-trabalhista: 46 65% 18%;
+    --badge-trabalhista-fg: 46 65% 52%;
+    --badge-civil: 270 50% 20%;
+    --badge-civil-fg: 270 70% 70%;
+    --badge-criminal: 0 50% 20%;
+    --badge-criminal-fg: 0 91% 71%;
+    --badge-previdenciario: 142 40% 18%;
+    --badge-previdenciario-fg: 142 69% 58%;
+
+    /* Badge statuses dark */
+    --badge-ativo: 143 64% 24%;
+    --badge-ativo-fg: 142 69% 58%;
+    --badge-audiencia: 46 65% 18%;
+    --badge-audiencia-fg: 46 65% 52%;
+    --badge-pendente: 15 75% 28%;
+    --badge-pendente-fg: 27 96% 61%;
+    --badge-encerrado: 0 0% 20%;
+    --badge-encerrado-fg: 0 0% 69%;
+    --badge-recurso: 196 64% 24%;
+    --badge-recurso-fg: 188 86% 53%;
   }
 }
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border transition-colors duration-200 ease-in-out;
   }
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 14px;
+  }
+
+  h1 {
+    @apply font-sans text-[32px] font-bold;
+  }
+
+  h2 {
+    @apply font-sans text-2xl font-semibold;
+  }
+
+  h3 {
+    @apply font-sans text-lg font-semibold;
+  }
+
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+  }
+
+  table {
+    @apply font-sans text-[13px];
+  }
+
+  table th {
+    @apply font-semibold;
   }
 }
