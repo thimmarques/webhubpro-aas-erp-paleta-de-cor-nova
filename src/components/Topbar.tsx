@@ -1,8 +1,7 @@
-import React from 'react';
-import { Search, Bell, Moon } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Search, Bell, Moon, Sun } from 'lucide-react';
 import { Page } from '@/types';
 import { useAuth } from '@/contexts/AuthContext';
-import UserAvatar from './UserAvatar';
 
 const pageNames: Record<string, string> = {
   dashboard: 'Dashboard',
@@ -33,12 +32,26 @@ const breadcrumbs: Record<string, string[]> = {
   sistema: ['Configurações', 'Sistema'],
 };
 
+function getInitialTheme(): 'light' | 'dark' {
+  const stored = localStorage.getItem('theme');
+  if (stored === 'dark' || stored === 'light') return stored;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
 interface TopbarProps {
   currentPage: Page;
 }
 
 export default function Topbar({ currentPage }: TopbarProps) {
   const { currentUser } = useAuth();
+  const [theme, setTheme] = useState<'light' | 'dark'>(getInitialTheme);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => setTheme(prev => prev === 'light' ? 'dark' : 'light');
 
   const crumbs = breadcrumbs[currentPage];
 
@@ -72,8 +85,12 @@ export default function Topbar({ currentPage }: TopbarProps) {
           <Bell className="w-5 h-5" />
           <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-destructive rounded-full" />
         </button>
-        <button className="text-muted-foreground hover:text-foreground transition-colors">
-          <Moon className="w-5 h-5" />
+        <button
+          onClick={toggleTheme}
+          className="text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+          title={theme === 'light' ? 'Ativar modo escuro' : 'Ativar modo claro'}
+        >
+          {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
         </button>
       </div>
     </header>
