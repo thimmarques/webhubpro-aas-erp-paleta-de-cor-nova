@@ -73,7 +73,7 @@ export default function Topbar({ currentPage }: TopbarProps) {
           <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-destructive rounded-full" />
         </button>
         <button className="text-muted-foreground hover:text-foreground transition-colors">
-          <HelpCircle className="w-5 h-5" />
+          <Moon className="w-5 h-5" />
         </button>
         {currentUser && (
           <UserAvatar name={currentUser.name} color={currentUser.avatar_color} size="md" />
