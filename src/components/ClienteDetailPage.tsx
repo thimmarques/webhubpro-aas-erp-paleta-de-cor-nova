@@ -238,7 +238,7 @@ export default function ClienteDetailPage({ clientId, onBack, onNavigateProcesso
   if (!cliente) {
     return (
       <div className="flex flex-col items-center justify-center py-32">
-        <Inbox className="w-16 h-16 text-slate-200 mb-4" />
+        <Inbox className="w-16 h-16 text-muted mb-4" />
         <h2 className="text-lg font-semibold text-foreground mb-1">Cliente não encontrado</h2>
         <button onClick={onBack} className="mt-4 text-sm text-blue-600 hover:text-blue-700">← Voltar para Clientes</button>
       </div>
@@ -349,7 +349,7 @@ export default function ClienteDetailPage({ clientId, onBack, onNavigateProcesso
     if (display.length === 0) {
       return (
         <div className="py-8 text-center">
-          <Clock className="w-8 h-8 text-slate-200 mx-auto mb-2" />
+          <Clock className="w-8 h-8 text-muted mx-auto mb-2" />
           <p className="text-sm text-muted-foreground">Nenhuma atividade registrada</p>
         </div>
       );
@@ -874,7 +874,7 @@ export default function ClienteDetailPage({ clientId, onBack, onNavigateProcesso
             <div className="bg-card rounded-lg border border-border shadow-sm p-5">
               {filteredHistorico.length === 0 ? (
                 <div className="py-12 text-center">
-                  <Clock className="w-12 h-12 text-slate-200 mx-auto mb-3" />
+                  <Clock className="w-12 h-12 text-muted mx-auto mb-3" />
                   <h3 className="text-base font-semibold text-foreground mb-1">Nenhuma atividade registrada</h3>
                   <p className="text-sm text-muted-foreground">As atividades aparecerão aqui conforme forem registradas</p>
                 </div>
@@ -888,7 +888,7 @@ export default function ClienteDetailPage({ clientId, onBack, onNavigateProcesso
         {/* ── DOCUMENTOS TAB ── */}
         {activeTab === 'documentos' && (
           <div className="flex flex-col items-center justify-center gap-4 py-20">
-            <FolderOpen className="w-16 h-16 text-slate-200" />
+            <FolderOpen className="w-16 h-16 text-muted" />
             <h2 className="text-xl font-semibold text-muted-foreground">Módulo de Documentos</h2>
             <p className="text-sm text-muted-foreground text-center max-w-xs">Este módulo estará disponível em breve.</p>
             <span className="bg-blue-50 text-blue-600 text-xs font-medium px-3 py-1 rounded-full">Em desenvolvimento</span>

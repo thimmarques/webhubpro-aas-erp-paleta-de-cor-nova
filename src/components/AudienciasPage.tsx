@@ -296,17 +296,17 @@ export default function AudienciasPage({ onNavigateProcessoDetail }: AudienciasP
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Buscar por processo ou cliente..."
-            className="w-full border border-border rounded-md pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-border rounded-md pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
           />
         </div>
-        <select value={filterArea} onChange={(e) => setFilterArea(e.target.value)} className="border border-border rounded-md px-3 py-2 text-sm text-muted-foreground focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <select value={filterArea} onChange={(e) => setFilterArea(e.target.value)} className="border border-border rounded-md px-3 py-2 text-sm text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring">
           <option value="">Todas Áreas</option>
           <option value="trabalhista">Trabalhista</option>
           <option value="civil">Civil</option>
           <option value="criminal">Criminal</option>
           <option value="previdenciario">Previdenciário</option>
         </select>
-        <select value={filterAudTipo} onChange={(e) => setFilterAudTipo(e.target.value)} className="border border-border rounded-md px-3 py-2 text-sm text-muted-foreground focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <select value={filterAudTipo} onChange={(e) => setFilterAudTipo(e.target.value)} className="border border-border rounded-md px-3 py-2 text-sm text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring">
           <option value="">Todos Tipos</option>
           <option value="conciliacao">Conciliação</option>
           <option value="instrucao">Instrução</option>
@@ -315,7 +315,7 @@ export default function AudienciasPage({ onNavigateProcessoDetail }: AudienciasP
           <option value="virtual">Virtual</option>
         </select>
         {admin && (
-          <select value={filterResponsible} onChange={(e) => setFilterResponsible(e.target.value)} className="border border-border rounded-md px-3 py-2 text-sm text-muted-foreground focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <select value={filterResponsible} onChange={(e) => setFilterResponsible(e.target.value)} className="border border-border rounded-md px-3 py-2 text-sm text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring">
             <option value="">Todos Responsáveis</option>
             {MOCK_USERS.map((u) => (
               <option key={u.id} value={u.id}>{u.name}</option>
@@ -575,7 +575,7 @@ function NovaAudienciaModal({ onClose, onSave, processos, currentUser, isAdmin }
     onSave();
   }
 
-  const fc = (name: string) => `w-full border ${errors[name] ? 'border-red-400' : 'border-border'} rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent`;
+  const fc = (name: string) => `w-full border ${errors[name] ? 'border-red-400' : 'border-border'} rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent`;
 
   const audTipoOptions: AudienciaTipo[] = ['conciliacao', 'instrucao', 'julgamento', 'una', 'virtual'];
 
@@ -614,7 +614,7 @@ function NovaAudienciaModal({ onClose, onSave, processos, currentUser, isAdmin }
               <label className="block text-xs font-medium text-muted-foreground mb-1">Processo</label>
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                <input value={processoSearch} onChange={(e) => { setProcessoSearch(e.target.value); setShowPList(true); }} onFocus={() => setShowPList(true)} placeholder="Vincular a um processo (opcional)..." className="w-full border border-border rounded-md pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <input value={processoSearch} onChange={(e) => { setProcessoSearch(e.target.value); setShowPList(true); }} onFocus={() => setShowPList(true)} placeholder="Vincular a um processo (opcional)..." className="w-full border border-border rounded-md pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
               </div>
               {showPList && filteredP.length > 0 && (
                 <div className="absolute z-10 w-full bg-card border border-border rounded-lg shadow-md max-h-48 overflow-y-auto mt-1">
@@ -635,7 +635,7 @@ function NovaAudienciaModal({ onClose, onSave, processos, currentUser, isAdmin }
 
             <div>
               <label className="block text-xs font-medium text-muted-foreground mb-1">Status*</label>
-              <select value={audStatus} onChange={(e) => setAudStatus(e.target.value as AudienciaStatus)} className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <select value={audStatus} onChange={(e) => setAudStatus(e.target.value as AudienciaStatus)} className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring">
                 {(['agendada', 'realizada', 'adiada', 'cancelada'] as AudienciaStatus[]).map((s) => (
                   <option key={s} value={s}>{audienciaStatusLabels[s]}</option>
                 ))}
@@ -649,18 +649,18 @@ function NovaAudienciaModal({ onClose, onSave, processos, currentUser, isAdmin }
 
             <div>
               <label className="block text-xs font-medium text-muted-foreground mb-1">Hora Fim</label>
-              <input type="time" value={horaFim} onChange={(e) => setHoraFim(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              <input type="time" value={horaFim} onChange={(e) => setHoraFim(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
             </div>
 
             <div>
               <label className="block text-xs font-medium text-muted-foreground mb-1">Vara/Tribunal</label>
-              <input value={local} onChange={(e) => setLocal(e.target.value)} placeholder="Vara, fórum, endereço..." className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              <input value={local} onChange={(e) => setLocal(e.target.value)} placeholder="Vara, fórum, endereço..." className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
             </div>
 
             <div>
               <label className="block text-xs font-medium text-muted-foreground mb-1">Responsável*</label>
               {isAdmin ? (
-                <select value={responsibleId} onChange={(e) => setResponsibleId(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <select value={responsibleId} onChange={(e) => setResponsibleId(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring">
                   {MOCK_USERS.map((u) => (
                     <option key={u.id} value={u.id}>{u.name}</option>
                   ))}
@@ -672,7 +672,7 @@ function NovaAudienciaModal({ onClose, onSave, processos, currentUser, isAdmin }
 
             <div className="col-span-2">
               <label className="block text-xs font-medium text-muted-foreground mb-1">Observações</label>
-              <textarea value={notes} onChange={(e) => setNotes(e.target.value)} rows={3} placeholder="Detalhes adicionais..." className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" />
+              <textarea value={notes} onChange={(e) => setNotes(e.target.value)} rows={3} placeholder="Detalhes adicionais..." className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring resize-none" />
             </div>
           </div>
         </div>
@@ -761,7 +761,7 @@ function RegistrarResultadoModal({ audiencia, onClose, onSave }: RegistrarResult
           <div className="space-y-4">
             <div>
               <label className="block text-xs font-medium text-muted-foreground mb-1">Resultado da Audiência*</label>
-              <select value={resultado} onChange={(e) => setResultado(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <select value={resultado} onChange={(e) => setResultado(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring">
                 <option value="">Selecione...</option>
                 {resultados.map((r) => (
                   <option key={r} value={r}>{r}</option>
@@ -771,12 +771,12 @@ function RegistrarResultadoModal({ audiencia, onClose, onSave }: RegistrarResult
 
             <div>
               <label className="block text-xs font-medium text-muted-foreground mb-1">Data de Realização*</label>
-              <input type="date" value={dataRealizacao} onChange={(e) => setDataRealizacao(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              <input type="date" value={dataRealizacao} onChange={(e) => setDataRealizacao(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
             </div>
 
             <div>
               <label className="block text-xs font-medium text-muted-foreground mb-1">Detalhes / Observações*</label>
-              <textarea value={detalhes} onChange={(e) => setDetalhes(e.target.value)} rows={4} placeholder="Descreva o resultado da audiência, decisões tomadas, próximos passos..." className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" />
+              <textarea value={detalhes} onChange={(e) => setDetalhes(e.target.value)} rows={4} placeholder="Descreva o resultado da audiência, decisões tomadas, próximos passos..." className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring resize-none" />
             </div>
           </div>
         </div>

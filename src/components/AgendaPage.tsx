@@ -561,7 +561,7 @@ function NovoEventoModal({ onClose, onSave, prefillDate, processos, currentUser,
   }
 
   const fieldClass = (name: string) =>
-    `w-full border ${errors[name] ? 'border-red-400' : 'border-border'} rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent`;
+    `w-full border ${errors[name] ? 'border-red-400' : 'border-border'} rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent`;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center" onClick={onClose}>
@@ -614,7 +614,7 @@ function NovoEventoModal({ onClose, onSave, prefillDate, processos, currentUser,
                   onChange={(e) => { setProcessoSearch(e.target.value); setShowProcessoList(true); }}
                   onFocus={() => setShowProcessoList(true)}
                   placeholder="Vincular a um processo (opcional)..."
-                  className="w-full border border-border rounded-md pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-border rounded-md pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
                 />
               </div>
               {showProcessoList && filteredProcessos.length > 0 && (
@@ -649,7 +649,7 @@ function NovoEventoModal({ onClose, onSave, prefillDate, processos, currentUser,
                 value={horaFim}
                 onChange={(e) => setHoraFim(e.target.value)}
                 onFocus={() => { if (!horaFim && horaInicio) { const [h, m] = horaInicio.split(':').map(Number); const newH = h + 1; setHoraFim(`${String(Math.min(newH, 23)).padStart(2, '0')}:${String(m + 30 >= 60 ? 0 : m + 30).padStart(2, '0')}`); } }}
-                className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
               />
               <p className="text-xs text-muted-foreground mt-0.5">Opcional</p>
             </div>
@@ -657,14 +657,14 @@ function NovoEventoModal({ onClose, onSave, prefillDate, processos, currentUser,
             {/* Local */}
             <div>
               <label className="block text-xs font-medium text-muted-foreground mb-1">Local</label>
-              <input value={local} onChange={(e) => setLocal(e.target.value)} placeholder="Vara, fórum, endereço..." className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              <input value={local} onChange={(e) => setLocal(e.target.value)} placeholder="Vara, fórum, endereço..." className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
             </div>
 
             {/* Responsável */}
             <div className="col-span-2">
               <label className="block text-xs font-medium text-muted-foreground mb-1">Responsável*</label>
               {isAdmin ? (
-                <select value={responsibleId} onChange={(e) => setResponsibleId(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <select value={responsibleId} onChange={(e) => setResponsibleId(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring">
                   {MOCK_USERS.map((u) => (
                     <option key={u.id} value={u.id}>{u.name}</option>
                   ))}
@@ -677,7 +677,7 @@ function NovoEventoModal({ onClose, onSave, prefillDate, processos, currentUser,
             {/* Notes */}
             <div className="col-span-2">
               <label className="block text-xs font-medium text-muted-foreground mb-1">Observações</label>
-              <textarea value={notes} onChange={(e) => setNotes(e.target.value)} rows={3} placeholder="Detalhes adicionais, orientações..." className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" />
+              <textarea value={notes} onChange={(e) => setNotes(e.target.value)} rows={3} placeholder="Detalhes adicionais, orientações..." className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring resize-none" />
             </div>
           </div>
         </div>
