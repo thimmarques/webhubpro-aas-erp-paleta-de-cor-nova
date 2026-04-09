@@ -184,7 +184,7 @@ export default function EquipePage() {
     setInvAreas(prev => prev.includes(area) ? prev.filter(a => a !== area) : [...prev, area]);
   };
 
-  const selectClass = 'bg-card border border-border rounded-md px-3 py-2 text-sm text-muted-foreground focus:outline-none focus:ring-2 focus:ring-blue-500';
+  const selectClass = 'bg-card border border-border rounded-md px-3 py-2 text-sm text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring';
 
   return (
     <div>
@@ -225,7 +225,7 @@ export default function EquipePage() {
       <div className="flex items-center gap-3 mb-5">
         <div className="flex-1 relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-          <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Buscar por nome, OAB ou área..." className="w-full pl-9 pr-3 py-2 bg-card border border-border rounded-md text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Buscar por nome, OAB ou área..." className="w-full pl-9 pr-3 py-2 bg-card border border-border rounded-md text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring" />
         </div>
         <select value={filterArea} onChange={e => setFilterArea(e.target.value)} className={selectClass}>
           <option value="">Todas Áreas</option>
@@ -442,22 +442,22 @@ export default function EquipePage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="col-span-2">
                   <label className="text-sm font-medium text-foreground block mb-1">Nome Completo*</label>
-                  <input value={invName} onChange={e => setInvName(e.target.value)} placeholder="Nome completo do advogado" className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                  <input value={invName} onChange={e => setInvName(e.target.value)} placeholder="Nome completo do advogado" className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
                   {invErrors.name && <p className="text-xs text-red-500 mt-0.5">{invErrors.name}</p>}
                 </div>
                 <div className="col-span-2">
                   <label className="text-sm font-medium text-foreground block mb-1">Email*</label>
-                  <input value={invEmail} onChange={e => setInvEmail(e.target.value)} type="email" placeholder="email@escritorio.com.br" className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                  <input value={invEmail} onChange={e => setInvEmail(e.target.value)} type="email" placeholder="email@escritorio.com.br" className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
                   <p className="text-xs text-muted-foreground mt-0.5">Um convite será enviado para este e-mail</p>
                   {invErrors.email && <p className="text-xs text-red-500 mt-0.5">{invErrors.email}</p>}
                 </div>
                 <div>
                   <label className="text-sm font-medium text-foreground block mb-1">OAB</label>
-                  <input value={invOab} onChange={e => setInvOab(e.target.value)} placeholder="OAB/SP 000.000" className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                  <input value={invOab} onChange={e => setInvOab(e.target.value)} placeholder="OAB/SP 000.000" className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
                 </div>
                 <div>
                   <label className="text-sm font-medium text-foreground block mb-1">Cargo/Role*</label>
-                  <select value={invRole} onChange={e => setInvRole(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <select value={invRole} onChange={e => setInvRole(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring">
                     <option value="advogado">Advogado</option>
                     <option value="assistente">Assistente</option>
                     <option value="estagiario">Estagiário</option>
@@ -481,7 +481,7 @@ export default function EquipePage() {
                 </div>
                 <div className="col-span-2">
                   <label className="text-sm font-medium text-foreground block mb-1">Telefone</label>
-                  <input value={invPhone} onChange={e => setInvPhone(e.target.value)} type="tel" placeholder="(11) 00000-0000" className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                  <input value={invPhone} onChange={e => setInvPhone(e.target.value)} type="tel" placeholder="(11) 00000-0000" className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
                   <p className="text-xs text-muted-foreground mt-0.5">Opcional</p>
                 </div>
                 {invEmail && invName && (

@@ -442,7 +442,7 @@ export default function FinanceiroPage() {
             <div className="text-sm font-semibold text-foreground mt-0.5">Valor: {formatBRL(showPagoModal.valor)}</div>
             <div className="mt-4 mb-5 text-left">
               <label className="text-sm font-medium text-foreground mb-1 block">Data do pagamento*</label>
-              <input type="date" value={pagoDate} onChange={e => setPagoDate(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              <input type="date" value={pagoDate} onChange={e => setPagoDate(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
             </div>
             <div className="flex gap-3">
               <button onClick={() => setShowPagoModal(null)} className="flex-1 border border-border rounded-md py-2 text-sm text-muted-foreground hover:bg-muted">Cancelar</button>
@@ -587,7 +587,7 @@ function NovoLancamentoModal({ onClose, onSave }: { onClose: () => void; onSave:
               ) : (
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                  <input value={clienteSearch} onChange={e => { setClienteSearch(e.target.value); setShowClienteList(true); }} onFocus={() => setShowClienteList(true)} placeholder="Buscar cliente..." className={`w-full pl-9 pr-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.cliente ? 'border-red-300' : 'border-border'}`} />
+                  <input value={clienteSearch} onChange={e => { setClienteSearch(e.target.value); setShowClienteList(true); }} onFocus={() => setShowClienteList(true)} placeholder="Buscar cliente..." className={`w-full pl-9 pr-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-ring ${errors.cliente ? 'border-red-300' : 'border-border'}`} />
                   {showClienteList && (
                     <>
                       <div className="fixed inset-0 z-10" onClick={() => setShowClienteList(false)} />
@@ -612,7 +612,7 @@ function NovoLancamentoModal({ onClose, onSave }: { onClose: () => void; onSave:
             {/* Processo */}
             <div className="col-span-2">
               <label className="text-sm font-medium text-foreground mb-1 block">Processo</label>
-              <select value={processoId} onChange={e => handleSelectProcesso(e.target.value)} disabled={!selectedCliente} className={`w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${!selectedCliente ? 'bg-muted cursor-not-allowed' : 'bg-card'}`}>
+              <select value={processoId} onChange={e => handleSelectProcesso(e.target.value)} disabled={!selectedCliente} className={`w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring ${!selectedCliente ? 'bg-muted cursor-not-allowed' : 'bg-card'}`}>
                 <option value="">{selectedCliente ? 'Selecione um processo...' : 'Selecione um cliente primeiro'}</option>
                 {relatedProcessos.map(p => <option key={p.id} value={p.id}>{p.numero_cnj} — {p.acao}</option>)}
               </select>
@@ -621,7 +621,7 @@ function NovoLancamentoModal({ onClose, onSave }: { onClose: () => void; onSave:
             {/* Advogado */}
             <div className="col-span-2">
               <label className="text-sm font-medium text-foreground mb-1 block">Advogado Responsável <span className="text-red-500">*</span></label>
-              <select value={responsibleId} onChange={e => setResponsibleId(e.target.value)} className={`w-full border rounded-md px-3 py-2 text-sm bg-card focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.responsible ? 'border-red-300' : 'border-border'}`}>
+              <select value={responsibleId} onChange={e => setResponsibleId(e.target.value)} className={`w-full border rounded-md px-3 py-2 text-sm bg-card focus:outline-none focus:ring-2 focus:ring-ring ${errors.responsible ? 'border-red-300' : 'border-border'}`}>
                 <option value="">Selecione...</option>
                 {MOCK_USERS.map(u => <option key={u.id} value={u.id}>{u.name}</option>)}
               </select>
@@ -629,7 +629,7 @@ function NovoLancamentoModal({ onClose, onSave }: { onClose: () => void; onSave:
             {/* Tipo */}
             <div>
               <label className="text-sm font-medium text-foreground mb-1 block">Tipo <span className="text-red-500">*</span></label>
-              <select value={tipo} onChange={e => handleTipoChange(e.target.value as LancamentoTipo)} className={`w-full border rounded-md px-3 py-2 text-sm bg-card focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.tipo ? 'border-red-300' : 'border-border'}`}>
+              <select value={tipo} onChange={e => handleTipoChange(e.target.value as LancamentoTipo)} className={`w-full border rounded-md px-3 py-2 text-sm bg-card focus:outline-none focus:ring-2 focus:ring-ring ${errors.tipo ? 'border-red-300' : 'border-border'}`}>
                 <option value="">Selecione...</option>
                 <option value="honorario">Honorário</option>
                 <option value="despesa">Despesa</option>
@@ -640,7 +640,7 @@ function NovoLancamentoModal({ onClose, onSave }: { onClose: () => void; onSave:
             {/* Área */}
             <div>
               <label className="text-sm font-medium text-foreground mb-1 block">Área</label>
-              <select value={area} onChange={e => setArea(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 text-sm bg-card focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <select value={area} onChange={e => setArea(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 text-sm bg-card focus:outline-none focus:ring-2 focus:ring-ring">
                 <option value="">Selecione...</option>
                 <option value="trabalhista">Trabalhista</option>
                 <option value="civil">Civil</option>
@@ -651,23 +651,23 @@ function NovoLancamentoModal({ onClose, onSave }: { onClose: () => void; onSave:
             {/* Descrição */}
             <div className="col-span-2">
               <label className="text-sm font-medium text-foreground mb-1 block">Descrição <span className="text-red-500">*</span></label>
-              <input value={descricao} onChange={e => setDescricao(e.target.value)} placeholder="Descrição do lançamento..." className={`w-full border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.descricao ? 'border-red-300' : 'border-border'}`} />
+              <input value={descricao} onChange={e => setDescricao(e.target.value)} placeholder="Descrição do lançamento..." className={`w-full border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring ${errors.descricao ? 'border-red-300' : 'border-border'}`} />
             </div>
             {/* Valor */}
             <div>
               <label className="text-sm font-medium text-foreground mb-1 block">Valor (R$) <span className="text-red-500">*</span></label>
-              <input value={valor} onChange={e => setValor(e.target.value)} onBlur={handleValorBlur} placeholder="R$ 0,00" className={`w-full border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.valor ? 'border-red-300' : 'border-border'}`} />
+              <input value={valor} onChange={e => setValor(e.target.value)} onBlur={handleValorBlur} placeholder="R$ 0,00" className={`w-full border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring ${errors.valor ? 'border-red-300' : 'border-border'}`} />
             </div>
             {/* Vencimento */}
             <div>
               <label className="text-sm font-medium text-foreground mb-1 block">Vencimento <span className="text-red-500">*</span></label>
-              <input type="date" value={vencimento} onChange={e => setVencimento(e.target.value)} className={`w-full border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.vencimento ? 'border-red-300' : 'border-border'}`} />
+              <input type="date" value={vencimento} onChange={e => setVencimento(e.target.value)} className={`w-full border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring ${errors.vencimento ? 'border-red-300' : 'border-border'}`} />
               {vencDiff !== null && vencDiff < 0 && <div className="flex items-center gap-1 mt-1"><AlertTriangle className="w-3 h-3 text-amber-500" /><span className="text-xs text-amber-600">Data no passado — verifique o vencimento</span></div>}
             </div>
             {/* Status */}
             <div>
               <label className="text-sm font-medium text-foreground mb-1 block">Status <span className="text-red-500">*</span></label>
-              <select value={status} onChange={e => setStatus(e.target.value as LancamentoStatus)} className="w-full border border-border rounded-md px-3 py-2 text-sm bg-card focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <select value={status} onChange={e => setStatus(e.target.value as LancamentoStatus)} className="w-full border border-border rounded-md px-3 py-2 text-sm bg-card focus:outline-none focus:ring-2 focus:ring-ring">
                 <option value="pendente">Pendente</option>
                 <option value="pago">Pago</option>
                 <option value="vencido">Vencido</option>
@@ -678,7 +678,7 @@ function NovoLancamentoModal({ onClose, onSave }: { onClose: () => void; onSave:
             {status === 'pago' && (
               <div>
                 <label className="text-sm font-medium text-foreground mb-1 block">Data do Pagamento <span className="text-red-500">*</span></label>
-                <input type="date" value={dataPagamento} onChange={e => setDataPagamento(e.target.value)} className={`w-full border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.dataPagamento ? 'border-red-300' : 'border-border'}`} />
+                <input type="date" value={dataPagamento} onChange={e => setDataPagamento(e.target.value)} className={`w-full border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring ${errors.dataPagamento ? 'border-red-300' : 'border-border'}`} />
               </div>
             )}
             {/* Parcelamento */}
@@ -686,11 +686,11 @@ function NovoLancamentoModal({ onClose, onSave }: { onClose: () => void; onSave:
               <>
                 <div>
                   <label className="text-sm font-medium text-foreground mb-1 block">Total de Parcelas</label>
-                  <input type="number" min={2} max={36} value={parcelasTotal} onChange={e => setParcelasTotal(Number(e.target.value))} placeholder="Ex: 6" className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                  <input type="number" min={2} max={36} value={parcelasTotal} onChange={e => setParcelasTotal(Number(e.target.value))} placeholder="Ex: 6" className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
                 </div>
                 <div>
                   <label className="text-sm font-medium text-foreground mb-1 block">Parcelas Pagas</label>
-                  <input type="number" min={0} max={parcelasTotal} value={parcelasPagas} onChange={e => setParcelasPagas(Number(e.target.value))} placeholder="0" className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                  <input type="number" min={0} max={parcelasTotal} value={parcelasPagas} onChange={e => setParcelasPagas(Number(e.target.value))} placeholder="0" className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
                 </div>
               </>
             )}
