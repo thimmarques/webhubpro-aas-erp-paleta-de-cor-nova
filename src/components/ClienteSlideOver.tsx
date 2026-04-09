@@ -26,7 +26,7 @@ interface FieldProps {
 function Field({ label, required, error, colSpan, children }: FieldProps) {
   return (
     <div className={colSpan === 2 ? 'col-span-2' : ''}>
-      <label className="block text-sm font-medium text-slate-700 mb-1">
+      <label className="block text-sm font-medium text-foreground mb-1">
         {label}
         {required && <span className="text-red-500 ml-0.5">*</span>}
       </label>
@@ -37,13 +37,13 @@ function Field({ label, required, error, colSpan, children }: FieldProps) {
 }
 
 const inputCls =
-  'w-full bg-white border border-slate-200 rounded-md px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent';
+  'w-full bg-card border border-border rounded-md px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent';
 const inputErrCls =
-  'w-full bg-white border border-red-300 rounded-md px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent';
+  'w-full bg-card border border-red-300 rounded-md px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-destructive focus:border-transparent';
 const selectCls = inputCls;
 const readOnlyCls =
-  'w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-2 text-sm text-slate-500 cursor-not-allowed';
-const sectionTitle = 'text-sm font-semibold text-slate-900 mb-4 pb-2 border-b border-slate-100 col-span-2';
+  'w-full bg-muted border border-border rounded-md px-3 py-2 text-sm text-muted-foreground cursor-not-allowed';
+const sectionTitle = 'text-sm font-semibold text-foreground mb-4 pb-2 border-b border-border col-span-2';
 
 /* ── Main component ── */
 
@@ -178,16 +178,16 @@ export default function ClienteSlideOver({ open, onClose, onSave, editCliente }:
       <div className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40" onClick={onClose} />
 
       {/* Panel */}
-      <div className="fixed right-0 top-0 h-full w-full max-w-2xl bg-white shadow-xl z-50 flex flex-col">
+      <div className="fixed right-0 top-0 h-full w-full max-w-2xl bg-card shadow-xl z-50 flex flex-col">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 shrink-0">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-border shrink-0">
           <div>
-            <h2 className="text-lg font-semibold text-slate-900">
+            <h2 className="text-lg font-semibold text-foreground">
               {editCliente ? 'Editar Cliente' : 'Novo Cliente'}
             </h2>
-            <p className="text-sm text-slate-400">{stepLabel}</p>
+            <p className="text-sm text-muted-foreground">{stepLabel}</p>
           </div>
-          <button onClick={onClose} className="text-slate-400 hover:text-slate-600 transition-colors">
+          <button onClick={onClose} className="text-muted-foreground hover:text-muted-foreground transition-colors">
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -215,12 +215,12 @@ export default function ClienteSlideOver({ open, onClose, onSave, editCliente }:
         </div>
 
         {/* Footer */}
-        <div className="border-t border-slate-200 px-6 py-4 flex items-center justify-between bg-white shrink-0">
+        <div className="border-t border-border px-6 py-4 flex items-center justify-between bg-card shrink-0">
           <div>
             {step === 2 && (
               <button
                 onClick={() => setStep(1)}
-                className="flex items-center gap-1 text-sm text-slate-600 hover:text-slate-900 transition-colors"
+                className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 <ChevronLeft className="w-4 h-4" />
                 Voltar
@@ -228,7 +228,7 @@ export default function ClienteSlideOver({ open, onClose, onSave, editCliente }:
             )}
           </div>
           <div className="flex gap-3">
-            <button onClick={onClose} className="text-sm text-slate-600 hover:text-slate-900 transition-colors">
+            <button onClick={onClose} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Cancelar
             </button>
             {step === 1 ? (
@@ -275,26 +275,26 @@ function Step1({
 }) {
   const card = (selected: boolean) =>
     `border-2 rounded-xl p-5 cursor-pointer transition-all duration-150 ${
-      selected ? 'border-blue-600 bg-blue-50' : 'border-slate-200 bg-white hover:border-slate-300'
+      selected ? 'border-blue-600 bg-blue-50' : 'border-border bg-card hover:border-border'
     }`;
 
   return (
     <>
-      <p className="text-sm font-semibold text-slate-900 mb-3">Tipo de cliente</p>
+      <p className="text-sm font-semibold text-foreground mb-3">Tipo de cliente</p>
       <div className="grid grid-cols-2 gap-3 mb-8">
         <div className={card(clientType === 'PF')} onClick={() => setClientType('PF')}>
-          <User className={`w-8 h-8 mb-3 ${clientType === 'PF' ? 'text-blue-600' : 'text-slate-400'}`} />
-          <p className="text-sm font-semibold text-slate-900">Pessoa Física</p>
-          <p className="text-xs text-slate-400 mt-1">CPF, dados pessoais</p>
+          <User className={`w-8 h-8 mb-3 ${clientType === 'PF' ? 'text-blue-600' : 'text-muted-foreground'}`} />
+          <p className="text-sm font-semibold text-foreground">Pessoa Física</p>
+          <p className="text-xs text-muted-foreground mt-1">CPF, dados pessoais</p>
         </div>
         <div className={card(clientType === 'PJ')} onClick={() => setClientType('PJ')}>
-          <Building2 className={`w-8 h-8 mb-3 ${clientType === 'PJ' ? 'text-blue-600' : 'text-slate-400'}`} />
-          <p className="text-sm font-semibold text-slate-900">Pessoa Jurídica</p>
-          <p className="text-xs text-slate-400 mt-1">CNPJ, razão social</p>
+          <Building2 className={`w-8 h-8 mb-3 ${clientType === 'PJ' ? 'text-blue-600' : 'text-muted-foreground'}`} />
+          <p className="text-sm font-semibold text-foreground">Pessoa Jurídica</p>
+          <p className="text-xs text-muted-foreground mt-1">CNPJ, razão social</p>
         </div>
       </div>
 
-      <p className="text-sm font-semibold text-slate-900 mb-3">Área do Direito</p>
+      <p className="text-sm font-semibold text-foreground mb-3">Área do Direito</p>
       <div className="flex gap-2 flex-wrap">
         {areaOptions
           .filter((a) => !(clientType === 'PJ' && (a.value === 'criminal' || a.value === 'previdenciario')))
@@ -305,7 +305,7 @@ function Step1({
               className={`border rounded-md px-4 py-2 text-sm font-medium transition-colors ${
                 area === opt.value
                   ? opt.selectedCls
-                  : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300'
+                  : 'bg-card border-border text-muted-foreground hover:border-border'
               }`}
             >
               {opt.label}
@@ -490,7 +490,7 @@ function Step2Form({
               ].map((o) => (
                 <label key={o.v} className="flex items-center gap-2 cursor-pointer">
                   <input type="radio" name="polo" value={o.v} checked={form.polo === o.v} onChange={() => set('polo', o.v)} className="accent-blue-600" />
-                  <span className="text-sm text-slate-700">{o.l}</span>
+                  <span className="text-sm text-foreground">{o.l}</span>
                 </label>
               ))}
             </div>
@@ -629,12 +629,12 @@ function Step2Form({
                 aria-checked={form.antecedentes_criminais || false}
                 onClick={() => set('antecedentes_criminais', !form.antecedentes_criminais)}
                 className={`relative inline-flex h-5 w-9 shrink-0 rounded-full transition-colors ${
-                  form.antecedentes_criminais ? 'bg-red-500' : 'bg-slate-200'
+                  form.antecedentes_criminais ? 'bg-red-500' : 'bg-muted'
                 }`}
               >
-                <span className={`inline-block h-4 w-4 rounded-full bg-white shadow transform transition-transform mt-0.5 ${form.antecedentes_criminais ? 'translate-x-4 ml-0.5' : 'translate-x-0.5'}`} />
+                <span className={`inline-block h-4 w-4 rounded-full bg-card shadow transform transition-transform mt-0.5 ${form.antecedentes_criminais ? 'translate-x-4 ml-0.5' : 'translate-x-0.5'}`} />
               </button>
-              <span className="text-sm text-slate-700">Possui antecedentes criminais</span>
+              <span className="text-sm text-foreground">Possui antecedentes criminais</span>
             </label>
           </Field>
         </>
@@ -689,12 +689,12 @@ function Step2Form({
                   aria-checked={form.cnis_disponivel || false}
                   onClick={() => set('cnis_disponivel', !form.cnis_disponivel)}
                   className={`relative inline-flex h-5 w-9 shrink-0 rounded-full transition-colors ${
-                    form.cnis_disponivel ? 'bg-green-500' : 'bg-slate-200'
+                    form.cnis_disponivel ? 'bg-green-500' : 'bg-muted'
                   }`}
                 >
-                  <span className={`inline-block h-4 w-4 rounded-full bg-white shadow transform transition-transform mt-0.5 ${form.cnis_disponivel ? 'translate-x-4 ml-0.5' : 'translate-x-0.5'}`} />
+                  <span className={`inline-block h-4 w-4 rounded-full bg-card shadow transform transition-transform mt-0.5 ${form.cnis_disponivel ? 'translate-x-4 ml-0.5' : 'translate-x-0.5'}`} />
                 </button>
-                <span className="text-sm text-slate-700">CNIS disponível</span>
+                <span className="text-sm text-foreground">CNIS disponível</span>
               </label>
               <label className="flex items-center gap-3 cursor-pointer">
                 <button
@@ -703,12 +703,12 @@ function Step2Form({
                   aria-checked={form.pericia_medica || false}
                   onClick={() => set('pericia_medica', !form.pericia_medica)}
                   className={`relative inline-flex h-5 w-9 shrink-0 rounded-full transition-colors ${
-                    form.pericia_medica ? 'bg-amber-500' : 'bg-slate-200'
+                    form.pericia_medica ? 'bg-amber-500' : 'bg-muted'
                   }`}
                 >
-                  <span className={`inline-block h-4 w-4 rounded-full bg-white shadow transform transition-transform mt-0.5 ${form.pericia_medica ? 'translate-x-4 ml-0.5' : 'translate-x-0.5'}`} />
+                  <span className={`inline-block h-4 w-4 rounded-full bg-card shadow transform transition-transform mt-0.5 ${form.pericia_medica ? 'translate-x-4 ml-0.5' : 'translate-x-0.5'}`} />
                 </button>
-                <span className="text-sm text-slate-700">Perícia médica necessária</span>
+                <span className="text-sm text-foreground">Perícia médica necessária</span>
               </label>
             </div>
           </Field>
@@ -718,23 +718,23 @@ function Step2Form({
       {/* ══════════════════════════════
          COMMON FIELDS
          ══════════════════════════════ */}
-      <div className="col-span-2 border-t border-slate-100 mt-4 pt-4" />
+      <div className="col-span-2 border-t border-border mt-4 pt-4" />
       <h3 className={sectionTitle}>Informações Adicionais</h3>
 
       <Field label="" colSpan={2}>
         <label className="flex items-center gap-3 cursor-pointer">
-          <Star className={`w-4 h-4 ${form.is_vip ? 'text-amber-400 fill-amber-400' : 'text-slate-300'}`} />
-          <span className="text-sm text-slate-700">Marcar como cliente VIP</span>
+          <Star className={`w-4 h-4 ${form.is_vip ? 'text-amber-400 fill-amber-400' : 'text-muted-foreground'}`} />
+          <span className="text-sm text-foreground">Marcar como cliente VIP</span>
           <button
             type="button"
             role="switch"
             aria-checked={form.is_vip || false}
             onClick={() => set('is_vip', !form.is_vip)}
             className={`relative inline-flex h-5 w-9 shrink-0 rounded-full transition-colors ml-auto ${
-              form.is_vip ? 'bg-amber-400' : 'bg-slate-200'
+              form.is_vip ? 'bg-amber-400' : 'bg-muted'
             }`}
           >
-            <span className={`inline-block h-4 w-4 rounded-full bg-white shadow transform transition-transform mt-0.5 ${form.is_vip ? 'translate-x-4 ml-0.5' : 'translate-x-0.5'}`} />
+            <span className={`inline-block h-4 w-4 rounded-full bg-card shadow transform transition-transform mt-0.5 ${form.is_vip ? 'translate-x-4 ml-0.5' : 'translate-x-0.5'}`} />
           </button>
         </label>
       </Field>

@@ -11,13 +11,13 @@ const variantStyles: Record<BadgeVariant, string> = {
   ativo: 'bg-green-100 text-green-700',
   audiencia: 'bg-blue-100 text-blue-700',
   pendente: 'bg-yellow-100 text-yellow-700',
-  encerrado: 'bg-slate-100 text-slate-600',
+  encerrado: 'bg-muted text-muted-foreground',
   recurso: 'bg-orange-100 text-orange-700',
   // Roles
   admin: 'bg-blue-100 text-blue-800',
   advogado: 'bg-emerald-100 text-emerald-800',
   assistente: 'bg-amber-100 text-amber-800',
-  estagiario: 'bg-slate-100 text-slate-700',
+  estagiario: 'bg-muted text-foreground',
   // Special
   vip: 'bg-amber-100 text-amber-800',
 };
