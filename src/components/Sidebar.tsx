@@ -106,40 +106,11 @@ export default function Sidebar({ currentPage, onNavigate }: SidebarProps) {
         {/* Configurações */}
         <div
           className={itemClass(isConfigActive)}
-          onClick={() => {
-            setConfigOpen(!configOpen);
-            if (!configOpen) onNavigate('meu-perfil');
-          }}
+          onClick={() => onNavigate('meu-perfil')}
         >
           <Settings className="w-4 h-4 shrink-0" />
           <span className="flex-1">Configurações</span>
-          {configOpen ? (
-            <ChevronDown className="w-3.5 h-3.5 text-sidebar-foreground/40" />
-          ) : (
-            <ChevronRight className="w-3.5 h-3.5 text-sidebar-foreground/40" />
-          )}
         </div>
-
-        {configOpen && (
-          <div className="space-y-0.5">
-            {configSubNav
-              .filter((item) => !item.adminOnly || isAdmin())
-              .map((item) => (
-                <div
-                  key={item.id}
-                  className={`flex items-center gap-3 mx-2 pl-8 pr-3 py-2 rounded-md text-xs font-medium cursor-pointer transition-colors duration-150 ${
-                    isActive(item.id)
-                      ? 'text-sidebar-foreground'
-                      : 'text-sidebar-foreground/60 hover:text-sidebar-foreground'
-                  }`}
-                  onClick={() => onNavigate(item.id)}
-                >
-                  <item.icon className="w-3.5 h-3.5 shrink-0" />
-                  <span>{item.label}</span>
-                </div>
-              ))}
-          </div>
-        )}
       </nav>
 
       {/* User info */}
