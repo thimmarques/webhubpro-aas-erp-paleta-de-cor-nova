@@ -57,7 +57,7 @@ const entityBadgeColors: Record<string, string> = {
   Cliente: 'bg-purple-100 text-purple-700',
   'Lançamento': 'bg-green-100 text-green-700',
   'Audiência': 'bg-indigo-100 text-indigo-700',
-  Auth: 'bg-slate-100 text-slate-600',
+  Auth: 'bg-muted text-muted-foreground',
   Sistema: 'bg-amber-100 text-amber-700',
   Financeiro: 'bg-red-100 text-red-600',
 };
@@ -74,7 +74,7 @@ const integrationIcons: Record<string, React.ElementType> = {
 const integrationIconColors: Record<string, string> = {
   'WhatsApp Business': 'text-green-500',
   'Google Calendar': 'text-blue-500',
-  'Email SMTP': 'text-slate-600',
+  'Email SMTP': 'text-muted-foreground',
   'Stripe': 'text-purple-500',
   'DocuSign': 'text-blue-600',
   'DJe Automático': 'text-amber-600',
@@ -142,8 +142,8 @@ export default function ConfiguracoesPage({ initialSubmenu }: ConfiguracoesPageP
       {/* Page header */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Configurações</h1>
-          <p className="text-xs text-slate-400">WebHubPro ERP / Configurações / {submenuLabels[activeMenu]}</p>
+          <h1 className="text-2xl font-bold text-foreground">Configurações</h1>
+          <p className="text-xs text-muted-foreground">WebHubPro ERP / Configurações / {submenuLabels[activeMenu]}</p>
         </div>
       </div>
 
@@ -151,15 +151,15 @@ export default function ConfiguracoesPage({ initialSubmenu }: ConfiguracoesPageP
       <div className="grid grid-cols-12 gap-6">
         {/* Left sub-nav */}
         <div className="col-span-3">
-          <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden h-fit">
-            <div className="px-4 py-3 border-b border-slate-100">
-              <span className="text-xs font-semibold text-slate-400 uppercase tracking-wide">Configurações</span>
+          <div className="bg-card border border-border rounded-lg shadow-sm overflow-hidden h-fit">
+            <div className="px-4 py-3 border-b border-border">
+              <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Configurações</span>
             </div>
             <div className="py-2">
               {/* Meu Perfil */}
               <div
                 className={`flex items-center gap-3 px-4 py-2.5 cursor-pointer transition-colors duration-150 text-sm ${
-                  activeMenu === 'meu-perfil' ? 'bg-blue-50 text-blue-700 font-medium border-r-2 border-blue-600' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                  activeMenu === 'meu-perfil' ? 'bg-blue-50 text-blue-700 font-medium border-r-2 border-blue-600' : 'text-muted-foreground hover:bg-muted hover:text-foreground'
                 }`}
                 onClick={() => setActiveMenu('meu-perfil')}
               >
@@ -168,8 +168,8 @@ export default function ConfiguracoesPage({ initialSubmenu }: ConfiguracoesPageP
               </div>
 
               {/* Divider + admin section */}
-              <div className="border-t border-slate-100 my-2 px-4 py-1">
-                <span className="text-xs text-slate-300 uppercase tracking-wide">Administração</span>
+              <div className="border-t border-border my-2 px-4 py-1">
+                <span className="text-xs text-muted-foreground uppercase tracking-wide">Administração</span>
               </div>
 
               {navItems.filter(i => i.adminOnly).map(item => (
@@ -178,14 +178,14 @@ export default function ConfiguracoesPage({ initialSubmenu }: ConfiguracoesPageP
                   className={`flex items-center gap-3 px-4 py-2.5 transition-colors duration-150 text-sm ${
                     !admin ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer'
                   } ${
-                    activeMenu === item.id && admin ? 'bg-blue-50 text-blue-700 font-medium border-r-2 border-blue-600' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                    activeMenu === item.id && admin ? 'bg-blue-50 text-blue-700 font-medium border-r-2 border-blue-600' : 'text-muted-foreground hover:bg-muted hover:text-foreground'
                   }`}
                   onClick={() => admin ? setActiveMenu(item.id) : undefined}
                   title={!admin ? 'Acesso restrito a administradores' : undefined}
                 >
                   <item.icon className="w-4 h-4 flex-shrink-0" />
                   <span className="flex-1">{item.label}</span>
-                  {!admin && <Lock className="w-3 h-3 ml-auto text-slate-300" />}
+                  {!admin && <Lock className="w-3 h-3 ml-auto text-muted-foreground" />}
                 </div>
               ))}
             </div>
@@ -272,14 +272,14 @@ function MeuPerfilSection() {
   };
 
   return (
-    <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
-      <div className="px-6 py-5 border-b border-slate-200 flex items-center justify-between">
+    <div className="bg-card border border-border rounded-lg shadow-sm overflow-hidden">
+      <div className="px-6 py-5 border-b border-border flex items-center justify-between">
         <div>
           <div className="flex items-center gap-2">
-            <User className="w-5 h-5 text-slate-400" />
-            <h2 className="text-lg font-semibold text-slate-900">Meu Perfil</h2>
+            <User className="w-5 h-5 text-muted-foreground" />
+            <h2 className="text-lg font-semibold text-foreground">Meu Perfil</h2>
           </div>
-          <p className="text-sm text-slate-400 mt-0.5">Atualize suas informações pessoais</p>
+          <p className="text-sm text-muted-foreground mt-0.5">Atualize suas informações pessoais</p>
         </div>
         {saved && (
           <div className="flex items-center gap-1">
@@ -291,7 +291,7 @@ function MeuPerfilSection() {
 
       <div className="px-6 py-6">
         {/* Avatar */}
-        <div className="flex items-center gap-6 mb-8 pb-6 border-b border-slate-100">
+        <div className="flex items-center gap-6 mb-8 pb-6 border-b border-border">
           <div className="relative group">
             <div className={`w-20 h-20 rounded-full ${u.avatar_color} flex items-center justify-center text-white text-2xl font-semibold`}>
               {u.avatar_initials}
@@ -301,10 +301,10 @@ function MeuPerfilSection() {
             </div>
           </div>
           <div>
-            <p className="text-sm font-medium text-slate-900">Foto do Perfil</p>
-            <p className="text-xs text-slate-400 mt-0.5">PNG, JPG até 2MB</p>
+            <p className="text-sm font-medium text-foreground">Foto do Perfil</p>
+            <p className="text-xs text-muted-foreground mt-0.5">PNG, JPG até 2MB</p>
             <div className="flex gap-2 mt-3">
-              <button onClick={() => showToast('Upload disponível após integração', 'info')} className="border border-slate-200 rounded-md px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50 flex items-center gap-1.5">
+              <button onClick={() => showToast('Upload disponível após integração', 'info')} className="border border-border rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-muted flex items-center gap-1.5">
                 <Upload className="w-4 h-4" /> Alterar foto
               </button>
               <button className="text-xs text-red-500 hover:text-red-600">Remover</button>
@@ -315,65 +315,65 @@ function MeuPerfilSection() {
         {/* Form */}
         <div className="grid grid-cols-2 gap-5">
           <div className="col-span-2">
-            <label className="text-sm font-medium text-slate-700">Nome Completo*</label>
-            <input value={name} onChange={e => setName(e.target.value)} className="mt-1 w-full border border-slate-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Seu nome completo" />
+            <label className="text-sm font-medium text-foreground">Nome Completo*</label>
+            <input value={name} onChange={e => setName(e.target.value)} className="mt-1 w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Seu nome completo" />
           </div>
           <div>
-            <label className="text-sm font-medium text-slate-700">Email*</label>
-            <input value={email} onChange={e => setEmail(e.target.value)} type="email" className="mt-1 w-full border border-slate-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
-            <p className="text-xs text-slate-400 mt-1">Usado para login e notificações</p>
+            <label className="text-sm font-medium text-foreground">Email*</label>
+            <input value={email} onChange={e => setEmail(e.target.value)} type="email" className="mt-1 w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <p className="text-xs text-muted-foreground mt-1">Usado para login e notificações</p>
           </div>
           <div>
-            <label className="text-sm font-medium text-slate-700">Telefone</label>
-            <input value={phone} onChange={e => setPhone(e.target.value)} className="mt-1 w-full border border-slate-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="(11) 00000-0000" />
+            <label className="text-sm font-medium text-foreground">Telefone</label>
+            <input value={phone} onChange={e => setPhone(e.target.value)} className="mt-1 w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="(11) 00000-0000" />
           </div>
           <div>
-            <label className="text-sm font-medium text-slate-700">OAB</label>
-            <input value={oab} onChange={e => setOab(e.target.value)} className="mt-1 w-full border border-slate-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="OAB/SP 000.000" />
+            <label className="text-sm font-medium text-foreground">OAB</label>
+            <input value={oab} onChange={e => setOab(e.target.value)} className="mt-1 w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="OAB/SP 000.000" />
           </div>
           <div>
-            <label className="text-sm font-medium text-slate-700">Cargo</label>
-            <input value={roleLabels[u.role] || u.role} readOnly className="mt-1 w-full bg-slate-50 cursor-not-allowed text-slate-500 border border-slate-200 rounded-md px-3 py-2 text-sm" />
+            <label className="text-sm font-medium text-foreground">Cargo</label>
+            <input value={roleLabels[u.role] || u.role} readOnly className="mt-1 w-full bg-muted cursor-not-allowed text-muted-foreground border border-border rounded-md px-3 py-2 text-sm" />
           </div>
           <div className="col-span-2">
-            <label className="text-sm font-medium text-slate-700">Áreas de Atuação</label>
-            <p className="text-xs text-slate-400 mb-2">Suas áreas de atuação principais</p>
+            <label className="text-sm font-medium text-foreground">Áreas de Atuação</label>
+            <p className="text-xs text-muted-foreground mb-2">Suas áreas de atuação principais</p>
             <div className="flex flex-wrap gap-2">
               {u.practice_areas.map(a => (
                 <span key={a} className={`${areaBadgeColors[a]} text-sm font-medium px-3 py-1 rounded-full`}>{areaLabels[a]}</span>
               ))}
             </div>
-            {admin && <p className="text-xs text-slate-400 mt-2">Administradores têm acesso a todas as áreas</p>}
+            {admin && <p className="text-xs text-muted-foreground mt-2">Administradores têm acesso a todas as áreas</p>}
           </div>
         </div>
 
         {/* Change Password */}
-        <div className="mt-6 pt-6 border-t border-slate-100">
+        <div className="mt-6 pt-6 border-t border-border">
           <div className="flex items-center gap-2 mb-4">
-            <Lock className="w-4 h-4 text-slate-400" />
-            <h3 className="text-sm font-semibold text-slate-900">Alterar Senha</h3>
+            <Lock className="w-4 h-4 text-muted-foreground" />
+            <h3 className="text-sm font-semibold text-foreground">Alterar Senha</h3>
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="col-span-2 relative">
-              <label className="text-sm font-medium text-slate-700">Senha Atual*</label>
+              <label className="text-sm font-medium text-foreground">Senha Atual*</label>
               <div className="relative mt-1">
-                <input type={showCurrent ? 'text' : 'password'} value={currentPw} onChange={e => setCurrentPw(e.target.value)} className="w-full border border-slate-200 rounded-md px-3 py-2 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="••••••••" />
-                <button type="button" onClick={() => setShowCurrent(!showCurrent)} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">
+                <input type={showCurrent ? 'text' : 'password'} value={currentPw} onChange={e => setCurrentPw(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="••••••••" />
+                <button type="button" onClick={() => setShowCurrent(!showCurrent)} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">
                   {showCurrent ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
               </div>
             </div>
             <div className="relative">
-              <label className="text-sm font-medium text-slate-700">Nova Senha*</label>
+              <label className="text-sm font-medium text-foreground">Nova Senha*</label>
               <div className="relative mt-1">
-                <input type={showNew ? 'text' : 'password'} value={newPw} onChange={e => setNewPw(e.target.value)} className="w-full border border-slate-200 rounded-md px-3 py-2 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="••••••••" />
-                <button type="button" onClick={() => setShowNew(!showNew)} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">
+                <input type={showNew ? 'text' : 'password'} value={newPw} onChange={e => setNewPw(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="••••••••" />
+                <button type="button" onClick={() => setShowNew(!showNew)} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">
                   {showNew ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
               </div>
               {newPw && (
                 <div className="mt-1.5">
-                  <div className="h-1 rounded-full bg-slate-100 overflow-hidden">
+                  <div className="h-1 rounded-full bg-muted overflow-hidden">
                     <div className={`h-full rounded-full ${strength.color.split(' ')[1] || ''} ${strength.width} transition-all duration-300`} />
                   </div>
                   <span className={`text-xs mt-1 ${strength.color.split(' ')[0] || ''}`}>{strength.label}</span>
@@ -381,10 +381,10 @@ function MeuPerfilSection() {
               )}
             </div>
             <div className="relative">
-              <label className="text-sm font-medium text-slate-700">Confirmar Nova Senha*</label>
+              <label className="text-sm font-medium text-foreground">Confirmar Nova Senha*</label>
               <div className="relative mt-1">
-                <input type={showConfirm ? 'text' : 'password'} value={confirmPw} onChange={e => { setConfirmPw(e.target.value); setPwMismatch(false); }} onBlur={() => { if (confirmPw && confirmPw !== newPw) setPwMismatch(true); }} className={`w-full border rounded-md px-3 py-2 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${pwMismatch ? 'border-red-300' : 'border-slate-200'}`} placeholder="••••••••" />
-                <button type="button" onClick={() => setShowConfirm(!showConfirm)} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">
+                <input type={showConfirm ? 'text' : 'password'} value={confirmPw} onChange={e => { setConfirmPw(e.target.value); setPwMismatch(false); }} onBlur={() => { if (confirmPw && confirmPw !== newPw) setPwMismatch(true); }} className={`w-full border rounded-md px-3 py-2 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${pwMismatch ? 'border-red-300' : 'border-border'}`} placeholder="••••••••" />
+                <button type="button" onClick={() => setShowConfirm(!showConfirm)} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">
                   {showConfirm ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
               </div>
@@ -395,13 +395,13 @@ function MeuPerfilSection() {
       </div>
 
       {/* Footer */}
-      <div className="border-t border-slate-200 px-6 py-4 bg-slate-50 flex items-center justify-between">
+      <div className="border-t border-border px-6 py-4 bg-muted flex items-center justify-between">
         <div className="flex items-center gap-1">
-          <Info className="w-4 h-4 text-slate-300" />
-          <span className="text-xs text-slate-400">Campos marcados com * são obrigatórios</span>
+          <Info className="w-4 h-4 text-muted-foreground" />
+          <span className="text-xs text-muted-foreground">Campos marcados com * são obrigatórios</span>
         </div>
         <div className="flex gap-3">
-          <button onClick={handleDiscard} className="border border-slate-200 text-slate-600 rounded-md px-4 py-2 text-sm hover:bg-slate-100">Descartar</button>
+          <button onClick={handleDiscard} className="border border-border text-muted-foreground rounded-md px-4 py-2 text-sm hover:bg-muted">Descartar</button>
           <button onClick={handleSave} className="bg-blue-600 text-white rounded-md px-5 py-2 text-sm font-medium hover:bg-blue-700">Salvar Alterações</button>
         </div>
       </div>
@@ -440,30 +440,30 @@ function EscritorioSection() {
   };
 
   return (
-    <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
-      <div className="px-6 py-5 border-b border-slate-200">
+    <div className="bg-card border border-border rounded-lg shadow-sm overflow-hidden">
+      <div className="px-6 py-5 border-b border-border">
         <div className="flex items-center gap-2">
-          <Building2 className="w-5 h-5 text-slate-400" />
-          <h2 className="text-lg font-semibold text-slate-900">Escritório</h2>
+          <Building2 className="w-5 h-5 text-muted-foreground" />
+          <h2 className="text-lg font-semibold text-foreground">Escritório</h2>
         </div>
-        <p className="text-sm text-slate-400 mt-0.5">Dados e configurações do escritório</p>
+        <p className="text-sm text-muted-foreground mt-0.5">Dados e configurações do escritório</p>
       </div>
 
       <div className="px-6 py-6">
         {/* Logo upload */}
-        <div className="flex items-center gap-6 mb-8 pb-6 border-b border-slate-100">
-          <div className="w-20 h-20 rounded-xl border-2 border-slate-200 bg-slate-50 flex items-center justify-center relative cursor-pointer hover:border-blue-300 transition-colors group">
-            <Building2 className="w-8 h-8 text-slate-300" />
+        <div className="flex items-center gap-6 mb-8 pb-6 border-b border-border">
+          <div className="w-20 h-20 rounded-xl border-2 border-border bg-muted flex items-center justify-center relative cursor-pointer hover:border-blue-300 transition-colors group">
+            <Building2 className="w-8 h-8 text-muted-foreground" />
             <div className="absolute inset-0 rounded-xl bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
               <Camera className="w-6 h-6 text-white" />
             </div>
           </div>
           <div>
-            <p className="text-sm font-medium text-slate-900">Logo do Escritório</p>
-            <p className="text-xs text-slate-400">PNG, JPG, SVG até 5MB</p>
-            <p className="text-xs text-slate-300 mt-0.5">Recomendado: 200x200px</p>
+            <p className="text-sm font-medium text-foreground">Logo do Escritório</p>
+            <p className="text-xs text-muted-foreground">PNG, JPG, SVG até 5MB</p>
+            <p className="text-xs text-muted-foreground mt-0.5">Recomendado: 200x200px</p>
             <div className="flex gap-2 mt-3">
-              <button onClick={() => showToast('Upload disponível após integração', 'info')} className="border border-slate-200 rounded-md px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50 flex items-center gap-1.5">
+              <button onClick={() => showToast('Upload disponível após integração', 'info')} className="border border-border rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-muted flex items-center gap-1.5">
                 <Upload className="w-4 h-4" /> Alterar logo
               </button>
               <button className="text-xs text-red-500 hover:text-red-600">Remover</button>
@@ -474,63 +474,63 @@ function EscritorioSection() {
         {/* Form */}
         <div className="grid grid-cols-2 gap-5">
           <div className="col-span-2">
-            <label className="text-sm font-medium text-slate-700">Nome do Escritório*</label>
-            <input value={office.name} onChange={e => setOffice({ ...office, name: e.target.value })} className="mt-1 w-full border border-slate-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <label className="text-sm font-medium text-foreground">Nome do Escritório*</label>
+            <input value={office.name} onChange={e => setOffice({ ...office, name: e.target.value })} className="mt-1 w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
           </div>
           <div>
-            <label className="text-sm font-medium text-slate-700">CNPJ*</label>
-            <input value={office.cnpj} onChange={e => setOffice({ ...office, cnpj: e.target.value })} className="mt-1 w-full border border-slate-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="00.000.000/0000-00" />
+            <label className="text-sm font-medium text-foreground">CNPJ*</label>
+            <input value={office.cnpj} onChange={e => setOffice({ ...office, cnpj: e.target.value })} className="mt-1 w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="00.000.000/0000-00" />
           </div>
           <div>
-            <label className="text-sm font-medium text-slate-700">Email*</label>
-            <input value={office.email} onChange={e => setOffice({ ...office, email: e.target.value })} type="email" className="mt-1 w-full border border-slate-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <label className="text-sm font-medium text-foreground">Email*</label>
+            <input value={office.email} onChange={e => setOffice({ ...office, email: e.target.value })} type="email" className="mt-1 w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
           </div>
           <div>
-            <label className="text-sm font-medium text-slate-700">Telefone</label>
-            <input value={office.phone} onChange={e => setOffice({ ...office, phone: e.target.value })} className="mt-1 w-full border border-slate-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="(00) 0000-0000" />
+            <label className="text-sm font-medium text-foreground">Telefone</label>
+            <input value={office.phone} onChange={e => setOffice({ ...office, phone: e.target.value })} className="mt-1 w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="(00) 0000-0000" />
           </div>
           <div>
-            <label className="text-sm font-medium text-slate-700">Site</label>
-            <input value={office.website} onChange={e => setOffice({ ...office, website: e.target.value })} className="mt-1 w-full border border-slate-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="www.seusite.com.br" />
+            <label className="text-sm font-medium text-foreground">Site</label>
+            <input value={office.website} onChange={e => setOffice({ ...office, website: e.target.value })} className="mt-1 w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="www.seusite.com.br" />
           </div>
           <div className="col-span-2">
-            <label className="text-sm font-medium text-slate-700">Endereço*</label>
-            <input value={office.address} onChange={e => setOffice({ ...office, address: e.target.value })} className="mt-1 w-full border border-slate-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Rua, número, complemento" />
+            <label className="text-sm font-medium text-foreground">Endereço*</label>
+            <input value={office.address} onChange={e => setOffice({ ...office, address: e.target.value })} className="mt-1 w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Rua, número, complemento" />
           </div>
           <div>
-            <label className="text-sm font-medium text-slate-700">Cidade*</label>
-            <input value={office.city} onChange={e => setOffice({ ...office, city: e.target.value })} className="mt-1 w-full border border-slate-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <label className="text-sm font-medium text-foreground">Cidade*</label>
+            <input value={office.city} onChange={e => setOffice({ ...office, city: e.target.value })} className="mt-1 w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
           </div>
           <div>
-            <label className="text-sm font-medium text-slate-700">Estado*</label>
-            <select value={office.state} onChange={e => setOffice({ ...office, state: e.target.value })} className="mt-1 w-full border border-slate-200 rounded-md px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <label className="text-sm font-medium text-foreground">Estado*</label>
+            <select value={office.state} onChange={e => setOffice({ ...office, state: e.target.value })} className="mt-1 w-full border border-border rounded-md px-3 py-2 text-sm bg-card focus:outline-none focus:ring-2 focus:ring-blue-500">
               {BRAZILIAN_STATES.map(s => <option key={s} value={s}>{s}</option>)}
             </select>
           </div>
           <div>
-            <label className="text-sm font-medium text-slate-700">CEP</label>
-            <input value={office.cep} onChange={e => setOffice({ ...office, cep: e.target.value })} className="mt-1 w-full border border-slate-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="00000-000" />
+            <label className="text-sm font-medium text-foreground">CEP</label>
+            <input value={office.cep} onChange={e => setOffice({ ...office, cep: e.target.value })} className="mt-1 w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="00000-000" />
           </div>
         </div>
 
         {/* Areas */}
-        <div className="mt-6 pt-6 border-t border-slate-100">
-          <h3 className="text-sm font-semibold text-slate-900 mb-1">Áreas de Atuação do Escritório</h3>
-          <p className="text-sm text-slate-400 mb-4">Ative as áreas em que o escritório opera</p>
+        <div className="mt-6 pt-6 border-t border-border">
+          <h3 className="text-sm font-semibold text-foreground mb-1">Áreas de Atuação do Escritório</h3>
+          <p className="text-sm text-muted-foreground mb-4">Ative as áreas em que o escritório opera</p>
           <div className="grid grid-cols-2 gap-3">
             {(['trabalhista', 'civil', 'criminal', 'previdenciario'] as const).map(area => {
               const active = office.active_areas.includes(area);
               return (
-                <div key={area} onClick={() => toggleArea(area)} className={`border rounded-lg p-4 flex items-center justify-between cursor-pointer transition-colors ${active ? 'border-blue-200 bg-blue-50/30' : 'border-slate-200'}`}>
+                <div key={area} onClick={() => toggleArea(area)} className={`border rounded-lg p-4 flex items-center justify-between cursor-pointer transition-colors ${active ? 'border-blue-200 bg-blue-50/30' : 'border-border'}`}>
                   <div className="flex items-center gap-3">
-                    <div className={`w-3 h-3 rounded-full ${active ? 'bg-blue-500' : 'bg-slate-300'}`} />
+                    <div className={`w-3 h-3 rounded-full ${active ? 'bg-blue-500' : 'bg-muted-foreground'}`} />
                     <div>
-                      <p className="text-sm font-medium text-slate-900">{areaLabels[area]}</p>
-                      <p className="text-xs text-slate-400">{areaDescriptions[area]}</p>
+                      <p className="text-sm font-medium text-foreground">{areaLabels[area]}</p>
+                      <p className="text-xs text-muted-foreground">{areaDescriptions[area]}</p>
                     </div>
                   </div>
-                  <div className={`w-11 h-6 rounded-full relative transition-colors duration-200 ${active ? 'bg-blue-600' : 'bg-slate-200'}`}>
-                    <div className={`w-5 h-5 rounded-full bg-white shadow absolute top-0.5 transition-transform duration-200 ${active ? 'translate-x-5' : 'translate-x-0.5'}`} />
+                  <div className={`w-11 h-6 rounded-full relative transition-colors duration-200 ${active ? 'bg-blue-600' : 'bg-muted'}`}>
+                    <div className={`w-5 h-5 rounded-full bg-card shadow absolute top-0.5 transition-transform duration-200 ${active ? 'translate-x-5' : 'translate-x-0.5'}`} />
                   </div>
                 </div>
               );
@@ -539,13 +539,13 @@ function EscritorioSection() {
         </div>
       </div>
 
-      <div className="border-t border-slate-200 px-6 py-4 bg-slate-50 flex items-center justify-between">
+      <div className="border-t border-border px-6 py-4 bg-muted flex items-center justify-between">
         <div className="flex items-center gap-1">
-          <Info className="w-4 h-4 text-slate-300" />
-          <span className="text-xs text-slate-400">Campos marcados com * são obrigatórios</span>
+          <Info className="w-4 h-4 text-muted-foreground" />
+          <span className="text-xs text-muted-foreground">Campos marcados com * são obrigatórios</span>
         </div>
         <div className="flex gap-3">
-          <button onClick={() => setOffice(loadOffice())} className="border border-slate-200 text-slate-600 rounded-md px-4 py-2 text-sm hover:bg-slate-100">Descartar</button>
+          <button onClick={() => setOffice(loadOffice())} className="border border-border text-muted-foreground rounded-md px-4 py-2 text-sm hover:bg-muted">Descartar</button>
           <button onClick={handleSave} className="bg-blue-600 text-white rounded-md px-5 py-2 text-sm font-medium hover:bg-blue-700">Salvar Alterações</button>
         </div>
       </div>
@@ -605,11 +605,11 @@ function IntegracoesSection() {
   };
 
   const statusDot: Record<string, string> = {
-    conectado: 'bg-green-500', desconectado: 'bg-slate-300', erro: 'bg-red-500', pendente: 'bg-amber-400 animate-pulse'
+    conectado: 'bg-green-500', desconectado: 'bg-muted-foreground', erro: 'bg-red-500', pendente: 'bg-amber-400 animate-pulse'
   };
   const statusText: Record<string, { label: string; cls: string }> = {
     conectado: { label: 'Conectado', cls: 'text-green-600' },
-    desconectado: { label: 'Desconectado', cls: 'text-slate-400' },
+    desconectado: { label: 'Desconectado', cls: 'text-muted-foreground' },
     erro: { label: 'Erro', cls: 'text-red-600' },
     pendente: { label: 'Pendente', cls: 'text-amber-600' },
   };
@@ -617,33 +617,33 @@ function IntegracoesSection() {
   const isSecretField = (key: string) => /key|secret|token|password/i.test(key);
 
   return (
-    <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
-      <div className="px-6 py-5 border-b border-slate-200">
+    <div className="bg-card border border-border rounded-lg shadow-sm overflow-hidden">
+      <div className="px-6 py-5 border-b border-border">
         <div className="flex items-center gap-2">
-          <Plug className="w-5 h-5 text-slate-400" />
-          <h2 className="text-lg font-semibold text-slate-900">Integrações</h2>
+          <Plug className="w-5 h-5 text-muted-foreground" />
+          <h2 className="text-lg font-semibold text-foreground">Integrações</h2>
         </div>
-        <p className="text-sm text-slate-400 mt-0.5">Conecte o WebHubPro com ferramentas externas</p>
+        <p className="text-sm text-muted-foreground mt-0.5">Conecte o WebHubPro com ferramentas externas</p>
       </div>
 
       <div className="px-6 py-6">
         <div className="grid grid-cols-2 gap-4">
           {integracoes.map(integ => {
             const Icon = integrationIcons[integ.name] || Plug;
-            const iconColor = integrationIconColors[integ.name] || 'text-slate-500';
+            const iconColor = integrationIconColors[integ.name] || 'text-muted-foreground';
             const st = statusText[integ.status];
             const dt = integ.last_sync ? formatDateTime(integ.last_sync) : null;
 
             return (
-              <div key={integ.id} className="bg-white border border-slate-200 rounded-xl p-5 hover:border-slate-300 hover:shadow-sm transition-all duration-150">
+              <div key={integ.id} className="bg-card border border-border rounded-xl p-5 hover:border-border hover:shadow-sm transition-all duration-150">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg border border-slate-200 bg-slate-50 flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-lg border border-border bg-muted flex items-center justify-center">
                       <Icon className={`w-5 h-5 ${iconColor}`} />
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-slate-900">{integ.name}</p>
-                      <p className="text-xs text-slate-400 mt-0.5 leading-relaxed">{integ.description}</p>
+                      <p className="text-sm font-semibold text-foreground">{integ.name}</p>
+                      <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">{integ.description}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-1.5">
@@ -654,8 +654,8 @@ function IntegracoesSection() {
 
                 {integ.status === 'conectado' && dt && (
                   <div className="flex items-center gap-1 mb-3">
-                    <RefreshCw className="w-3 h-3 text-slate-300" />
-                    <span className="text-xs text-slate-400">Sincronizado: {dt.short}</span>
+                    <RefreshCw className="w-3 h-3 text-muted-foreground" />
+                    <span className="text-xs text-muted-foreground">Sincronizado: {dt.short}</span>
                   </div>
                 )}
 
@@ -667,10 +667,10 @@ function IntegracoesSection() {
                 )}
 
                 <div className="flex items-center gap-2">
-                  <div onClick={() => toggleStatus(integ.id)} className={`w-11 h-6 rounded-full relative cursor-pointer transition-colors duration-200 ${integ.status === 'conectado' ? 'bg-green-500' : 'bg-slate-200'}`}>
-                    <div className={`w-5 h-5 rounded-full bg-white shadow absolute top-0.5 transition-transform duration-200 ${integ.status === 'conectado' ? 'translate-x-5' : 'translate-x-0.5'}`} />
+                  <div onClick={() => toggleStatus(integ.id)} className={`w-11 h-6 rounded-full relative cursor-pointer transition-colors duration-200 ${integ.status === 'conectado' ? 'bg-green-500' : 'bg-muted'}`}>
+                    <div className={`w-5 h-5 rounded-full bg-card shadow absolute top-0.5 transition-transform duration-200 ${integ.status === 'conectado' ? 'translate-x-5' : 'translate-x-0.5'}`} />
                   </div>
-                  <button onClick={() => openConfig(integ)} className="border border-slate-200 text-slate-600 hover:bg-slate-50 rounded-md px-3 py-1.5 text-xs flex items-center gap-1.5">
+                  <button onClick={() => openConfig(integ)} className="border border-border text-muted-foreground hover:bg-muted rounded-md px-3 py-1.5 text-xs flex items-center gap-1.5">
                     <Settings className="w-3.5 h-3.5" /> Configurar
                   </button>
                   {integ.status === 'conectado' && (
@@ -689,27 +689,27 @@ function IntegracoesSection() {
       {configModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center" onClick={() => setConfigModal(null)}>
           <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" />
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-md mx-4 relative z-10" onClick={e => e.stopPropagation()}>
-            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200">
+          <div className="bg-card rounded-xl shadow-xl w-full max-w-md mx-4 relative z-10" onClick={e => e.stopPropagation()}>
+            <div className="flex items-center justify-between px-6 py-4 border-b border-border">
               <div className="flex items-center gap-2">
-                {(() => { const I = integrationIcons[configModal.name] || Plug; return <I className={`w-5 h-5 ${integrationIconColors[configModal.name] || 'text-slate-500'}`} />; })()}
-                <h3 className="text-lg font-semibold text-slate-900">{configModal.name}</h3>
+                {(() => { const I = integrationIcons[configModal.name] || Plug; return <I className={`w-5 h-5 ${integrationIconColors[configModal.name] || 'text-muted-foreground'}`} />; })()}
+                <h3 className="text-lg font-semibold text-foreground">{configModal.name}</h3>
               </div>
-              <button onClick={() => setConfigModal(null)} className="text-slate-400 hover:text-slate-600"><X className="w-5 h-5" /></button>
+              <button onClick={() => setConfigModal(null)} className="text-muted-foreground hover:text-muted-foreground"><X className="w-5 h-5" /></button>
             </div>
             <div className="px-6 py-5 space-y-4">
               {Object.keys(configValues).map(key => (
                 <div key={key}>
-                  <label className="text-sm font-medium text-slate-700 capitalize">{key.replace(/_/g, ' ')}</label>
+                  <label className="text-sm font-medium text-foreground capitalize">{key.replace(/_/g, ' ')}</label>
                   <div className="relative mt-1">
                     <input
                       type={isSecretField(key) && !showSecrets[key] ? 'password' : 'text'}
                       value={configValues[key]}
                       onChange={e => setConfigValues({ ...configValues, [key]: e.target.value })}
-                      className="w-full border border-slate-200 rounded-md px-3 py-2 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full border border-border rounded-md px-3 py-2 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                     {isSecretField(key) && (
-                      <button type="button" onClick={() => setShowSecrets({ ...showSecrets, [key]: !showSecrets[key] })} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">
+                      <button type="button" onClick={() => setShowSecrets({ ...showSecrets, [key]: !showSecrets[key] })} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">
                         {showSecrets[key] ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                       </button>
                     )}
@@ -721,8 +721,8 @@ function IntegracoesSection() {
                 <span className="text-xs text-amber-700">Nunca compartilhe suas chaves de API.</span>
               </div>
             </div>
-            <div className="border-t border-slate-200 px-6 py-4 flex justify-end gap-3">
-              <button onClick={() => setConfigModal(null)} className="text-slate-600 text-sm px-4 py-2 hover:bg-slate-50 rounded-md">Cancelar</button>
+            <div className="border-t border-border px-6 py-4 flex justify-end gap-3">
+              <button onClick={() => setConfigModal(null)} className="text-muted-foreground text-sm px-4 py-2 hover:bg-muted rounded-md">Cancelar</button>
               <button onClick={saveConfig} className="bg-blue-600 text-white rounded-md px-5 py-2 text-sm font-medium hover:bg-blue-700">Salvar Configuração</button>
             </div>
           </div>
@@ -777,35 +777,35 @@ function LogsSection() {
 
   const clearFilters = () => { setSearch(''); setFilterUser(''); setFilterAction(''); setFilterStatus(''); setFilterPeriod(''); setPage(0); };
 
-  const getUserColor = (uid: string) => MOCK_USERS.find(u => u.id === uid)?.avatar_color || 'bg-slate-200';
+  const getUserColor = (uid: string) => MOCK_USERS.find(u => u.id === uid)?.avatar_color || 'bg-muted';
   const getUserName = (uid: string) => MOCK_USERS.find(u => u.id === uid)?.name || '';
 
   return (
-    <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
-      <div className="px-6 py-5 border-b border-slate-200 flex items-center justify-between">
+    <div className="bg-card border border-border rounded-lg shadow-sm overflow-hidden">
+      <div className="px-6 py-5 border-b border-border flex items-center justify-between">
         <div>
           <div className="flex items-center gap-2">
-            <FileText className="w-5 h-5 text-slate-400" />
-            <h2 className="text-lg font-semibold text-slate-900">Logs e Auditoria</h2>
+            <FileText className="w-5 h-5 text-muted-foreground" />
+            <h2 className="text-lg font-semibold text-foreground">Logs e Auditoria</h2>
           </div>
-          <p className="text-sm text-slate-400 mt-0.5">Histórico de ações realizadas no sistema</p>
+          <p className="text-sm text-muted-foreground mt-0.5">Histórico de ações realizadas no sistema</p>
         </div>
-        <button onClick={() => showToast('Exportando logs...', 'info')} className="border border-slate-200 text-slate-600 hover:bg-slate-50 rounded-md px-3 py-2 text-sm flex items-center gap-1.5">
+        <button onClick={() => showToast('Exportando logs...', 'info')} className="border border-border text-muted-foreground hover:bg-muted rounded-md px-3 py-2 text-sm flex items-center gap-1.5">
           <Download className="w-4 h-4" /> Exportar CSV
         </button>
       </div>
 
       {/* Filter bar */}
-      <div className="bg-slate-50 border-b border-slate-200 p-3 flex items-center gap-3 flex-wrap">
+      <div className="bg-muted border-b border-border p-3 flex items-center gap-3 flex-wrap">
         <div className="flex-1 min-w-48 relative">
-          <input value={search} onChange={e => { setSearch(e.target.value); setPage(0); }} className="w-full border border-slate-200 rounded-md pl-9 pr-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Buscar por usuário, ação ou entidade..." />
-          <FileText className="w-4 h-4 text-slate-300 absolute left-3 top-1/2 -translate-y-1/2" />
+          <input value={search} onChange={e => { setSearch(e.target.value); setPage(0); }} className="w-full border border-border rounded-md pl-9 pr-3 py-2 text-sm bg-card focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Buscar por usuário, ação ou entidade..." />
+          <FileText className="w-4 h-4 text-muted-foreground absolute left-3 top-1/2 -translate-y-1/2" />
         </div>
-        <select value={filterUser} onChange={e => { setFilterUser(e.target.value); setPage(0); }} className="border border-slate-200 rounded-md px-3 py-2 text-sm bg-white">
+        <select value={filterUser} onChange={e => { setFilterUser(e.target.value); setPage(0); }} className="border border-border rounded-md px-3 py-2 text-sm bg-card">
           <option value="">Todos os usuários</option>
           {MOCK_USERS.map(u => <option key={u.id} value={u.id}>{u.name}</option>)}
         </select>
-        <select value={filterAction} onChange={e => { setFilterAction(e.target.value); setPage(0); }} className="border border-slate-200 rounded-md px-3 py-2 text-sm bg-white">
+        <select value={filterAction} onChange={e => { setFilterAction(e.target.value); setPage(0); }} className="border border-border rounded-md px-3 py-2 text-sm bg-card">
           <option value="">Todas as ações</option>
           <option value="Login">Login</option>
           <option value="Criou">Criou</option>
@@ -815,12 +815,12 @@ function LogsSection() {
           <option value="Acesso negado">Acesso negado</option>
           <option value="Alterou configurações">Alterou configurações</option>
         </select>
-        <select value={filterStatus} onChange={e => { setFilterStatus(e.target.value); setPage(0); }} className="border border-slate-200 rounded-md px-3 py-2 text-sm bg-white">
+        <select value={filterStatus} onChange={e => { setFilterStatus(e.target.value); setPage(0); }} className="border border-border rounded-md px-3 py-2 text-sm bg-card">
           <option value="">Todos os status</option>
           <option value="sucesso">Sucesso</option>
           <option value="erro">Erro</option>
         </select>
-        <select value={filterPeriod} onChange={e => { setFilterPeriod(e.target.value); setPage(0); }} className="border border-slate-200 rounded-md px-3 py-2 text-sm bg-white">
+        <select value={filterPeriod} onChange={e => { setFilterPeriod(e.target.value); setPage(0); }} className="border border-border rounded-md px-3 py-2 text-sm bg-card">
           <option value="">Tudo</option>
           <option value="hoje">Hoje</option>
           <option value="semana">Esta semana</option>
@@ -828,7 +828,7 @@ function LogsSection() {
           <option value="3meses">Últimos 3 meses</option>
         </select>
         {hasFilters && (
-          <button onClick={clearFilters} className="text-xs text-slate-500 hover:text-slate-700 flex items-center gap-1 ml-auto">
+          <button onClick={clearFilters} className="text-xs text-muted-foreground hover:text-foreground flex items-center gap-1 ml-auto">
             <X className="w-3 h-3" /> Limpar
           </button>
         )}
@@ -837,22 +837,22 @@ function LogsSection() {
       {/* Table */}
       {filtered.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-16">
-          <FileText className="w-12 h-12 text-slate-200 mb-4" />
-          <h3 className="text-base font-semibold text-slate-700 mb-1">Nenhum log encontrado</h3>
-          <p className="text-sm text-slate-400">Tente ajustar os filtros de busca</p>
+          <FileText className="w-12 h-12 text-muted mb-4" />
+          <h3 className="text-base font-semibold text-foreground mb-1">Nenhum log encontrado</h3>
+          <p className="text-sm text-muted-foreground">Tente ajustar os filtros de busca</p>
         </div>
       ) : (
         <>
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="bg-slate-50 border-b border-slate-200">
-                  <th className="text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3 text-left">Data/Hora</th>
-                  <th className="text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3 text-left">Usuário</th>
-                  <th className="text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3 text-left">Ação</th>
-                  <th className="text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3 text-left">Entidade</th>
-                  <th className="text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3 text-left">IP</th>
-                  <th className="text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3 text-left">Status</th>
+                <tr className="bg-muted border-b border-border">
+                  <th className="text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 text-left">Data/Hora</th>
+                  <th className="text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 text-left">Usuário</th>
+                  <th className="text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 text-left">Ação</th>
+                  <th className="text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 text-left">Entidade</th>
+                  <th className="text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 text-left">IP</th>
+                  <th className="text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 text-left">Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -861,26 +861,26 @@ function LogsSection() {
                   const isExpanded = expandedRow === log.id;
                   return (
                     <React.Fragment key={log.id}>
-                      <tr className="hover:bg-slate-50 transition-colors border-b border-slate-100 cursor-pointer" onClick={() => setExpandedRow(isExpanded ? null : log.id)}>
+                      <tr className="hover:bg-muted transition-colors border-b border-border cursor-pointer" onClick={() => setExpandedRow(isExpanded ? null : log.id)}>
                         <td className="px-4 py-3.5">
-                          <p className="text-xs text-slate-700 font-medium">{dt.date}</p>
-                          <p className="text-xs text-slate-400 mt-0.5">{dt.time}</p>
+                          <p className="text-xs text-foreground font-medium">{dt.date}</p>
+                          <p className="text-xs text-muted-foreground mt-0.5">{dt.time}</p>
                         </td>
                         <td className="px-4 py-3.5">
                           <div className="flex items-center gap-2">
                             <UserAvatar name={log.user_name} color={getUserColor(log.user_id)} size="sm" />
-                            <span className="text-sm text-slate-700">{log.user_name}</span>
+                            <span className="text-sm text-foreground">{log.user_name}</span>
                           </div>
                         </td>
                         <td className="px-4 py-3.5">
-                          <p className="text-sm text-slate-900">{log.action}</p>
-                          <p className="text-xs text-slate-400 mt-0.5 truncate max-w-36">{log.entity_name}</p>
+                          <p className="text-sm text-foreground">{log.action}</p>
+                          <p className="text-xs text-muted-foreground mt-0.5 truncate max-w-36">{log.entity_name}</p>
                         </td>
                         <td className="px-4 py-3.5">
-                          <span className={`${entityBadgeColors[log.entity] || 'bg-slate-100 text-slate-600'} text-xs font-medium px-2 py-0.5 rounded-full`}>{log.entity}</span>
+                          <span className={`${entityBadgeColors[log.entity] || 'bg-muted text-muted-foreground'} text-xs font-medium px-2 py-0.5 rounded-full`}>{log.entity}</span>
                         </td>
                         <td className="px-4 py-3.5">
-                          <span className="font-mono text-xs text-slate-500">{log.ip}</span>
+                          <span className="font-mono text-xs text-muted-foreground">{log.ip}</span>
                         </td>
                         <td className="px-4 py-3.5">
                           <span className={`${log.status === 'sucesso' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'} text-xs font-medium px-2 py-0.5 rounded-full`}>
@@ -890,9 +890,9 @@ function LogsSection() {
                       </tr>
                       {isExpanded && (
                         <tr>
-                          <td colSpan={6} className="bg-slate-50 px-4 py-3 border-b border-slate-100">
-                            <span className="text-xs text-slate-400 font-medium">Detalhes: </span>
-                            <span className="text-sm text-slate-700">{log.details}</span>
+                          <td colSpan={6} className="bg-muted px-4 py-3 border-b border-border">
+                            <span className="text-xs text-muted-foreground font-medium">Detalhes: </span>
+                            <span className="text-sm text-foreground">{log.details}</span>
                           </td>
                         </tr>
                       )}
@@ -902,14 +902,14 @@ function LogsSection() {
               </tbody>
             </table>
           </div>
-          <div className="border-t border-slate-200 px-4 py-3 flex items-center justify-between">
-            <span className="text-sm text-slate-500">Mostrando {page * 10 + 1}–{Math.min((page + 1) * 10, filtered.length)} de {filtered.length} registros</span>
+          <div className="border-t border-border px-4 py-3 flex items-center justify-between">
+            <span className="text-sm text-muted-foreground">Mostrando {page * 10 + 1}–{Math.min((page + 1) * 10, filtered.length)} de {filtered.length} registros</span>
             <div className="flex items-center gap-2">
-              <button disabled={page === 0} onClick={() => setPage(p => p - 1)} className="w-8 h-8 rounded-md border border-slate-200 flex items-center justify-center text-slate-500 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed">
+              <button disabled={page === 0} onClick={() => setPage(p => p - 1)} className="w-8 h-8 rounded-md border border-border flex items-center justify-center text-muted-foreground hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed">
                 <ChevronLeft className="w-4 h-4" />
               </button>
-              <span className="text-sm text-slate-600">{page + 1} / {totalPages}</span>
-              <button disabled={page >= totalPages - 1} onClick={() => setPage(p => p + 1)} className="w-8 h-8 rounded-md border border-slate-200 flex items-center justify-center text-slate-500 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed">
+              <span className="text-sm text-muted-foreground">{page + 1} / {totalPages}</span>
+              <button disabled={page >= totalPages - 1} onClick={() => setPage(p => p + 1)} className="w-8 h-8 rounded-md border border-border flex items-center justify-center text-muted-foreground hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed">
                 <ChevronRight className="w-4 h-4" />
               </button>
             </div>
@@ -988,49 +988,49 @@ function SegurancaSection() {
 
   const deviceIcon = (device: string) => {
     const d = device.toLowerCase();
-    if (d.includes('iphone') || d.includes('phone')) return <Smartphone className="w-4 h-4 text-slate-300 mr-1" />;
-    if (d.includes('ipad') || d.includes('tablet')) return <Tablet className="w-4 h-4 text-slate-300 mr-1" />;
-    return <Monitor className="w-4 h-4 text-slate-300 mr-1" />;
+    if (d.includes('iphone') || d.includes('phone')) return <Smartphone className="w-4 h-4 text-muted-foreground mr-1" />;
+    if (d.includes('ipad') || d.includes('tablet')) return <Tablet className="w-4 h-4 text-muted-foreground mr-1" />;
+    return <Monitor className="w-4 h-4 text-muted-foreground mr-1" />;
   };
 
   return (
-    <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
-      <div className="px-6 py-5 border-b border-slate-200">
+    <div className="bg-card border border-border rounded-lg shadow-sm overflow-hidden">
+      <div className="px-6 py-5 border-b border-border">
         <div className="flex items-center gap-2">
-          <Shield className="w-5 h-5 text-slate-400" />
-          <h2 className="text-lg font-semibold text-slate-900">Segurança</h2>
+          <Shield className="w-5 h-5 text-muted-foreground" />
+          <h2 className="text-lg font-semibold text-foreground">Segurança</h2>
         </div>
-        <p className="text-sm text-slate-400 mt-0.5">Configure autenticação e políticas de acesso</p>
+        <p className="text-sm text-muted-foreground mt-0.5">Configure autenticação e políticas de acesso</p>
       </div>
 
       <div className="px-6 py-6 space-y-8">
         {/* 2FA */}
-        <div className="flex items-start justify-between pb-6 border-b border-slate-100">
+        <div className="flex items-start justify-between pb-6 border-b border-border">
           <div>
-            <h3 className="text-sm font-semibold text-slate-900">Autenticação de Dois Fatores (2FA)</h3>
-            <p className="text-sm text-slate-400 mt-1 max-w-sm">Adicione uma camada extra de segurança ao login. Recomendado para todos os usuários.</p>
+            <h3 className="text-sm font-semibold text-foreground">Autenticação de Dois Fatores (2FA)</h3>
+            <p className="text-sm text-muted-foreground mt-1 max-w-sm">Adicione uma camada extra de segurança ao login. Recomendado para todos os usuários.</p>
             {config.two_factor_enabled && (
               <div className="mt-3 flex items-center gap-2">
                 <CheckCircle className="w-4 h-4 text-green-500" />
                 <span className="text-xs text-green-600">2FA ativado via Google Authenticator</span>
-                <span className="text-xs text-slate-400">Configurado em 10/01/2026</span>
+                <span className="text-xs text-muted-foreground">Configurado em 10/01/2026</span>
               </div>
             )}
           </div>
           <div className="flex items-center gap-2">
-            <div onClick={toggle2FA} className={`w-14 h-7 rounded-full relative cursor-pointer transition-colors duration-200 ${config.two_factor_enabled ? 'bg-green-500' : 'bg-slate-200'}`}>
-              <div className={`w-6 h-6 rounded-full bg-white shadow absolute top-0.5 transition-transform duration-200 ${config.two_factor_enabled ? 'translate-x-7' : 'translate-x-0.5'}`} />
+            <div onClick={toggle2FA} className={`w-14 h-7 rounded-full relative cursor-pointer transition-colors duration-200 ${config.two_factor_enabled ? 'bg-green-500' : 'bg-muted'}`}>
+              <div className={`w-6 h-6 rounded-full bg-card shadow absolute top-0.5 transition-transform duration-200 ${config.two_factor_enabled ? 'translate-x-7' : 'translate-x-0.5'}`} />
             </div>
-            <span className="text-xs text-slate-500">{config.two_factor_enabled ? 'Ativo' : 'Inativo'}</span>
+            <span className="text-xs text-muted-foreground">{config.two_factor_enabled ? 'Ativo' : 'Inativo'}</span>
           </div>
         </div>
 
         {/* Session Timeout */}
-        <div className="pb-6 border-b border-slate-100">
-          <h3 className="text-sm font-semibold text-slate-900">Tempo de expiração da sessão</h3>
-          <p className="text-sm text-slate-400 mt-0.5 mb-4">Usuários serão desconectados após inatividade</p>
+        <div className="pb-6 border-b border-border">
+          <h3 className="text-sm font-semibold text-foreground">Tempo de expiração da sessão</h3>
+          <p className="text-sm text-muted-foreground mt-0.5 mb-4">Usuários serão desconectados após inatividade</p>
           <div className="flex items-center gap-4">
-            <select value={sessionTimeout} onChange={e => setSessionTimeout(e.target.value)} className="border border-slate-200 rounded-md px-3 py-2 text-sm bg-white">
+            <select value={sessionTimeout} onChange={e => setSessionTimeout(e.target.value)} className="border border-border rounded-md px-3 py-2 text-sm bg-card">
               <option value="30">30 minutos</option>
               <option value="60">1 hora</option>
               <option value="120">2 horas</option>
@@ -1044,44 +1044,44 @@ function SegurancaSection() {
         </div>
 
         {/* Active Sessions */}
-        <div className="pb-6 border-b border-slate-100">
+        <div className="pb-6 border-b border-border">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-sm font-semibold text-slate-900">Sessões Ativas</h3>
+            <h3 className="text-sm font-semibold text-foreground">Sessões Ativas</h3>
             <button onClick={() => setShowEndAllModal(true)} className="border border-red-200 text-red-600 hover:bg-red-50 rounded-md px-3 py-1.5 text-xs">Encerrar Todas</button>
           </div>
-          <div className="bg-white border border-slate-200 rounded-lg overflow-hidden">
+          <div className="bg-card border border-border rounded-lg overflow-hidden">
             <table className="w-full">
               <thead>
-                <tr className="bg-slate-50 border-b border-slate-200">
-                  <th className="text-xs uppercase text-slate-400 tracking-wide px-4 py-3 text-left">Usuário</th>
-                  <th className="text-xs uppercase text-slate-400 tracking-wide px-4 py-3 text-left">Dispositivo</th>
-                  <th className="text-xs uppercase text-slate-400 tracking-wide px-4 py-3 text-left">Navegador</th>
-                  <th className="text-xs uppercase text-slate-400 tracking-wide px-4 py-3 text-left">IP</th>
-                  <th className="text-xs uppercase text-slate-400 tracking-wide px-4 py-3 text-left">Último Acesso</th>
-                  <th className="text-xs uppercase text-slate-400 tracking-wide px-4 py-3 text-left">Ação</th>
+                <tr className="bg-muted border-b border-border">
+                  <th className="text-xs uppercase text-muted-foreground tracking-wide px-4 py-3 text-left">Usuário</th>
+                  <th className="text-xs uppercase text-muted-foreground tracking-wide px-4 py-3 text-left">Dispositivo</th>
+                  <th className="text-xs uppercase text-muted-foreground tracking-wide px-4 py-3 text-left">Navegador</th>
+                  <th className="text-xs uppercase text-muted-foreground tracking-wide px-4 py-3 text-left">IP</th>
+                  <th className="text-xs uppercase text-muted-foreground tracking-wide px-4 py-3 text-left">Último Acesso</th>
+                  <th className="text-xs uppercase text-muted-foreground tracking-wide px-4 py-3 text-left">Ação</th>
                 </tr>
               </thead>
               <tbody>
                 {sessoes.map(s => {
                   const dt = formatDateTime(s.last_access);
                   return (
-                    <tr key={s.id} className="border-b border-slate-100">
+                    <tr key={s.id} className="border-b border-border">
                       <td className="px-4 py-3.5">
                         <div className="flex items-center gap-2">
-                          <UserAvatar name={s.user_name} color={MOCK_USERS.find(u => u.id === s.user_id)?.avatar_color || 'bg-slate-400'} size="sm" />
-                          <span className="text-sm text-slate-700">{s.user_name}</span>
+                          <UserAvatar name={s.user_name} color={MOCK_USERS.find(u => u.id === s.user_id)?.avatar_color || 'bg-muted-foreground'} size="sm" />
+                          <span className="text-sm text-foreground">{s.user_name}</span>
                         </div>
                       </td>
-                      <td className="px-4 py-3.5"><div className="flex items-center">{deviceIcon(s.device)}<span className="text-sm text-slate-600">{s.device}</span></div></td>
-                      <td className="px-4 py-3.5 text-sm text-slate-600">{s.browser}</td>
-                      <td className="px-4 py-3.5 font-mono text-xs text-slate-500">{s.ip}</td>
+                      <td className="px-4 py-3.5"><div className="flex items-center">{deviceIcon(s.device)}<span className="text-sm text-muted-foreground">{s.device}</span></div></td>
+                      <td className="px-4 py-3.5 text-sm text-muted-foreground">{s.browser}</td>
+                      <td className="px-4 py-3.5 font-mono text-xs text-muted-foreground">{s.ip}</td>
                       <td className="px-4 py-3.5">
-                        <span className="text-sm text-slate-600">{dt.short}</span>
+                        <span className="text-sm text-muted-foreground">{dt.short}</span>
                         {s.current && <span className="ml-2 bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-full">ESTA SESSÃO</span>}
                       </td>
                       <td className="px-4 py-3.5">
                         {s.current ? (
-                          <span className="text-xs text-slate-300 cursor-not-allowed">Sessão atual</span>
+                          <span className="text-xs text-muted-foreground cursor-not-allowed">Sessão atual</span>
                         ) : (
                           <button onClick={() => endSession(s.id)} className="text-xs text-red-500 hover:text-red-700 border border-red-200 hover:bg-red-50 rounded-md px-2.5 py-1">Encerrar</button>
                         )}
@@ -1096,7 +1096,7 @@ function SegurancaSection() {
 
         {/* Password Policy */}
         <div>
-          <h3 className="text-sm font-semibold text-slate-900 mb-4">Política de Senhas</h3>
+          <h3 className="text-sm font-semibold text-foreground mb-4">Política de Senhas</h3>
           <div className="space-y-3">
             {[
               { key: 'minLength' as const, icon: Key, label: 'Mínimo 8 caracteres', desc: 'Senhas devem ter ao menos 8 caracteres' },
@@ -1104,16 +1104,16 @@ function SegurancaSection() {
               { key: 'uppercase' as const, icon: ArrowUp, label: 'Letras maiúsculas', desc: 'Exigir ao menos uma letra maiúscula' },
               { key: 'periodicRenewal' as const, icon: RefreshCw, label: 'Renovação periódica', desc: 'Exigir troca de senha a cada 90 dias' },
             ].map(item => (
-              <div key={item.key} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+              <div key={item.key} className="flex items-center justify-between p-3 bg-muted rounded-lg">
                 <div className="flex items-center gap-3">
-                  <item.icon className="w-4 h-4 text-slate-400" />
+                  <item.icon className="w-4 h-4 text-muted-foreground" />
                   <div>
-                    <p className="text-sm text-slate-700">{item.label}</p>
-                    <p className="text-xs text-slate-400">{item.desc}</p>
+                    <p className="text-sm text-foreground">{item.label}</p>
+                    <p className="text-xs text-muted-foreground">{item.desc}</p>
                   </div>
                 </div>
-                <div onClick={() => setPasswordPolicies(p => ({ ...p, [item.key]: !p[item.key] }))} className={`w-9 h-5 rounded-full relative cursor-pointer transition-colors duration-200 ${passwordPolicies[item.key] ? 'bg-blue-600' : 'bg-slate-200'}`}>
-                  <div className={`w-4 h-4 rounded-full bg-white shadow absolute top-0.5 transition-transform duration-200 ${passwordPolicies[item.key] ? 'translate-x-4' : 'translate-x-0.5'}`} />
+                <div onClick={() => setPasswordPolicies(p => ({ ...p, [item.key]: !p[item.key] }))} className={`w-9 h-5 rounded-full relative cursor-pointer transition-colors duration-200 ${passwordPolicies[item.key] ? 'bg-blue-600' : 'bg-muted'}`}>
+                  <div className={`w-4 h-4 rounded-full bg-card shadow absolute top-0.5 transition-transform duration-200 ${passwordPolicies[item.key] ? 'translate-x-4' : 'translate-x-0.5'}`} />
                 </div>
               </div>
             ))}
@@ -1126,11 +1126,11 @@ function SegurancaSection() {
       {showEndAllModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center" onClick={() => setShowEndAllModal(false)}>
           <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" />
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-sm mx-4 p-6 relative z-10" onClick={e => e.stopPropagation()}>
-            <h3 className="text-lg font-semibold text-slate-900 mb-2">Encerrar todas as sessões?</h3>
-            <p className="text-sm text-slate-500 mb-5">Todas as sessões exceto a atual serão encerradas.</p>
+          <div className="bg-card rounded-xl shadow-xl w-full max-w-sm mx-4 p-6 relative z-10" onClick={e => e.stopPropagation()}>
+            <h3 className="text-lg font-semibold text-foreground mb-2">Encerrar todas as sessões?</h3>
+            <p className="text-sm text-muted-foreground mb-5">Todas as sessões exceto a atual serão encerradas.</p>
             <div className="flex gap-3">
-              <button onClick={() => setShowEndAllModal(false)} className="flex-1 border border-slate-200 text-slate-600 rounded-md py-2 text-sm hover:bg-slate-50">Cancelar</button>
+              <button onClick={() => setShowEndAllModal(false)} className="flex-1 border border-border text-muted-foreground rounded-md py-2 text-sm hover:bg-muted">Cancelar</button>
               <button onClick={endAllSessions} className="flex-1 bg-red-600 text-white rounded-md py-2 text-sm font-medium hover:bg-red-700">Encerrar Todas</button>
             </div>
           </div>
@@ -1193,75 +1193,75 @@ function SistemaSection() {
 
   const themeOptions: { value: 'light' | 'dark' | 'system'; label: string; icon: React.ElementType; iconColor: string; disabled?: boolean }[] = [
     { value: 'light', label: 'Claro', icon: Sun, iconColor: 'text-amber-400' },
-    { value: 'dark', label: 'Escuro', icon: Moon, iconColor: 'text-slate-700', disabled: true },
-    { value: 'system', label: 'Sistema', icon: Monitor, iconColor: 'text-slate-500', disabled: true },
+    { value: 'dark', label: 'Escuro', icon: Moon, iconColor: 'text-foreground', disabled: true },
+    { value: 'system', label: 'Sistema', icon: Monitor, iconColor: 'text-muted-foreground', disabled: true },
   ];
 
   return (
-    <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
-      <div className="px-6 py-5 border-b border-slate-200">
+    <div className="bg-card border border-border rounded-lg shadow-sm overflow-hidden">
+      <div className="px-6 py-5 border-b border-border">
         <div className="flex items-center gap-2">
-          <Cpu className="w-5 h-5 text-slate-400" />
-          <h2 className="text-lg font-semibold text-slate-900">Sistema</h2>
+          <Cpu className="w-5 h-5 text-muted-foreground" />
+          <h2 className="text-lg font-semibold text-foreground">Sistema</h2>
         </div>
-        <p className="text-sm text-slate-400 mt-0.5">Configurações gerais e informações do sistema</p>
+        <p className="text-sm text-muted-foreground mt-0.5">Configurações gerais e informações do sistema</p>
       </div>
 
       <div className="px-6 py-6 space-y-8">
         {/* System Info */}
-        <div className="pb-6 border-b border-slate-100">
-          <h3 className="text-sm font-semibold text-slate-900 mb-4">Informações do Sistema</h3>
-          <div className="bg-slate-50 rounded-xl p-5">
+        <div className="pb-6 border-b border-border">
+          <h3 className="text-sm font-semibold text-foreground mb-4">Informações do Sistema</h3>
+          <div className="bg-muted rounded-xl p-5">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <p className="text-xs text-slate-400 uppercase tracking-wide">Versão</p>
-                <p className="text-sm font-semibold text-slate-900 mt-0.5 flex items-center gap-2">
+                <p className="text-xs text-muted-foreground uppercase tracking-wide">Versão</p>
+                <p className="text-sm font-semibold text-foreground mt-0.5 flex items-center gap-2">
                   WebHubPro ERP v{config.app_version}
                   <span className="bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-full">Atualizado</span>
                 </p>
               </div>
               <div>
-                <p className="text-xs text-slate-400 uppercase tracking-wide">Ambiente</p>
-                <p className="text-sm font-semibold text-slate-900 mt-0.5 flex items-center gap-2">
+                <p className="text-xs text-muted-foreground uppercase tracking-wide">Ambiente</p>
+                <p className="text-sm font-semibold text-foreground mt-0.5 flex items-center gap-2">
                   Produção
                   <span className="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">Estável</span>
                 </p>
               </div>
               <div>
-                <p className="text-xs text-slate-400 uppercase tracking-wide">Banco de Dados</p>
-                <p className="text-sm font-semibold text-slate-900 mt-0.5 flex items-center gap-2">
+                <p className="text-xs text-muted-foreground uppercase tracking-wide">Banco de Dados</p>
+                <p className="text-sm font-semibold text-foreground mt-0.5 flex items-center gap-2">
                   localStorage (Demo)
                   <span className="bg-amber-100 text-amber-700 text-xs px-2 py-0.5 rounded-full">Demo Mode</span>
                 </p>
               </div>
               <div>
-                <p className="text-xs text-slate-400 uppercase tracking-wide">Última Atualização</p>
-                <p className="text-sm font-semibold text-slate-900 mt-0.5">23/02/2026</p>
+                <p className="text-xs text-muted-foreground uppercase tracking-wide">Última Atualização</p>
+                <p className="text-sm font-semibold text-foreground mt-0.5">23/02/2026</p>
               </div>
               <div>
-                <p className="text-xs text-slate-400 uppercase tracking-wide">Licença</p>
-                <p className="text-sm font-semibold text-slate-900 mt-0.5 flex items-center gap-2">
+                <p className="text-xs text-muted-foreground uppercase tracking-wide">Licença</p>
+                <p className="text-sm font-semibold text-foreground mt-0.5 flex items-center gap-2">
                   Plano Profissional
                   <span className="bg-purple-100 text-purple-700 text-xs px-2 py-0.5 rounded-full">Ativo</span>
                 </p>
               </div>
               <div>
-                <p className="text-xs text-slate-400 uppercase tracking-wide">Escritório</p>
-                <p className="text-sm font-semibold text-slate-900 mt-0.5">{office.name}</p>
+                <p className="text-xs text-muted-foreground uppercase tracking-wide">Escritório</p>
+                <p className="text-sm font-semibold text-foreground mt-0.5">{office.name}</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Preferences */}
-        <div className="pb-6 border-b border-slate-100">
-          <h3 className="text-sm font-semibold text-slate-900 mb-4">Preferências do Sistema</h3>
+        <div className="pb-6 border-b border-border">
+          <h3 className="text-sm font-semibold text-foreground mb-4">Preferências do Sistema</h3>
           <div className="grid grid-cols-2 gap-5">
             <div>
-              <label className="text-sm font-medium text-slate-700">Fuso Horário</label>
+              <label className="text-sm font-medium text-foreground">Fuso Horário</label>
               <div className="relative mt-1">
-                <Globe className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
-                <select value={config.timezone} onChange={e => setConfig({ ...config, timezone: e.target.value })} className="w-full border border-slate-200 rounded-md pl-9 pr-3 py-2 text-sm bg-white">
+                <Globe className="w-4 h-4 text-muted-foreground absolute left-3 top-1/2 -translate-y-1/2" />
+                <select value={config.timezone} onChange={e => setConfig({ ...config, timezone: e.target.value })} className="w-full border border-border rounded-md pl-9 pr-3 py-2 text-sm bg-card">
                   <option value="America/Sao_Paulo">America/Sao_Paulo</option>
                   <option value="America/Manaus">America/Manaus</option>
                   <option value="America/Belem">America/Belem</option>
@@ -1272,31 +1272,31 @@ function SistemaSection() {
               </div>
             </div>
             <div>
-              <label className="text-sm font-medium text-slate-700">Idioma</label>
-              <select value={config.language} onChange={e => setConfig({ ...config, language: e.target.value })} className="mt-1 w-full border border-slate-200 rounded-md px-3 py-2 text-sm bg-white">
+              <label className="text-sm font-medium text-foreground">Idioma</label>
+              <select value={config.language} onChange={e => setConfig({ ...config, language: e.target.value })} className="mt-1 w-full border border-border rounded-md px-3 py-2 text-sm bg-card">
                 <option value="pt-BR">Português (BR)</option>
                 <option value="en-US">English (US)</option>
                 <option value="es">Español</option>
               </select>
             </div>
             <div className="col-span-2">
-              <label className="text-sm font-medium text-slate-700 mb-2 block">Aparência</label>
+              <label className="text-sm font-medium text-foreground mb-2 block">Aparência</label>
               <div className="flex gap-3">
                 {themeOptions.map(opt => (
                   <div
                     key={opt.value}
                     onClick={() => !opt.disabled && setConfig({ ...config, theme: opt.value })}
                     className={`border-2 rounded-xl p-3 cursor-pointer transition-all w-full text-center ${
-                      config.theme === opt.value ? 'border-blue-600 bg-blue-50' : 'border-slate-200'
+                      config.theme === opt.value ? 'border-blue-600 bg-blue-50' : 'border-border'
                     } ${opt.disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
                     title={opt.disabled ? 'Disponível na próxima versão' : undefined}
                   >
-                    <opt.icon className={`w-5 h-5 mx-auto mb-1 ${config.theme === opt.value ? opt.iconColor : 'text-slate-400'}`} />
-                    <span className="text-xs font-medium text-slate-700">{opt.label}</span>
+                    <opt.icon className={`w-5 h-5 mx-auto mb-1 ${config.theme === opt.value ? opt.iconColor : 'text-muted-foreground'}`} />
+                    <span className="text-xs font-medium text-foreground">{opt.label}</span>
                   </div>
                 ))}
               </div>
-              <p className="text-xs text-slate-400 mt-2">Dark mode estará disponível na próxima versão</p>
+              <p className="text-xs text-muted-foreground mt-2">Dark mode estará disponível na próxima versão</p>
             </div>
           </div>
           <button onClick={savePreferences} className="bg-blue-600 text-white rounded-md px-5 py-2 text-sm font-medium hover:bg-blue-700 mt-4">Salvar Preferências</button>
@@ -1304,19 +1304,19 @@ function SistemaSection() {
 
         {/* Backup & Data */}
         <div>
-          <h3 className="text-sm font-semibold text-slate-900 mb-4">Backup e Exportação de Dados</h3>
+          <h3 className="text-sm font-semibold text-foreground mb-4">Backup e Exportação de Dados</h3>
           <div className="space-y-3">
             {/* Backup frequency */}
-            <div className="bg-slate-50 rounded-lg p-4 flex items-center justify-between">
+            <div className="bg-muted rounded-lg p-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <Database className="w-5 h-5 text-slate-400" />
+                <Database className="w-5 h-5 text-muted-foreground" />
                 <div>
-                  <p className="text-sm font-medium text-slate-900">Frequência de Backup</p>
-                  <p className="text-xs text-slate-400">Último backup: {formatDate(config.last_backup.slice(0, 10))}</p>
+                  <p className="text-sm font-medium text-foreground">Frequência de Backup</p>
+                  <p className="text-xs text-muted-foreground">Último backup: {formatDate(config.last_backup.slice(0, 10))}</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <select value={config.backup_frequency} onChange={e => setConfig({ ...config, backup_frequency: e.target.value as 'daily' | 'weekly' | 'manual' })} className="border border-slate-200 rounded-md px-3 py-1.5 text-sm bg-white">
+                <select value={config.backup_frequency} onChange={e => setConfig({ ...config, backup_frequency: e.target.value as 'daily' | 'weekly' | 'manual' })} className="border border-border rounded-md px-3 py-1.5 text-sm bg-card">
                   <option value="daily">Diário</option>
                   <option value="weekly">Semanal</option>
                   <option value="manual">Manual</option>
@@ -1326,19 +1326,19 @@ function SistemaSection() {
             </div>
 
             {/* Export */}
-            <div className="bg-slate-50 rounded-lg p-4 flex items-center justify-between">
+            <div className="bg-muted rounded-lg p-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <Archive className="w-5 h-5 text-slate-400" />
+                <Archive className="w-5 h-5 text-muted-foreground" />
                 <div>
-                  <p className="text-sm font-medium text-slate-900">Exportar Todos os Dados</p>
-                  <p className="text-xs text-slate-400">Exporta clientes, processos, financeiro e configurações em JSON</p>
+                  <p className="text-sm font-medium text-foreground">Exportar Todos os Dados</p>
+                  <p className="text-xs text-muted-foreground">Exporta clientes, processos, financeiro e configurações em JSON</p>
                 </div>
               </div>
               <div className="flex gap-2">
-                <button onClick={exportJSON} className="border border-slate-200 rounded-md px-3 py-1.5 text-xs text-slate-600 hover:bg-slate-100 flex items-center gap-1">
+                <button onClick={exportJSON} className="border border-border rounded-md px-3 py-1.5 text-xs text-muted-foreground hover:bg-muted flex items-center gap-1">
                   <Download className="w-3.5 h-3.5" /> JSON
                 </button>
-                <button onClick={() => showToast('Exportação CSV disponível na versão completa', 'info')} className="border border-slate-200 rounded-md px-3 py-1.5 text-xs text-slate-600 hover:bg-slate-100 flex items-center gap-1">
+                <button onClick={() => showToast('Exportação CSV disponível na versão completa', 'info')} className="border border-border rounded-md px-3 py-1.5 text-xs text-muted-foreground hover:bg-muted flex items-center gap-1">
                   <Download className="w-3.5 h-3.5" /> CSV
                 </button>
               </div>
@@ -1365,13 +1365,13 @@ function SistemaSection() {
       {showDangerModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center" onClick={() => { setShowDangerModal(false); setDangerInput(''); }}>
           <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" />
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-sm mx-4 p-6 relative z-10" onClick={e => e.stopPropagation()}>
+          <div className="bg-card rounded-xl shadow-xl w-full max-w-sm mx-4 p-6 relative z-10" onClick={e => e.stopPropagation()}>
             <AlertTriangle className="w-10 h-10 text-red-500 mx-auto mb-3" />
-            <h3 className="text-lg font-semibold text-slate-900 text-center mb-1">Tem certeza absoluta?</h3>
-            <p className="text-sm text-slate-500 text-center mb-4">Digite <strong>CONFIRMAR</strong> para prosseguir</p>
-            <input value={dangerInput} onChange={e => setDangerInput(e.target.value)} className="w-full border border-slate-200 rounded-md px-3 py-2 text-sm mb-4 focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="CONFIRMAR" />
+            <h3 className="text-lg font-semibold text-foreground text-center mb-1">Tem certeza absoluta?</h3>
+            <p className="text-sm text-muted-foreground text-center mb-4">Digite <strong>CONFIRMAR</strong> para prosseguir</p>
+            <input value={dangerInput} onChange={e => setDangerInput(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 text-sm mb-4 focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="CONFIRMAR" />
             <div className="flex gap-3">
-              <button onClick={() => { setShowDangerModal(false); setDangerInput(''); }} className="flex-1 border border-slate-200 text-slate-600 rounded-md py-2 text-sm hover:bg-slate-50">Cancelar</button>
+              <button onClick={() => { setShowDangerModal(false); setDangerInput(''); }} className="flex-1 border border-border text-muted-foreground rounded-md py-2 text-sm hover:bg-muted">Cancelar</button>
               <button disabled={dangerInput !== 'CONFIRMAR'} onClick={clearData} className="flex-1 bg-red-600 text-white rounded-md py-2 text-sm font-medium hover:bg-red-700 disabled:opacity-40 disabled:cursor-not-allowed">Limpar todos os dados</button>
             </div>
           </div>

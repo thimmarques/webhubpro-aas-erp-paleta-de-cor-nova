@@ -673,17 +673,17 @@ function NovoProcessoModal({ onClose, onSave, admin, currentUserId }: {
                   <div className="w-5 h-5 rounded-full bg-blue-600 text-white text-xs flex items-center justify-center font-medium">
                     {(selectedClient.nome || selectedClient.razao_social || '')[0]?.toUpperCase()}
                   </div>
-                  <span className="text-sm text-slate-900">{selectedClient.nome || selectedClient.razao_social}</span>
+                  <span className="text-sm text-foreground">{selectedClient.nome || selectedClient.razao_social}</span>
                   <span className={`${areaColors[selectedClient.practice_area]} text-xs px-1.5 py-0.5 rounded-full`}>
                     {areaLabels[selectedClient.practice_area]}
                   </span>
-                  <button onClick={() => { set('polo_ativo_id', ''); set('polo_ativo_nome', ''); }} className="ml-auto text-slate-400 hover:text-slate-600">
+                  <button onClick={() => { set('polo_ativo_id', ''); set('polo_ativo_nome', ''); }} className="ml-auto text-muted-foreground hover:text-muted-foreground">
                     <X className="w-3 h-3" />
                   </button>
                 </div>
               ) : (
                 <div className="relative">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                   <input
                     value={clientSearch}
                     onChange={(e) => { setClientSearch(e.target.value); setClientDropdownOpen(true); }}
@@ -692,11 +692,11 @@ function NovoProcessoModal({ onClose, onSave, admin, currentUserId }: {
                     className={`${inputClass('polo_ativo_id')} pl-9`}
                   />
                   {clientDropdownOpen && filteredClients.length > 0 && (
-                    <div className="absolute left-0 right-0 top-full mt-1 bg-white border border-slate-200 rounded-lg shadow-md max-h-48 overflow-y-auto z-10">
+                    <div className="absolute left-0 right-0 top-full mt-1 bg-card border border-border rounded-lg shadow-md max-h-48 overflow-y-auto z-10">
                       {filteredClients.map((c: any) => (
                         <button
                           key={c.id}
-                          className="flex items-center gap-2 w-full px-3 py-2 hover:bg-slate-50 text-left"
+                          className="flex items-center gap-2 w-full px-3 py-2 hover:bg-muted text-left"
                           onClick={() => {
                             set('polo_ativo_id', c.id);
                             set('polo_ativo_nome', c.nome || c.razao_social);
@@ -704,14 +704,14 @@ function NovoProcessoModal({ onClose, onSave, admin, currentUserId }: {
                             setClientDropdownOpen(false);
                           }}
                         >
-                          <div className="w-6 h-6 rounded-full bg-slate-200 text-slate-600 text-xs flex items-center justify-center font-medium">
+                          <div className="w-6 h-6 rounded-full bg-muted text-muted-foreground text-xs flex items-center justify-center font-medium">
                             {(c.nome || c.razao_social || '')[0]?.toUpperCase()}
                           </div>
-                          <span className="text-sm text-slate-900">{c.nome || c.razao_social}</span>
+                          <span className="text-sm text-foreground">{c.nome || c.razao_social}</span>
                           <span className={`${areaColors[c.practice_area]} text-xs px-1.5 py-0.5 rounded-full ml-auto`}>
                             {areaLabels[c.practice_area]}
                           </span>
-                          <span className="bg-slate-100 text-slate-600 text-xs px-1.5 py-0.5 rounded-full">{c.type}</span>
+                          <span className="bg-muted text-muted-foreground text-xs px-1.5 py-0.5 rounded-full">{c.type}</span>
                         </button>
                       ))}
                     </div>
@@ -738,7 +738,7 @@ function NovoProcessoModal({ onClose, onSave, admin, currentUserId }: {
                       key={area}
                       onClick={() => handleAreaChange(area)}
                       className={`border rounded-md px-4 py-2 text-sm transition-colors ${
-                        selected ? colors[area] : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300'
+                        selected ? colors[area] : 'bg-card border-border text-muted-foreground hover:border-border'
                       }`}
                     >
                       {areaLabels[area]}
@@ -761,9 +761,9 @@ function NovoProcessoModal({ onClose, onSave, admin, currentUserId }: {
                 className={inputClass('acao')}
               />
               {acaoFocus && acaoSugs.length > 0 && (
-                <div className="absolute left-0 right-0 top-full mt-1 bg-white border border-slate-200 rounded-lg shadow-md max-h-40 overflow-y-auto z-10">
+                <div className="absolute left-0 right-0 top-full mt-1 bg-card border border-border rounded-lg shadow-md max-h-40 overflow-y-auto z-10">
                   {acaoSugs.map((s) => (
-                    <button key={s} className="w-full text-left px-3 py-2 text-sm text-slate-700 hover:bg-slate-50" onMouseDown={() => set('acao', s)}>
+                    <button key={s} className="w-full text-left px-3 py-2 text-sm text-foreground hover:bg-muted" onMouseDown={() => set('acao', s)}>
                       {s}
                     </button>
                   ))}
@@ -781,7 +781,7 @@ function NovoProcessoModal({ onClose, onSave, admin, currentUserId }: {
                 placeholder="0000000-00.0000.0.00.0000"
                 className={`${inputClass()} font-mono`}
               />
-              <p className="text-xs text-slate-400 mt-1">Deixe em branco se ainda não distribuído</p>
+              <p className="text-xs text-muted-foreground mt-1">Deixe em branco se ainda não distribuído</p>
             </div>
 
             {/* Tribunal & Vara */}
@@ -819,14 +819,14 @@ function NovoProcessoModal({ onClose, onSave, admin, currentUserId }: {
                 placeholder="R$ 0,00"
                 className={inputClass()}
               />
-              <p className="text-xs text-slate-400 mt-1">Informe 0 para ações sem valor de causa (criminal/previdenciário)</p>
+              <p className="text-xs text-muted-foreground mt-1">Informe 0 para ações sem valor de causa (criminal/previdenciário)</p>
             </div>
 
             {/* Polo Passivo */}
             <div className="col-span-2">
               <label className={labelClass}>Polo Passivo <span className="text-red-500">*</span></label>
               <input value={form.polo_passivo_nome} onChange={(e) => set('polo_passivo_nome', e.target.value)} placeholder="Nome da parte contrária..." className={inputClass('polo_passivo_nome')} />
-              <p className="text-xs text-slate-400 mt-1">Empresa, pessoa ou órgão contra quem a ação é movida</p>
+              <p className="text-xs text-muted-foreground mt-1">Empresa, pessoa ou órgão contra quem a ação é movida</p>
               {errors.polo_passivo_nome && <p className="text-xs text-red-500 mt-1">{errors.polo_passivo_nome}</p>}
             </div>
 
@@ -854,7 +854,7 @@ function NovoProcessoModal({ onClose, onSave, admin, currentUserId }: {
             <div>
               <label className={labelClass}>Próxima Audiência</label>
               <input type="datetime-local" value={form.proxima_audiencia} onChange={(e) => set('proxima_audiencia', e.target.value)} className={inputClass()} />
-              <p className="text-xs text-slate-400 mt-1">Opcional</p>
+              <p className="text-xs text-muted-foreground mt-1">Opcional</p>
             </div>
             <div>
               <label className={labelClass}>Prazo Fatal</label>
@@ -884,7 +884,7 @@ function NovoProcessoModal({ onClose, onSave, admin, currentUserId }: {
                   ))}
                 </select>
               ) : (
-                <div className="bg-slate-50 cursor-not-allowed border border-slate-200 rounded-md px-3 py-2 text-sm text-slate-500">
+                <div className="bg-muted cursor-not-allowed border border-border rounded-md px-3 py-2 text-sm text-muted-foreground">
                   {MOCK_USERS.find((u) => u.id === currentUserId)?.name}
                 </div>
               )}
@@ -900,13 +900,13 @@ function NovoProcessoModal({ onClose, onSave, admin, currentUserId }: {
         </div>
 
         {/* Footer */}
-        <div className="border-t border-slate-200 px-6 py-4 flex items-center justify-between flex-shrink-0 bg-white rounded-b-xl">
+        <div className="border-t border-border px-6 py-4 flex items-center justify-between flex-shrink-0 bg-card rounded-b-xl">
           <div className="flex items-center gap-1.5">
-            <Info className="w-4 h-4 text-slate-400" />
-            <span className="text-xs text-slate-400">Campos marcados com * são obrigatórios</span>
+            <Info className="w-4 h-4 text-muted-foreground" />
+            <span className="text-xs text-muted-foreground">Campos marcados com * são obrigatórios</span>
           </div>
           <div className="flex gap-3">
-            <button onClick={onClose} className="text-sm text-slate-600 px-4 py-2 hover:text-slate-900">Cancelar</button>
+            <button onClick={onClose} className="text-sm text-muted-foreground px-4 py-2 hover:text-foreground">Cancelar</button>
             <button onClick={handleSave} className="bg-blue-600 text-white rounded-md px-6 py-2 text-sm font-medium hover:bg-blue-700 transition-colors">Salvar Processo</button>
           </div>
         </div>

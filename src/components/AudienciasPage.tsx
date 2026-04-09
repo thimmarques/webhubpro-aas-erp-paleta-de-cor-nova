@@ -264,8 +264,8 @@ export default function AudienciasPage({ onNavigateProcessoDetail }: AudienciasP
       {/* PAGE HEADER */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Audiências</h1>
-          <p className="text-xs text-slate-400">WebHubPro ERP / Audiências</p>
+          <h1 className="text-2xl font-bold text-foreground">Audiências</h1>
+          <p className="text-xs text-muted-foreground">WebHubPro ERP / Audiências</p>
         </div>
         <button onClick={() => setShowNewModal(true)} className="flex items-center bg-blue-600 text-white text-sm font-medium rounded-md px-4 py-2 hover:bg-blue-700 transition-colors">
           <Scale className="w-4 h-4 mr-1.5" />
@@ -274,13 +274,13 @@ export default function AudienciasPage({ onNavigateProcessoDetail }: AudienciasP
       </div>
 
       {/* FILTER TABS */}
-      <div className="flex items-center gap-2 mb-5 bg-white border border-slate-200 rounded-lg p-1.5 w-fit">
+      <div className="flex items-center gap-2 mb-5 bg-card border border-border rounded-lg p-1.5 w-fit">
         {tabs.map((t) => (
           <button
             key={t.key}
             onClick={() => setActiveTab(t.key)}
             className={`rounded-md px-4 py-1.5 text-sm cursor-pointer transition-colors ${
-              activeTab === t.key ? 'bg-blue-600 text-white font-medium' : 'text-slate-500 hover:text-slate-700 hover:bg-slate-100'
+              activeTab === t.key ? 'bg-blue-600 text-white font-medium' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
             }`}
           >
             {t.label}
@@ -291,22 +291,22 @@ export default function AudienciasPage({ onNavigateProcessoDetail }: AudienciasP
       {/* SECONDARY FILTER ROW */}
       <div className="flex items-center gap-3 mb-4">
         <div className="flex-1 relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Buscar por processo ou cliente..."
-            className="w-full border border-slate-200 rounded-md pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-border rounded-md pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
-        <select value={filterArea} onChange={(e) => setFilterArea(e.target.value)} className="border border-slate-200 rounded-md px-3 py-2 text-sm text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <select value={filterArea} onChange={(e) => setFilterArea(e.target.value)} className="border border-border rounded-md px-3 py-2 text-sm text-muted-foreground focus:outline-none focus:ring-2 focus:ring-blue-500">
           <option value="">Todas Áreas</option>
           <option value="trabalhista">Trabalhista</option>
           <option value="civil">Civil</option>
           <option value="criminal">Criminal</option>
           <option value="previdenciario">Previdenciário</option>
         </select>
-        <select value={filterAudTipo} onChange={(e) => setFilterAudTipo(e.target.value)} className="border border-slate-200 rounded-md px-3 py-2 text-sm text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <select value={filterAudTipo} onChange={(e) => setFilterAudTipo(e.target.value)} className="border border-border rounded-md px-3 py-2 text-sm text-muted-foreground focus:outline-none focus:ring-2 focus:ring-blue-500">
           <option value="">Todos Tipos</option>
           <option value="conciliacao">Conciliação</option>
           <option value="instrucao">Instrução</option>
@@ -315,7 +315,7 @@ export default function AudienciasPage({ onNavigateProcessoDetail }: AudienciasP
           <option value="virtual">Virtual</option>
         </select>
         {admin && (
-          <select value={filterResponsible} onChange={(e) => setFilterResponsible(e.target.value)} className="border border-slate-200 rounded-md px-3 py-2 text-sm text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <select value={filterResponsible} onChange={(e) => setFilterResponsible(e.target.value)} className="border border-border rounded-md px-3 py-2 text-sm text-muted-foreground focus:outline-none focus:ring-2 focus:ring-blue-500">
             <option value="">Todos Responsáveis</option>
             {MOCK_USERS.map((u) => (
               <option key={u.id} value={u.id}>{u.name}</option>
@@ -326,27 +326,27 @@ export default function AudienciasPage({ onNavigateProcessoDetail }: AudienciasP
 
       {/* STATS ROW */}
       <div className="grid grid-cols-4 gap-3 mb-5">
-        <div className="bg-white border border-slate-200 rounded-lg px-4 py-3 flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-slate-50 flex items-center justify-center"><LayoutList className="w-4 h-4 text-slate-600" /></div>
-          <div><span className="text-xl font-bold text-slate-900">{totalCount}</span><p className="text-xs text-slate-400">audiências</p></div>
+        <div className="bg-card border border-border rounded-lg px-4 py-3 flex items-center gap-3">
+          <div className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center"><LayoutList className="w-4 h-4 text-muted-foreground" /></div>
+          <div><span className="text-xl font-bold text-foreground">{totalCount}</span><p className="text-xs text-muted-foreground">audiências</p></div>
         </div>
-        <div className="bg-white border border-slate-200 rounded-lg px-4 py-3 flex items-center gap-3">
+        <div className="bg-card border border-border rounded-lg px-4 py-3 flex items-center gap-3">
           <div className="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center"><Calendar className="w-4 h-4 text-blue-600" /></div>
-          <div><span className="text-xl font-bold text-slate-900">{todayCount}</span><p className="text-xs text-slate-400">agendadas</p></div>
+          <div><span className="text-xl font-bold text-foreground">{todayCount}</span><p className="text-xs text-muted-foreground">agendadas</p></div>
         </div>
-        <div className="bg-white border border-slate-200 rounded-lg px-4 py-3 flex items-center gap-3">
+        <div className="bg-card border border-border rounded-lg px-4 py-3 flex items-center gap-3">
           <div className="w-9 h-9 rounded-lg bg-purple-50 flex items-center justify-center"><CalendarDays className="w-4 h-4 text-purple-600" /></div>
-          <div><span className="text-xl font-bold text-slate-900">{weekCount}</span><p className="text-xs text-slate-400">nesta semana</p></div>
+          <div><span className="text-xl font-bold text-foreground">{weekCount}</span><p className="text-xs text-muted-foreground">nesta semana</p></div>
         </div>
         {admin ? (
-          <div className="bg-white border border-slate-200 rounded-lg px-4 py-3 flex items-center gap-3">
+          <div className="bg-card border border-border rounded-lg px-4 py-3 flex items-center gap-3">
             <div className="w-9 h-9 rounded-lg bg-red-50 flex items-center justify-center"><Flame className="w-4 h-4 text-red-500" /></div>
             <div><span className="text-xl font-bold text-red-600">{prazosUrgentCount}</span><p className="text-xs text-red-400">prazos urgentes</p></div>
           </div>
         ) : (
-          <div className="bg-white border border-slate-200 rounded-lg px-4 py-3 flex items-center gap-3">
+          <div className="bg-card border border-border rounded-lg px-4 py-3 flex items-center gap-3">
             <div className="w-9 h-9 rounded-lg bg-green-50 flex items-center justify-center"><CheckCircle className="w-4 h-4 text-green-600" /></div>
-            <div><span className="text-xl font-bold text-slate-900">{realizadasCount}</span><p className="text-xs text-slate-400">realizadas</p></div>
+            <div><span className="text-xl font-bold text-foreground">{realizadasCount}</span><p className="text-xs text-muted-foreground">realizadas</p></div>
           </div>
         )}
       </div>
@@ -366,8 +366,8 @@ export default function AudienciasPage({ onNavigateProcessoDetail }: AudienciasP
             <div key={gi}>
               {/* Date header */}
               <div className={`flex items-center gap-3 py-2 mb-2 ${gi > 0 ? 'mt-4' : ''}`}>
-                <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider whitespace-nowrap">{group.label}</span>
-                <div className="flex-1 border-t border-slate-200 ml-2" />
+                <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider whitespace-nowrap">{group.label}</span>
+                <div className="flex-1 border-t border-border ml-2" />
               </div>
               {group.items.map((aud) => {
                 const lawyer = MOCK_USERS.find((u) => u.id === aud.responsible_id);
@@ -377,51 +377,51 @@ export default function AudienciasPage({ onNavigateProcessoDetail }: AudienciasP
                 const isUrgent = diff >= 0 && diff <= 3 && !isT;
 
                 return (
-                  <div key={aud.id} className="bg-white border border-slate-200 rounded-lg p-4 hover:border-slate-300 hover:shadow-sm transition-all duration-150 mb-3">
+                  <div key={aud.id} className="bg-card border border-border rounded-lg p-4 hover:border-border hover:shadow-sm transition-all duration-150 mb-3">
                     <div className="flex items-start gap-4">
                       {/* DATE BLOCK */}
-                      <div className={`flex-shrink-0 rounded-lg p-3 text-center w-16 ${isT ? 'bg-blue-600' : isUrgent ? 'bg-amber-50' : 'bg-slate-50'}`}>
-                        <div className={`text-3xl font-bold leading-none ${isT ? 'text-white' : isUrgent ? 'text-amber-600' : 'text-slate-900'}`}>
+                      <div className={`flex-shrink-0 rounded-lg p-3 text-center w-16 ${isT ? 'bg-blue-600' : isUrgent ? 'bg-amber-50' : 'bg-muted'}`}>
+                        <div className={`text-3xl font-bold leading-none ${isT ? 'text-white' : isUrgent ? 'text-amber-600' : 'text-foreground'}`}>
                           {d.getDate()}
                         </div>
-                        <div className={`text-xs uppercase mt-1 ${isT ? 'text-blue-200' : 'text-slate-400'}`}>
+                        <div className={`text-xs uppercase mt-1 ${isT ? 'text-blue-200' : 'text-muted-foreground'}`}>
                           {MONTH_NAMES[d.getMonth()].slice(0, 3)}
                         </div>
-                        <div className={`text-xs ${isT ? 'text-blue-200' : 'text-slate-400'}`}>{d.getFullYear()}</div>
+                        <div className={`text-xs ${isT ? 'text-blue-200' : 'text-muted-foreground'}`}>{d.getFullYear()}</div>
                       </div>
 
                       {/* CENTER BLOCK */}
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
-                          {aud.numero_cnj && <span className="font-mono text-xs text-slate-400">{aud.numero_cnj}</span>}
-                          {aud.numero_cnj && <span className="text-slate-300">·</span>}
+                          {aud.numero_cnj && <span className="font-mono text-xs text-muted-foreground">{aud.numero_cnj}</span>}
+                          {aud.numero_cnj && <span className="text-muted-foreground">·</span>}
                           {aud.practice_area && (
-                            <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${areaColors[aud.practice_area] || 'bg-slate-100 text-slate-600'}`}>
+                            <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${areaColors[aud.practice_area] || 'bg-muted text-muted-foreground'}`}>
                               {areaLabels[aud.practice_area] || aud.practice_area}
                             </span>
                           )}
                         </div>
-                        <div className="text-base font-semibold text-slate-900 mt-0.5">{aud.acao}</div>
+                        <div className="text-base font-semibold text-foreground mt-0.5">{aud.acao}</div>
                         {aud.cliente_nome && (
                           <div className="flex items-center gap-1.5 mt-1">
-                            <User className="w-3.5 h-3.5 text-slate-300" />
-                            <span className="text-sm text-slate-600">{aud.cliente_nome}</span>
+                            <User className="w-3.5 h-3.5 text-muted-foreground" />
+                            <span className="text-sm text-muted-foreground">{aud.cliente_nome}</span>
                           </div>
                         )}
                         {aud.local && (
                           <div className="flex items-center gap-1.5 mt-1">
-                            <MapPin className="w-3.5 h-3.5 text-slate-300" />
-                            <span className="text-xs text-slate-400 truncate">{aud.local}</span>
+                            <MapPin className="w-3.5 h-3.5 text-muted-foreground" />
+                            <span className="text-xs text-muted-foreground truncate">{aud.local}</span>
                           </div>
                         )}
-                        <div className="border-t border-slate-100 mt-3 pt-3 flex items-center gap-2 flex-wrap">
+                        <div className="border-t border-border mt-3 pt-3 flex items-center gap-2 flex-wrap">
                           {lawyer && (
                             <>
                               <div className={`w-6 h-6 rounded-full ${lawyer.avatar_color} flex items-center justify-center text-white text-[9px] font-bold`}>
                                 {lawyer.avatar_initials}
                               </div>
-                              <span className="text-xs text-slate-500">{lawyer.name}</span>
-                              <span className="text-slate-300">·</span>
+                              <span className="text-xs text-muted-foreground">{lawyer.name}</span>
+                              <span className="text-muted-foreground">·</span>
                             </>
                           )}
                           <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${audienciaTipoColors[aud.audiencia_tipo]}`}>
@@ -434,32 +434,32 @@ export default function AudienciasPage({ onNavigateProcessoDetail }: AudienciasP
                       {/* RIGHT BLOCK */}
                       <div className="flex flex-col items-end gap-2 flex-shrink-0 ml-2">
                         <div className="flex items-center gap-1.5">
-                          <Clock className="w-3.5 h-3.5 text-slate-300" />
-                          <span className="text-sm font-semibold text-slate-900">{aud.hora_inicio}</span>
-                          {aud.hora_fim && aud.hora_fim !== aud.hora_inicio && <span className="text-sm text-slate-400">–{aud.hora_fim}</span>}
+                          <Clock className="w-3.5 h-3.5 text-muted-foreground" />
+                          <span className="text-sm font-semibold text-foreground">{aud.hora_inicio}</span>
+                          {aud.hora_fim && aud.hora_fim !== aud.hora_inicio && <span className="text-sm text-muted-foreground">–{aud.hora_fim}</span>}
                         </div>
                         <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${audienciaStatusColors[aud.audiencia_status]}`}>
                           {audienciaStatusLabels[aud.audiencia_status]}
                         </span>
                         {/* Dropdown */}
                         <div className="relative">
-                          <button onClick={() => setOpenDropdown(openDropdown === aud.id ? null : aud.id)} className="text-slate-400 hover:text-slate-600 p-1">
+                          <button onClick={() => setOpenDropdown(openDropdown === aud.id ? null : aud.id)} className="text-muted-foreground hover:text-muted-foreground p-1">
                             <MoreHorizontal className="w-4 h-4" />
                           </button>
                           {openDropdown === aud.id && (
-                            <div className="absolute right-0 top-8 bg-white border border-slate-200 rounded-lg shadow-lg py-1 z-20 w-48">
+                            <div className="absolute right-0 top-8 bg-card border border-border rounded-lg shadow-lg py-1 z-20 w-48">
                               {aud.processo_id && onNavigateProcessoDetail && (
-                                <button onClick={() => { setOpenDropdown(null); onNavigateProcessoDetail(aud.processo_id); }} className="w-full text-left px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 flex items-center gap-2">
+                                <button onClick={() => { setOpenDropdown(null); onNavigateProcessoDetail(aud.processo_id); }} className="w-full text-left px-3 py-2 text-sm text-foreground hover:bg-muted flex items-center gap-2">
                                   <Briefcase className="w-4 h-4" /> Ver Processo
                                 </button>
                               )}
                               {aud.audiencia_status === 'agendada' && (
-                                <button onClick={() => handleRegistrarResultado(aud)} className="w-full text-left px-3 py-2 text-sm text-green-600 hover:bg-slate-50 flex items-center gap-2">
+                                <button onClick={() => handleRegistrarResultado(aud)} className="w-full text-left px-3 py-2 text-sm text-green-600 hover:bg-muted flex items-center gap-2">
                                   <CheckCircle className="w-4 h-4" /> Registrar Resultado
                                 </button>
                               )}
-                              <div className="border-t border-slate-100 my-1" />
-                              <button onClick={() => setOpenDropdown(null)} className="w-full text-left px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 flex items-center gap-2">
+                              <div className="border-t border-border my-1" />
+                              <button onClick={() => setOpenDropdown(null)} className="w-full text-left px-3 py-2 text-sm text-foreground hover:bg-muted flex items-center gap-2">
                                 <Scale className="w-4 h-4" /> Editar
                               </button>
                               <button onClick={() => setOpenDropdown(null)} className="w-full text-left px-3 py-2 text-sm text-red-600 hover:bg-red-50 flex items-center gap-2">
@@ -469,7 +469,7 @@ export default function AudienciasPage({ onNavigateProcessoDetail }: AudienciasP
                           )}
                         </div>
                         {aud.audiencia_status === 'agendada' && diff >= 0 && (
-                          <button onClick={() => handleRegistrarResultado(aud)} className="border border-slate-200 text-slate-600 hover:bg-slate-50 rounded-md px-3 py-1 text-xs flex items-center gap-1">
+                          <button onClick={() => handleRegistrarResultado(aud)} className="border border-border text-muted-foreground hover:bg-muted rounded-md px-3 py-1 text-xs flex items-center gap-1">
                             <CheckCircle className="w-3.5 h-3.5" /> Registrar Resultado
                           </button>
                         )}
@@ -575,35 +575,35 @@ function NovaAudienciaModal({ onClose, onSave, processos, currentUser, isAdmin }
     onSave();
   }
 
-  const fc = (name: string) => `w-full border ${errors[name] ? 'border-red-400' : 'border-slate-200'} rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent`;
+  const fc = (name: string) => `w-full border ${errors[name] ? 'border-red-400' : 'border-border'} rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent`;
 
   const audTipoOptions: AudienciaTipo[] = ['conciliacao', 'instrucao', 'julgamento', 'una', 'virtual'];
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center" onClick={onClose}>
       <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" />
-      <div className="relative bg-white rounded-xl shadow-xl w-full max-w-lg max-h-[90vh] flex flex-col mx-4" onClick={(e) => e.stopPropagation()}>
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 flex-shrink-0">
+      <div className="relative bg-card rounded-xl shadow-xl w-full max-w-lg max-h-[90vh] flex flex-col mx-4" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center justify-between px-6 py-4 border-b border-border flex-shrink-0">
           <div className="flex items-center">
             <Scale className="w-5 h-5 text-blue-600 mr-2" />
-            <span className="text-lg font-semibold text-slate-900">Nova Audiência</span>
+            <span className="text-lg font-semibold text-foreground">Nova Audiência</span>
           </div>
-          <button onClick={onClose} className="text-slate-400 hover:text-slate-600"><X className="w-5 h-5" /></button>
+          <button onClick={onClose} className="text-muted-foreground hover:text-muted-foreground"><X className="w-5 h-5" /></button>
         </div>
 
         <div className="overflow-y-auto flex-1 px-6 py-5">
           <div className="grid grid-cols-2 gap-4">
             <div className="col-span-2">
-              <label className="block text-xs font-medium text-slate-600 mb-1">Título*</label>
+              <label className="block text-xs font-medium text-muted-foreground mb-1">Título*</label>
               <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Ex: Audiência de Instrução — Cliente" className={fc('title')} />
             </div>
 
             <div className="col-span-2">
-              <label className="block text-xs font-medium text-slate-600 mb-1">Tipo de Audiência*</label>
+              <label className="block text-xs font-medium text-muted-foreground mb-1">Tipo de Audiência*</label>
               <div className="flex gap-2 flex-wrap">
                 {audTipoOptions.map((t) => (
                   <button key={t} type="button" onClick={() => setAudTipo(t)}
-                    className={`rounded-md px-3 py-2 text-sm border transition-colors ${audienciaTipo === t ? 'bg-blue-600 border-blue-600 text-white' : 'bg-white border-slate-200 text-slate-600'}`}>
+                    className={`rounded-md px-3 py-2 text-sm border transition-colors ${audienciaTipo === t ? 'bg-blue-600 border-blue-600 text-white' : 'bg-card border-border text-muted-foreground'}`}>
                     {audienciaTipoLabels[t]}
                   </button>
                 ))}
@@ -611,17 +611,17 @@ function NovaAudienciaModal({ onClose, onSave, processos, currentUser, isAdmin }
             </div>
 
             <div className="col-span-2 relative">
-              <label className="block text-xs font-medium text-slate-600 mb-1">Processo</label>
+              <label className="block text-xs font-medium text-muted-foreground mb-1">Processo</label>
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                <input value={processoSearch} onChange={(e) => { setProcessoSearch(e.target.value); setShowPList(true); }} onFocus={() => setShowPList(true)} placeholder="Vincular a um processo (opcional)..." className="w-full border border-slate-200 rounded-md pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <input value={processoSearch} onChange={(e) => { setProcessoSearch(e.target.value); setShowPList(true); }} onFocus={() => setShowPList(true)} placeholder="Vincular a um processo (opcional)..." className="w-full border border-border rounded-md pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
               </div>
               {showPList && filteredP.length > 0 && (
-                <div className="absolute z-10 w-full bg-white border border-slate-200 rounded-lg shadow-md max-h-48 overflow-y-auto mt-1">
+                <div className="absolute z-10 w-full bg-card border border-border rounded-lg shadow-md max-h-48 overflow-y-auto mt-1">
                   {filteredP.map((p) => (
-                    <div key={p.id} onClick={() => selectProcesso(p)} className="hover:bg-slate-50 px-3 py-2 cursor-pointer">
-                      <span className="font-mono text-xs text-slate-500">{p.numero_cnj}</span>
-                      <span className="text-sm text-slate-700 ml-2">{p.acao}</span>
+                    <div key={p.id} onClick={() => selectProcesso(p)} className="hover:bg-muted px-3 py-2 cursor-pointer">
+                      <span className="font-mono text-xs text-muted-foreground">{p.numero_cnj}</span>
+                      <span className="text-sm text-foreground ml-2">{p.acao}</span>
                     </div>
                   ))}
                 </div>
@@ -629,13 +629,13 @@ function NovaAudienciaModal({ onClose, onSave, processos, currentUser, isAdmin }
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-600 mb-1">Data*</label>
+              <label className="block text-xs font-medium text-muted-foreground mb-1">Data*</label>
               <input type="date" value={data} onChange={(e) => setData(e.target.value)} className={fc('data')} />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-600 mb-1">Status*</label>
-              <select value={audStatus} onChange={(e) => setAudStatus(e.target.value as AudienciaStatus)} className="w-full border border-slate-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <label className="block text-xs font-medium text-muted-foreground mb-1">Status*</label>
+              <select value={audStatus} onChange={(e) => setAudStatus(e.target.value as AudienciaStatus)} className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                 {(['agendada', 'realizada', 'adiada', 'cancelada'] as AudienciaStatus[]).map((s) => (
                   <option key={s} value={s}>{audienciaStatusLabels[s]}</option>
                 ))}
@@ -643,42 +643,42 @@ function NovaAudienciaModal({ onClose, onSave, processos, currentUser, isAdmin }
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-600 mb-1">Hora Início*</label>
+              <label className="block text-xs font-medium text-muted-foreground mb-1">Hora Início*</label>
               <input type="time" value={horaInicio} onChange={(e) => setHoraInicio(e.target.value)} className={fc('horaInicio')} />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-600 mb-1">Hora Fim</label>
-              <input type="time" value={horaFim} onChange={(e) => setHoraFim(e.target.value)} className="w-full border border-slate-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              <label className="block text-xs font-medium text-muted-foreground mb-1">Hora Fim</label>
+              <input type="time" value={horaFim} onChange={(e) => setHoraFim(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-600 mb-1">Vara/Tribunal</label>
-              <input value={local} onChange={(e) => setLocal(e.target.value)} placeholder="Vara, fórum, endereço..." className="w-full border border-slate-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              <label className="block text-xs font-medium text-muted-foreground mb-1">Vara/Tribunal</label>
+              <input value={local} onChange={(e) => setLocal(e.target.value)} placeholder="Vara, fórum, endereço..." className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-600 mb-1">Responsável*</label>
+              <label className="block text-xs font-medium text-muted-foreground mb-1">Responsável*</label>
               {isAdmin ? (
-                <select value={responsibleId} onChange={(e) => setResponsibleId(e.target.value)} className="w-full border border-slate-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <select value={responsibleId} onChange={(e) => setResponsibleId(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                   {MOCK_USERS.map((u) => (
                     <option key={u.id} value={u.id}>{u.name}</option>
                   ))}
                 </select>
               ) : (
-                <div className="bg-slate-50 cursor-not-allowed border border-slate-200 rounded-md px-3 py-2 text-sm text-slate-500">{currentUser.name}</div>
+                <div className="bg-muted cursor-not-allowed border border-border rounded-md px-3 py-2 text-sm text-muted-foreground">{currentUser.name}</div>
               )}
             </div>
 
             <div className="col-span-2">
-              <label className="block text-xs font-medium text-slate-600 mb-1">Observações</label>
-              <textarea value={notes} onChange={(e) => setNotes(e.target.value)} rows={3} placeholder="Detalhes adicionais..." className="w-full border border-slate-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" />
+              <label className="block text-xs font-medium text-muted-foreground mb-1">Observações</label>
+              <textarea value={notes} onChange={(e) => setNotes(e.target.value)} rows={3} placeholder="Detalhes adicionais..." className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" />
             </div>
           </div>
         </div>
 
-        <div className="border-t border-slate-200 px-6 py-4 flex items-center justify-end gap-3 flex-shrink-0">
-          <button onClick={onClose} className="px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 rounded-md">Cancelar</button>
+        <div className="border-t border-border px-6 py-4 flex items-center justify-end gap-3 flex-shrink-0">
+          <button onClick={onClose} className="px-4 py-2 text-sm text-muted-foreground hover:bg-muted rounded-md">Cancelar</button>
           <button onClick={handleSave} className="bg-blue-600 text-white rounded-md px-6 py-2 text-sm font-medium hover:bg-blue-700">Salvar Audiência</button>
         </div>
       </div>
@@ -741,27 +741,27 @@ function RegistrarResultadoModal({ audiencia, onClose, onSave }: RegistrarResult
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center" onClick={onClose}>
       <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" />
-      <div className="relative bg-white rounded-xl shadow-xl max-w-md w-full mx-4" onClick={(e) => e.stopPropagation()}>
-        <div className="px-6 py-4 border-b border-slate-200 flex items-center justify-between">
+      <div className="relative bg-card rounded-xl shadow-xl max-w-md w-full mx-4" onClick={(e) => e.stopPropagation()}>
+        <div className="px-6 py-4 border-b border-border flex items-center justify-between">
           <div className="flex items-center">
             <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-            <span className="text-lg font-semibold text-slate-900">Registrar Resultado</span>
+            <span className="text-lg font-semibold text-foreground">Registrar Resultado</span>
           </div>
-          <button onClick={onClose} className="text-slate-400 hover:text-slate-600"><X className="w-5 h-5" /></button>
+          <button onClick={onClose} className="text-muted-foreground hover:text-muted-foreground"><X className="w-5 h-5" /></button>
         </div>
 
         <div className="px-6 py-5">
           {/* Context */}
-          <div className="bg-slate-50 rounded-lg p-3 mb-4">
-            <p className="text-sm font-semibold text-slate-900">{audiencia.title}</p>
-            <p className="text-xs text-slate-400 mt-0.5">{formatDateBR(audiencia.data)} às {audiencia.hora_inicio}</p>
-            {audiencia.numero_cnj && <p className="font-mono text-xs text-slate-400">{audiencia.numero_cnj}</p>}
+          <div className="bg-muted rounded-lg p-3 mb-4">
+            <p className="text-sm font-semibold text-foreground">{audiencia.title}</p>
+            <p className="text-xs text-muted-foreground mt-0.5">{formatDateBR(audiencia.data)} às {audiencia.hora_inicio}</p>
+            {audiencia.numero_cnj && <p className="font-mono text-xs text-muted-foreground">{audiencia.numero_cnj}</p>}
           </div>
 
           <div className="space-y-4">
             <div>
-              <label className="block text-xs font-medium text-slate-600 mb-1">Resultado da Audiência*</label>
-              <select value={resultado} onChange={(e) => setResultado(e.target.value)} className="w-full border border-slate-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <label className="block text-xs font-medium text-muted-foreground mb-1">Resultado da Audiência*</label>
+              <select value={resultado} onChange={(e) => setResultado(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <option value="">Selecione...</option>
                 {resultados.map((r) => (
                   <option key={r} value={r}>{r}</option>
@@ -770,19 +770,19 @@ function RegistrarResultadoModal({ audiencia, onClose, onSave }: RegistrarResult
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-600 mb-1">Data de Realização*</label>
-              <input type="date" value={dataRealizacao} onChange={(e) => setDataRealizacao(e.target.value)} className="w-full border border-slate-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              <label className="block text-xs font-medium text-muted-foreground mb-1">Data de Realização*</label>
+              <input type="date" value={dataRealizacao} onChange={(e) => setDataRealizacao(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-600 mb-1">Detalhes / Observações*</label>
-              <textarea value={detalhes} onChange={(e) => setDetalhes(e.target.value)} rows={4} placeholder="Descreva o resultado da audiência, decisões tomadas, próximos passos..." className="w-full border border-slate-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" />
+              <label className="block text-xs font-medium text-muted-foreground mb-1">Detalhes / Observações*</label>
+              <textarea value={detalhes} onChange={(e) => setDetalhes(e.target.value)} rows={4} placeholder="Descreva o resultado da audiência, decisões tomadas, próximos passos..." className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" />
             </div>
           </div>
         </div>
 
-        <div className="flex gap-3 px-6 py-4 border-t border-slate-100">
-          <button onClick={onClose} className="flex-1 border border-slate-200 rounded-md py-2 text-sm text-slate-600 hover:bg-slate-50">Cancelar</button>
+        <div className="flex gap-3 px-6 py-4 border-t border-border">
+          <button onClick={onClose} className="flex-1 border border-border rounded-md py-2 text-sm text-muted-foreground hover:bg-muted">Cancelar</button>
           <button onClick={handleSave} className="flex-1 bg-green-600 text-white rounded-md py-2 text-sm font-medium hover:bg-green-700">Registrar</button>
         </div>
       </div>

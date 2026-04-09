@@ -72,7 +72,7 @@ const statusBarColors: Record<string, string> = {
   pendente: 'bg-yellow-400',
   recurso: 'bg-orange-400',
   acordo: 'bg-teal-400',
-  encerrado: 'bg-slate-300',
+  encerrado: 'bg-muted-foreground',
 };
 
 type ReportType = 'processos-status' | 'processos-area' | 'financeiro' | 'produtividade' | 'audiencias' | 'inadimplencia' | 'meus-processos-status' | 'meus-processos-area' | 'minhas-audiencias' | 'meus-prazos' | 'meus-clientes' | 'atividade-recente';
@@ -231,21 +231,21 @@ export default function RelatoriosPage() {
   ) => {
     const Icon = icon;
     return (
-      <div key={reportType} className="bg-white border border-slate-200 rounded-lg p-5 hover:border-slate-300 hover:shadow-sm transition-all duration-150 cursor-pointer flex flex-col gap-4">
+      <div key={reportType} className="bg-card border border-border rounded-lg p-5 hover:border-border hover:shadow-sm transition-all duration-150 cursor-pointer flex flex-col gap-4">
         <div className="flex items-start justify-between">
           <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${iconBg}`}>
             <Icon className="w-6 h-6" />
           </div>
-          <button onClick={() => { showToast('Exportação iniciada', 'info'); }} className="bg-slate-50 border border-slate-200 hover:bg-slate-100 rounded-md px-2.5 py-1.5 text-xs text-slate-600 flex items-center gap-1">
+          <button onClick={() => { showToast('Exportação iniciada', 'info'); }} className="bg-muted border border-border hover:bg-muted rounded-md px-2.5 py-1.5 text-xs text-muted-foreground flex items-center gap-1">
             <Download className="w-3 h-3" /> Gerar
           </button>
         </div>
         <div>
-          <div className="text-base font-semibold text-slate-900 flex items-center gap-2">{title} {extraBadge}</div>
-          <div className="text-sm text-slate-500 leading-snug mt-1">{description}</div>
+          <div className="text-base font-semibold text-foreground flex items-center gap-2">{title} {extraBadge}</div>
+          <div className="text-sm text-muted-foreground leading-snug mt-1">{description}</div>
         </div>
-        <div className="text-xs text-slate-500 flex items-center gap-3 flex-wrap">{preview}</div>
-        <button onClick={() => setActiveReport(reportType)} className="border border-slate-200 rounded-md py-2 text-sm text-slate-600 hover:bg-slate-50 w-full text-center mt-auto flex items-center justify-center gap-1">
+        <div className="text-xs text-muted-foreground flex items-center gap-3 flex-wrap">{preview}</div>
+        <button onClick={() => setActiveReport(reportType)} className="border border-border rounded-md py-2 text-sm text-muted-foreground hover:bg-muted w-full text-center mt-auto flex items-center justify-center gap-1">
           Ver Relatório <ArrowRight className="w-4 h-4" />
         </button>
       </div>
@@ -269,7 +269,7 @@ export default function RelatoriosPage() {
   const periodButtons = (
     <div className="flex gap-2 mb-4">
       {[['mes', 'Este mês'], ['3meses', '3 meses'], ['6meses', '6 meses'], ['ano', '1 ano'], ['todos', 'Todos']].map(([k, l]) => (
-        <button key={k} onClick={() => setPeriodFilter(k)} className={`text-xs rounded-md px-2.5 py-1.5 cursor-pointer ${periodFilter === k ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600'}`}>{l}</button>
+        <button key={k} onClick={() => setPeriodFilter(k)} className={`text-xs rounded-md px-2.5 py-1.5 cursor-pointer ${periodFilter === k ? 'bg-blue-600 text-white' : 'bg-muted text-muted-foreground'}`}>{l}</button>
       ))}
     </div>
   );
@@ -290,50 +290,50 @@ export default function RelatoriosPage() {
     return (
       <div>
         {periodButtons}
-        <div className="bg-slate-50 rounded-lg p-4 mb-5 flex items-center gap-6 flex-wrap">
+        <div className="bg-muted rounded-lg p-4 mb-5 flex items-center gap-6 flex-wrap">
           {statuses.filter(s => counts[s]).map(s => (
             <div key={s} className="flex flex-col items-center">
               <span className={`${statusColors[s]} text-xs font-medium px-2 py-0.5 rounded-full`}>{statusLabels[s]}</span>
-              <span className="text-2xl font-bold text-slate-900 mt-1">{counts[s] || 0}</span>
-              <span className="text-xs text-slate-400">processos</span>
+              <span className="text-2xl font-bold text-foreground mt-1">{counts[s] || 0}</span>
+              <span className="text-xs text-muted-foreground">processos</span>
             </div>
           ))}
-          <div className="border-l border-slate-200 pl-6">
-            <span className="text-xs text-slate-400">Total</span>
-            <div className="text-2xl font-bold text-slate-900">{total}</div>
+          <div className="border-l border-border pl-6">
+            <span className="text-xs text-muted-foreground">Total</span>
+            <div className="text-2xl font-bold text-foreground">{total}</div>
           </div>
         </div>
         {total > 0 && (
-          <div className="h-3 rounded-full bg-slate-100 overflow-hidden flex mb-5">
+          <div className="h-3 rounded-full bg-muted overflow-hidden flex mb-5">
             {statuses.filter(s => counts[s]).map(s => (
               <div key={s} className={`${statusBarColors[s]}`} style={{ width: `${Math.min((counts[s] / total) * 100, 100)}%` }} title={`${statusLabels[s]}: ${counts[s]}`} />
             ))}
           </div>
         )}
-        <div className="bg-white border border-slate-200 rounded-lg overflow-hidden">
+        <div className="bg-card border border-border rounded-lg overflow-hidden">
           <table className="w-full">
             <thead>
-              <tr className="bg-slate-50 border-b border-slate-200">
-                <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Status</th>
-                <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Processos</th>
-                <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">% do Total</th>
-                {admin && <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Valor Total</th>}
+              <tr className="bg-muted border-b border-border">
+                <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Status</th>
+                <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Processos</th>
+                <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">% do Total</th>
+                {admin && <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Valor Total</th>}
               </tr>
             </thead>
             <tbody>
               {statuses.filter(s => counts[s]).map(s => (
-                <tr key={s} className="border-b border-slate-100">
+                <tr key={s} className="border-b border-border">
                   <td className="px-4 py-3"><span className={`${statusColors[s]} text-xs font-medium px-2 py-0.5 rounded-full`}>{statusLabels[s]}</span></td>
-                  <td className="px-4 py-3 text-sm text-slate-900">{counts[s]}</td>
-                  <td className="px-4 py-3 text-sm text-slate-600">{total > 0 ? ((counts[s] / total) * 100).toFixed(1) : 0}%</td>
-                  {admin && <td className="px-4 py-3 text-sm text-slate-900">{formatBRL(valorByStatus[s] || 0)}</td>}
+                  <td className="px-4 py-3 text-sm text-foreground">{counts[s]}</td>
+                  <td className="px-4 py-3 text-sm text-muted-foreground">{total > 0 ? ((counts[s] / total) * 100).toFixed(1) : 0}%</td>
+                  {admin && <td className="px-4 py-3 text-sm text-foreground">{formatBRL(valorByStatus[s] || 0)}</td>}
                 </tr>
               ))}
-              <tr className="bg-slate-50 font-semibold">
-                <td className="px-4 py-3 text-sm text-slate-900">Total</td>
-                <td className="px-4 py-3 text-sm text-slate-900">{total}</td>
-                <td className="px-4 py-3 text-sm text-slate-900">100%</td>
-                {admin && <td className="px-4 py-3 text-sm text-slate-900">{formatBRL(totalValor)}</td>}
+              <tr className="bg-muted font-semibold">
+                <td className="px-4 py-3 text-sm text-foreground">Total</td>
+                <td className="px-4 py-3 text-sm text-foreground">{total}</td>
+                <td className="px-4 py-3 text-sm text-foreground">100%</td>
+                {admin && <td className="px-4 py-3 text-sm text-foreground">{formatBRL(totalValor)}</td>}
               </tr>
             </tbody>
           </table>
@@ -346,19 +346,19 @@ export default function RelatoriosPage() {
     const total = allProcessos.length;
     const areas = ['trabalhista', 'civil', 'criminal', 'previdenciario'];
     return (
-      <div className="bg-slate-50 rounded-lg p-4 mb-5 grid grid-cols-4 gap-4">
+      <div className="bg-muted rounded-lg p-4 mb-5 grid grid-cols-4 gap-4">
         {areas.map(a => {
           const count = processosPorArea[a] || 0;
           const pct = total > 0 ? (count / total) * 100 : 0;
           return (
-            <div key={a} className="bg-white rounded-lg p-4 text-center border border-slate-200">
+            <div key={a} className="bg-card rounded-lg p-4 text-center border border-border">
               <span className={`${areaColors[a]} text-xs font-medium px-2 py-0.5 rounded-full`}>{areaLabels[a]}</span>
-              <div className="text-3xl font-bold text-slate-900 mt-2">{count}</div>
-              <div className="text-xs text-slate-400">processos</div>
-              <div className="h-1.5 rounded-full bg-slate-100 mt-3">
+              <div className="text-3xl font-bold text-foreground mt-2">{count}</div>
+              <div className="text-xs text-muted-foreground">processos</div>
+              <div className="h-1.5 rounded-full bg-muted mt-3">
                 <div className={`h-1.5 rounded-full ${a === 'trabalhista' ? 'bg-blue-500' : a === 'civil' ? 'bg-purple-500' : a === 'criminal' ? 'bg-red-500' : 'bg-green-500'}`} style={{ width: `${Math.min(pct, 100)}%` }} />
               </div>
-              <div className="text-xs text-slate-500 mt-1">{pct.toFixed(1)}% do total</div>
+              <div className="text-xs text-muted-foreground mt-1">{pct.toFixed(1)}% do total</div>
             </div>
           );
         })}
@@ -370,39 +370,39 @@ export default function RelatoriosPage() {
     <div>
       {periodButtons}
       <div className="grid grid-cols-3 gap-3 mb-5">
-        <div className="bg-slate-50 rounded-lg p-3 text-center">
-          <div className="text-xs text-slate-400 uppercase">Recebido</div>
+        <div className="bg-muted rounded-lg p-3 text-center">
+          <div className="text-xs text-muted-foreground uppercase">Recebido</div>
           <div className="text-xl font-bold text-green-600">{formatBRL(totalRecebido)}</div>
         </div>
-        <div className="bg-slate-50 rounded-lg p-3 text-center">
-          <div className="text-xs text-slate-400 uppercase">A Receber</div>
+        <div className="bg-muted rounded-lg p-3 text-center">
+          <div className="text-xs text-muted-foreground uppercase">A Receber</div>
           <div className="text-xl font-bold text-amber-600">{formatBRL(totalAReceber)}</div>
         </div>
-        <div className="bg-slate-50 rounded-lg p-3 text-center">
-          <div className="text-xs text-slate-400 uppercase">Em Atraso</div>
+        <div className="bg-muted rounded-lg p-3 text-center">
+          <div className="text-xs text-muted-foreground uppercase">Em Atraso</div>
           <div className="text-xl font-bold text-red-600">{formatBRL(totalVencido)}</div>
         </div>
       </div>
-      <div className="bg-white border border-slate-200 rounded-lg overflow-hidden">
+      <div className="bg-card border border-border rounded-lg overflow-hidden">
         <table className="w-full">
           <thead>
-            <tr className="bg-slate-50 border-b border-slate-200">
-              <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Mês</th>
-              <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Honorários</th>
-              <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Despesas</th>
-              <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Custas</th>
-              <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Total</th>
-              <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Status</th>
+            <tr className="bg-muted border-b border-border">
+              <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Mês</th>
+              <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Honorários</th>
+              <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Despesas</th>
+              <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Custas</th>
+              <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Total</th>
+              <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Status</th>
             </tr>
           </thead>
           <tbody>
             {financeiroMensal.map(m => (
-              <tr key={m.month} className="border-b border-slate-100">
-                <td className="px-4 py-3 text-sm text-slate-900">{monthLabel(m.month + '-01')}</td>
-                <td className="px-4 py-3 text-sm text-slate-700">{formatBRL(m.honorarios)}</td>
-                <td className="px-4 py-3 text-sm text-slate-700">{formatBRL(m.despesas)}</td>
-                <td className="px-4 py-3 text-sm text-slate-700">{formatBRL(m.custas)}</td>
-                <td className="px-4 py-3 text-sm font-semibold text-slate-900">{formatBRL(m.total)}</td>
+              <tr key={m.month} className="border-b border-border">
+                <td className="px-4 py-3 text-sm text-foreground">{monthLabel(m.month + '-01')}</td>
+                <td className="px-4 py-3 text-sm text-foreground">{formatBRL(m.honorarios)}</td>
+                <td className="px-4 py-3 text-sm text-foreground">{formatBRL(m.despesas)}</td>
+                <td className="px-4 py-3 text-sm text-foreground">{formatBRL(m.custas)}</td>
+                <td className="px-4 py-3 text-sm font-semibold text-foreground">{formatBRL(m.total)}</td>
                 <td className="px-4 py-3">
                   <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${m.aboveAvg ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700'}`}>
                     {m.aboveAvg ? 'Acima da média' : 'Abaixo da média'}
@@ -410,12 +410,12 @@ export default function RelatoriosPage() {
                 </td>
               </tr>
             ))}
-            <tr className="bg-slate-50 font-semibold">
-              <td className="px-4 py-3 text-sm text-slate-900">Total</td>
-              <td className="px-4 py-3 text-sm text-slate-900">{formatBRL(financeiroMensal.reduce((s, m) => s + m.honorarios, 0))}</td>
-              <td className="px-4 py-3 text-sm text-slate-900">{formatBRL(financeiroMensal.reduce((s, m) => s + m.despesas, 0))}</td>
-              <td className="px-4 py-3 text-sm text-slate-900">{formatBRL(financeiroMensal.reduce((s, m) => s + m.custas, 0))}</td>
-              <td className="px-4 py-3 text-sm text-slate-900">{formatBRL(financeiroMensal.reduce((s, m) => s + m.total, 0))}</td>
+            <tr className="bg-muted font-semibold">
+              <td className="px-4 py-3 text-sm text-foreground">Total</td>
+              <td className="px-4 py-3 text-sm text-foreground">{formatBRL(financeiroMensal.reduce((s, m) => s + m.honorarios, 0))}</td>
+              <td className="px-4 py-3 text-sm text-foreground">{formatBRL(financeiroMensal.reduce((s, m) => s + m.despesas, 0))}</td>
+              <td className="px-4 py-3 text-sm text-foreground">{formatBRL(financeiroMensal.reduce((s, m) => s + m.custas, 0))}</td>
+              <td className="px-4 py-3 text-sm text-foreground">{formatBRL(financeiroMensal.reduce((s, m) => s + m.total, 0))}</td>
               <td className="px-4 py-3" />
             </tr>
           </tbody>
@@ -427,24 +427,24 @@ export default function RelatoriosPage() {
   const renderProdutividade = () => (
     <div className="grid grid-cols-1 gap-3">
       {produtividadeData.map(d => (
-        <div key={d.user.id} className="bg-white border border-slate-200 rounded-lg p-4 flex items-center gap-4">
+        <div key={d.user.id} className="bg-card border border-border rounded-lg p-4 flex items-center gap-4">
           <UserAvatar name={d.user.name} color={d.user.avatar_color} size="lg" />
           <div className="flex-1">
             <div className="flex items-center gap-2">
-              <span className="font-semibold text-slate-900">{d.user.name}</span>
+              <span className="font-semibold text-foreground">{d.user.name}</span>
               {d.user.practice_areas.map(a => (
                 <span key={a} className={`${areaColors[a]} text-xs font-medium px-2 py-0.5 rounded-full`}>{areaLabels[a]}</span>
               ))}
             </div>
             <div className="grid grid-cols-4 gap-4 mt-2">
-              <div><span className="text-lg font-bold text-slate-900">{d.processos}</span><div className="text-xs text-slate-400">Processos Ativos</div></div>
-              <div><span className="text-lg font-bold text-slate-900">{d.clientes}</span><div className="text-xs text-slate-400">Clientes</div></div>
-              <div><span className="text-lg font-bold text-slate-900">{d.audiencias}</span><div className="text-xs text-slate-400">Audiências (mês)</div></div>
-              <div><span className={`text-lg font-bold ${d.prazos > 0 ? 'text-amber-600' : 'text-slate-900'}`}>{d.prazos}</span><div className="text-xs text-slate-400">Prazos (semana)</div></div>
+              <div><span className="text-lg font-bold text-foreground">{d.processos}</span><div className="text-xs text-muted-foreground">Processos Ativos</div></div>
+              <div><span className="text-lg font-bold text-foreground">{d.clientes}</span><div className="text-xs text-muted-foreground">Clientes</div></div>
+              <div><span className="text-lg font-bold text-foreground">{d.audiencias}</span><div className="text-xs text-muted-foreground">Audiências (mês)</div></div>
+              <div><span className={`text-lg font-bold ${d.prazos > 0 ? 'text-amber-600' : 'text-foreground'}`}>{d.prazos}</span><div className="text-xs text-muted-foreground">Prazos (semana)</div></div>
             </div>
           </div>
           <div className="text-right">
-            <div className="text-xs text-slate-400">{d.user.oab}</div>
+            <div className="text-xs text-muted-foreground">{d.user.oab}</div>
           </div>
         </div>
       ))}
@@ -456,7 +456,7 @@ export default function RelatoriosPage() {
       { label: 'Agendadas', count: audienciasAgendadas, color: 'text-blue-600' },
       { label: 'Realizadas', count: audienciasRealizadas, color: 'text-green-600' },
       { label: 'Adiadas', count: audienciaEventos.filter(e => e.audiencia_status === 'adiada').length, color: 'text-amber-600' },
-      { label: 'Canceladas', count: audienciasCanceladas, color: 'text-slate-600' },
+      { label: 'Canceladas', count: audienciasCanceladas, color: 'text-muted-foreground' },
     ];
     const tipoLabels: Record<string, string> = { conciliacao: 'Conciliação', instrucao: 'Instrução', julgamento: 'Julgamento', una: 'Una', virtual: 'Virtual' };
     const tipoCounts: Record<string, number> = {};
@@ -467,20 +467,20 @@ export default function RelatoriosPage() {
         {periodButtons}
         <div className="grid grid-cols-4 gap-3 mb-5">
           {aggs.map(a => (
-            <div key={a.label} className="bg-slate-50 rounded-lg p-3 text-center">
+            <div key={a.label} className="bg-muted rounded-lg p-3 text-center">
               <div className={`text-2xl font-bold ${a.color}`}>{a.count}</div>
-              <div className="text-xs text-slate-400">{a.label}</div>
+              <div className="text-xs text-muted-foreground">{a.label}</div>
             </div>
           ))}
         </div>
-        <div className="bg-slate-50 rounded-lg p-4 mb-4">
+        <div className="bg-muted rounded-lg p-4 mb-4">
           {Object.entries(tipoCounts).map(([t, c]) => (
             <div key={t} className="flex items-center gap-3 mb-2 last:mb-0">
-              <span className="text-xs text-slate-600 w-24">{tipoLabels[t] || t}</span>
-              <div className="flex-1 bg-slate-200 rounded-full h-2">
+              <span className="text-xs text-muted-foreground w-24">{tipoLabels[t] || t}</span>
+              <div className="flex-1 bg-muted rounded-full h-2">
                 <div className="bg-blue-500 rounded-full h-2" style={{ width: `${totalAud > 0 ? Math.min((c / totalAud) * 100, 100) : 0}%` }} />
               </div>
-              <span className="text-xs text-slate-500 w-16 text-right">{c} ({totalAud > 0 ? ((c / totalAud) * 100).toFixed(0) : 0}%)</span>
+              <span className="text-xs text-muted-foreground w-16 text-right">{c} ({totalAud > 0 ? ((c / totalAud) * 100).toFixed(0) : 0}%)</span>
             </div>
           ))}
         </div>
@@ -499,19 +499,19 @@ export default function RelatoriosPage() {
           <div className="text-xs text-orange-400 uppercase">Taxa Inadimplência</div>
           <div className="text-xl font-bold text-orange-600">{taxaInadimplencia.toFixed(1)}%</div>
         </div>
-        <div className="bg-slate-50 rounded-lg p-3 text-center">
-          <div className="text-xs text-slate-400 uppercase">Lançamentos Vencidos</div>
-          <div className="text-xl font-bold text-slate-900">{vencidosPorCliente.length}</div>
+        <div className="bg-muted rounded-lg p-3 text-center">
+          <div className="text-xs text-muted-foreground uppercase">Lançamentos Vencidos</div>
+          <div className="text-xl font-bold text-foreground">{vencidosPorCliente.length}</div>
         </div>
       </div>
       <div className="space-y-3 mb-5">
         {inadimplenciaPorAdvogado.filter(a => a.vencido > 0 || a.aReceber > 0).map(a => {
           const taxa = a.total > 0 ? (a.recebido / a.total) * 100 : 0;
           return (
-            <div key={a.id} className="bg-white border border-slate-200 rounded-lg p-4 flex items-center gap-4">
+            <div key={a.id} className="bg-card border border-border rounded-lg p-4 flex items-center gap-4">
               <UserAvatar name={a.name} color={a.avatar_color} />
               <div className="flex-1">
-                <div className="font-medium text-slate-900">{a.name}</div>
+                <div className="font-medium text-foreground">{a.name}</div>
                 <div className="flex gap-4 mt-1 text-xs">
                   <span className="text-amber-600">A receber: {formatBRL(a.aReceber)}</span>
                   <span className="text-red-600">Vencido: {formatBRL(a.vencido)}</span>
@@ -519,7 +519,7 @@ export default function RelatoriosPage() {
                 </div>
               </div>
               <div className="w-32">
-                <div className="h-1.5 rounded-full bg-slate-100 overflow-hidden flex">
+                <div className="h-1.5 rounded-full bg-muted overflow-hidden flex">
                   <div className="bg-green-500 h-full" style={{ width: `${Math.min(taxa, 100)}%` }} />
                   {a.vencido > 0 && <div className="bg-red-400 h-full" style={{ width: `${Math.min((a.vencido / Math.max(a.total, 1)) * 100, 100)}%` }} />}
                 </div>
@@ -529,24 +529,24 @@ export default function RelatoriosPage() {
         })}
       </div>
       {vencidosPorCliente.length > 0 && (
-        <div className="bg-white border border-slate-200 rounded-lg overflow-hidden">
+        <div className="bg-card border border-border rounded-lg overflow-hidden">
           <table className="w-full">
             <thead>
-              <tr className="bg-slate-50 border-b border-slate-200">
-                <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Cliente</th>
-                <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Advogado</th>
-                <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Valor Vencido</th>
-                <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Vencimento</th>
-                <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Dias em Atraso</th>
+              <tr className="bg-muted border-b border-border">
+                <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Cliente</th>
+                <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Advogado</th>
+                <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Valor Vencido</th>
+                <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Vencimento</th>
+                <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Dias em Atraso</th>
               </tr>
             </thead>
             <tbody>
               {vencidosPorCliente.map(v => (
-                <tr key={v.id} className="border-b border-slate-100">
-                  <td className="px-4 py-3 text-sm text-slate-900">{v.cliente_nome}</td>
-                  <td className="px-4 py-3 text-sm text-slate-600">{v.advogado?.name || '—'}</td>
-                  <td className="px-4 py-3 text-sm font-semibold text-slate-900">{formatBRL(v.valor)}</td>
-                  <td className="px-4 py-3 text-sm text-slate-600">{formatDateBR(v.vencimento)}</td>
+                <tr key={v.id} className="border-b border-border">
+                  <td className="px-4 py-3 text-sm text-foreground">{v.cliente_nome}</td>
+                  <td className="px-4 py-3 text-sm text-muted-foreground">{v.advogado?.name || '—'}</td>
+                  <td className="px-4 py-3 text-sm font-semibold text-foreground">{formatBRL(v.valor)}</td>
+                  <td className="px-4 py-3 text-sm text-muted-foreground">{formatDateBR(v.vencimento)}</td>
                   <td className="px-4 py-3">
                     <span className={`text-sm font-medium ${v.diasAtraso > 90 ? 'text-red-600 font-bold' : v.diasAtraso > 30 ? 'text-orange-600' : 'text-amber-600'}`}>
                       {v.diasAtraso} dias
@@ -571,8 +571,8 @@ export default function RelatoriosPage() {
           </div>
           {prazosFatais.map(p => (
             <div key={p.id} className="flex items-center gap-3 mb-2 last:mb-0">
-              <span className="font-mono text-xs text-slate-500">{p.numero_cnj}</span>
-              <span className="text-sm text-slate-700 flex-1">{p.acao}</span>
+              <span className="font-mono text-xs text-muted-foreground">{p.numero_cnj}</span>
+              <span className="text-sm text-foreground flex-1">{p.acao}</span>
               <span className="bg-red-100 text-red-700 text-xs font-semibold px-2 py-0.5 rounded-full">Vence em {daysDiff(p.prazo_fatal)} dias</span>
             </div>
           ))}
@@ -583,29 +583,29 @@ export default function RelatoriosPage() {
           <span className="text-sm text-green-600">Nenhum prazo fatal nos próximos 7 dias</span>
         </div>
       )}
-      <div className="bg-white border border-slate-200 rounded-lg overflow-hidden">
+      <div className="bg-card border border-border rounded-lg overflow-hidden">
         <table className="w-full">
           <thead>
-            <tr className="bg-slate-50 border-b border-slate-200">
-              <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Processo</th>
-              <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Ação</th>
-              <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Área</th>
-              <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Prazo Fatal</th>
-              <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Dias Restantes</th>
-              <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Status</th>
+            <tr className="bg-muted border-b border-border">
+              <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Processo</th>
+              <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Ação</th>
+              <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Área</th>
+              <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Prazo Fatal</th>
+              <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Dias Restantes</th>
+              <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Status</th>
             </tr>
           </thead>
           <tbody>
             {allProcessos.filter(p => p.prazo_fatal).sort((a, b) => daysDiff(a.prazo_fatal) - daysDiff(b.prazo_fatal)).map(p => {
               const diff = daysDiff(p.prazo_fatal);
               return (
-                <tr key={p.id} className="border-b border-slate-100">
-                  <td className="px-4 py-3 font-mono text-xs text-slate-500">{p.numero_cnj}</td>
-                  <td className="px-4 py-3 text-sm text-slate-900">{p.acao}</td>
+                <tr key={p.id} className="border-b border-border">
+                  <td className="px-4 py-3 font-mono text-xs text-muted-foreground">{p.numero_cnj}</td>
+                  <td className="px-4 py-3 text-sm text-foreground">{p.acao}</td>
                   <td className="px-4 py-3"><span className={`${areaColors[p.practice_area]} text-xs font-medium px-2 py-0.5 rounded-full`}>{areaLabels[p.practice_area]}</span></td>
-                  <td className="px-4 py-3 text-sm text-slate-700">{formatDateBR(p.prazo_fatal)}</td>
+                  <td className="px-4 py-3 text-sm text-foreground">{formatDateBR(p.prazo_fatal)}</td>
                   <td className="px-4 py-3">
-                    <span className={`text-sm font-medium ${diff <= 0 ? 'text-red-600 font-bold' : diff <= 3 ? 'text-red-600' : diff <= 7 ? 'text-amber-600' : 'text-slate-700'}`}>
+                    <span className={`text-sm font-medium ${diff <= 0 ? 'text-red-600 font-bold' : diff <= 3 ? 'text-red-600' : diff <= 7 ? 'text-amber-600' : 'text-foreground'}`}>
                       {diff <= 0 ? 'Vencido' : `${diff} dias`}
                     </span>
                   </td>
@@ -627,28 +627,28 @@ export default function RelatoriosPage() {
       <div>
         {periodButtons}
         <div className="grid grid-cols-3 gap-3 mb-5">
-          <div className="bg-blue-50 rounded-lg p-3 text-center"><div className="text-2xl font-bold text-blue-600">{mesCount}</div><div className="text-xs text-slate-400">Este mês</div></div>
-          <div className="bg-green-50 rounded-lg p-3 text-center"><div className="text-2xl font-bold text-green-600">{audienciasRealizadas}</div><div className="text-xs text-slate-400">Realizadas</div></div>
-          <div className="bg-amber-50 rounded-lg p-3 text-center"><div className="text-2xl font-bold text-amber-600">{audienciasAgendadas}</div><div className="text-xs text-slate-400">Pendentes</div></div>
+          <div className="bg-blue-50 rounded-lg p-3 text-center"><div className="text-2xl font-bold text-blue-600">{mesCount}</div><div className="text-xs text-muted-foreground">Este mês</div></div>
+          <div className="bg-green-50 rounded-lg p-3 text-center"><div className="text-2xl font-bold text-green-600">{audienciasRealizadas}</div><div className="text-xs text-muted-foreground">Realizadas</div></div>
+          <div className="bg-amber-50 rounded-lg p-3 text-center"><div className="text-2xl font-bold text-amber-600">{audienciasAgendadas}</div><div className="text-xs text-muted-foreground">Pendentes</div></div>
         </div>
-        <div className="bg-white border border-slate-200 rounded-lg overflow-hidden">
+        <div className="bg-card border border-border rounded-lg overflow-hidden">
           <table className="w-full">
             <thead>
-              <tr className="bg-slate-50 border-b border-slate-200">
-                <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Data</th>
-                <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Título</th>
-                <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Cliente</th>
-                <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3">Status</th>
+              <tr className="bg-muted border-b border-border">
+                <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Data</th>
+                <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Título</th>
+                <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Cliente</th>
+                <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3">Status</th>
               </tr>
             </thead>
             <tbody>
               {audienciaEventos.sort((a, b) => a.data.localeCompare(b.data)).map(e => (
-                <tr key={e.id} className="border-b border-slate-100">
-                  <td className="px-4 py-3 text-sm text-slate-700">{formatDateBR(e.data)} {e.hora_inicio}</td>
-                  <td className="px-4 py-3 text-sm text-slate-900">{e.title}</td>
-                  <td className="px-4 py-3 text-sm text-slate-600">{e.cliente_nome || '—'}</td>
+                <tr key={e.id} className="border-b border-border">
+                  <td className="px-4 py-3 text-sm text-foreground">{formatDateBR(e.data)} {e.hora_inicio}</td>
+                  <td className="px-4 py-3 text-sm text-foreground">{e.title}</td>
+                  <td className="px-4 py-3 text-sm text-muted-foreground">{e.cliente_nome || '—'}</td>
                   <td className="px-4 py-3">
-                    <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${e.audiencia_status === 'realizada' ? 'bg-green-100 text-green-700' : e.audiencia_status === 'cancelada' ? 'bg-slate-100 text-slate-500' : 'bg-blue-100 text-blue-700'}`}>
+                    <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${e.audiencia_status === 'realizada' ? 'bg-green-100 text-green-700' : e.audiencia_status === 'cancelada' ? 'bg-muted text-muted-foreground' : 'bg-blue-100 text-blue-700'}`}>
                       {e.audiencia_status === 'realizada' ? 'Realizada' : e.audiencia_status === 'cancelada' ? 'Cancelada' : 'Agendada'}
                     </span>
                   </td>
@@ -664,10 +664,10 @@ export default function RelatoriosPage() {
   const renderMeusClientes = () => (
     <div>
       <div className="grid grid-cols-4 gap-3 mb-5">
-        <div className="bg-green-50 rounded-lg p-3 text-center"><div className="text-2xl font-bold text-green-600">{clientesPorStatus.ativo}</div><div className="text-xs text-slate-400">Ativos</div></div>
-        <div className="bg-slate-50 rounded-lg p-3 text-center"><div className="text-2xl font-bold text-slate-600">{clientesPorStatus.inativo}</div><div className="text-xs text-slate-400">Inativos</div></div>
-        <div className="bg-blue-50 rounded-lg p-3 text-center"><div className="text-2xl font-bold text-blue-600">{clientesPorTipo.PF}</div><div className="text-xs text-slate-400">Pessoa Física</div></div>
-        <div className="bg-purple-50 rounded-lg p-3 text-center"><div className="text-2xl font-bold text-purple-600">{clientesPorTipo.PJ}</div><div className="text-xs text-slate-400">Pessoa Jurídica</div></div>
+        <div className="bg-green-50 rounded-lg p-3 text-center"><div className="text-2xl font-bold text-green-600">{clientesPorStatus.ativo}</div><div className="text-xs text-muted-foreground">Ativos</div></div>
+        <div className="bg-muted rounded-lg p-3 text-center"><div className="text-2xl font-bold text-muted-foreground">{clientesPorStatus.inativo}</div><div className="text-xs text-muted-foreground">Inativos</div></div>
+        <div className="bg-blue-50 rounded-lg p-3 text-center"><div className="text-2xl font-bold text-blue-600">{clientesPorTipo.PF}</div><div className="text-xs text-muted-foreground">Pessoa Física</div></div>
+        <div className="bg-purple-50 rounded-lg p-3 text-center"><div className="text-2xl font-bold text-purple-600">{clientesPorTipo.PJ}</div><div className="text-xs text-muted-foreground">Pessoa Jurídica</div></div>
       </div>
     </div>
   );
@@ -675,15 +675,15 @@ export default function RelatoriosPage() {
   const renderAtividadeRecente = () => (
     <div>
       {allAtividades.length === 0 ? (
-        <div className="text-center py-10 text-slate-400 text-sm">Nenhuma atividade registrada</div>
+        <div className="text-center py-10 text-muted-foreground text-sm">Nenhuma atividade registrada</div>
       ) : (
         <div className="space-y-3">
           {allAtividades.sort((a, b) => b.data.localeCompare(a.data)).slice(0, 20).map(a => (
-            <div key={a.id} className="bg-white border border-slate-200 rounded-lg px-4 py-3 flex items-start gap-3">
-              <Activity className="w-4 h-4 text-slate-300 mt-0.5 flex-shrink-0" />
+            <div key={a.id} className="bg-card border border-border rounded-lg px-4 py-3 flex items-start gap-3">
+              <Activity className="w-4 h-4 text-muted-foreground mt-0.5 flex-shrink-0" />
               <div className="flex-1 min-w-0">
-                <div className="text-sm text-slate-900">{a.descricao}</div>
-                <div className="text-xs text-slate-400 mt-0.5">{formatDateBR(a.data)} · {a.usuario_nome}</div>
+                <div className="text-sm text-foreground">{a.descricao}</div>
+                <div className="text-xs text-muted-foreground mt-0.5">{formatDateBR(a.data)} · {a.usuario_nome}</div>
               </div>
             </div>
           ))}
@@ -748,8 +748,8 @@ export default function RelatoriosPage() {
       <div>
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h1 className="text-2xl font-bold text-slate-900">Relatórios</h1>
-            <p className="text-xs text-slate-400 mt-0.5">WebHubPro ERP / Relatórios{admin ? ' — Escritório' : ' — Meus Dados'}</p>
+            <h1 className="text-2xl font-bold text-foreground">Relatórios</h1>
+            <p className="text-xs text-muted-foreground mt-0.5">WebHubPro ERP / Relatórios{admin ? ' — Escritório' : ' — Meus Dados'}</p>
           </div>
         </div>
         <EmptyState icon={BarChart2} title="Nenhum dado disponível" subtitle="Cadastre processos e clientes para visualizar os relatórios" ctaLabel="Ir para Processos" onCta={() => {}} />
@@ -765,11 +765,11 @@ export default function RelatoriosPage() {
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Relatórios</h1>
-          <p className="text-xs text-slate-400 mt-0.5">WebHubPro ERP / Relatórios{admin ? ' — Escritório' : ' — Meus Dados'}</p>
+          <h1 className="text-2xl font-bold text-foreground">Relatórios</h1>
+          <p className="text-xs text-muted-foreground mt-0.5">WebHubPro ERP / Relatórios{admin ? ' — Escritório' : ' — Meus Dados'}</p>
         </div>
         {admin && (
-          <button onClick={() => showToast('Exportação iniciada', 'info')} className="flex items-center gap-1.5 border border-slate-200 text-slate-600 hover:bg-slate-50 rounded-md px-3 py-2 text-sm">
+          <button onClick={() => showToast('Exportação iniciada', 'info')} className="flex items-center gap-1.5 border border-border text-muted-foreground hover:bg-muted rounded-md px-3 py-2 text-sm">
             <Download className="w-4 h-4" /> Exportar Todos
           </button>
         )}
@@ -786,7 +786,7 @@ export default function RelatoriosPage() {
         </div>
       )}
 
-      <h2 className="text-base font-semibold text-slate-900 mb-4">{admin ? 'Relatórios do Escritório' : 'Meus Relatórios'}</h2>
+      <h2 className="text-base font-semibold text-foreground mb-4">{admin ? 'Relatórios do Escritório' : 'Meus Relatórios'}</h2>
 
       {/* Report cards */}
       <div className="grid grid-cols-3 gap-4 mb-8">
@@ -855,19 +855,19 @@ export default function RelatoriosPage() {
       {activeReport && (
         <div className="fixed inset-0 z-50 flex items-center justify-center" onClick={() => { setActiveReport(null); setPeriodFilter('todos'); }}>
           <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" />
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-3xl max-h-[90vh] flex flex-col mx-4 relative z-10" onClick={e => e.stopPropagation()}>
-            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 flex-shrink-0">
+          <div className="bg-card rounded-xl shadow-xl w-full max-w-3xl max-h-[90vh] flex flex-col mx-4 relative z-10" onClick={e => e.stopPropagation()}>
+            <div className="flex items-center justify-between px-6 py-4 border-b border-border flex-shrink-0">
               <div className="flex items-center gap-3">
                 <div className={`w-9 h-9 rounded-lg flex items-center justify-center ${reportIcons[activeReport].bg}`}>
                   {React.createElement(reportIcons[activeReport].icon, { className: 'w-5 h-5' })}
                 </div>
-                <span className="text-lg font-semibold text-slate-900">{reportTitles[activeReport]}</span>
+                <span className="text-lg font-semibold text-foreground">{reportTitles[activeReport]}</span>
               </div>
               <div className="flex items-center gap-2">
-                <button onClick={() => showToast('Exportando relatório...', 'info')} className="border border-slate-200 text-slate-600 hover:bg-slate-50 rounded-md px-3 py-1.5 text-sm flex items-center gap-1">
+                <button onClick={() => showToast('Exportando relatório...', 'info')} className="border border-border text-muted-foreground hover:bg-muted rounded-md px-3 py-1.5 text-sm flex items-center gap-1">
                   <Download className="w-4 h-4" /> Exportar CSV
                 </button>
-                <button onClick={() => { setActiveReport(null); setPeriodFilter('todos'); }} className="text-slate-400 hover:text-slate-600 p-1"><X className="w-5 h-5" /></button>
+                <button onClick={() => { setActiveReport(null); setPeriodFilter('todos'); }} className="text-muted-foreground hover:text-muted-foreground p-1"><X className="w-5 h-5" /></button>
               </div>
             </div>
             <div className="overflow-y-auto flex-1 px-6 py-5">
