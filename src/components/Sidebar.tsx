@@ -69,7 +69,7 @@ export default function Sidebar({ currentPage, onNavigate }: SidebarProps) {
   const itemClass = (active: boolean) =>
     `flex items-center gap-3 mx-2 px-3 py-2 rounded-md text-sm font-medium cursor-pointer transition-colors duration-150 ${
       active
-        ? 'bg-sidebar-muted text-sidebar-foreground'
+        ? 'bg-sidebar-active text-sidebar-foreground'
         : 'text-sidebar-foreground/60 hover:bg-sidebar-muted hover:text-sidebar-foreground'
     }`;
 
