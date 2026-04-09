@@ -72,7 +72,7 @@ const statusBarColors: Record<string, string> = {
   pendente: 'bg-yellow-400',
   recurso: 'bg-orange-400',
   acordo: 'bg-teal-400',
-  encerrado: 'bg-slate-300',
+  encerrado: 'bg-muted-foreground',
 };
 
 type ReportType = 'processos-status' | 'processos-area' | 'financeiro' | 'produtividade' | 'audiencias' | 'inadimplencia' | 'meus-processos-status' | 'meus-processos-area' | 'minhas-audiencias' | 'meus-prazos' | 'meus-clientes' | 'atividade-recente';

@@ -187,7 +187,7 @@ export default function AgendaPage(_props: AgendaPageProps) {
     reuniao: 'bg-blue-100 text-blue-700 border-l-2 border-blue-500',
     prazo: 'bg-red-100 text-red-700 border-l-2 border-red-500',
     pericia: 'bg-amber-100 text-amber-700 border-l-2 border-amber-500',
-    outro: 'bg-muted text-muted-foreground border-l-2 border-slate-400',
+    outro: 'bg-muted text-muted-foreground border-l-2 border-muted-foreground',
   };
 
   const tipoDotColors: Record<EventoTipo, string> = {
