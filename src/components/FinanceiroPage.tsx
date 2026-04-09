@@ -90,7 +90,7 @@ export default function FinanceiroPage() {
     return Object.entries(map).map(([uid, v]) => {
       const user = MOCK_USERS.find(u => u.id === uid);
       const total = v.aReceber + v.recebido;
-      return { uid, name: user?.name || uid, avatar_color: user?.avatar_color || 'bg-slate-400', practice_areas: user?.practice_areas || [], aReceber: v.aReceber, recebido: v.recebido, total, taxaCobranca: total > 0 ? (v.recebido / total) * 100 : 0 };
+      return { uid, name: user?.name || uid, avatar_color: user?.avatar_color || 'bg-muted-foreground', practice_areas: user?.practice_areas || [], aReceber: v.aReceber, recebido: v.recebido, total, taxaCobranca: total > 0 ? (v.recebido / total) * 100 : 0 };
     }).sort((a, b) => b.total - a.total);
   }, [allLancamentos]);
 
@@ -271,15 +271,15 @@ export default function FinanceiroPage() {
         {/* TABLE */}
         <div className="col-span-8">
           {filtered.length === 0 ? (
-            <div className="bg-white border border-slate-200 rounded-lg shadow-sm">
+            <div className="bg-card border border-border rounded-lg shadow-sm">
               <EmptyState icon={DollarSign} title="Nenhum lançamento encontrado" subtitle="Tente ajustar os filtros ou registre um novo lançamento" ctaLabel="+ Novo Lançamento" onCta={() => setShowModal(true)} />
             </div>
           ) : (
-            <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
+            <div className="bg-card border border-border rounded-lg shadow-sm overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
-                    <tr className="bg-slate-50 border-b border-slate-200">
+                    <tr className="bg-muted border-b border-border">
                       {([
                         ['cliente_nome', 'CLIENTE'],
                         ['numero_cnj', 'PROCESSO'],
@@ -290,11 +290,11 @@ export default function FinanceiroPage() {
                         ['valor', 'VALOR'],
                         ['status', 'STATUS'],
                       ] as [SortField, string][]).map(([f, label]) => (
-                        <th key={f} onClick={() => toggleSort(f)} className="text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3 text-left cursor-pointer hover:text-slate-700 select-none">
+                        <th key={f} onClick={() => toggleSort(f)} className="text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 text-left cursor-pointer hover:text-foreground select-none">
                           {label}<SortIcon field={f} />
                         </th>
                       ))}
-                      <th className="text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 py-3 text-left">AÇÕES</th>
+                      <th className="text-xs font-semibold text-muted-foreground uppercase tracking-wider px-4 py-3 text-left">AÇÕES</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -302,60 +302,60 @@ export default function FinanceiroPage() {
                       const user = MOCK_USERS.find(u => u.id === l.responsible_id);
                       const dd = l.vencimento ? diffDays(l.vencimento) : null;
                       return (
-                        <tr key={l.id} className="hover:bg-slate-50 transition-colors border-b border-slate-100 last:border-0">
+                        <tr key={l.id} className="hover:bg-muted transition-colors border-b border-border last:border-0">
                           <td className="px-4 py-3.5">
                             <div className="flex items-center gap-2">
-                              <div className="w-7 h-7 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-xs font-medium flex-shrink-0">{getInitials(l.cliente_nome)}</div>
+                              <div className="w-7 h-7 rounded-full bg-muted text-muted-foreground flex items-center justify-center text-xs font-medium flex-shrink-0">{getInitials(l.cliente_nome)}</div>
                               <div>
-                                <div className="text-sm font-medium text-slate-900">{l.cliente_nome}</div>
+                                <div className="text-sm font-medium text-foreground">{l.cliente_nome}</div>
                                 <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${areaColors[l.practice_area] || ''}`}>{areaLabels[l.practice_area]}</span>
                               </div>
                             </div>
                           </td>
                           <td className="px-4 py-3.5 min-w-[9rem]">
-                            <span className="font-mono text-xs text-slate-500" title={l.numero_cnj}>{l.numero_cnj.length > 20 ? l.numero_cnj.slice(0, 20) + '...' : l.numero_cnj}</span>
+                            <span className="font-mono text-xs text-muted-foreground" title={l.numero_cnj}>{l.numero_cnj.length > 20 ? l.numero_cnj.slice(0, 20) + '...' : l.numero_cnj}</span>
                           </td>
                           <td className="px-4 py-3.5">
                             {user && (
                               <div className="flex items-center gap-1.5">
                                 <UserAvatar name={user.name} color={user.avatar_color} size="sm" />
-                                <span className="text-sm text-slate-600">{user.name}</span>
+                                <span className="text-sm text-muted-foreground">{user.name}</span>
                               </div>
                             )}
                           </td>
                           <td className="px-4 py-3.5">
                             <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${lancamentoTipoColors[l.tipo]}`}>{lancamentoTipoLabels[l.tipo]}</span>
                           </td>
-                          <td className="px-4 py-3.5"><span className="text-sm text-slate-600 truncate max-w-[10rem] block">{l.descricao}</span></td>
+                          <td className="px-4 py-3.5"><span className="text-sm text-muted-foreground truncate max-w-[10rem] block">{l.descricao}</span></td>
                           <td className="px-4 py-3.5">
                             {l.status === 'pago' ? (
-                              <div><div className="text-xs text-slate-400">Pago em</div><div className="text-sm text-green-600">{formatDate(l.data_pagamento)}</div></div>
+                              <div><div className="text-xs text-muted-foreground">Pago em</div><div className="text-sm text-green-600">{formatDate(l.data_pagamento)}</div></div>
                             ) : dd !== null && dd < 0 ? (
                               <div><div className="text-xs text-red-400">Vencido</div><div className="text-sm text-red-600 font-medium">{formatDate(l.vencimento)}</div></div>
                             ) : dd !== null && dd <= 7 ? (
                               <div><div className="text-xs text-amber-400">Vence em {dd} dias</div><div className="text-sm text-amber-600 font-medium">{formatDate(l.vencimento)}</div></div>
                             ) : (
-                              <div><div className="text-xs text-slate-400">Vencimento</div><div className="text-sm text-slate-700">{formatDate(l.vencimento)}</div></div>
+                              <div><div className="text-xs text-muted-foreground">Vencimento</div><div className="text-sm text-foreground">{formatDate(l.vencimento)}</div></div>
                             )}
                           </td>
                           <td className="px-4 py-3.5">
-                            <div className="text-sm font-semibold text-slate-900">{formatBRL(l.valor)}</div>
+                            <div className="text-sm font-semibold text-foreground">{formatBRL(l.valor)}</div>
                             {l.status === 'parcelado' && <div className="text-xs text-blue-500">{l.parcelas_pagas}/{l.parcelas_total} parcelas</div>}
                           </td>
                           <td className="px-4 py-3.5">
                             <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${lancamentoStatusColors[l.status]}`}>{lancamentoStatusLabels[l.status]}</span>
                           </td>
                           <td className="px-4 py-3.5 relative">
-                            <button onClick={() => setDropdownOpen(dropdownOpen === l.id ? null : l.id)} className="text-slate-400 hover:text-slate-600 p-1 rounded"><MoreHorizontal className="w-4 h-4" /></button>
+                            <button onClick={() => setDropdownOpen(dropdownOpen === l.id ? null : l.id)} className="text-muted-foreground hover:text-muted-foreground p-1 rounded"><MoreHorizontal className="w-4 h-4" /></button>
                             {dropdownOpen === l.id && (
                               <>
                                 <div className="fixed inset-0 z-10" onClick={() => setDropdownOpen(null)} />
-                                <div className="absolute right-0 top-full mt-1 bg-white border border-slate-200 shadow-lg rounded-lg py-1 z-20 w-48">
+                                <div className="absolute right-0 top-full mt-1 bg-card border border-border shadow-lg rounded-lg py-1 z-20 w-48">
                                   {l.status !== 'pago' && (
                                     <button onClick={() => { setDropdownOpen(null); setPagoDate(new Date().toISOString().slice(0, 10)); setShowPagoModal(l); }} className="w-full text-left px-3 py-2 text-sm text-green-600 hover:bg-green-50 flex items-center gap-2"><CheckCircle className="w-4 h-4" />Marcar como Pago</button>
                                   )}
-                                  <button onClick={() => { setDropdownOpen(null); showToast('Edição em desenvolvimento', 'info'); }} className="w-full text-left px-3 py-2 text-sm text-slate-600 hover:bg-slate-50 flex items-center gap-2"><Edit className="w-4 h-4" />Editar</button>
-                                  <div className="border-t border-slate-100 my-1" />
+                                  <button onClick={() => { setDropdownOpen(null); showToast('Edição em desenvolvimento', 'info'); }} className="w-full text-left px-3 py-2 text-sm text-muted-foreground hover:bg-muted flex items-center gap-2"><Edit className="w-4 h-4" />Editar</button>
+                                  <div className="border-t border-border my-1" />
                                   <button onClick={() => handleDelete(l.id)} className="w-full text-left px-3 py-2 text-sm text-red-600 hover:bg-red-50 flex items-center gap-2"><Trash2 className="w-4 h-4" />Excluir</button>
                                 </div>
                               </>
@@ -368,14 +368,14 @@ export default function FinanceiroPage() {
                 </table>
               </div>
               {/* TABLE FOOTER */}
-              <div className="border-t border-slate-200 px-4 py-3 flex items-center justify-between">
-                <span className="text-sm text-slate-500">Mostrando {(page - 1) * ITEMS_PER_PAGE + 1}–{Math.min(page * ITEMS_PER_PAGE, filtered.length)} de {filtered.length} lançamentos</span>
-                <div className="flex items-center gap-4 text-xs text-slate-400">
-                  Total filtrado: <span className="text-sm font-semibold text-slate-900">{formatBRL(filteredTotal)}</span>
+              <div className="border-t border-border px-4 py-3 flex items-center justify-between">
+                <span className="text-sm text-muted-foreground">Mostrando {(page - 1) * ITEMS_PER_PAGE + 1}–{Math.min(page * ITEMS_PER_PAGE, filtered.length)} de {filtered.length} lançamentos</span>
+                <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                  Total filtrado: <span className="text-sm font-semibold text-foreground">{formatBRL(filteredTotal)}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <button disabled={page <= 1} onClick={() => setPage(p => p - 1)} className="bg-white border border-slate-200 rounded-md px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-40"><ChevronLeft className="w-4 h-4" /></button>
-                  <button disabled={page >= totalPages} onClick={() => setPage(p => p + 1)} className="bg-white border border-slate-200 rounded-md px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-40"><ChevronRight className="w-4 h-4" /></button>
+                  <button disabled={page <= 1} onClick={() => setPage(p => p - 1)} className="bg-card border border-border rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-muted disabled:opacity-40"><ChevronLeft className="w-4 h-4" /></button>
+                  <button disabled={page >= totalPages} onClick={() => setPage(p => p + 1)} className="bg-card border border-border rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-muted disabled:opacity-40"><ChevronRight className="w-4 h-4" /></button>
                 </div>
               </div>
             </div>
@@ -384,21 +384,21 @@ export default function FinanceiroPage() {
 
         {/* RESUMO POR ADVOGADO */}
         <div className="col-span-4">
-          <div className="bg-white border border-slate-200 rounded-lg shadow-sm h-fit">
-            <div className="px-5 py-4 border-b border-slate-200 flex items-center justify-between">
-              <span className="text-sm font-semibold text-slate-900">Resumo por Advogado</span>
-              <span className="text-xs text-slate-400 capitalize">{currentMonthLabel}</span>
+          <div className="bg-card border border-border rounded-lg shadow-sm h-fit">
+            <div className="px-5 py-4 border-b border-border flex items-center justify-between">
+              <span className="text-sm font-semibold text-foreground">Resumo por Advogado</span>
+              <span className="text-xs text-muted-foreground capitalize">{currentMonthLabel}</span>
             </div>
             <div className="px-5 py-2">
               {resumoPorAdvogado.map(adv => {
                 const tcColor = adv.taxaCobranca >= 80 ? 'text-green-600' : adv.taxaCobranca >= 50 ? 'text-amber-600' : 'text-red-600';
                 const barColor = adv.taxaCobranca >= 80 ? 'bg-green-500' : adv.taxaCobranca >= 50 ? 'bg-amber-400' : 'bg-red-400';
                 return (
-                  <div key={adv.uid} className="py-4 border-b border-slate-100 last:border-0">
+                  <div key={adv.uid} className="py-4 border-b border-border last:border-0">
                     <div className="flex items-center gap-2.5 mb-2.5">
                       <UserAvatar name={adv.name} color={adv.avatar_color} size="md" />
                       <div>
-                        <div className="text-sm font-medium text-slate-900">{adv.name}</div>
+                        <div className="text-sm font-medium text-foreground">{adv.name}</div>
                         <div className="flex gap-1 flex-wrap">{adv.practice_areas.map(a => <span key={a} className={`text-xs px-1.5 py-0.5 rounded-full ${areaColors[a]}`}>{areaLabels[a]}</span>)}</div>
                       </div>
                     </div>
@@ -413,19 +413,19 @@ export default function FinanceiroPage() {
                       </div>
                     </div>
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-xs text-slate-400">Taxa de cobrança</span>
+                      <span className="text-xs text-muted-foreground">Taxa de cobrança</span>
                       <span className={`text-xs font-semibold ${tcColor}`}>{adv.taxaCobranca.toFixed(1)}%</span>
                     </div>
-                    <div className="h-1.5 rounded-full bg-slate-100 w-full"><div className={`h-full rounded-full ${barColor}`} style={{ width: `${Math.min(adv.taxaCobranca, 100)}%` }} /></div>
+                    <div className="h-1.5 rounded-full bg-muted w-full"><div className={`h-full rounded-full ${barColor}`} style={{ width: `${Math.min(adv.taxaCobranca, 100)}%` }} /></div>
                   </div>
                 );
               })}
             </div>
-            <div className="border-t border-slate-100 px-5 py-3 bg-slate-50 rounded-b-lg">
-              <div className="text-xs font-semibold text-slate-500 uppercase mb-2">Total do Escritório</div>
+            <div className="border-t border-border px-5 py-3 bg-muted rounded-b-lg">
+              <div className="text-xs font-semibold text-muted-foreground uppercase mb-2">Total do Escritório</div>
               <div className="grid grid-cols-2 gap-2">
-                <div><div className="text-xs text-slate-400">A Receber</div><div className="text-base font-bold text-amber-600">{formatBRL(metrics.totalAReceber)}</div></div>
-                <div><div className="text-xs text-slate-400">Recebido (mês)</div><div className="text-base font-bold text-green-600">{formatBRL(metrics.totalRecebidoMes)}</div></div>
+                <div><div className="text-xs text-muted-foreground">A Receber</div><div className="text-base font-bold text-amber-600">{formatBRL(metrics.totalAReceber)}</div></div>
+                <div><div className="text-xs text-muted-foreground">Recebido (mês)</div><div className="text-base font-bold text-green-600">{formatBRL(metrics.totalRecebidoMes)}</div></div>
               </div>
             </div>
           </div>
@@ -435,17 +435,17 @@ export default function FinanceiroPage() {
       {/* MARCAR COMO PAGO MODAL */}
       {showPagoModal && (
         <div className="fixed inset-0 bg-black/20 backdrop-blur-sm z-50 flex items-center justify-center" onClick={() => setShowPagoModal(null)}>
-          <div className="bg-white rounded-xl shadow-xl p-6 max-w-sm mx-4 text-center" onClick={e => e.stopPropagation()}>
+          <div className="bg-card rounded-xl shadow-xl p-6 max-w-sm mx-4 text-center" onClick={e => e.stopPropagation()}>
             <CheckCircle className="w-10 h-10 text-green-500 mx-auto mb-3" />
-            <div className="text-lg font-semibold text-slate-900">Confirmar Pagamento</div>
-            <div className="text-sm text-slate-500 mt-1">{showPagoModal.descricao}</div>
-            <div className="text-sm font-semibold text-slate-900 mt-0.5">Valor: {formatBRL(showPagoModal.valor)}</div>
+            <div className="text-lg font-semibold text-foreground">Confirmar Pagamento</div>
+            <div className="text-sm text-muted-foreground mt-1">{showPagoModal.descricao}</div>
+            <div className="text-sm font-semibold text-foreground mt-0.5">Valor: {formatBRL(showPagoModal.valor)}</div>
             <div className="mt-4 mb-5 text-left">
-              <label className="text-sm font-medium text-slate-700 mb-1 block">Data do pagamento*</label>
-              <input type="date" value={pagoDate} onChange={e => setPagoDate(e.target.value)} className="w-full border border-slate-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              <label className="text-sm font-medium text-foreground mb-1 block">Data do pagamento*</label>
+              <input type="date" value={pagoDate} onChange={e => setPagoDate(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
             </div>
             <div className="flex gap-3">
-              <button onClick={() => setShowPagoModal(null)} className="flex-1 border border-slate-200 rounded-md py-2 text-sm text-slate-600 hover:bg-slate-50">Cancelar</button>
+              <button onClick={() => setShowPagoModal(null)} className="flex-1 border border-border rounded-md py-2 text-sm text-muted-foreground hover:bg-muted">Cancelar</button>
               <button onClick={handleMarkPago} className="flex-1 bg-green-600 text-white rounded-md py-2 text-sm font-medium hover:bg-green-700">Confirmar Pagamento</button>
             </div>
           </div>
@@ -566,43 +566,43 @@ function NovoLancamentoModal({ onClose, onSave }: { onClose: () => void; onSave:
 
   return (
     <div className="fixed inset-0 bg-black/20 backdrop-blur-sm z-50 flex items-center justify-center" onClick={onClose}>
-      <div className="bg-white rounded-xl shadow-xl w-full max-w-xl max-h-[90vh] flex flex-col mx-4" onClick={e => e.stopPropagation()}>
+      <div className="bg-card rounded-xl shadow-xl w-full max-w-xl max-h-[90vh] flex flex-col mx-4" onClick={e => e.stopPropagation()}>
         {/* HEADER */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 flex-shrink-0">
-          <div className="flex items-center"><DollarSign className="w-5 h-5 text-blue-600 mr-2" /><span className="text-lg font-semibold text-slate-900">Novo Lançamento</span></div>
-          <button onClick={onClose} className="text-slate-400 hover:text-slate-600"><X className="w-5 h-5" /></button>
+        <div className="flex items-center justify-between px-6 py-4 border-b border-border flex-shrink-0">
+          <div className="flex items-center"><DollarSign className="w-5 h-5 text-blue-600 mr-2" /><span className="text-lg font-semibold text-foreground">Novo Lançamento</span></div>
+          <button onClick={onClose} className="text-muted-foreground hover:text-muted-foreground"><X className="w-5 h-5" /></button>
         </div>
         {/* BODY */}
         <div className="overflow-y-auto flex-1 px-6 py-5">
           <div className="grid grid-cols-2 gap-4">
             {/* Cliente */}
             <div className="col-span-2 relative">
-              <label className="text-sm font-medium text-slate-700 mb-1 block">Cliente <span className="text-red-500">*</span></label>
+              <label className="text-sm font-medium text-foreground mb-1 block">Cliente <span className="text-red-500">*</span></label>
               {selectedCliente ? (
                 <div className="bg-blue-50 border border-blue-200 rounded-md px-3 py-1.5 flex items-center gap-2">
-                  <div className="w-5 h-5 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-xs">{getInitials((selectedCliente as any).nome || (selectedCliente as any).razao_social || '')}</div>
+                  <div className="w-5 h-5 rounded-full bg-muted text-muted-foreground flex items-center justify-center text-xs">{getInitials((selectedCliente as any).nome || (selectedCliente as any).razao_social || '')}</div>
                   <span className="text-sm">{(selectedCliente as any).nome || (selectedCliente as any).razao_social}</span>
-                  <button onClick={() => { setSelectedCliente(null); setProcessoId(''); }} className="ml-auto text-slate-400 hover:text-slate-600"><X className="w-3 h-3" /></button>
+                  <button onClick={() => { setSelectedCliente(null); setProcessoId(''); }} className="ml-auto text-muted-foreground hover:text-muted-foreground"><X className="w-3 h-3" /></button>
                 </div>
               ) : (
                 <div className="relative">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                  <input value={clienteSearch} onChange={e => { setClienteSearch(e.target.value); setShowClienteList(true); }} onFocus={() => setShowClienteList(true)} placeholder="Buscar cliente..." className={`w-full pl-9 pr-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.cliente ? 'border-red-300' : 'border-slate-200'}`} />
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                  <input value={clienteSearch} onChange={e => { setClienteSearch(e.target.value); setShowClienteList(true); }} onFocus={() => setShowClienteList(true)} placeholder="Buscar cliente..." className={`w-full pl-9 pr-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.cliente ? 'border-red-300' : 'border-border'}`} />
                   {showClienteList && (
                     <>
                       <div className="fixed inset-0 z-10" onClick={() => setShowClienteList(false)} />
-                      <div className="absolute left-0 right-0 top-full mt-1 bg-white border border-slate-200 rounded-lg shadow-md max-h-48 overflow-y-auto z-20">
+                      <div className="absolute left-0 right-0 top-full mt-1 bg-card border border-border rounded-lg shadow-md max-h-48 overflow-y-auto z-20">
                         {filteredClientes.map(c => {
                           const name = (c as any).nome || (c as any).razao_social || '';
                           return (
-                            <button key={c.id} onClick={() => handleSelectCliente(c)} className="w-full text-left px-3 py-2 hover:bg-slate-50 flex items-center gap-2">
-                              <div className="w-6 h-6 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-xs">{getInitials(name)}</div>
+                            <button key={c.id} onClick={() => handleSelectCliente(c)} className="w-full text-left px-3 py-2 hover:bg-muted flex items-center gap-2">
+                              <div className="w-6 h-6 rounded-full bg-muted text-muted-foreground flex items-center justify-center text-xs">{getInitials(name)}</div>
                               <span className="text-sm">{name}</span>
                               <span className={`text-xs px-1.5 py-0.5 rounded-full ml-auto ${areaColors[c.practice_area]}`}>{areaLabels[c.practice_area]}</span>
                             </button>
                           );
                         })}
-                        {filteredClientes.length === 0 && <div className="px-3 py-2 text-sm text-slate-400">Nenhum cliente</div>}
+                        {filteredClientes.length === 0 && <div className="px-3 py-2 text-sm text-muted-foreground">Nenhum cliente</div>}
                       </div>
                     </>
                   )}
@@ -611,25 +611,25 @@ function NovoLancamentoModal({ onClose, onSave }: { onClose: () => void; onSave:
             </div>
             {/* Processo */}
             <div className="col-span-2">
-              <label className="text-sm font-medium text-slate-700 mb-1 block">Processo</label>
-              <select value={processoId} onChange={e => handleSelectProcesso(e.target.value)} disabled={!selectedCliente} className={`w-full border border-slate-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${!selectedCliente ? 'bg-slate-50 cursor-not-allowed' : 'bg-white'}`}>
+              <label className="text-sm font-medium text-foreground mb-1 block">Processo</label>
+              <select value={processoId} onChange={e => handleSelectProcesso(e.target.value)} disabled={!selectedCliente} className={`w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${!selectedCliente ? 'bg-muted cursor-not-allowed' : 'bg-card'}`}>
                 <option value="">{selectedCliente ? 'Selecione um processo...' : 'Selecione um cliente primeiro'}</option>
                 {relatedProcessos.map(p => <option key={p.id} value={p.id}>{p.numero_cnj} — {p.acao}</option>)}
               </select>
-              <p className="text-xs text-slate-400 mt-1">Deixe em branco para lançamento avulso</p>
+              <p className="text-xs text-muted-foreground mt-1">Deixe em branco para lançamento avulso</p>
             </div>
             {/* Advogado */}
             <div className="col-span-2">
-              <label className="text-sm font-medium text-slate-700 mb-1 block">Advogado Responsável <span className="text-red-500">*</span></label>
-              <select value={responsibleId} onChange={e => setResponsibleId(e.target.value)} className={`w-full border rounded-md px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.responsible ? 'border-red-300' : 'border-slate-200'}`}>
+              <label className="text-sm font-medium text-foreground mb-1 block">Advogado Responsável <span className="text-red-500">*</span></label>
+              <select value={responsibleId} onChange={e => setResponsibleId(e.target.value)} className={`w-full border rounded-md px-3 py-2 text-sm bg-card focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.responsible ? 'border-red-300' : 'border-border'}`}>
                 <option value="">Selecione...</option>
                 {MOCK_USERS.map(u => <option key={u.id} value={u.id}>{u.name}</option>)}
               </select>
             </div>
             {/* Tipo */}
             <div>
-              <label className="text-sm font-medium text-slate-700 mb-1 block">Tipo <span className="text-red-500">*</span></label>
-              <select value={tipo} onChange={e => handleTipoChange(e.target.value as LancamentoTipo)} className={`w-full border rounded-md px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.tipo ? 'border-red-300' : 'border-slate-200'}`}>
+              <label className="text-sm font-medium text-foreground mb-1 block">Tipo <span className="text-red-500">*</span></label>
+              <select value={tipo} onChange={e => handleTipoChange(e.target.value as LancamentoTipo)} className={`w-full border rounded-md px-3 py-2 text-sm bg-card focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.tipo ? 'border-red-300' : 'border-border'}`}>
                 <option value="">Selecione...</option>
                 <option value="honorario">Honorário</option>
                 <option value="despesa">Despesa</option>
@@ -639,8 +639,8 @@ function NovoLancamentoModal({ onClose, onSave }: { onClose: () => void; onSave:
             </div>
             {/* Área */}
             <div>
-              <label className="text-sm font-medium text-slate-700 mb-1 block">Área</label>
-              <select value={area} onChange={e => setArea(e.target.value)} className="w-full border border-slate-200 rounded-md px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <label className="text-sm font-medium text-foreground mb-1 block">Área</label>
+              <select value={area} onChange={e => setArea(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 text-sm bg-card focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <option value="">Selecione...</option>
                 <option value="trabalhista">Trabalhista</option>
                 <option value="civil">Civil</option>
@@ -650,24 +650,24 @@ function NovoLancamentoModal({ onClose, onSave }: { onClose: () => void; onSave:
             </div>
             {/* Descrição */}
             <div className="col-span-2">
-              <label className="text-sm font-medium text-slate-700 mb-1 block">Descrição <span className="text-red-500">*</span></label>
-              <input value={descricao} onChange={e => setDescricao(e.target.value)} placeholder="Descrição do lançamento..." className={`w-full border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.descricao ? 'border-red-300' : 'border-slate-200'}`} />
+              <label className="text-sm font-medium text-foreground mb-1 block">Descrição <span className="text-red-500">*</span></label>
+              <input value={descricao} onChange={e => setDescricao(e.target.value)} placeholder="Descrição do lançamento..." className={`w-full border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.descricao ? 'border-red-300' : 'border-border'}`} />
             </div>
             {/* Valor */}
             <div>
-              <label className="text-sm font-medium text-slate-700 mb-1 block">Valor (R$) <span className="text-red-500">*</span></label>
-              <input value={valor} onChange={e => setValor(e.target.value)} onBlur={handleValorBlur} placeholder="R$ 0,00" className={`w-full border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.valor ? 'border-red-300' : 'border-slate-200'}`} />
+              <label className="text-sm font-medium text-foreground mb-1 block">Valor (R$) <span className="text-red-500">*</span></label>
+              <input value={valor} onChange={e => setValor(e.target.value)} onBlur={handleValorBlur} placeholder="R$ 0,00" className={`w-full border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.valor ? 'border-red-300' : 'border-border'}`} />
             </div>
             {/* Vencimento */}
             <div>
-              <label className="text-sm font-medium text-slate-700 mb-1 block">Vencimento <span className="text-red-500">*</span></label>
-              <input type="date" value={vencimento} onChange={e => setVencimento(e.target.value)} className={`w-full border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.vencimento ? 'border-red-300' : 'border-slate-200'}`} />
+              <label className="text-sm font-medium text-foreground mb-1 block">Vencimento <span className="text-red-500">*</span></label>
+              <input type="date" value={vencimento} onChange={e => setVencimento(e.target.value)} className={`w-full border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.vencimento ? 'border-red-300' : 'border-border'}`} />
               {vencDiff !== null && vencDiff < 0 && <div className="flex items-center gap-1 mt-1"><AlertTriangle className="w-3 h-3 text-amber-500" /><span className="text-xs text-amber-600">Data no passado — verifique o vencimento</span></div>}
             </div>
             {/* Status */}
             <div>
-              <label className="text-sm font-medium text-slate-700 mb-1 block">Status <span className="text-red-500">*</span></label>
-              <select value={status} onChange={e => setStatus(e.target.value as LancamentoStatus)} className="w-full border border-slate-200 rounded-md px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <label className="text-sm font-medium text-foreground mb-1 block">Status <span className="text-red-500">*</span></label>
+              <select value={status} onChange={e => setStatus(e.target.value as LancamentoStatus)} className="w-full border border-border rounded-md px-3 py-2 text-sm bg-card focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <option value="pendente">Pendente</option>
                 <option value="pago">Pago</option>
                 <option value="vencido">Vencido</option>
@@ -677,30 +677,30 @@ function NovoLancamentoModal({ onClose, onSave }: { onClose: () => void; onSave:
             {/* Data pagamento (pago) */}
             {status === 'pago' && (
               <div>
-                <label className="text-sm font-medium text-slate-700 mb-1 block">Data do Pagamento <span className="text-red-500">*</span></label>
-                <input type="date" value={dataPagamento} onChange={e => setDataPagamento(e.target.value)} className={`w-full border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.dataPagamento ? 'border-red-300' : 'border-slate-200'}`} />
+                <label className="text-sm font-medium text-foreground mb-1 block">Data do Pagamento <span className="text-red-500">*</span></label>
+                <input type="date" value={dataPagamento} onChange={e => setDataPagamento(e.target.value)} className={`w-full border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.dataPagamento ? 'border-red-300' : 'border-border'}`} />
               </div>
             )}
             {/* Parcelamento */}
             {status === 'parcelado' && (
               <>
                 <div>
-                  <label className="text-sm font-medium text-slate-700 mb-1 block">Total de Parcelas</label>
-                  <input type="number" min={2} max={36} value={parcelasTotal} onChange={e => setParcelasTotal(Number(e.target.value))} placeholder="Ex: 6" className="w-full border border-slate-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                  <label className="text-sm font-medium text-foreground mb-1 block">Total de Parcelas</label>
+                  <input type="number" min={2} max={36} value={parcelasTotal} onChange={e => setParcelasTotal(Number(e.target.value))} placeholder="Ex: 6" className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 </div>
                 <div>
-                  <label className="text-sm font-medium text-slate-700 mb-1 block">Parcelas Pagas</label>
-                  <input type="number" min={0} max={parcelasTotal} value={parcelasPagas} onChange={e => setParcelasPagas(Number(e.target.value))} placeholder="0" className="w-full border border-slate-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                  <label className="text-sm font-medium text-foreground mb-1 block">Parcelas Pagas</label>
+                  <input type="number" min={0} max={parcelasTotal} value={parcelasPagas} onChange={e => setParcelasPagas(Number(e.target.value))} placeholder="0" className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 </div>
               </>
             )}
           </div>
         </div>
         {/* FOOTER */}
-        <div className="border-t border-slate-200 px-6 py-4 flex items-center justify-between flex-shrink-0 bg-white rounded-b-xl">
-          <div className="flex items-center gap-1.5"><Info className="w-4 h-4 text-slate-400" /><span className="text-xs text-slate-400">Campos marcados com * são obrigatórios</span></div>
+        <div className="border-t border-border px-6 py-4 flex items-center justify-between flex-shrink-0 bg-card rounded-b-xl">
+          <div className="flex items-center gap-1.5"><Info className="w-4 h-4 text-muted-foreground" /><span className="text-xs text-muted-foreground">Campos marcados com * são obrigatórios</span></div>
           <div className="flex gap-3">
-            <button onClick={onClose} className="text-sm text-slate-600 hover:text-slate-900 px-3 py-2">Cancelar</button>
+            <button onClick={onClose} className="text-sm text-muted-foreground hover:text-foreground px-3 py-2">Cancelar</button>
             <button onClick={handleSave} className="bg-blue-600 text-white rounded-md px-6 py-2 text-sm font-medium hover:bg-blue-700">Salvar Lançamento</button>
           </div>
         </div>
