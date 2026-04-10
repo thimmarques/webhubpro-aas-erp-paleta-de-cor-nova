@@ -430,7 +430,7 @@ function EscritorioSection() {
     showToast('Dados do escritório atualizados');
   };
 
-  const toggleArea = (area: 'trabalhista' | 'civil' | 'criminal' | 'previdenciario') => {
+  const toggleArea = (area: 'trabalhista' | 'civil' | 'criminal' | 'previdenciario' | 'tributario') => {
     setOffice(prev => ({
       ...prev,
       active_areas: prev.active_areas.includes(area)
@@ -518,7 +518,7 @@ function EscritorioSection() {
           <h3 className="text-sm font-semibold text-foreground mb-1">Áreas de Atuação do Escritório</h3>
           <p className="text-sm text-muted-foreground mb-4">Ative as áreas em que o escritório opera</p>
           <div className="grid grid-cols-2 gap-3">
-            {(['trabalhista', 'civil', 'criminal', 'previdenciario'] as const).map(area => {
+            {(['trabalhista', 'civil', 'criminal', 'previdenciario', 'tributario'] as const).map(area => {
               const active = office.active_areas.includes(area);
               return (
                 <div key={area} onClick={() => toggleArea(area)} className={`border rounded-lg p-4 flex items-center justify-between cursor-pointer transition-colors ${active ? 'border-blue-200 bg-blue-50/30' : 'border-border'}`}>

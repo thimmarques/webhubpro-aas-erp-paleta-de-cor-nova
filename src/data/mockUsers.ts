@@ -19,7 +19,7 @@ export const MOCK_USERS: MockUser[] = [
     password: 'admin123',
     oab: 'OAB/SP 123.456',
     role: 'admin',
-    practice_areas: ['trabalhista', 'civil', 'criminal', 'previdenciario'],
+    practice_areas: ['trabalhista', 'civil', 'criminal', 'previdenciario', 'tributario'],
     avatar_color: 'bg-blue-600',
     avatar_initials: getInitials('Dr. Roberto Alves'),
   },

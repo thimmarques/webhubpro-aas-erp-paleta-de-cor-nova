@@ -466,7 +466,7 @@ function Step2Form({
           <Field label="Endereço completo" colSpan={2}>
             <input className={inputCls} value={form.address || ''} onChange={(e) => set('address', e.target.value)} placeholder="Rua, número — Cidade/UF" />
           </Field>
-          <Field label="Ramo de Atividade" colSpan={area === 'civil' ? 2 : undefined}>
+          <Field label="Ramo de Atividade" colSpan={area === 'civil' || area === 'tributario' ? 2 : undefined}>
             <input className={inputCls} value={form.ramo_atividade || ''} onChange={(e) => set('ramo_atividade', e.target.value)} placeholder="Ramo de atividade" />
           </Field>
           {area === 'trabalhista' && (
@@ -726,8 +726,82 @@ function Step2Form({
         </>
       )}
 
-      {/* ══════════════════════════════
-         COMMON FIELDS
+      {/* TRIBUTÁRIO — both PF & PJ */}
+      {area === 'tributario' && (
+        <>
+          <h3 className={sectionTitle}>Dados Tributários</h3>
+          <Field label="Polo" required colSpan={2} error={errors.polo}>
+            <select className={ic('polo')} value={form.polo || ''} onChange={(e) => set('polo', e.target.value)}>
+              <option value="">Selecione</option>
+              <option value="contribuinte">Contribuinte</option>
+              <option value="responsavel_tributario">Responsável tributário</option>
+              {clientType === 'PJ' && <option value="substituto_tributario">Substituto tributário</option>}
+            </select>
+          </Field>
+          {clientType === 'PJ' && (
+            <Field label="Regime tributário" required colSpan={2} error={errors.regime_tributario}>
+              <select className={ic('regime_tributario')} value={form.regime_tributario || ''} onChange={(e) => set('regime_tributario', e.target.value)}>
+                <option value="">Selecione</option>
+                <option value="simples_nacional">Simples Nacional</option>
+                <option value="lucro_presumido">Lucro Presumido</option>
+                <option value="lucro_real">Lucro Real</option>
+                <option value="mei">MEI</option>
+              </select>
+            </Field>
+          )}
+          <Field label="Tipo de tributo" required error={errors.tipo_tributo}>
+            <select className={ic('tipo_tributo')} value={form.tipo_tributo || ''} onChange={(e) => set('tipo_tributo', e.target.value)}>
+              <option value="">Selecione</option>
+              <option value="federal">Federal</option>
+              <option value="estadual">Estadual</option>
+              <option value="municipal">Municipal</option>
+            </select>
+          </Field>
+          <Field label="Tributo específico" required error={errors.tributo_especifico}>
+            <input className={ic('tributo_especifico')} value={form.tributo_especifico || ''} onChange={(e) => set('tributo_especifico', e.target.value)} placeholder="Ex: ICMS, ISS, IRPJ, PIS/COFINS" />
+          </Field>
+          <Field label="Nº CDA (Certidão de Dívida Ativa)">
+            <input className={inputCls} value={form.numero_cda || ''} onChange={(e) => set('numero_cda', e.target.value)} placeholder="Número da CDA" />
+          </Field>
+          <Field label="Valor do débito (R$)">
+            <input className={inputCls} value={form.valor_debito || ''} onChange={(e) => set('valor_debito', e.target.value)} onBlur={() => handleMoneyBlur('valor_debito')} placeholder="R$ 0,00" />
+          </Field>
+          <Field label="Órgão fiscal">
+            <input className={inputCls} value={form.orgao_fiscal || ''} onChange={(e) => set('orgao_fiscal', e.target.value)} placeholder="Ex: Receita Federal, SEFAZ, Prefeitura" />
+          </Field>
+          <Field label="Fase administrativa" required error={errors.fase_administrativa}>
+            <select className={ic('fase_administrativa')} value={form.fase_administrativa || ''} onChange={(e) => set('fase_administrativa', e.target.value)}>
+              <option value="">Selecione</option>
+              <option value="auto_infracao">Auto de infração</option>
+              <option value="impugnacao">Impugnação</option>
+              <option value="recurso_administrativo">Recurso administrativo</option>
+              <option value="inscricao_divida_ativa">Inscrição em dívida ativa</option>
+              <option value="execucao_fiscal">Execução fiscal</option>
+            </select>
+          </Field>
+          <Field label="Nº Processo Administrativo" colSpan={2}>
+            <input className={inputCls} value={form.numero_processo_administrativo || ''} onChange={(e) => set('numero_processo_administrativo', e.target.value)} placeholder="Número do processo administrativo" />
+          </Field>
+          <Field label="Parcelamento ativo" colSpan={2}>
+            <label className="flex items-center gap-3 cursor-pointer">
+              <button
+                type="button"
+                role="switch"
+                aria-checked={form.parcelamento_ativo || false}
+                onClick={() => set('parcelamento_ativo', !form.parcelamento_ativo)}
+                className={`relative inline-flex h-5 w-9 shrink-0 rounded-full transition-colors ${
+                  form.parcelamento_ativo ? 'bg-teal-500' : 'bg-muted'
+                }`}
+              >
+                <span className={`inline-block h-4 w-4 rounded-full bg-card shadow transform transition-transform mt-0.5 ${form.parcelamento_ativo ? 'translate-x-4 ml-0.5' : 'translate-x-0.5'}`} />
+              </button>
+              <span className="text-sm text-foreground">Possui parcelamento ativo</span>
+            </label>
+          </Field>
+        </>
+      )}
+
+
          ══════════════════════════════ */}
       <div className="col-span-2 border-t border-border mt-4 pt-4" />
       <h3 className={sectionTitle}>Informações Adicionais</h3>

@@ -74,7 +74,7 @@ const SEED_OFFICE: Office = {
   email: "contato@alvesassociados.com.br",
   website: "www.alvesassociados.com.br",
   logo_url: "",
-  active_areas: ["trabalhista", "civil", "criminal", "previdenciario"],
+  active_areas: ["trabalhista", "civil", "criminal", "previdenciario", "tributario"],
   created_at: "2023-01-10"
 };
 
