@@ -61,6 +61,7 @@ const areaOptions: { value: PracticeArea; label: string; selectedCls: string }[]
   { value: 'civil', label: 'Civil', selectedCls: 'bg-purple-600 border-purple-600 text-white' },
   { value: 'criminal', label: 'Criminal', selectedCls: 'bg-red-600 border-red-600 text-white' },
   { value: 'previdenciario', label: 'Previdenciário', selectedCls: 'bg-green-600 border-green-600 text-white' },
+  { value: 'tributario', label: 'Tributário', selectedCls: 'bg-teal-600 border-teal-600 text-white' },
 ];
 
 export default function ClienteSlideOver({ open, onClose, onSave, editCliente }: ClienteSlideOverProps) {
@@ -142,6 +143,16 @@ export default function ClienteSlideOver({ open, onClose, onSave, editCliente }:
       req('nit_pis', 'NIT/PIS');
       req('especie_beneficio', 'Espécie do benefício');
       req('phone', 'Telefone');
+    }
+    if (area === 'tributario') {
+      req('polo', 'Polo');
+      req('tipo_tributo', 'Tipo de tributo');
+      req('tributo_especifico', 'Tributo específico');
+      req('fase_administrativa', 'Fase administrativa');
+      req('phone', 'Telefone');
+      if (clientType === 'PJ') {
+        req('regime_tributario', 'Regime tributário');
+      }
     }
 
     if (admin) req('responsible_id', 'Responsável');
@@ -375,10 +386,10 @@ function Step2Form({
               <option value="uniao_estavel">União estável</option>
             </select>
           </Field>
-          <Field label="Email" required colSpan={area === 'criminal' || area === 'previdenciario' ? undefined : 2} error={errors.email}>
+          <Field label="Email" required colSpan={area === 'criminal' || area === 'previdenciario' || area === 'tributario' ? undefined : 2} error={errors.email}>
             <input type="email" className={ic('email')} value={form.email || ''} onChange={(e) => set('email', e.target.value)} placeholder="email@exemplo.com" />
           </Field>
-          {(area === 'criminal' || area === 'previdenciario') && (
+          {(area === 'criminal' || area === 'previdenciario' || area === 'tributario') && (
             <Field label="Telefone" required error={errors.phone}>
               <input className={ic('phone')} value={form.phone || ''} onChange={(e) => set('phone', applyPhoneMask(e.target.value))} placeholder="(00) 00000-0000" />
             </Field>
@@ -395,7 +406,7 @@ function Step2Form({
               </Field>
             </>
           )}
-          {(area === 'trabalhista' || area === 'criminal' || area === 'previdenciario') && (
+          {(area === 'trabalhista' || area === 'criminal' || area === 'previdenciario' || area === 'tributario') && (
             <div /> // spacer
           )}
           <Field label="Endereço completo" colSpan={2}>
@@ -455,7 +466,7 @@ function Step2Form({
           <Field label="Endereço completo" colSpan={2}>
             <input className={inputCls} value={form.address || ''} onChange={(e) => set('address', e.target.value)} placeholder="Rua, número — Cidade/UF" />
           </Field>
-          <Field label="Ramo de Atividade" colSpan={area === 'civil' ? 2 : undefined}>
+          <Field label="Ramo de Atividade" colSpan={area === 'civil' || area === 'tributario' ? 2 : undefined}>
             <input className={inputCls} value={form.ramo_atividade || ''} onChange={(e) => set('ramo_atividade', e.target.value)} placeholder="Ramo de atividade" />
           </Field>
           {area === 'trabalhista' && (
@@ -711,6 +722,81 @@ function Step2Form({
                 <span className="text-sm text-foreground">Perícia médica necessária</span>
               </label>
             </div>
+          </Field>
+        </>
+      )}
+
+      {/* TRIBUTÁRIO — both PF & PJ */}
+      {area === 'tributario' && (
+        <>
+          <h3 className={sectionTitle}>Dados Tributários</h3>
+          <Field label="Polo" required colSpan={2} error={errors.polo}>
+            <select className={ic('polo')} value={form.polo || ''} onChange={(e) => set('polo', e.target.value)}>
+              <option value="">Selecione</option>
+              <option value="contribuinte">Contribuinte</option>
+              <option value="responsavel_tributario">Responsável tributário</option>
+              {clientType === 'PJ' && <option value="substituto_tributario">Substituto tributário</option>}
+            </select>
+          </Field>
+          {clientType === 'PJ' && (
+            <Field label="Regime tributário" required colSpan={2} error={errors.regime_tributario}>
+              <select className={ic('regime_tributario')} value={form.regime_tributario || ''} onChange={(e) => set('regime_tributario', e.target.value)}>
+                <option value="">Selecione</option>
+                <option value="simples_nacional">Simples Nacional</option>
+                <option value="lucro_presumido">Lucro Presumido</option>
+                <option value="lucro_real">Lucro Real</option>
+                <option value="mei">MEI</option>
+              </select>
+            </Field>
+          )}
+          <Field label="Tipo de tributo" required error={errors.tipo_tributo}>
+            <select className={ic('tipo_tributo')} value={form.tipo_tributo || ''} onChange={(e) => set('tipo_tributo', e.target.value)}>
+              <option value="">Selecione</option>
+              <option value="federal">Federal</option>
+              <option value="estadual">Estadual</option>
+              <option value="municipal">Municipal</option>
+            </select>
+          </Field>
+          <Field label="Tributo específico" required error={errors.tributo_especifico}>
+            <input className={ic('tributo_especifico')} value={form.tributo_especifico || ''} onChange={(e) => set('tributo_especifico', e.target.value)} placeholder="Ex: ICMS, ISS, IRPJ, PIS/COFINS" />
+          </Field>
+          <Field label="Nº CDA (Certidão de Dívida Ativa)">
+            <input className={inputCls} value={form.numero_cda || ''} onChange={(e) => set('numero_cda', e.target.value)} placeholder="Número da CDA" />
+          </Field>
+          <Field label="Valor do débito (R$)">
+            <input className={inputCls} value={form.valor_debito || ''} onChange={(e) => set('valor_debito', e.target.value)} onBlur={() => handleMoneyBlur('valor_debito')} placeholder="R$ 0,00" />
+          </Field>
+          <Field label="Órgão fiscal">
+            <input className={inputCls} value={form.orgao_fiscal || ''} onChange={(e) => set('orgao_fiscal', e.target.value)} placeholder="Ex: Receita Federal, SEFAZ, Prefeitura" />
+          </Field>
+          <Field label="Fase administrativa" required error={errors.fase_administrativa}>
+            <select className={ic('fase_administrativa')} value={form.fase_administrativa || ''} onChange={(e) => set('fase_administrativa', e.target.value)}>
+              <option value="">Selecione</option>
+              <option value="auto_infracao">Auto de infração</option>
+              <option value="impugnacao">Impugnação</option>
+              <option value="recurso_administrativo">Recurso administrativo</option>
+              <option value="inscricao_divida_ativa">Inscrição em dívida ativa</option>
+              <option value="execucao_fiscal">Execução fiscal</option>
+            </select>
+          </Field>
+          <Field label="Nº Processo Administrativo" colSpan={2}>
+            <input className={inputCls} value={form.numero_processo_administrativo || ''} onChange={(e) => set('numero_processo_administrativo', e.target.value)} placeholder="Número do processo administrativo" />
+          </Field>
+          <Field label="Parcelamento ativo" colSpan={2}>
+            <label className="flex items-center gap-3 cursor-pointer">
+              <button
+                type="button"
+                role="switch"
+                aria-checked={form.parcelamento_ativo || false}
+                onClick={() => set('parcelamento_ativo', !form.parcelamento_ativo)}
+                className={`relative inline-flex h-5 w-9 shrink-0 rounded-full transition-colors ${
+                  form.parcelamento_ativo ? 'bg-teal-500' : 'bg-muted'
+                }`}
+              >
+                <span className={`inline-block h-4 w-4 rounded-full bg-card shadow transform transition-transform mt-0.5 ${form.parcelamento_ativo ? 'translate-x-4 ml-0.5' : 'translate-x-0.5'}`} />
+              </button>
+              <span className="text-sm text-foreground">Possui parcelamento ativo</span>
+            </label>
           </Field>
         </>
       )}

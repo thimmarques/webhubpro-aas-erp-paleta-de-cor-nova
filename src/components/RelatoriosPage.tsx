@@ -344,9 +344,9 @@ export default function RelatoriosPage() {
 
   const renderProcessosPorArea = () => {
     const total = allProcessos.length;
-    const areas = ['trabalhista', 'civil', 'criminal', 'previdenciario'];
+    const areas = ['trabalhista', 'civil', 'criminal', 'previdenciario', 'tributario'];
     return (
-      <div className="bg-muted rounded-lg p-4 mb-5 grid grid-cols-4 gap-4">
+      <div className="bg-muted rounded-lg p-4 mb-5 grid grid-cols-5 gap-4">
         {areas.map(a => {
           const count = processosPorArea[a] || 0;
           const pct = total > 0 ? (count / total) * 100 : 0;

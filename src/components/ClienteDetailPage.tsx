@@ -599,6 +599,26 @@ export default function ClienteDetailPage({ clientId, onBack, onNavigateProcesso
       fields.push({ label: 'TEMPO CONTRIB.', value: c.tempo_contribuicao || '—' });
     }
 
+    if (cliente.practice_area === 'tributario') {
+      const c = cliente as any;
+      fields.push({ label: '__SECTION__', value: 'Dados Tributários' });
+      fields.push({ label: 'POLO', value: getPoloLabel(c.polo) });
+      if (cliente.type === 'PJ') {
+        const regimeLabels: Record<string, string> = { simples_nacional: 'Simples Nacional', lucro_presumido: 'Lucro Presumido', lucro_real: 'Lucro Real', mei: 'MEI' };
+        fields.push({ label: 'REGIME TRIBUTÁRIO', value: regimeLabels[c.regime_tributario] || c.regime_tributario || '—' });
+      }
+      const tributoTipoLabels: Record<string, string> = { federal: 'Federal', estadual: 'Estadual', municipal: 'Municipal' };
+      fields.push({ label: 'TIPO TRIBUTO', value: tributoTipoLabels[c.tipo_tributo] || c.tipo_tributo || '—' });
+      fields.push({ label: 'TRIBUTO', value: c.tributo_especifico || '—' });
+      fields.push({ label: 'Nº CDA', value: c.numero_cda || '—' });
+      fields.push({ label: 'VALOR DÉBITO', value: c.valor_debito ? formatBRL(c.valor_debito) : '—' });
+      fields.push({ label: 'ÓRGÃO FISCAL', value: c.orgao_fiscal || '—' });
+      const faseLabels: Record<string, string> = { auto_infracao: 'Auto de infração', impugnacao: 'Impugnação', recurso_administrativo: 'Recurso administrativo', inscricao_divida_ativa: 'Inscrição em dívida ativa', execucao_fiscal: 'Execução fiscal' };
+      fields.push({ label: 'FASE ADMIN.', value: faseLabels[c.fase_administrativa] || c.fase_administrativa || '—' });
+      fields.push({ label: 'PROC. ADMIN.', value: c.numero_processo_administrativo || '—' });
+      fields.push({ label: 'PARCELAMENTO', value: c.parcelamento_ativo ? <span className="text-teal-600">Ativo</span> : <span className="text-muted-foreground">Não</span> });
+    }
+
     return (
       <div className="flex flex-col gap-3">
         {fields.map((f, i) => {

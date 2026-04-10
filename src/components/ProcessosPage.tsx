@@ -291,7 +291,8 @@ export default function ProcessosPage({ onNavigateDetail }: ProcessosPageProps) 
           <option value="trabalhista">Trabalhista</option>
           <option value="civil">Civil</option>
           <option value="criminal">Criminal</option>
-          <option value="previdenciario">Previdenciário</option>
+           <option value="previdenciario">Previdenciário</option>
+           <option value="tributario">Tributário</option>
         </select>
         <select value={filterStatus} onChange={(e) => setFilterStatus(e.target.value)} className={selectClass}>
           <option value="">Todos Status</option>
@@ -725,13 +726,14 @@ function NovoProcessoModal({ onClose, onSave, admin, currentUserId }: {
             <div className="col-span-2">
               <label className={labelClass}>Área do Direito <span className="text-red-500">*</span></label>
               <div className="flex gap-2 flex-wrap">
-                {(['trabalhista', 'civil', 'criminal', 'previdenciario'] as const).map((area) => {
+                {(['trabalhista', 'civil', 'criminal', 'previdenciario', 'tributario'] as const).map((area) => {
                   const selected = form.practice_area === area;
                   const colors: Record<string, string> = {
                     trabalhista: 'bg-blue-600 border-blue-600 text-white',
                     civil: 'bg-purple-600 border-purple-600 text-white',
                     criminal: 'bg-red-600 border-red-600 text-white',
                     previdenciario: 'bg-green-600 border-green-600 text-white',
+                    tributario: 'bg-teal-600 border-teal-600 text-white',
                   };
                   return (
                     <button

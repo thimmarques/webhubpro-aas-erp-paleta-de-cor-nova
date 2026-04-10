@@ -27,7 +27,7 @@ export type FaseType =
 export interface Processo {
   id: string;
   numero_cnj: string;
-  practice_area: 'trabalhista' | 'civil' | 'criminal' | 'previdenciario';
+  practice_area: 'trabalhista' | 'civil' | 'criminal' | 'previdenciario' | 'tributario';
   acao: string;
   polo_ativo_id: string;
   polo_ativo_nome: string;
@@ -79,6 +79,7 @@ export const areaColors: Record<string, string> = {
   civil: 'bg-purple-100 text-purple-800',
   criminal: 'bg-red-100 text-red-800',
   previdenciario: 'bg-green-100 text-green-800',
+  tributario: 'bg-teal-100 text-teal-800',
 };
 
 export const areaLabels: Record<string, string> = {
@@ -86,6 +87,7 @@ export const areaLabels: Record<string, string> = {
   civil: 'Civil',
   criminal: 'Criminal',
   previdenciario: 'Previdenciário',
+  tributario: 'Tributário',
 };
 
 export const acaoSuggestions: Record<string, string[]> = {
@@ -120,6 +122,14 @@ export const acaoSuggestions: Record<string, string[]> = {
     'Salário-Maternidade',
     'Auxílio-Reclusão',
   ],
+  tributario: [
+    'Execução Fiscal',
+    'Ação Anulatória de Débito Fiscal',
+    'Mandado de Segurança Tributário',
+    'Ação Declaratória de Inexistência de Relação Tributária',
+    'Ação de Repetição de Indébito',
+    'Embargos à Execução Fiscal',
+  ],
 };
 
 export const areaTribunalDefault: Record<string, TribunalType> = {
@@ -127,4 +137,5 @@ export const areaTribunalDefault: Record<string, TribunalType> = {
   civil: 'TJSP',
   criminal: 'TJSP',
   previdenciario: 'JEF/INSS',
+  tributario: 'TRF-3',
 };
