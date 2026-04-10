@@ -619,7 +619,7 @@ export default function ClienteDetailPage({ clientId, onBack, onNavigateProcesso
       fields.push({ label: 'PARCELAMENTO', value: c.parcelamento_ativo ? <span className="text-teal-600">Ativo</span> : <span className="text-muted-foreground">Não</span> });
     }
 
-
+    return (
       <div className="flex flex-col gap-3">
         {fields.map((f, i) => {
           if (f.label === '' && f.value === null) {
