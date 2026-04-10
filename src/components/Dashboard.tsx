@@ -77,29 +77,30 @@ interface Hearing {
   month: string;
   process: string;
   client: string;
-  area: 'trabalhista' | 'civil' | 'criminal' | 'previdenciario';
+  area: 'trabalhista' | 'civil' | 'criminal' | 'previdenciario' | 'tributario';
 }
 
-const hearings: Hearing[] = [
-  { id: 1, day: '22', month: 'FEV', process: '0001234-55.2024', client: 'Maria Silva', area: 'trabalhista' },
-  { id: 2, day: '24', month: 'FEV', process: '0005678-12.2024', client: 'João Pereira', area: 'civil' },
-  { id: 3, day: '28', month: 'FEV', process: '0009012-89.2024', client: 'Ana Costa', area: 'criminal' },
-];
-
-/* ── Area distribution ── */
+interface HearingData {
+  date: string;
+  time: string;
+  process: string;
+  client: string;
+  area: 'trabalhista' | 'civil' | 'criminal' | 'previdenciario' | 'tributario';
+}
 
 interface AreaStat {
-  area: 'trabalhista' | 'civil' | 'criminal' | 'previdenciario';
+  area: 'trabalhista' | 'civil' | 'criminal' | 'previdenciario' | 'tributario';
   count: number;
   total: number;
   barColor: string;
 }
 
 const areaStats: AreaStat[] = [
-  { area: 'trabalhista', count: 18, total: 40, barColor: 'bg-blue-500' },
-  { area: 'civil', count: 12, total: 40, barColor: 'bg-purple-500' },
-  { area: 'criminal', count: 6, total: 40, barColor: 'bg-red-500' },
-  { area: 'previdenciario', count: 4, total: 40, barColor: 'bg-green-500' },
+  { area: 'trabalhista', count: 18, total: 45, barColor: 'bg-blue-500' },
+  { area: 'civil', count: 12, total: 45, barColor: 'bg-purple-500' },
+  { area: 'criminal', count: 6, total: 45, barColor: 'bg-red-500' },
+  { area: 'previdenciario', count: 4, total: 45, barColor: 'bg-green-500' },
+  { area: 'tributario', count: 5, total: 45, barColor: 'bg-teal-500' },
 ];
 
 /* ── Dashboard ── */

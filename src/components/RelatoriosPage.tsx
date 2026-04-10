@@ -344,7 +344,7 @@ export default function RelatoriosPage() {
 
   const renderProcessosPorArea = () => {
     const total = allProcessos.length;
-    const areas = ['trabalhista', 'civil', 'criminal', 'previdenciario'];
+    const areas = ['trabalhista', 'civil', 'criminal', 'previdenciario', 'tributario'];
     return (
       <div className="bg-muted rounded-lg p-4 mb-5 grid grid-cols-4 gap-4">
         {areas.map(a => {
