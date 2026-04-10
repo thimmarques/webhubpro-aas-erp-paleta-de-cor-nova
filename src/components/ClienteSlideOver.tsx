@@ -801,7 +801,8 @@ function Step2Form({
         </>
       )}
 
-
+      {/* ══════════════════════════════
+         COMMON FIELDS
          ══════════════════════════════ */}
       <div className="col-span-2 border-t border-border mt-4 pt-4" />
       <h3 className={sectionTitle}>Informações Adicionais</h3>
