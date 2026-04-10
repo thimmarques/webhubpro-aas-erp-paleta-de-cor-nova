@@ -7,6 +7,7 @@ const variantStyles: Record<BadgeVariant, string> = {
   civil: 'bg-purple-100 text-purple-800',
   criminal: 'bg-red-100 text-red-800',
   previdenciario: 'bg-green-100 text-green-800',
+  tributario: 'bg-teal-100 text-teal-800',
   // Statuses
   ativo: 'bg-green-100 text-green-700',
   audiencia: 'bg-blue-100 text-blue-700',
@@ -27,6 +28,7 @@ const variantLabels: Partial<Record<BadgeVariant, string>> = {
   civil: 'Civil',
   criminal: 'Criminal',
   previdenciario: 'Previdenciário',
+  tributario: 'Tributário',
   ativo: 'Ativo',
   audiencia: 'Audiência',
   pendente: 'Pendente',
