@@ -80,13 +80,13 @@ interface Hearing {
   area: 'trabalhista' | 'civil' | 'criminal' | 'previdenciario' | 'tributario';
 }
 
-interface HearingData {
-  date: string;
-  time: string;
-  process: string;
-  client: string;
-  area: 'trabalhista' | 'civil' | 'criminal' | 'previdenciario' | 'tributario';
-}
+const hearings: Hearing[] = [
+  { id: 1, day: '15', month: 'Mar', process: '0001234-55.2024.5.02.0001', client: 'João Silva Santos', area: 'trabalhista' },
+  { id: 2, day: '18', month: 'Mar', process: '0005678-90.2024.8.26.0100', client: 'Construtora Betel S.A.', area: 'civil' },
+  { id: 3, day: '22', month: 'Mar', process: '0009012-34.2024.8.26.0050', client: 'Pedro Henrique Gomes', area: 'criminal' },
+];
+
+/* ── Area stats ── */
 
 interface AreaStat {
   area: 'trabalhista' | 'civil' | 'criminal' | 'previdenciario' | 'tributario';
