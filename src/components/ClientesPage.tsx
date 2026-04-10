@@ -206,7 +206,8 @@ export default function ClientesPage({ onNavigateDetail }: ClientesPageProps) {
           <option value="trabalhista">Trabalhista</option>
           <option value="civil">Civil</option>
           <option value="criminal">Criminal</option>
-          <option value="previdenciario">Previdenciário</option>
+           <option value="previdenciario">Previdenciário</option>
+           <option value="tributario">Tributário</option>
         </select>
         <select className="bg-card border border-border rounded-md px-3 py-2 text-sm text-muted-foreground" value={filterStatus} onChange={(e) => { setFilterStatus(e.target.value); setPage(1); }}>
           <option value="">Status: Todos</option>

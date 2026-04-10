@@ -232,7 +232,8 @@ export default function EquipePage() {
           <option value="trabalhista">Trabalhista</option>
           <option value="civil">Civil</option>
           <option value="criminal">Criminal</option>
-          <option value="previdenciario">Previdenciário</option>
+           <option value="previdenciario">Previdenciário</option>
+           <option value="tributario">Tributário</option>
         </select>
         <select value={filterRole} onChange={e => setFilterRole(e.target.value)} className={selectClass}>
           <option value="">Todos Cargos</option>

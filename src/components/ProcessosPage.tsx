@@ -291,7 +291,8 @@ export default function ProcessosPage({ onNavigateDetail }: ProcessosPageProps) 
           <option value="trabalhista">Trabalhista</option>
           <option value="civil">Civil</option>
           <option value="criminal">Criminal</option>
-          <option value="previdenciario">Previdenciário</option>
+           <option value="previdenciario">Previdenciário</option>
+           <option value="tributario">Tributário</option>
         </select>
         <select value={filterStatus} onChange={(e) => setFilterStatus(e.target.value)} className={selectClass}>
           <option value="">Todos Status</option>
