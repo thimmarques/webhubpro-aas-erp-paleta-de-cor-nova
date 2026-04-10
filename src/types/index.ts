@@ -1,4 +1,4 @@
-export type PracticeArea = 'trabalhista' | 'civil' | 'criminal' | 'previdenciario';
+export type PracticeArea = 'trabalhista' | 'civil' | 'criminal' | 'previdenciario' | 'tributario';
 
 export type UserRole = 'admin' | 'advogado' | 'assistente' | 'estagiario';
 
@@ -46,6 +46,7 @@ export type BadgeVariant =
   | 'civil'
   | 'criminal'
   | 'previdenciario'
+  | 'tributario'
   | 'admin'
   | 'advogado'
   | 'assistente'
