@@ -147,6 +147,44 @@ export interface ClientePF_Previdenciario extends ClientePF {
   tempo_contribuicao: string;
 }
 
+/* ── Tributário ── */
+
+export interface ClientePF_Tributario extends ClientePF {
+  practice_area: 'tributario';
+  polo: 'contribuinte' | 'responsavel_tributario';
+  tipo_tributo: 'federal' | 'estadual' | 'municipal';
+  tributo_especifico: string;
+  numero_cda: string;
+  valor_debito: number;
+  orgao_fiscal: string;
+  fase_administrativa: 'auto_infracao' | 'impugnacao' | 'recurso_administrativo' | 'inscricao_divida_ativa' | 'execucao_fiscal';
+  parcelamento_ativo: boolean;
+  numero_processo_administrativo: string;
+}
+
+export interface ClientePJ_Tributario extends ClienteBase {
+  type: 'PJ';
+  practice_area: 'tributario';
+  polo: 'contribuinte' | 'responsavel_tributario' | 'substituto_tributario';
+  razao_social: string;
+  cnpj: string;
+  representante_legal: string;
+  cpf_representante: string;
+  email: string;
+  phone: string;
+  address: string;
+  ramo_atividade: string;
+  regime_tributario: 'simples_nacional' | 'lucro_presumido' | 'lucro_real' | 'mei';
+  tipo_tributo: 'federal' | 'estadual' | 'municipal';
+  tributo_especifico: string;
+  numero_cda: string;
+  valor_debito: number;
+  orgao_fiscal: string;
+  fase_administrativa: 'auto_infracao' | 'impugnacao' | 'recurso_administrativo' | 'inscricao_divida_ativa' | 'execucao_fiscal';
+  parcelamento_ativo: boolean;
+  numero_processo_administrativo: string;
+}
+
 /* ── Union type ── */
 
 export type Cliente =
@@ -155,7 +193,9 @@ export type Cliente =
   | ClientePF_Civil
   | ClientePJ_Civil
   | ClientePF_Criminal
-  | ClientePF_Previdenciario;
+  | ClientePF_Previdenciario
+  | ClientePF_Tributario
+  | ClientePJ_Tributario;
 
 /* ── Helpers ── */
 
@@ -195,6 +235,9 @@ export function getPoloLabel(polo: string): string {
     vitima: 'Vítima',
     investigado: 'Investigado',
     terceiro_interessado: 'Terceiro',
+    contribuinte: 'Contribuinte',
+    responsavel_tributario: 'Responsável Tributário',
+    substituto_tributario: 'Substituto Tributário',
   };
   return map[polo] || polo;
 }
