@@ -61,6 +61,7 @@ const areaOptions: { value: PracticeArea; label: string; selectedCls: string }[]
   { value: 'civil', label: 'Civil', selectedCls: 'bg-purple-600 border-purple-600 text-white' },
   { value: 'criminal', label: 'Criminal', selectedCls: 'bg-red-600 border-red-600 text-white' },
   { value: 'previdenciario', label: 'Previdenciário', selectedCls: 'bg-green-600 border-green-600 text-white' },
+  { value: 'tributario', label: 'Tributário', selectedCls: 'bg-teal-600 border-teal-600 text-white' },
 ];
 
 export default function ClienteSlideOver({ open, onClose, onSave, editCliente }: ClienteSlideOverProps) {
@@ -142,6 +143,16 @@ export default function ClienteSlideOver({ open, onClose, onSave, editCliente }:
       req('nit_pis', 'NIT/PIS');
       req('especie_beneficio', 'Espécie do benefício');
       req('phone', 'Telefone');
+    }
+    if (area === 'tributario') {
+      req('polo', 'Polo');
+      req('tipo_tributo', 'Tipo de tributo');
+      req('tributo_especifico', 'Tributo específico');
+      req('fase_administrativa', 'Fase administrativa');
+      req('phone', 'Telefone');
+      if (clientType === 'PJ') {
+        req('regime_tributario', 'Regime tributário');
+      }
     }
 
     if (admin) req('responsible_id', 'Responsável');
@@ -375,10 +386,10 @@ function Step2Form({
               <option value="uniao_estavel">União estável</option>
             </select>
           </Field>
-          <Field label="Email" required colSpan={area === 'criminal' || area === 'previdenciario' ? undefined : 2} error={errors.email}>
+          <Field label="Email" required colSpan={area === 'criminal' || area === 'previdenciario' || area === 'tributario' ? undefined : 2} error={errors.email}>
             <input type="email" className={ic('email')} value={form.email || ''} onChange={(e) => set('email', e.target.value)} placeholder="email@exemplo.com" />
           </Field>
-          {(area === 'criminal' || area === 'previdenciario') && (
+          {(area === 'criminal' || area === 'previdenciario' || area === 'tributario') && (
             <Field label="Telefone" required error={errors.phone}>
               <input className={ic('phone')} value={form.phone || ''} onChange={(e) => set('phone', applyPhoneMask(e.target.value))} placeholder="(00) 00000-0000" />
             </Field>
@@ -395,7 +406,7 @@ function Step2Form({
               </Field>
             </>
           )}
-          {(area === 'trabalhista' || area === 'criminal' || area === 'previdenciario') && (
+          {(area === 'trabalhista' || area === 'criminal' || area === 'previdenciario' || area === 'tributario') && (
             <div /> // spacer
           )}
           <Field label="Endereço completo" colSpan={2}>
