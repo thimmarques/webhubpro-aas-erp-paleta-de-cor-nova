@@ -10,7 +10,7 @@ export interface Office {
   email: string;
   website: string;
   logo_url: string;
-  active_areas: ('trabalhista' | 'civil' | 'criminal' | 'previdenciario')[];
+  active_areas: ('trabalhista' | 'civil' | 'criminal' | 'previdenciario' | 'tributario')[];
   created_at: string;
 }
 
