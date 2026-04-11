@@ -35,7 +35,7 @@ const roleLabels: Record<string, string> = {
 };
 
 const areaLabels: Record<string, string> = {
-  trabalhista: 'Trabalhista', civil: 'Civil', criminal: 'Criminal', previdenciario: 'Previdenciário'
+  trabalhista: 'Trabalhista', civil: 'Civil', criminal: 'Criminal', previdenciario: 'Previdenciário', tributario: 'Tributário'
 };
 
 const areaDescriptions: Record<string, string> = {
@@ -43,6 +43,7 @@ const areaDescriptions: Record<string, string> = {
   civil: 'Contratos, societário, indenizações',
   criminal: 'Defesa penal, habeas corpus',
   previdenciario: 'INSS, benefícios, aposentadorias',
+  tributario: 'Impostos, taxas, execuções fiscais',
 };
 
 const areaBadgeColors: Record<string, string> = {
@@ -159,7 +160,7 @@ export default function ConfiguracoesPage({ initialSubmenu }: ConfiguracoesPageP
               {/* Meu Perfil */}
               <div
                 className={`flex items-center gap-3 px-4 py-2.5 cursor-pointer transition-colors duration-150 text-sm ${
-                  activeMenu === 'meu-perfil' ? 'bg-blue-50 text-blue-700 font-medium border-r-2 border-blue-600' : 'text-muted-foreground hover:bg-muted hover:text-foreground'
+                  activeMenu === 'meu-perfil' ? 'bg-primary/15 text-primary font-medium border-r-2 border-primary' : 'text-muted-foreground hover:bg-sidebar-muted hover:text-foreground'
                 }`}
                 onClick={() => setActiveMenu('meu-perfil')}
               >
@@ -178,7 +179,7 @@ export default function ConfiguracoesPage({ initialSubmenu }: ConfiguracoesPageP
                   className={`flex items-center gap-3 px-4 py-2.5 transition-colors duration-150 text-sm ${
                     !admin ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer'
                   } ${
-                    activeMenu === item.id && admin ? 'bg-blue-50 text-blue-700 font-medium border-r-2 border-blue-600' : 'text-muted-foreground hover:bg-muted hover:text-foreground'
+                    activeMenu === item.id && admin ? 'bg-primary/15 text-primary font-medium border-r-2 border-primary' : 'text-muted-foreground hover:bg-sidebar-muted hover:text-foreground'
                   }`}
                   onClick={() => admin ? setActiveMenu(item.id) : undefined}
                   title={!admin ? 'Acesso restrito a administradores' : undefined}
@@ -383,7 +384,7 @@ function MeuPerfilSection() {
             <div className="relative">
               <label className="text-sm font-medium text-foreground">Confirmar Nova Senha*</label>
               <div className="relative mt-1">
-                <input type={showConfirm ? 'text' : 'password'} value={confirmPw} onChange={e => { setConfirmPw(e.target.value); setPwMismatch(false); }} onBlur={() => { if (confirmPw && confirmPw !== newPw) setPwMismatch(true); }} className={`w-full border rounded-md px-3 py-2 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-ring ${pwMismatch ? 'border-red-300' : 'border-border'}`} placeholder="••••••••" />
+                <input type={showConfirm ? 'text' : 'password'} value={confirmPw} onChange={e => { setConfirmPw(e.target.value); setPwMismatch(false); }} onBlur={() => { if (confirmPw && confirmPw !== newPw) setPwMismatch(true); }} className={`w-full bg-card text-foreground border rounded-md px-3 py-2 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-ring ${pwMismatch ? 'border-red-300' : 'border-border'}`} placeholder="••••••••" />
                 <button type="button" onClick={() => setShowConfirm(!showConfirm)} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">
                   {showConfirm ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
@@ -1104,7 +1105,7 @@ function SegurancaSection() {
               { key: 'uppercase' as const, icon: ArrowUp, label: 'Letras maiúsculas', desc: 'Exigir ao menos uma letra maiúscula' },
               { key: 'periodicRenewal' as const, icon: RefreshCw, label: 'Renovação periódica', desc: 'Exigir troca de senha a cada 90 dias' },
             ].map(item => (
-              <div key={item.key} className="flex items-center justify-between p-3 bg-muted rounded-lg">
+              <div key={item.key} className="flex items-center justify-between p-3 bg-muted border border-border rounded-lg">
                 <div className="flex items-center gap-3">
                   <item.icon className="w-4 h-4 text-muted-foreground" />
                   <div>
