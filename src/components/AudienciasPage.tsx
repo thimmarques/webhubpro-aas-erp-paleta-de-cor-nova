@@ -299,14 +299,14 @@ export default function AudienciasPage({ onNavigateProcessoDetail }: AudienciasP
             className="w-full bg-card text-foreground border border-border rounded-md pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
           />
         </div>
-        <select value={filterArea} onChange={(e) => setFilterArea(e.target.value)} className="border border-border rounded-md px-3 py-2 text-sm text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring">
+        <select value={filterArea} onChange={(e) => setFilterArea(e.target.value)} className="bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring">
           <option value="">Todas Áreas</option>
           <option value="trabalhista">Trabalhista</option>
           <option value="civil">Civil</option>
           <option value="criminal">Criminal</option>
           <option value="previdenciario">Previdenciário</option>
         </select>
-        <select value={filterAudTipo} onChange={(e) => setFilterAudTipo(e.target.value)} className="border border-border rounded-md px-3 py-2 text-sm text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring">
+        <select value={filterAudTipo} onChange={(e) => setFilterAudTipo(e.target.value)} className="bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring">
           <option value="">Todos Tipos</option>
           <option value="conciliacao">Conciliação</option>
           <option value="instrucao">Instrução</option>
@@ -315,7 +315,7 @@ export default function AudienciasPage({ onNavigateProcessoDetail }: AudienciasP
           <option value="virtual">Virtual</option>
         </select>
         {admin && (
-          <select value={filterResponsible} onChange={(e) => setFilterResponsible(e.target.value)} className="border border-border rounded-md px-3 py-2 text-sm text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring">
+          <select value={filterResponsible} onChange={(e) => setFilterResponsible(e.target.value)} className="bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring">
             <option value="">Todos Responsáveis</option>
             {MOCK_USERS.map((u) => (
               <option key={u.id} value={u.id}>{u.name}</option>
