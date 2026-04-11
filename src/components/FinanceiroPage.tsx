@@ -227,7 +227,7 @@ export default function FinanceiroPage() {
       <div className="bg-card border border-border rounded-lg p-3 mb-4 flex items-center gap-3 flex-wrap">
         <div className="flex-1 min-w-[12rem] relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-          <input value={search} onChange={e => { setSearch(e.target.value); setPage(1); }} placeholder="Buscar por cliente ou processo..." className="w-full pl-9 pr-3 py-2 border border-border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+          <input value={search} onChange={e => { setSearch(e.target.value); setPage(1); }} placeholder="Buscar por cliente ou processo..." className="w-full bg-card text-foreground pl-9 pr-3 py-2 border border-border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
         </div>
         <select value={filterAdvogado} onChange={e => { setFilterAdvogado(e.target.value); setPage(1); }} className="bg-card border border-border rounded-md px-3 py-2 text-sm text-muted-foreground">
           <option value="">Todos Advogados</option>
@@ -587,7 +587,7 @@ function NovoLancamentoModal({ onClose, onSave }: { onClose: () => void; onSave:
               ) : (
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                  <input value={clienteSearch} onChange={e => { setClienteSearch(e.target.value); setShowClienteList(true); }} onFocus={() => setShowClienteList(true)} placeholder="Buscar cliente..." className={`w-full pl-9 pr-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-ring ${errors.cliente ? 'border-red-300' : 'border-border'}`} />
+                  <input value={clienteSearch} onChange={e => { setClienteSearch(e.target.value); setShowClienteList(true); }} onFocus={() => setShowClienteList(true)} placeholder="Buscar cliente..." className={`w-full bg-card text-foreground pl-9 pr-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-ring ${errors.cliente ? 'border-red-300' : 'border-border'}`} />
                   {showClienteList && (
                     <>
                       <div className="fixed inset-0 z-10" onClick={() => setShowClienteList(false)} />
