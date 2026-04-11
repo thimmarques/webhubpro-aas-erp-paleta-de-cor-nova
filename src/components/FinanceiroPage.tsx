@@ -227,7 +227,7 @@ export default function FinanceiroPage() {
       <div className="bg-card border border-border rounded-lg p-3 mb-4 flex items-center gap-3 flex-wrap">
         <div className="flex-1 min-w-[12rem] relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-          <input value={search} onChange={e => { setSearch(e.target.value); setPage(1); }} placeholder="Buscar por cliente ou processo..." className="w-full pl-9 pr-3 py-2 border border-border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+          <input value={search} onChange={e => { setSearch(e.target.value); setPage(1); }} placeholder="Buscar por cliente ou processo..." className="w-full bg-card text-foreground pl-9 pr-3 py-2 border border-border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
         </div>
         <select value={filterAdvogado} onChange={e => { setFilterAdvogado(e.target.value); setPage(1); }} className="bg-card border border-border rounded-md px-3 py-2 text-sm text-muted-foreground">
           <option value="">Todos Advogados</option>
@@ -442,7 +442,7 @@ export default function FinanceiroPage() {
             <div className="text-sm font-semibold text-foreground mt-0.5">Valor: {formatBRL(showPagoModal.valor)}</div>
             <div className="mt-4 mb-5 text-left">
               <label className="text-sm font-medium text-foreground mb-1 block">Data do pagamento*</label>
-              <input type="date" value={pagoDate} onChange={e => setPagoDate(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+              <input type="date" value={pagoDate} onChange={e => setPagoDate(e.target.value)} className="w-full bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
             </div>
             <div className="flex gap-3">
               <button onClick={() => setShowPagoModal(null)} className="flex-1 border border-border rounded-md py-2 text-sm text-muted-foreground hover:bg-muted">Cancelar</button>
@@ -587,7 +587,7 @@ function NovoLancamentoModal({ onClose, onSave }: { onClose: () => void; onSave:
               ) : (
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                  <input value={clienteSearch} onChange={e => { setClienteSearch(e.target.value); setShowClienteList(true); }} onFocus={() => setShowClienteList(true)} placeholder="Buscar cliente..." className={`w-full pl-9 pr-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-ring ${errors.cliente ? 'border-red-300' : 'border-border'}`} />
+                  <input value={clienteSearch} onChange={e => { setClienteSearch(e.target.value); setShowClienteList(true); }} onFocus={() => setShowClienteList(true)} placeholder="Buscar cliente..." className={`w-full bg-card text-foreground pl-9 pr-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-ring ${errors.cliente ? 'border-red-300' : 'border-border'}`} />
                   {showClienteList && (
                     <>
                       <div className="fixed inset-0 z-10" onClick={() => setShowClienteList(false)} />
@@ -686,11 +686,11 @@ function NovoLancamentoModal({ onClose, onSave }: { onClose: () => void; onSave:
               <>
                 <div>
                   <label className="text-sm font-medium text-foreground mb-1 block">Total de Parcelas</label>
-                  <input type="number" min={2} max={36} value={parcelasTotal} onChange={e => setParcelasTotal(Number(e.target.value))} placeholder="Ex: 6" className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                  <input type="number" min={2} max={36} value={parcelasTotal} onChange={e => setParcelasTotal(Number(e.target.value))} placeholder="Ex: 6" className="w-full bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
                 </div>
                 <div>
                   <label className="text-sm font-medium text-foreground mb-1 block">Parcelas Pagas</label>
-                  <input type="number" min={0} max={parcelasTotal} value={parcelasPagas} onChange={e => setParcelasPagas(Number(e.target.value))} placeholder="0" className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                  <input type="number" min={0} max={parcelasTotal} value={parcelasPagas} onChange={e => setParcelasPagas(Number(e.target.value))} placeholder="0" className="w-full bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
                 </div>
               </>
             )}

@@ -296,7 +296,7 @@ export default function AudienciasPage({ onNavigateProcessoDetail }: AudienciasP
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Buscar por processo ou cliente..."
-            className="w-full border border-border rounded-md pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+            className="w-full bg-card text-foreground border border-border rounded-md pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
           />
         </div>
         <select value={filterArea} onChange={(e) => setFilterArea(e.target.value)} className="border border-border rounded-md px-3 py-2 text-sm text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring">
@@ -614,7 +614,7 @@ function NovaAudienciaModal({ onClose, onSave, processos, currentUser, isAdmin }
               <label className="block text-xs font-medium text-muted-foreground mb-1">Processo</label>
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                <input value={processoSearch} onChange={(e) => { setProcessoSearch(e.target.value); setShowPList(true); }} onFocus={() => setShowPList(true)} placeholder="Vincular a um processo (opcional)..." className="w-full border border-border rounded-md pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                <input value={processoSearch} onChange={(e) => { setProcessoSearch(e.target.value); setShowPList(true); }} onFocus={() => setShowPList(true)} placeholder="Vincular a um processo (opcional)..." className="w-full bg-card text-foreground border border-border rounded-md pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
               </div>
               {showPList && filteredP.length > 0 && (
                 <div className="absolute z-10 w-full bg-card border border-border rounded-lg shadow-md max-h-48 overflow-y-auto mt-1">
@@ -635,7 +635,7 @@ function NovaAudienciaModal({ onClose, onSave, processos, currentUser, isAdmin }
 
             <div>
               <label className="block text-xs font-medium text-muted-foreground mb-1">Status*</label>
-              <select value={audStatus} onChange={(e) => setAudStatus(e.target.value as AudienciaStatus)} className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring">
+              <select value={audStatus} onChange={(e) => setAudStatus(e.target.value as AudienciaStatus)} className="w-full bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring">
                 {(['agendada', 'realizada', 'adiada', 'cancelada'] as AudienciaStatus[]).map((s) => (
                   <option key={s} value={s}>{audienciaStatusLabels[s]}</option>
                 ))}
@@ -649,18 +649,18 @@ function NovaAudienciaModal({ onClose, onSave, processos, currentUser, isAdmin }
 
             <div>
               <label className="block text-xs font-medium text-muted-foreground mb-1">Hora Fim</label>
-              <input type="time" value={horaFim} onChange={(e) => setHoraFim(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+              <input type="time" value={horaFim} onChange={(e) => setHoraFim(e.target.value)} className="w-full bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
             </div>
 
             <div>
               <label className="block text-xs font-medium text-muted-foreground mb-1">Vara/Tribunal</label>
-              <input value={local} onChange={(e) => setLocal(e.target.value)} placeholder="Vara, fórum, endereço..." className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+              <input value={local} onChange={(e) => setLocal(e.target.value)} placeholder="Vara, fórum, endereço..." className="w-full bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
             </div>
 
             <div>
               <label className="block text-xs font-medium text-muted-foreground mb-1">Responsável*</label>
               {isAdmin ? (
-                <select value={responsibleId} onChange={(e) => setResponsibleId(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring">
+                <select value={responsibleId} onChange={(e) => setResponsibleId(e.target.value)} className="w-full bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring">
                   {MOCK_USERS.map((u) => (
                     <option key={u.id} value={u.id}>{u.name}</option>
                   ))}
@@ -761,7 +761,7 @@ function RegistrarResultadoModal({ audiencia, onClose, onSave }: RegistrarResult
           <div className="space-y-4">
             <div>
               <label className="block text-xs font-medium text-muted-foreground mb-1">Resultado da Audiência*</label>
-              <select value={resultado} onChange={(e) => setResultado(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring">
+              <select value={resultado} onChange={(e) => setResultado(e.target.value)} className="w-full bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring">
                 <option value="">Selecione...</option>
                 {resultados.map((r) => (
                   <option key={r} value={r}>{r}</option>
@@ -771,7 +771,7 @@ function RegistrarResultadoModal({ audiencia, onClose, onSave }: RegistrarResult
 
             <div>
               <label className="block text-xs font-medium text-muted-foreground mb-1">Data de Realização*</label>
-              <input type="date" value={dataRealizacao} onChange={(e) => setDataRealizacao(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+              <input type="date" value={dataRealizacao} onChange={(e) => setDataRealizacao(e.target.value)} className="w-full bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
             </div>
 
             <div>

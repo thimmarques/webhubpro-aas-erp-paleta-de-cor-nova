@@ -316,20 +316,20 @@ function MeuPerfilSection() {
         <div className="grid grid-cols-2 gap-5">
           <div className="col-span-2">
             <label className="text-sm font-medium text-foreground">Nome Completo*</label>
-            <input value={name} onChange={e => setName(e.target.value)} className="mt-1 w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" placeholder="Seu nome completo" />
+            <input value={name} onChange={e => setName(e.target.value)} className="mt-1 w-full bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" placeholder="Seu nome completo" />
           </div>
           <div>
             <label className="text-sm font-medium text-foreground">Email*</label>
-            <input value={email} onChange={e => setEmail(e.target.value)} type="email" className="mt-1 w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+            <input value={email} onChange={e => setEmail(e.target.value)} type="email" className="mt-1 w-full bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
             <p className="text-xs text-muted-foreground mt-1">Usado para login e notificações</p>
           </div>
           <div>
             <label className="text-sm font-medium text-foreground">Telefone</label>
-            <input value={phone} onChange={e => setPhone(e.target.value)} className="mt-1 w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" placeholder="(11) 00000-0000" />
+            <input value={phone} onChange={e => setPhone(e.target.value)} className="mt-1 w-full bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" placeholder="(11) 00000-0000" />
           </div>
           <div>
             <label className="text-sm font-medium text-foreground">OAB</label>
-            <input value={oab} onChange={e => setOab(e.target.value)} className="mt-1 w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" placeholder="OAB/SP 000.000" />
+            <input value={oab} onChange={e => setOab(e.target.value)} className="mt-1 w-full bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" placeholder="OAB/SP 000.000" />
           </div>
           <div>
             <label className="text-sm font-medium text-foreground">Cargo</label>
@@ -357,7 +357,7 @@ function MeuPerfilSection() {
             <div className="col-span-2 relative">
               <label className="text-sm font-medium text-foreground">Senha Atual*</label>
               <div className="relative mt-1">
-                <input type={showCurrent ? 'text' : 'password'} value={currentPw} onChange={e => setCurrentPw(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-ring" placeholder="••••••••" />
+                <input type={showCurrent ? 'text' : 'password'} value={currentPw} onChange={e => setCurrentPw(e.target.value)} className="w-full bg-card text-foreground border border-border rounded-md px-3 py-2 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-ring" placeholder="••••••••" />
                 <button type="button" onClick={() => setShowCurrent(!showCurrent)} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">
                   {showCurrent ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
@@ -366,7 +366,7 @@ function MeuPerfilSection() {
             <div className="relative">
               <label className="text-sm font-medium text-foreground">Nova Senha*</label>
               <div className="relative mt-1">
-                <input type={showNew ? 'text' : 'password'} value={newPw} onChange={e => setNewPw(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-ring" placeholder="••••••••" />
+                <input type={showNew ? 'text' : 'password'} value={newPw} onChange={e => setNewPw(e.target.value)} className="w-full bg-card text-foreground border border-border rounded-md px-3 py-2 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-ring" placeholder="••••••••" />
                 <button type="button" onClick={() => setShowNew(!showNew)} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">
                   {showNew ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
@@ -475,31 +475,31 @@ function EscritorioSection() {
         <div className="grid grid-cols-2 gap-5">
           <div className="col-span-2">
             <label className="text-sm font-medium text-foreground">Nome do Escritório*</label>
-            <input value={office.name} onChange={e => setOffice({ ...office, name: e.target.value })} className="mt-1 w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+            <input value={office.name} onChange={e => setOffice({ ...office, name: e.target.value })} className="mt-1 w-full bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
           </div>
           <div>
             <label className="text-sm font-medium text-foreground">CNPJ*</label>
-            <input value={office.cnpj} onChange={e => setOffice({ ...office, cnpj: e.target.value })} className="mt-1 w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" placeholder="00.000.000/0000-00" />
+            <input value={office.cnpj} onChange={e => setOffice({ ...office, cnpj: e.target.value })} className="mt-1 w-full bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" placeholder="00.000.000/0000-00" />
           </div>
           <div>
             <label className="text-sm font-medium text-foreground">Email*</label>
-            <input value={office.email} onChange={e => setOffice({ ...office, email: e.target.value })} type="email" className="mt-1 w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+            <input value={office.email} onChange={e => setOffice({ ...office, email: e.target.value })} type="email" className="mt-1 w-full bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
           </div>
           <div>
             <label className="text-sm font-medium text-foreground">Telefone</label>
-            <input value={office.phone} onChange={e => setOffice({ ...office, phone: e.target.value })} className="mt-1 w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" placeholder="(00) 0000-0000" />
+            <input value={office.phone} onChange={e => setOffice({ ...office, phone: e.target.value })} className="mt-1 w-full bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" placeholder="(00) 0000-0000" />
           </div>
           <div>
             <label className="text-sm font-medium text-foreground">Site</label>
-            <input value={office.website} onChange={e => setOffice({ ...office, website: e.target.value })} className="mt-1 w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" placeholder="www.seusite.com.br" />
+            <input value={office.website} onChange={e => setOffice({ ...office, website: e.target.value })} className="mt-1 w-full bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" placeholder="www.seusite.com.br" />
           </div>
           <div className="col-span-2">
             <label className="text-sm font-medium text-foreground">Endereço*</label>
-            <input value={office.address} onChange={e => setOffice({ ...office, address: e.target.value })} className="mt-1 w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" placeholder="Rua, número, complemento" />
+            <input value={office.address} onChange={e => setOffice({ ...office, address: e.target.value })} className="mt-1 w-full bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" placeholder="Rua, número, complemento" />
           </div>
           <div>
             <label className="text-sm font-medium text-foreground">Cidade*</label>
-            <input value={office.city} onChange={e => setOffice({ ...office, city: e.target.value })} className="mt-1 w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+            <input value={office.city} onChange={e => setOffice({ ...office, city: e.target.value })} className="mt-1 w-full bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
           </div>
           <div>
             <label className="text-sm font-medium text-foreground">Estado*</label>
@@ -509,7 +509,7 @@ function EscritorioSection() {
           </div>
           <div>
             <label className="text-sm font-medium text-foreground">CEP</label>
-            <input value={office.cep} onChange={e => setOffice({ ...office, cep: e.target.value })} className="mt-1 w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" placeholder="00000-000" />
+            <input value={office.cep} onChange={e => setOffice({ ...office, cep: e.target.value })} className="mt-1 w-full bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" placeholder="00000-000" />
           </div>
         </div>
 
@@ -706,7 +706,7 @@ function IntegracoesSection() {
                       type={isSecretField(key) && !showSecrets[key] ? 'password' : 'text'}
                       value={configValues[key]}
                       onChange={e => setConfigValues({ ...configValues, [key]: e.target.value })}
-                      className="w-full border border-border rounded-md px-3 py-2 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+                      className="w-full bg-card text-foreground border border-border rounded-md px-3 py-2 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
                     />
                     {isSecretField(key) && (
                       <button type="button" onClick={() => setShowSecrets({ ...showSecrets, [key]: !showSecrets[key] })} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">

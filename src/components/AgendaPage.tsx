@@ -614,7 +614,7 @@ function NovoEventoModal({ onClose, onSave, prefillDate, processos, currentUser,
                   onChange={(e) => { setProcessoSearch(e.target.value); setShowProcessoList(true); }}
                   onFocus={() => setShowProcessoList(true)}
                   placeholder="Vincular a um processo (opcional)..."
-                  className="w-full border border-border rounded-md pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+                  className="w-full bg-card text-foreground border border-border rounded-md pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
                 />
               </div>
               {showProcessoList && filteredProcessos.length > 0 && (
@@ -649,7 +649,7 @@ function NovoEventoModal({ onClose, onSave, prefillDate, processos, currentUser,
                 value={horaFim}
                 onChange={(e) => setHoraFim(e.target.value)}
                 onFocus={() => { if (!horaFim && horaInicio) { const [h, m] = horaInicio.split(':').map(Number); const newH = h + 1; setHoraFim(`${String(Math.min(newH, 23)).padStart(2, '0')}:${String(m + 30 >= 60 ? 0 : m + 30).padStart(2, '0')}`); } }}
-                className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+                className="w-full bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
               />
               <p className="text-xs text-muted-foreground mt-0.5">Opcional</p>
             </div>
@@ -657,14 +657,14 @@ function NovoEventoModal({ onClose, onSave, prefillDate, processos, currentUser,
             {/* Local */}
             <div>
               <label className="block text-xs font-medium text-muted-foreground mb-1">Local</label>
-              <input value={local} onChange={(e) => setLocal(e.target.value)} placeholder="Vara, fórum, endereço..." className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+              <input value={local} onChange={(e) => setLocal(e.target.value)} placeholder="Vara, fórum, endereço..." className="w-full bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
             </div>
 
             {/* Responsável */}
             <div className="col-span-2">
               <label className="block text-xs font-medium text-muted-foreground mb-1">Responsável*</label>
               {isAdmin ? (
-                <select value={responsibleId} onChange={(e) => setResponsibleId(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring">
+                <select value={responsibleId} onChange={(e) => setResponsibleId(e.target.value)} className="w-full bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring">
                   {MOCK_USERS.map((u) => (
                     <option key={u.id} value={u.id}>{u.name}</option>
                   ))}
