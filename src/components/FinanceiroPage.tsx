@@ -442,7 +442,7 @@ export default function FinanceiroPage() {
             <div className="text-sm font-semibold text-foreground mt-0.5">Valor: {formatBRL(showPagoModal.valor)}</div>
             <div className="mt-4 mb-5 text-left">
               <label className="text-sm font-medium text-foreground mb-1 block">Data do pagamento*</label>
-              <input type="date" value={pagoDate} onChange={e => setPagoDate(e.target.value)} className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+              <input type="date" value={pagoDate} onChange={e => setPagoDate(e.target.value)} className="w-full bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
             </div>
             <div className="flex gap-3">
               <button onClick={() => setShowPagoModal(null)} className="flex-1 border border-border rounded-md py-2 text-sm text-muted-foreground hover:bg-muted">Cancelar</button>
@@ -686,11 +686,11 @@ function NovoLancamentoModal({ onClose, onSave }: { onClose: () => void; onSave:
               <>
                 <div>
                   <label className="text-sm font-medium text-foreground mb-1 block">Total de Parcelas</label>
-                  <input type="number" min={2} max={36} value={parcelasTotal} onChange={e => setParcelasTotal(Number(e.target.value))} placeholder="Ex: 6" className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                  <input type="number" min={2} max={36} value={parcelasTotal} onChange={e => setParcelasTotal(Number(e.target.value))} placeholder="Ex: 6" className="w-full bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
                 </div>
                 <div>
                   <label className="text-sm font-medium text-foreground mb-1 block">Parcelas Pagas</label>
-                  <input type="number" min={0} max={parcelasTotal} value={parcelasPagas} onChange={e => setParcelasPagas(Number(e.target.value))} placeholder="0" className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                  <input type="number" min={0} max={parcelasTotal} value={parcelasPagas} onChange={e => setParcelasPagas(Number(e.target.value))} placeholder="0" className="w-full bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
                 </div>
               </>
             )}
