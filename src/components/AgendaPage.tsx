@@ -561,7 +561,7 @@ function NovoEventoModal({ onClose, onSave, prefillDate, processos, currentUser,
   }
 
   const fieldClass = (name: string) =>
-    `w-full border ${errors[name] ? 'border-red-400' : 'border-border'} rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent`;
+    `w-full bg-card text-foreground border ${errors[name] ? 'border-red-400' : 'border-border'} rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent`;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center" onClick={onClose}>
@@ -677,7 +677,7 @@ function NovoEventoModal({ onClose, onSave, prefillDate, processos, currentUser,
             {/* Notes */}
             <div className="col-span-2">
               <label className="block text-xs font-medium text-muted-foreground mb-1">Observações</label>
-              <textarea value={notes} onChange={(e) => setNotes(e.target.value)} rows={3} placeholder="Detalhes adicionais, orientações..." className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring resize-none" />
+              <textarea value={notes} onChange={(e) => setNotes(e.target.value)} rows={3} placeholder="Detalhes adicionais, orientações..." className="w-full bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring resize-none" />
             </div>
           </div>
         </div>

@@ -575,7 +575,7 @@ function NovaAudienciaModal({ onClose, onSave, processos, currentUser, isAdmin }
     onSave();
   }
 
-  const fc = (name: string) => `w-full border ${errors[name] ? 'border-red-400' : 'border-border'} rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent`;
+  const fc = (name: string) => `w-full bg-card text-foreground border ${errors[name] ? 'border-red-400' : 'border-border'} rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent`;
 
   const audTipoOptions: AudienciaTipo[] = ['conciliacao', 'instrucao', 'julgamento', 'una', 'virtual'];
 
@@ -672,7 +672,7 @@ function NovaAudienciaModal({ onClose, onSave, processos, currentUser, isAdmin }
 
             <div className="col-span-2">
               <label className="block text-xs font-medium text-muted-foreground mb-1">Observações</label>
-              <textarea value={notes} onChange={(e) => setNotes(e.target.value)} rows={3} placeholder="Detalhes adicionais..." className="w-full border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring resize-none" />
+              <textarea value={notes} onChange={(e) => setNotes(e.target.value)} rows={3} placeholder="Detalhes adicionais..." className="w-full bg-card text-foreground border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring resize-none" />
             </div>
           </div>
         </div>
