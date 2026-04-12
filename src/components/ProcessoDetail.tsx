@@ -123,12 +123,32 @@ const atividadeTipoColors: Record<string, string> = {
 };
 
 export default function ProcessoDetail({ processoId, onBack }: ProcessoDetailProps) {
-  const { user } = useAuth();
+  const { currentUser } = useAuth();
   const processos = getProcessos();
   const proc = processos.find((p) => p.id === processoId);
 
   const [diarioEntries, setDiarioEntries] = useState<DiarioEntry[]>(() => loadDiario());
   const [newDiarioText, setNewDiarioText] = useState('');
+
+  const atividades = useMemo(() =>
+    proc ? loadAtividades().filter((a) => a.processo_id === proc.id).sort((a, b) => new Date(b.data).getTime() - new Date(a.data).getTime()) : [],
+    [proc?.id]
+  );
+
+  const lancamentos = useMemo(() =>
+    proc ? loadLancamentos().filter((l) => l.processo_id === proc.id).sort((a, b) => new Date(b.vencimento).getTime() - new Date(a.vencimento).getTime()) : [],
+    [proc?.id]
+  );
+
+  const eventos = useMemo(() =>
+    proc ? getEventos().filter((e) => e.processo_id === proc.id).sort((a, b) => new Date(b.data).getTime() - new Date(a.data).getTime()) : [],
+    [proc?.id]
+  );
+
+  const processoDiario = useMemo(() =>
+    proc ? diarioEntries.filter((d) => d.processo_id === proc.id).sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()) : [],
+    [diarioEntries, proc?.id]
+  );
 
   if (!proc) return <div className="text-muted-foreground p-8">Processo não encontrado.</div>;
 
