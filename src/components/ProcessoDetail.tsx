@@ -154,26 +154,6 @@ export default function ProcessoDetail({ processoId, onBack }: ProcessoDetailPro
 
   const resp = MOCK_USERS.find((u) => u.id === proc.responsible_id);
 
-  const atividades = useMemo(() =>
-    loadAtividades().filter((a) => a.processo_id === proc.id).sort((a, b) => new Date(b.data).getTime() - new Date(a.data).getTime()),
-    [proc.id]
-  );
-
-  const lancamentos = useMemo(() =>
-    loadLancamentos().filter((l) => l.processo_id === proc.id).sort((a, b) => new Date(b.vencimento).getTime() - new Date(a.vencimento).getTime()),
-    [proc.id]
-  );
-
-  const eventos = useMemo(() =>
-    getEventos().filter((e) => e.processo_id === proc.id).sort((a, b) => new Date(b.data).getTime() - new Date(a.data).getTime()),
-    [proc.id]
-  );
-
-  const processoDiario = useMemo(() =>
-    diarioEntries.filter((d) => d.processo_id === proc.id).sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()),
-    [diarioEntries, proc.id]
-  );
-
   const valorDisplay = proc.valor_causa === 0 && proc.practice_area === 'criminal' ? '—' : formatBRL(proc.valor_causa);
 
   const prazoDays = daysDiff(proc.prazo_fatal);
@@ -185,12 +165,12 @@ export default function ProcessoDetail({ processoId, onBack }: ProcessoDetailPro
   const totalPendente = lancamentos.filter((l) => l.status !== 'pago').reduce((s, l) => s + l.valor, 0);
 
   function handleAddDiario() {
-    if (!newDiarioText.trim() || !user) return;
+    if (!newDiarioText.trim() || !currentUser) return;
     const entry: DiarioEntry = {
       id: `diary-${Date.now()}`,
       processo_id: proc.id,
-      user_id: user.id,
-      user_name: user.name,
+      user_id: currentUser.id,
+      user_name: currentUser.name,
       texto: newDiarioText.trim(),
       created_at: new Date().toISOString(),
     };
