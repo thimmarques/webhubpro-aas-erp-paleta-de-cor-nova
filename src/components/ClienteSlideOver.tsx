@@ -80,7 +80,7 @@ export default function ClienteSlideOver({ open, onClose, onSave, editCliente }:
       if (editCliente) {
         setClientType(editCliente.type);
         setArea(editCliente.practice_area);
-        setForm({ ...editCliente });
+        setForm({ ...editCliente, _has_colaborador: !!(editCliente.colaboradores && editCliente.colaboradores.length > 0) });
         setStep(2);
       } else {
         setClientType(null);
