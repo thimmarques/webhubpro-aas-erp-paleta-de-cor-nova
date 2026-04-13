@@ -7,6 +7,7 @@ export interface ClienteBase {
   type: 'PF' | 'PJ';
   practice_area: PracticeArea;
   responsible_id: string;
+  colaboradores?: string[];
   status: 'ativo' | 'inativo';
   is_vip: boolean;
   created_at: string;

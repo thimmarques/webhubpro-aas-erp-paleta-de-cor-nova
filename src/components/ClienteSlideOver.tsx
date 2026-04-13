@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, User, Building2, Star, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, User, Building2, Star, ChevronLeft, ChevronRight, Plus, Trash2 } from 'lucide-react';
 import { PracticeArea } from '@/types';
 import { useAuth } from '@/contexts/AuthContext';
 import { MOCK_USERS } from '@/data/mockUsers';
@@ -839,6 +839,91 @@ function Step2Form({
           <input className={readOnlyCls} value={currentUser?.name || ''} readOnly />
         )}
       </Field>
+
+      {/* ── Advogado Colaborador ── */}
+      <Field label="Advogado Colaborador" colSpan={2}>
+        <label className="flex items-center gap-3 cursor-pointer">
+          <span className="text-sm text-foreground">Adicionar advogado colaborador?</span>
+          <button
+            type="button"
+            role="switch"
+            aria-checked={form._has_colaborador || false}
+            onClick={() => {
+              const next = !form._has_colaborador;
+              set('_has_colaborador', next);
+              if (!next) set('colaboradores', []);
+            }}
+            className={`relative inline-flex h-5 w-9 shrink-0 rounded-full transition-colors ml-auto ${
+              form._has_colaborador ? 'bg-blue-600' : 'bg-muted'
+            }`}
+          >
+            <span className={`inline-block h-4 w-4 rounded-full bg-card shadow transform transition-transform mt-0.5 ${form._has_colaborador ? 'translate-x-4 ml-0.5' : 'translate-x-0.5'}`} />
+          </button>
+        </label>
+      </Field>
+
+      {form._has_colaborador && (() => {
+        const colaboradores: string[] = form.colaboradores || [];
+        const responsavelId = admin ? form.responsible_id : currentUser?.id;
+        const advogados = MOCK_USERS.filter(
+          (u) => (u.role === 'advogado' || u.role === 'admin') && u.id !== responsavelId && !colaboradores.includes(u.id)
+        );
+
+        return (
+          <div className="col-span-2 space-y-2">
+            {colaboradores.length > 0 && (
+              <div className="space-y-2">
+                {colaboradores.map((colabId: string) => {
+                  const user = MOCK_USERS.find((u) => u.id === colabId);
+                  return (
+                    <div key={colabId} className="flex items-center justify-between bg-muted/50 border border-border rounded-md px-3 py-2">
+                      <span className="text-sm text-foreground">{user?.name || colabId}</span>
+                      <button
+                        type="button"
+                        onClick={() => set('colaboradores', colaboradores.filter((id: string) => id !== colabId))}
+                        className="text-muted-foreground hover:text-red-500 transition-colors"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+            {advogados.length > 0 && (
+              <div className="flex gap-2">
+                <select
+                  className={inputCls + ' flex-1'}
+                  id="colab-select"
+                  defaultValue=""
+                >
+                  <option value="">Selecione um advogado</option>
+                  {advogados.map((u) => (
+                    <option key={u.id} value={u.id}>{u.name} — {u.role}</option>
+                  ))}
+                </select>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const sel = document.getElementById('colab-select') as HTMLSelectElement;
+                    if (sel?.value) {
+                      set('colaboradores', [...colaboradores, sel.value]);
+                      sel.value = '';
+                    }
+                  }}
+                  className="flex items-center gap-1 bg-blue-600 text-white text-sm font-medium rounded-md px-3 py-2 hover:bg-blue-700 transition-colors"
+                >
+                  <Plus className="w-4 h-4" />
+                  Adicionar
+                </button>
+              </div>
+            )}
+            {advogados.length === 0 && colaboradores.length > 0 && (
+              <p className="text-xs text-muted-foreground">Todos os advogados disponíveis já foram adicionados.</p>
+            )}
+          </div>
+        );
+      })()}
 
       <Field label="Observações" colSpan={2}>
         <textarea
