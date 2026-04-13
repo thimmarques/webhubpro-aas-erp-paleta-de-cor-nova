@@ -164,16 +164,18 @@ export default function ClienteSlideOver({ open, onClose, onSave, editCliente }:
   const handleSave = () => {
     if (!validate()) return;
 
+    const { _has_colaborador, ...formData } = form;
     const cliente: any = {
-      ...form,
+      ...formData,
       id: editCliente?.id || `cli-${Date.now()}`,
       type: clientType,
       practice_area: area,
-      status: form.status || 'ativo',
-      is_vip: form.is_vip || false,
+      status: formData.status || 'ativo',
+      is_vip: formData.is_vip || false,
       created_at: editCliente?.created_at || new Date().toISOString().split('T')[0],
-      responsible_id: admin ? form.responsible_id : currentUser!.id,
-      notes: form.notes || '',
+      responsible_id: admin ? formData.responsible_id : currentUser!.id,
+      colaboradores: _has_colaborador && formData.colaboradores?.length ? formData.colaboradores : [],
+      notes: formData.notes || '',
     };
 
     onSave(cliente as Cliente);
